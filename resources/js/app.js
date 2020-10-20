@@ -4,7 +4,13 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import ExampleComponent from "./components/ExampleComponent";
+
 window.Vue = require('vue');
+
+import VueRouter from 'vue-router'
+
+Vue.use(VueRouter)
 
 /**
  * The following block of code may be used to automatically register your
@@ -25,6 +31,13 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+import routes from './routes';
+
+const router = new VueRouter({
+    routes
+})
+
 const app = new Vue({
+    router,
     el: '#app',
 });
