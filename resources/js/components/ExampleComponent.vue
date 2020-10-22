@@ -15,10 +15,20 @@
 </template>
 
 <script>
+import axios from 'axios'
+
     export default {
         mounted() {
 
+            axios.get('api/test').then((response) => {
+                console.log(response);
+
+            }).catch((error) => {
+                console.log(error);
+            })
+
             console.log(this.$store.state.user.name);
+
         }
     }
 </script>
