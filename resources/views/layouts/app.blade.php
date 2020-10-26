@@ -19,7 +19,7 @@
     </head>
     <body class="antialiased">
         <div id="app">
-            <router-view></router-view>
+            <v-main></v-main>
         </div>
     </body>
 </html>

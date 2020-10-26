@@ -26,7 +26,9 @@ Vue.use(Vuex)
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('v-navbar', require('./components/Navbar.vue').default);
+Vue.component('v-footer', require('./components/Footer.vue').default);
+Vue.component('v-main', require('./views/Main.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
