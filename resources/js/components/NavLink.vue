@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{ name: routeName}"
-                 class="text-lg font-medium text-gray-500 hover:text-indigo-900 transition duration-150 ease-in-out px-2">
+                 class="text-lg font-medium text-gray-600 hover:text-indigo-900 transition duration-150 ease-in-out px-2">
         <slot></slot>
     </router-link>
 </template>

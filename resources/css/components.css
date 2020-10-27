@@ -1,0 +1,6 @@
+
+.j-card {
+    @apply w-full bg-gray-100 border border-indigo-100 rounded shadow-lg p-5;
+}
+
+

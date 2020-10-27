@@ -6,6 +6,7 @@ import About from "./views/About"
 const routes = [
     { path: '/', name:'home', component: Home },
     { path: '/login', name:'login', component: Login },
+    { path: '/register', name:'register', component: Register },
     { path: '/about', name:'about', component: About }
 ]
 

@@ -1,8 +1,27 @@
+import LoginService from '../services/loginService';
+import loginService from "../services/loginService";
+
 export default {
     state: {
-        name: 'test user OK',
+        logged: false,
+        user: ''
     },
-    mutations: {},
-    actions: {},
-    getters: {}
+    mutations: {
+
+    },
+    actions: {
+        postLogin(context, credentials) {
+
+            loginService.postLogin(credentials).then((response) => {
+                console.log(response)
+            }).catch((error) => {
+                console.log(error);
+            })
+
+            // console.log(context, credentials);
+        }
+    },
+    getters: {
+
+    }
 }

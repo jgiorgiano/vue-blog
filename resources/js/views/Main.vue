@@ -3,7 +3,7 @@
         <div class="container mx-auto">
             <v-navbar></v-navbar>
             <router-view></router-view>
-            <v-footer></v-footer>
+<!--            <v-footer></v-footer>-->
         </div>
     </div>
 </template>
