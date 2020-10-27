@@ -23,6 +23,7 @@
     "dependencies": {
         "tailwindcss": "^1.9.6",
         "vue-router": "^3.4.7",
+        "vuelidate": "^0.7.6",
         "vuex": "^3.5.1"
     }
 }

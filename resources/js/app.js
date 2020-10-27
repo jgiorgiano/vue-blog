@@ -2,6 +2,7 @@ require('./bootstrap');
 
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import Vuelidate from 'vuelidate'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -16,6 +17,8 @@ window.Vue = require('vue');
 Vue.use(VueRouter)
 
 Vue.use(Vuex)
+
+Vue.use(Vuelidate)
 
 /**
  * The following block of code may be used to automatically register your

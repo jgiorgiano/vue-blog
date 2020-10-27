@@ -1,5 +1,5 @@
 import Home from "./views/Home"
-import Login from "./views/Loggin"
+import Login from "./views/Login"
 import Register from "./views/Register"
 import About from "./views/About"
 

@@ -11,14 +11,15 @@ export default {
     },
     actions: {
         postLogin(context, credentials) {
+            return new Promise((resolve, reject) => {
+                loginService.postLogin(credentials).then((response) => {
 
-            loginService.postLogin(credentials).then((response) => {
-                console.log(response)
-            }).catch((error) => {
-                console.log(error);
-            })
+                    resolve(response);
+                }).catch((error) => {
 
-            // console.log(context, credentials);
+                    reject(error);
+                });
+            });
         }
     },
     getters: {
