@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Actions\Fortify;
+namespace App\Actions\__Fortify;
 
 use Laravel\Fortify\Rules\Password;
 

@@ -73,6 +73,9 @@ export default {
             this.$store.dispatch('postLogin', { email:this.email, password:this.password })
                 .then((response) => {
                     console.log('suc', response.data)
+
+                    this.router.push({ name: 'dashboard' })
+
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
