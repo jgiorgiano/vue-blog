@@ -1942,33 +1942,6 @@ module.exports = {
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NavLink.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/NavLink.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  props: {
-    routeName: {
-      type: String,
-      required: true
-    }
-  }
-});
-
-/***/ }),
-
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/Navbar.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/Navbar.vue?vue&type=script&lang=js& ***!
@@ -2020,6 +1993,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2029,6 +2035,25 @@ __webpack_require__.r(__webpack_exports__);
     return {
       showMenu: false
     };
+  },
+  computed: {
+    user: function user() {
+      return this.$store.state.user.user;
+    },
+    authenticated: function authenticated() {
+      return this.$store.state.user.authenticated;
+    }
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      this.$store.dispatch('logout').then(function () {
+        return _this.$router.push('/');
+      })["catch"](function (err) {
+        return console.log(err);
+      });
+    }
   }
 });
 
@@ -20035,11 +20060,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "router-link",
+    "div",
     {
       staticClass:
-        "text-lg font-medium text-gray-600 hover:text-indigo-900 transition duration-150 ease-in-out px-2",
-      attrs: { to: { name: _vm.routeName } }
+        "float-right text-lg font-medium text-gray-600 hover:text-indigo-900 transition duration-150 ease-in-out px-2"
     },
     [_vm._t("default")],
     2
@@ -20070,9 +20094,9 @@ var render = function() {
   return _c("div", [
     _c(
       "nav",
-      { staticClass: "p-6 flex items-center justify-between" },
+      { staticClass: "p-5 flex items-center justify-between" },
       [
-        _c("nav-link", { attrs: { "route-name": "home" } }, [
+        _c("router-link", { attrs: { to: { name: "home" } } }, [
           _c(
             "svg",
             {
@@ -20115,109 +20139,217 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "hidden md:block" },
-          [
-            _c("nav-link", { attrs: { "route-name": "login" } }, [
-              _vm._v("Login")
-            ]),
-            _vm._v(" "),
-            _c("nav-link", { attrs: { "route-name": "register" } }, [
-              _vm._v("Sign up")
-            ]),
-            _vm._v(" "),
-            _c("nav-link", { attrs: { "route-name": "about" } }, [
-              _vm._v("About")
-            ])
-          ],
-          1
-        ),
+        !_vm.authenticated
+          ? _c(
+              "div",
+              { staticClass: "hidden md:flex" },
+              [
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "login" } } },
+                  [_c("nav-link", [_vm._v("Login")])],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "register" } } },
+                  [_c("nav-link", [_vm._v("Sign up")])],
+                  1
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  { attrs: { to: { name: "about" } } },
+                  [_c("nav-link", [_vm._v("About")])],
+                  1
+                )
+              ],
+              1
+            )
+          : _vm._e(),
         _vm._v(" "),
-        _c("div", { staticClass: "md:hidden" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-indigo-900 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-indigo-500 transition duration-150 ease-in-out",
-              attrs: {
-                type: "button",
-                id: "main-menu",
-                "aria-label": "Main menu",
-                "aria-haspopup": "true"
-              },
-              on: {
-                click: function($event) {
-                  _vm.showMenu = !_vm.showMenu
-                }
-              }
-            },
-            [
+        !_vm.authenticated
+          ? _c("div", { staticClass: "md:hidden" }, [
               _c(
-                "svg",
+                "button",
                 {
-                  staticClass: "h-6 w-6",
+                  staticClass:
+                    "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-indigo-900 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-indigo-500 transition duration-150 ease-in-out",
                   attrs: {
-                    stroke: "currentColor",
-                    fill: "none",
-                    viewBox: "0 0 24 24"
+                    type: "button",
+                    id: "main-menu",
+                    "aria-label": "Main menu",
+                    "aria-haspopup": "true"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.showMenu = !_vm.showMenu
+                    }
                   }
                 },
                 [
-                  _c("path", {
-                    attrs: {
-                      "stroke-linecap": "round",
-                      "stroke-linejoin": "round",
-                      "stroke-width": "2",
-                      d: "M4 6h16M4 12h16M4 18h16"
-                    }
-                  })
+                  _c(
+                    "svg",
+                    {
+                      staticClass: "h-6 w-6",
+                      attrs: {
+                        stroke: "currentColor",
+                        fill: "none",
+                        viewBox: "0 0 24 24"
+                      }
+                    },
+                    [
+                      _c("path", {
+                        attrs: {
+                          "stroke-linecap": "round",
+                          "stroke-linejoin": "round",
+                          "stroke-width": "2",
+                          d: "M4 6h16M4 12h16M4 18h16"
+                        }
+                      })
+                    ]
+                  )
                 ]
               )
-            ]
-          )
-        ])
+            ])
+          : _c("div", [
+              _c(
+                "button",
+                {
+                  staticClass:
+                    "inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-indigo-900 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-indigo-500 transition duration-150 ease-in-out",
+                  attrs: {
+                    type: "button",
+                    id: "auth-main-menu",
+                    "aria-label": "Main menu",
+                    "aria-haspopup": "true"
+                  },
+                  on: {
+                    click: function($event) {
+                      _vm.showMenu = !_vm.showMenu
+                    }
+                  }
+                },
+                [
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex items-center ml-8 opacity-100 hover:opacity-75 transition duration-150 ease-in-out"
+                    },
+                    [
+                      _c(
+                        "p",
+                        { staticClass: "text-gray-900 hover:text-indigo-900 " },
+                        [_vm._v(" " + _vm._s(_vm.user.name))]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "w-10 h-10 rounded-full ml-2",
+                        attrs: {
+                          src:
+                            _vm.user.profile_image ||
+                            "img/user-placeholder.png",
+                          alt: "user image"
+                        }
+                      })
+                    ]
+                  )
+                ]
+              )
+            ])
       ],
       1
     ),
     _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "md:hidden flex-col content-end border rounded w-full p-2 bg-gray-200 bg-opacity-75",
-        class: [_vm.showMenu ? "flex" : "hidden"]
-      },
-      [
-        _c(
-          "nav-link",
+    !_vm.authenticated
+      ? _c(
+          "div",
           {
-            staticClass: "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
-            attrs: { "route-name": "login" }
+            staticClass:
+              "md:hidden flex-col content-end border rounded w-full max-w-md p-2 bg-transparent bg-opacity-75 shadow-inner float-right -mt-5 mr-5 transition duration-150 ease-in-out",
+            class: [_vm.showMenu ? "flex" : "hidden"]
           },
-          [_vm._v("Login")]
-        ),
-        _vm._v(" "),
-        _c(
-          "nav-link",
-          {
-            staticClass: "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
-            attrs: { "route-name": "register" }
-          },
-          [_vm._v("Sign up")]
-        ),
-        _vm._v(" "),
-        _c(
-          "nav-link",
-          {
-            staticClass: "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
-            attrs: { "route-name": "about" }
-          },
-          [_vm._v("About")]
+          [
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "login" } }
+              },
+              [_c("nav-link", [_vm._v("Login")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "register" } }
+              },
+              [_c("nav-link", [_vm._v("Sign up")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "about" } }
+              },
+              [_c("nav-link", [_vm._v("About")])],
+              1
+            )
+          ],
+          1
         )
-      ],
-      1
-    )
+      : _c(
+          "div",
+          {
+            staticClass:
+              "flex-col content-end border rounded w-full max-w-md p-2 bg-transparent bg-opacity-75 shadow-inner float-right -mt-5 mr-5 transition duration-150 ease-in-out",
+            class: [_vm.showMenu ? "flex" : "hidden"]
+          },
+          [
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "dashboard" } }
+              },
+              [_c("nav-link", [_vm._v("Dashboard")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "about" } }
+              },
+              [_c("nav-link", [_vm._v("About")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500 focus:outline-none",
+                on: { click: _vm.logout }
+              },
+              [_c("nav-link", [_vm._v("Sign out")])],
+              1
+            )
+          ],
+          1
+        )
   ])
 }
 var staticRenderFns = []
@@ -39146,6 +39278,21 @@ axios.defaults.timeout = 2000;
 window.axios.defaults.headers.common['Content-Type'] = 'application/json';
 window.axios.defaults.headers.common['Accept'] = 'application/json';
 /**
+ * Interceptor for responses
+ * if unauthenticated (401), clean the credentials on storage and redirect to login page
+ */
+
+axios.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error.response.status === 401) {
+    localStorage.clear();
+    window.location = "#/login";
+  }
+
+  return Promise.reject(error);
+});
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.
@@ -39243,17 +39390,15 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavLink_vue_vue_type_template_id_042986a2___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./NavLink.vue?vue&type=template&id=042986a2& */ "./resources/js/components/NavLink.vue?vue&type=template&id=042986a2&");
-/* harmony import */ var _NavLink_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavLink.vue?vue&type=script&lang=js& */ "./resources/js/components/NavLink.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
-
-
+var script = {}
 
 
 /* normalize component */
 
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _NavLink_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_1__["default"])(
+  script,
   _NavLink_vue_vue_type_template_id_042986a2___WEBPACK_IMPORTED_MODULE_0__["render"],
   _NavLink_vue_vue_type_template_id_042986a2___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
@@ -39267,20 +39412,6 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 if (false) { var api; }
 component.options.__file = "resources/js/components/NavLink.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/components/NavLink.vue?vue&type=script&lang=js&":
-/*!**********************************************************************!*\
-  !*** ./resources/js/components/NavLink.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavLink_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./NavLink.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/NavLink.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_NavLink_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
@@ -39692,16 +39823,19 @@ var getters = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_loginService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/loginService */ "./resources/js/services/loginService.js");
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    authenticated: false,
-    user: ''
+    authenticated: localStorage.getItem("__user") !== null,
+    user: JSON.parse(localStorage.getItem('__user')) || {}
   },
   mutations: {
     LOGIN_SUCCESS: function LOGIN_SUCCESS(state, event) {
       state.authenticated = true;
       state.user = event;
+    },
+    LOGOUT_SUCCESS: function LOGOUT_SUCCESS(state, event) {
+      state.authenticated = false;
+      state.user = {};
     }
   },
   actions: {
@@ -39710,10 +39844,23 @@ __webpack_require__.r(__webpack_exports__);
       return new Promise(function (resolve, reject) {
         _services_loginService__WEBPACK_IMPORTED_MODULE_0__["default"].postLogin(credentials).then(function (response) {
           commit('LOGIN_SUCCESS', response.data);
+          localStorage.setItem('__user', JSON.stringify({
+            name: response.data.name,
+            profile_image: response.data.profile_image
+          }));
           resolve(response);
         })["catch"](function (error) {
           reject(error);
         });
+      });
+    },
+    logout: function logout(_ref2) {
+      var commit = _ref2.commit;
+      return window.axios.post('api/logout').then(function (response) {
+        commit('LOGOUT_SUCCESS');
+        localStorage.clear();
+      })["catch"](function (error) {
+        console.log(error);
       });
     }
   },

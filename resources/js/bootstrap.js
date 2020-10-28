@@ -20,6 +20,26 @@ window.axios.defaults.headers.common['Content-Type'] = 'application/json';
 window.axios.defaults.headers.common['Accept'] = 'application/json';
 
 /**
+ * Interceptor for responses
+ * if unauthenticated (401), clean the credentials on storage and redirect to login page
+ */
+axios.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+
+    function (error) {
+        if (error.response.status === 401) {
+            localStorage.clear();
+            window.location = "#/login";
+        }
+
+        return Promise.reject(error);
+    }
+);
+
+
+/**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
  * allows your team to easily build robust real-time web applications.

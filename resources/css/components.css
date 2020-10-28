@@ -4,10 +4,11 @@
 }
 
 .j-card-header {
-    @apply mb-3 flex justify-center;
+    @apply mb-2 flex justify-center;
 }
 
 .j-card-title {
-    @apply text-2xl font-medium text-indigo-500;
+    @apply mt-1 text-2xl font-medium text-indigo-500;
 }
+
 

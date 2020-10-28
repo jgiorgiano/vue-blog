@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -19,5 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
         return response('Testing auth route');
     });
 
+    Route::post('logout', function () {
+        Auth::guard('web')->logout();
+    });
 
 });
