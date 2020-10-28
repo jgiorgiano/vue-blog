@@ -24,7 +24,7 @@ class RegisterUserTest extends TestCase
             'password_confirmation' => 'password'
         ];
 
-        $response = $this->json('POST','/register', $user);
+        $response = $this->json('POST','api/register', $user);
 
         $response->assertStatus(201);
     }

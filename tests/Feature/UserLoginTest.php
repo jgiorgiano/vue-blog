@@ -13,15 +13,15 @@ class UserLoginTest extends TestCase
 
     public function testUserLogin()
     {
-        $user = User::factory()->create();
+        $user = User::factory()->create(['role' => 1]);
 
         $credentials = [
             'email' => $user->email,
             'password' => 'password'
         ];
 
-        $response = $this->json('POST', '/login', $credentials);
+        $response = $this->json('POST', 'api/login', $credentials);
 
-        $response->assertStatus(200);
+        $response->assertStatus(200)->assertJsonFragment(['name' => $user->name, 'email' => $user->email]);
     }
 }

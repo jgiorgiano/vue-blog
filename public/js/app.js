@@ -2191,9 +2191,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      'test': ''
+    };
+  },
   mounted: function mounted() {
-    console.log('mounted');
+    var _this = this;
+
+    window.axios.get('api/test').then(function (response) {
+      _this.test = response.data;
+    });
   }
 });
 
@@ -2304,14 +2314,11 @@ __webpack_require__.r(__webpack_exports__);
         email: this.email,
         password: this.password
       }).then(function (response) {
-        console.log('suc', response.data);
-
-        _this.router.push({
+        _this.$router.push({
           name: 'dashboard'
         });
       })["catch"](function (error) {
         _this.errors = error.response.data.errors;
-        console.log('errors', error.response.data.errors);
       });
     }
   }
@@ -20399,7 +20406,9 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [_vm._v("\n    Dashboard Logged User\n")])
+  return _c("div", [
+    _vm._v("\n    Dashboard Logged User\n    " + _vm._s(_vm.test) + "\n")
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -20529,7 +20538,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "j-card-header" }, [
-      _c("h3", { staticClass: "j-card-title" }, [_vm._v("Sign In")])
+      _c("h3", { staticClass: "j-card-title" }, [_vm._v("Login")])
     ])
   }
 ]
@@ -39624,7 +39633,7 @@ var routes = [{
 __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   postLogin: function postLogin(credentials) {
-    return window.axios.post('login', credentials);
+    return window.axios.post('api/login', credentials);
   }
 });
 
@@ -39686,14 +39695,21 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
-    logged: false,
+    authenticated: false,
     user: ''
   },
-  mutations: {},
+  mutations: {
+    LOGIN_SUCCESS: function LOGIN_SUCCESS(state, event) {
+      state.authenticated = true;
+      state.user = event;
+    }
+  },
   actions: {
-    postLogin: function postLogin(context, credentials) {
+    postLogin: function postLogin(_ref, credentials) {
+      var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
         _services_loginService__WEBPACK_IMPORTED_MODULE_0__["default"].postLogin(credentials).then(function (response) {
+          commit('LOGIN_SUCCESS', response.data);
           resolve(response);
         })["catch"](function (error) {
           reject(error);

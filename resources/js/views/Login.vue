@@ -2,7 +2,7 @@
     <div class="flex flex-col justify-center items-center test">
         <div class="j-card md:w-1/2 lg:w-1/3 mt-48">
             <div class="j-card-header">
-                <h3 class="j-card-title">Sign In</h3>
+                <h3 class="j-card-title">Login</h3>
             </div>
             <form @submit.prevent="login">
 
@@ -72,14 +72,10 @@ export default {
         login() {
             this.$store.dispatch('postLogin', { email:this.email, password:this.password })
                 .then((response) => {
-                    console.log('suc', response.data)
-
-                    this.router.push({ name: 'dashboard' })
-
+                    this.$router.push({ name: 'dashboard' })
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
-                    console.log('errors', error.response.data.errors)
                 });
         }
     }
