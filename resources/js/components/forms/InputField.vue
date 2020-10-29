@@ -9,6 +9,7 @@
         <!--Validation Errors-->
         <small v-if="vErrors.$anyError && vErrors.required" class="pl-2 text-red-600">{{ label || 'Field' }} invalid</small>
         <small v-if="vErrors.$anyError && !vErrors.required" class="pl-2 text-red-600">{{ label || 'Field' }} Required</small>
+
         <!-- Server Return Errors-->
         <small v-if="errors[field]" class="pl-2 text-red-600">{{ errors[field][0] }}</small>
 

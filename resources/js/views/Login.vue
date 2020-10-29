@@ -9,23 +9,23 @@
                 <InputField
                     label="Email"
                     field="email"
-                    v-model="$v.email.$model"
+                    v-model="$v.user.email.$model"
                     type="email"
-                    :v-errors="$v.email"
+                    :v-errors="$v.user.email"
                     :errors="errors"
                 />
 
                 <InputField
                     label="Password"
                     field="password"
-                    v-model="$v.password.$model"
+                    v-model="$v.user.password.$model"
                     type="password"
-                    :v-errors="$v.password"
+                    :v-errors="$v.user.password"
                     :errors="errors"
                 />
 
                 <div class="py-2 flex justify-center">
-                    <indigo-button :disabled="$v.$anyError || !$v.$dirty">Login</indigo-button>
+                    <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">Login</indigo-button>
                 </div>
 
             </form>
@@ -42,7 +42,7 @@
 import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
-import { required, minLength, email } from 'vuelidate/lib/validators';
+import {required, minLength, email} from 'vuelidate/lib/validators';
 
 export default {
     components: {
@@ -52,27 +52,24 @@ export default {
     },
     data() {
         return {
-            email: '',
-            password: '',
+            user: {
+                email: '',
+                password: '',
+            },
             errors: {},
         }
     },
     validations: {
-        email: {
-            required,
-            email,
-            minLength: minLength(5)
-        },
-        password: {
-            required,
-            minLength: minLength(8)
+        user: {
+            email: { required, email, minLength: minLength(5) },
+            password: { required,  minLength: minLength(8) }
         }
     },
     methods: {
         login() {
-            this.$store.dispatch('postLogin', { email:this.email, password:this.password })
+            this.$store.dispatch('postLogin', this.user)
                 .then((response) => {
-                    this.$router.push({ name: 'dashboard' })
+                    this.$router.push({name: 'dashboard'})
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;

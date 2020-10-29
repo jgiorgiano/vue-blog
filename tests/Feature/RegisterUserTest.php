@@ -26,6 +26,6 @@ class RegisterUserTest extends TestCase
 
         $response = $this->json('POST','api/register', $user);
 
-        $response->assertStatus(201);
+        $response->assertStatus(201)->assertJsonFragment(['name' => $user['name'], 'email' => $user['email']]);
     }
 }

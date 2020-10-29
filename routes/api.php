@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -13,15 +14,41 @@ Route::post('register', [RegisterController::class, 'register'])->name('register
 
 //Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
+/**
+ * Email Confirmation Route
+ */
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
 
-Route::middleware('auth:sanctum')->group(function () {
+    return redirect('/#/login');
+})->middleware(['auth', 'signed'])->name('verification.verify');
 
-    Route::get('test', function () {
-        return response('Testing auth route');
-    });
+Route::post('/email/verification-notification', function (Request $request) {
+    $request->user()->sendEmailVerificationNotification();
+
+    return back()->with('status', 'verification-link-sent');
+})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+
+
+/**
+ * Routes Authenticated without Email Confirmation
+ */
+Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('logout', function () {
         Auth::guard('web')->logout();
     });
 
 });
+
+/**
+ * Routes Authenticated AND Email Confirmed
+ */
+Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+
+    Route::get('test', function () {
+        return response('Testing auth route');
+    });
+
+});
+

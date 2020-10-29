@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('layouts.app');
 });
+
+//
+//Route::get('/email/verify', function () {
+//    return view('auth.verify-email');
+//})->middleware(['auth'])->name('verification.notice');
+
+
+

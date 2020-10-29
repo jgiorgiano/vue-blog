@@ -16,6 +16,7 @@
             </router-link>
 
             <div v-if="!authenticated" class="hidden md:flex">
+                (Home|Archive|Code snippets|Contact|Search)
                 <router-link :to="{ name: 'login'}">
                     <nav-link>Login</nav-link>
                 </router-link>
@@ -25,6 +26,7 @@
                 <router-link :to="{ name: 'about'}">
                     <nav-link>About</nav-link>
                 </router-link>
+
             </div>
 
             <div v-if="!authenticated" class="md:hidden">
