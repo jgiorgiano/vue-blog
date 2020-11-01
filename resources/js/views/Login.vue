@@ -13,6 +13,7 @@
                     type="email"
                     :v-errors="$v.user.email"
                     :errors="errors"
+                    @input="delayTouch($v.user.email)"
                 />
 
                 <InputField
@@ -22,6 +23,7 @@
                     type="password"
                     :v-errors="$v.user.password"
                     :errors="errors"
+                    @input="delayTouch($v.user.password)"
                 />
 
                 <div class="py-2 flex justify-center">
@@ -43,6 +45,8 @@ import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
 import {required, minLength, email} from 'vuelidate/lib/validators';
+
+const touchMap = new WeakMap();
 
 export default {
     components: {
@@ -66,6 +70,13 @@ export default {
         }
     },
     methods: {
+        delayTouch($v) {
+            $v.$reset()
+            if (touchMap.has($v)) {
+                clearTimeout(touchMap.get($v))
+            }
+            touchMap.set($v, setTimeout($v.$touch, 1000))
+        },
         login() {
             this.$store.dispatch('postLogin', this.user)
                 .then((response) => {
@@ -74,7 +85,7 @@ export default {
                 .catch((error) => {
                     this.errors = error.response.data.errors;
                 });
-        }
+        },
     },
     beforeCreate() {
         if(this.$store.state.user.authenticated) {
