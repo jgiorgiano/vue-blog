@@ -19,10 +19,4 @@ Route::get('/', function () {
     return view('layouts.app');
 });
 
-//
-//Route::get('/email/verify', function () {
-//    return view('auth.verify-email');
-//})->middleware(['auth'])->name('verification.notice');
-
-
 

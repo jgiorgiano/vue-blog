@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -17,17 +18,22 @@ Route::post('register', [RegisterController::class, 'register'])->name('register
 /**
  * Email Confirmation Route
  */
-Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-    $request->fulfill();
+Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
 
-    return redirect('/#/login');
-})->middleware(['auth', 'signed'])->name('verification.verify');
+Route::get('/email/send', [EmailVerificationController::class, 'send'])
+    ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::post('/email/verification-notification', function (Request $request) {
-    $request->user()->sendEmailVerificationNotification();
 
-    return back()->with('status', 'verification-link-sent');
-})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+//Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+//    $request->fulfill();
+//    return redirect('/');
+//})->middleware(['auth', 'signed'])->name('verification.verify');
+//
+//Route::post('/email/verification-notification', function (Request $request) {
+//    $request->user()->sendEmailVerificationNotification();
+//
+//    return back()->with('status', 'verification-link-sent');
+//})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 
 /**

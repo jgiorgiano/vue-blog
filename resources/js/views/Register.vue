@@ -89,7 +89,7 @@ export default {
     },
     validations: {
         newUser: {
-            name: { required, alpha, minLength: minLength(5) },
+            name: { required, minLength: minLength(5) },
             email: { required, email, minLength: minLength(5) },
             password: { required, minLength: minLength(8) },
             password_confirmation: { required, minLength: minLength(8), sameAsPassword: sameAs('password') }

@@ -11,7 +11,7 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 axios.defaults.withCredentials = true;
-axios.defaults.timeout = 2000;
+axios.defaults.timeout = 120000; //2min
 
 /**
  * Set the Default Headers for the API
@@ -29,9 +29,14 @@ axios.interceptors.response.use(
     },
 
     function (error) {
+
         if (error.response.status === 401) {
             localStorage.clear();
             window.location = "#/login";
+        }
+
+        if (error.response.status === 403) {
+            window.location = "#/email-verification";
         }
 
         return Promise.reject(error);

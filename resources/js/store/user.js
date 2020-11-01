@@ -57,11 +57,10 @@ export default {
                         email: response.data.email
                     }));
 
-
                 }).catch((error) => {
                     console.log(error);
                 })
-        }
+        },
     },
     getters: {}
 }

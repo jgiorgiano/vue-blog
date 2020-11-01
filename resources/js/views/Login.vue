@@ -75,6 +75,11 @@ export default {
                     this.errors = error.response.data.errors;
                 });
         }
+    },
+    beforeCreate() {
+        if(this.$store.state.user.authenticated) {
+            this.$router.push({name: 'dashboard'})
+        }
     }
 }
 </script>
