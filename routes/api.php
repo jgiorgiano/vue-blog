@@ -45,6 +45,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         Auth::guard('web')->logout();
     });
 
+    Route::get('user', function () {
+        return Auth::user();
+    });
+
 });
 
 /**

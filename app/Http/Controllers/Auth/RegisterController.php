@@ -46,6 +46,8 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255',  Rule::unique(User::class)],
             'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'subscribe' => ['boolean'],
+            'terms_agreement' => ['required', 'boolean', 'accepted'],
         ]);
     }
 
@@ -61,6 +63,16 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'name' => $data['name'],
             'password' => Hash::make($data['password']),
+
+            'terms_agreement' => $data['terms_agreement'],
+            'terms_agreement_ip' => request()->ip(),
+            'terms_agreement_agent' => request()->header('User-Agent'),
+            'terms_agreement_date' => now()->format('Y-m-d H:i:s'),
+
+            'subscribe' => $data['subscribe'],
+            'subscribe_ip' => $data['subscribe'] ? request()->ip() : null,
+            'subscribe_agent' => $data['subscribe'] ? request()->header('User-Agent') : null,
+            'subscribe_date' => $data['subscribe'] ? now()->format('Y-m-d H:i:s') : null,
         ]);
     }
 

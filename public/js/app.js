@@ -3735,6 +3735,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3806,6 +3812,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
 //
 //
 //
@@ -3914,6 +3922,50 @@ __webpack_require__.r(__webpack_exports__);
       String: String,
       required: true,
       "default": ''
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  inheritAttrs: false,
+  props: {
+    value: [String, Number],
+    ariaLabel: {
+      type: String,
+      "default": ''
+    },
+    vErrors: {
+      type: [Object, Boolean],
+      "default": false
+    },
+    errors: {
+      type: Object
+    }
+  },
+  methods: {
+    updateValue: function updateValue(event) {
+      console.log(event);
+      this.$emit('input', event.target.checked);
     }
   }
 });
@@ -4287,10 +4339,10 @@ var touchMap = new WeakMap();
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Register.vue?vue&type=script&lang=js&":
-/*!**************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Register.vue?vue&type=script&lang=js& ***!
-  \**************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MyAccount.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/MyAccount.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -4301,6 +4353,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_buttons_IndigoTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/buttons/IndigoTextLink */ "./resources/js/components/buttons/IndigoTextLink.vue");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -4376,7 +4441,7 @@ var touchMap = new WeakMap();
   },
   data: function data() {
     return {
-      newUser: {
+      user: {
         email: '',
         name: '',
         password: '',
@@ -4387,7 +4452,7 @@ var touchMap = new WeakMap();
     };
   },
   validations: {
-    newUser: {
+    user: {
       name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(5)
@@ -4405,6 +4470,178 @@ var touchMap = new WeakMap();
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(8),
         sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["sameAs"])('password')
+      }
+    }
+  },
+  methods: {
+    delayTouch: function delayTouch($v) {
+      $v.$reset();
+
+      if (touchMap.has($v)) {
+        clearTimeout(touchMap.get($v));
+      }
+
+      touchMap.set($v, setTimeout($v.$touch, 1000));
+    },
+    register: function register() {// this.$store.dispatch('registerNewUser', this.user)
+      //     .then((response) => {
+      //         this.$router.push({name: 'email-verification'})
+      //     })
+      //     .catch((error) => {
+      //         this.errors = error.response.data.errors;
+      //     });
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Register.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Register.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_forms_InputField__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/forms/InputField */ "./resources/js/components/forms/InputField.vue");
+/* harmony import */ var _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/buttons/IndigoButton */ "./resources/js/components/buttons/IndigoButton.vue");
+/* harmony import */ var _components_buttons_IndigoTextLink__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/buttons/IndigoTextLink */ "./resources/js/components/buttons/IndigoTextLink.vue");
+/* harmony import */ var _components_forms_CheckboxField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/forms/CheckboxField */ "./resources/js/components/forms/CheckboxField.vue");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
+/* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+var touchMap = new WeakMap();
+/* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    InputField: _components_forms_InputField__WEBPACK_IMPORTED_MODULE_0__["default"],
+    IndigoButton: _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_1__["default"],
+    IndigoTextLink: _components_buttons_IndigoTextLink__WEBPACK_IMPORTED_MODULE_2__["default"],
+    CheckboxField: _components_forms_CheckboxField__WEBPACK_IMPORTED_MODULE_3__["default"]
+  },
+  data: function data() {
+    return {
+      newUser: {
+        email: '',
+        name: '',
+        terms_agreement: '',
+        subscribe: '',
+        password: '',
+        password_confirmation: '',
+        errors: {}
+      },
+      errors: {}
+    };
+  },
+  validations: {
+    newUser: {
+      name: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(5)
+      },
+      email: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["email"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(5)
+      },
+      terms_agreement: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"]
+      },
+      subscribe: {},
+      password: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(8)
+      },
+      password_confirmation: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(8),
+        sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["sameAs"])('password')
       }
     }
   },
@@ -22374,6 +22611,17 @@ var render = function() {
               {
                 staticClass:
                   "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
+                attrs: { to: { name: "my-account" } }
+              },
+              [_c("nav-link", [_vm._v("My Account")])],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "router-link",
+              {
+                staticClass:
+                  "py-2 hover:bg-gray-400 rounded focus:text-indigo-500",
                 attrs: { to: { name: "dashboard" } }
               },
               [_c("nav-link", [_vm._v("Dashboard")])],
@@ -22470,8 +22718,9 @@ var render = function() {
     _vm._b(
       {
         staticClass:
-          "flex-shrink-0 bg-indigo-500 hover:bg-indigo-700 border-indigo-500 focus:border-0 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded transition ease-in duration-75",
-        attrs: { type: _vm.type },
+          "flex-shrink-0  bg-indigo-500 hover:bg-indigo-700 border-indigo-500 focus:border-0 hover:border-indigo-700 text-sm border-4 text-white py-1 px-2 rounded transition ease-in duration-75",
+        class: { "opacity-50 hover:bg-indigo-500": _vm.$attrs.disabled },
+        attrs: { disabled: _vm.$attrs.disabled, type: _vm.type },
         on: {
           click: function($event) {
             return _vm.clicked(_vm.$attrs)
@@ -22600,6 +22849,50 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c& ***!
+  \**********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "input",
+      _vm._b(
+        { attrs: { type: "checkbox" }, on: { change: _vm.updateValue } },
+        "input",
+        _vm.$attrs,
+        false
+      )
+    ),
+    _vm._v(" "),
+    _c(
+      "span",
+      { staticClass: "pl-1 text-gray-800" },
+      [
+        _vm._t("default"),
+        _vm._v("\n        I agree with the terms and conditions.\n    ")
+      ],
+      2
+    )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/InputField.vue?vue&type=template&id=24b0db9b&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/forms/InputField.vue?vue&type=template&id=24b0db9b& ***!
@@ -22628,7 +22921,10 @@ var render = function() {
         {
           staticClass:
             "appearance-none bg-transparent border-b-2 border-gray-500 focus:border-indigo-500 w-full text-gray-800 p-1 px-2 leading-tight focus:outline-none",
-          class: { "border-red-500": _vm.vErrors.$anyError },
+          class: {
+            "border-red-500": _vm.vErrors.$anyError,
+            "border-2 rounded bg-gray-200": _vm.$attrs.disabled
+          },
           attrs: {
             type: _vm.type,
             placeholder: _vm.placeholder,
@@ -22991,6 +23287,143 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c&":
+/*!*******************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c& ***!
+  \*******************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "flex flex-col justify-center items-center test" },
+    [
+      _c("div", { staticClass: "j-card lg:w-1/2 mt-4" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c(
+          "form",
+          {
+            staticClass: "px-6",
+            on: {
+              submit: function($event) {
+                $event.preventDefault()
+                return _vm.register($event)
+              }
+            }
+          },
+          [
+            _c("InputField", {
+              attrs: {
+                label: "Name",
+                field: "name",
+                type: "text",
+                "v-errors": _vm.$v.user.name,
+                errors: _vm.errors
+              },
+              on: {
+                input: function($event) {
+                  return _vm.delayTouch(_vm.$v.user.name)
+                }
+              },
+              model: {
+                value: _vm.$v.user.name.$model,
+                callback: function($$v) {
+                  _vm.$set(_vm.$v.user.name, "$model", $$v)
+                },
+                expression: "$v.user.name.$model"
+              }
+            }),
+            _vm._v(" "),
+            _c("InputField", {
+              attrs: {
+                label: "Email",
+                field: "email",
+                type: "email",
+                errors: _vm.errors,
+                disabled: true
+              },
+              model: {
+                value: _vm.user.email,
+                callback: function($$v) {
+                  _vm.$set(_vm.user, "email", $$v)
+                },
+                expression: "user.email"
+              }
+            }),
+            _vm._v(" "),
+            _c("InputField", {
+              attrs: {
+                label: "Role",
+                field: "role",
+                type: "text",
+                errors: _vm.errors,
+                disabled: "true"
+              },
+              model: {
+                value: _vm.user.role,
+                callback: function($$v) {
+                  _vm.$set(_vm.user, "role", $$v)
+                },
+                expression: "user.role"
+              }
+            }),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "checkbox" } }),
+            _vm._v(" Subscribed to receive newsletter\n                    "),
+            _c("small", [_vm._v("on: 20/10/2020 (save ip and timestamp)")]),
+            _vm._v(" "),
+            _c("h3", [_vm._v("upload profile picture")]),
+            _vm._v(" "),
+            _c("input", { attrs: { type: "file" } }),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "py-2 flex justify-end" },
+              [
+                _c(
+                  "indigo-button",
+                  {
+                    attrs: {
+                      disabled: _vm.$v.user.$anyError || !_vm.$v.user.$dirty
+                    }
+                  },
+                  [_vm._v("Save")]
+                )
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "j-card-header" }, [
+      _c("h3", { staticClass: "j-card-title" }, [_vm._v("Account Details")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Register.vue?vue&type=template&id=3563ad7c&":
 /*!******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Register.vue?vue&type=template&id=3563ad7c& ***!
@@ -23124,6 +23557,53 @@ var render = function() {
                 })
               ],
               1
+            ),
+            _vm._v(" "),
+            _c(
+              "checkbox-field",
+              {
+                attrs: {
+                  field: "terms_agreement",
+                  "v-errors": _vm.$v.newUser.terms_agreement,
+                  errors: _vm.errors,
+                  required: ""
+                },
+                model: {
+                  value: _vm.$v.newUser.terms_agreement.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.newUser.terms_agreement, "$model", $$v)
+                  },
+                  expression: "$v.newUser.terms_agreement.$model"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                I agree with the terms and conditions.\n            "
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "checkbox-field",
+              {
+                attrs: {
+                  field: "terms_agreement",
+                  "v-errors": _vm.$v.newUser.subscribe,
+                  errors: _vm.errors
+                },
+                model: {
+                  value: _vm.$v.newUser.subscribe.$model,
+                  callback: function($$v) {
+                    _vm.$set(_vm.$v.newUser.subscribe, "$model", $$v)
+                  },
+                  expression: "$v.newUser.subscribe.$model"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                I agree to subscribe to the newsletter and receive the latest articles\n            "
+                )
+              ]
             ),
             _vm._v(" "),
             _c(
@@ -42291,6 +42771,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/forms/CheckboxField.vue":
+/*!*********************************************************!*\
+  !*** ./resources/js/components/forms/CheckboxField.vue ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckboxField.vue?vue&type=template&id=39f6eb7c& */ "./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c&");
+/* harmony import */ var _CheckboxField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckboxField.vue?vue&type=script&lang=js& */ "./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CheckboxField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/forms/CheckboxField.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckboxField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./CheckboxField.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CheckboxField.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckboxField_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c&":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c& ***!
+  \****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./CheckboxField.vue?vue&type=template&id=39f6eb7c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/forms/CheckboxField.vue?vue&type=template&id=39f6eb7c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckboxField_vue_vue_type_template_id_39f6eb7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/forms/InputField.vue":
 /*!******************************************************!*\
   !*** ./resources/js/components/forms/InputField.vue ***!
@@ -42375,13 +42924,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_About__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/About */ "./resources/js/views/About.vue");
 /* harmony import */ var _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/Dashboard */ "./resources/js/views/Dashboard.vue");
 /* harmony import */ var _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./views/EmailVerification */ "./resources/js/views/EmailVerification.vue");
+/* harmony import */ var _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./views/MyAccount */ "./resources/js/views/MyAccount.vue");
 
 
 
 
 
 
-var routes = [{
+
+var routes = [//Open Routes
+{
   path: '/',
   name: 'home',
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -42398,13 +42950,18 @@ var routes = [{
   name: 'about',
   component: _views_About__WEBPACK_IMPORTED_MODULE_3__["default"]
 }, {
+  path: '/email-verification',
+  name: 'email-verification',
+  component: _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__["default"]
+}, //Auth Routes
+{
   path: '/dashboard',
   name: 'dashboard',
   component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
 }, {
-  path: '/email-verification',
-  name: 'email-verification',
-  component: _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__["default"]
+  path: '/my-account',
+  name: 'my-account',
+  component: _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__["default"]
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -42959,6 +43516,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_template_id_2ad93e50___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Main_vue_vue_type_template_id_2ad93e50___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/MyAccount.vue":
+/*!******************************************!*\
+  !*** ./resources/js/views/MyAccount.vue ***!
+  \******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./MyAccount.vue?vue&type=template&id=3c8a575c& */ "./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c&");
+/* harmony import */ var _MyAccount_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./MyAccount.vue?vue&type=script&lang=js& */ "./resources/js/views/MyAccount.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _MyAccount_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/MyAccount.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/MyAccount.vue?vue&type=script&lang=js&":
+/*!*******************************************************************!*\
+  !*** ./resources/js/views/MyAccount.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MyAccount_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./MyAccount.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MyAccount.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_MyAccount_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c&":
+/*!*************************************************************************!*\
+  !*** ./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c& ***!
+  \*************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./MyAccount.vue?vue&type=template&id=3c8a575c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/MyAccount.vue?vue&type=template&id=3c8a575c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_MyAccount_vue_vue_type_template_id_3c8a575c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

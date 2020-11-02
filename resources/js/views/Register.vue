@@ -48,6 +48,25 @@
                     />
                 </div>
 
+                <checkbox-field
+                    field="terms_agreement"
+                    v-model="$v.newUser.terms_agreement.$model"
+                    :v-errors="$v.newUser.terms_agreement"
+                    :errors="errors"
+                    required
+                >
+                    I agree with the terms and conditions.
+                </checkbox-field>
+
+                <checkbox-field
+                    field="terms_agreement"
+                    v-model="$v.newUser.subscribe.$model"
+                    :v-errors="$v.newUser.subscribe"
+                    :errors="errors"
+                >
+                    I agree to subscribe to the newsletter and receive the latest articles
+                </checkbox-field>
+
                 <div class="py-2 flex justify-center">
                     <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">Create Account</indigo-button>
                 </div>
@@ -65,6 +84,7 @@
 import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
+import CheckboxField from "../components/forms/CheckboxField";
 import {required, minLength, email, alpha, sameAs} from 'vuelidate/lib/validators';
 
 const touchMap = new WeakMap()
@@ -73,13 +93,16 @@ export default {
     components: {
         InputField,
         IndigoButton,
-        IndigoTextLink
+        IndigoTextLink,
+        CheckboxField
     },
     data() {
         return {
             newUser: {
                 email: '',
                 name: '',
+                terms_agreement: '',
+                subscribe: '',
                 password: '',
                 password_confirmation: '',
                 errors: {},
@@ -89,10 +112,12 @@ export default {
     },
     validations: {
         newUser: {
-            name: { required, minLength: minLength(5) },
-            email: { required, email, minLength: minLength(5) },
-            password: { required, minLength: minLength(8) },
-            password_confirmation: { required, minLength: minLength(8), sameAsPassword: sameAs('password') }
+            name: {required, minLength: minLength(5)},
+            email: {required, email, minLength: minLength(5)},
+            terms_agreement: { required },
+            subscribe: {},
+            password: {required, minLength: minLength(8)},
+            password_confirmation: {required, minLength: minLength(8), sameAsPassword: sameAs('password')}
         }
     },
     methods: {

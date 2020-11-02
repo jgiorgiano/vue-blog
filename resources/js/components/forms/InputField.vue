@@ -3,7 +3,7 @@
         <p class="text-sm text-gray-600" v-if="label">{{ label }}</p>
         <input :value="value" @input="updateValue" v-bind="$attrs"
                class="appearance-none bg-transparent border-b-2 border-gray-500 focus:border-indigo-500 w-full text-gray-800 p-1 px-2 leading-tight focus:outline-none"
-               :class="{ 'border-red-500':vErrors.$anyError }"
+               :class="{ 'border-red-500':vErrors.$anyError, 'border-2 rounded bg-gray-200':$attrs.disabled }"
                :type="type" :placeholder="placeholder" :aria-label="ariaLabel">
 
         <!--Validation Errors-->

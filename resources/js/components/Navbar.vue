@@ -63,9 +63,15 @@
         <div v-else
              class="flex-col content-end border rounded w-full max-w-md p-2 bg-transparent bg-opacity-75 shadow-inner float-right -mt-5 mr-5 transition duration-150 ease-in-out"
              :class="[showMenu ? 'flex' : 'hidden' ]">
-            <router-link :to="{ name: 'dashboard'}" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500"><nav-link>Dashboard</nav-link>
+            <router-link :to="{ name: 'my-account'}" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500">
+                <nav-link>My Account</nav-link>
             </router-link>
-            <router-link :to="{ name: 'about'}" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500"><nav-link>About</nav-link></router-link>
+            <router-link :to="{ name: 'dashboard'}" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500">
+                <nav-link>Dashboard</nav-link>
+            </router-link>
+            <router-link :to="{ name: 'about'}" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500">
+                <nav-link>About</nav-link>
+            </router-link>
             <button @click="logout" class="py-2 hover:bg-gray-400 rounded focus:text-indigo-500 focus:outline-none">
                 <nav-link>Sign out</nav-link>
             </button>
