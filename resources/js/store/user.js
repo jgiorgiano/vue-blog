@@ -4,6 +4,7 @@ export default {
     state: {
         authenticated: localStorage.getItem("__user") !== null,
         user: JSON.parse(localStorage.getItem('__user')) || {},
+        account: {}
     },
     mutations: {
         LOGIN_SUCCESS(state, event) {
@@ -16,6 +17,12 @@ export default {
         },
         REGISTER_SUCCESS(state, event) {
             state.user = event;
+        },
+        LOAD_ACCOUNT_DETAILS(state, event) {
+            state.account = event;
+        },
+        ACCOUNT_UPDATED(state, event) {
+           console.log(event);
         },
     },
     actions: {
@@ -61,6 +68,23 @@ export default {
                     console.log(error);
                 })
         },
+        updateUserAccount({commit}, payload) {
+            return window.axios.put('api/user', payload, { headers: { 'Content-Type': 'multipart/form-data' }})
+                .then((response) => {
+
+                    commit('ACCOUNT_UPDATED', response.data);
+
+                    // localStorage.setItem('__new_user', JSON.stringify({
+                    //     name: response.data.name,
+                    //     email: response.data.email
+                    // }));
+
+                }).catch((error) => {
+                    console.log(error);
+                })
+        },
+
     },
-    getters: {}
+    getters: {
+    }
 }

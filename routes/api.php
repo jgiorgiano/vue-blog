@@ -49,6 +49,10 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return Auth::user();
     });
 
+    Route::put('user', function (Request $request) {
+        dd($request->all());
+    });
+
 });
 
 /**

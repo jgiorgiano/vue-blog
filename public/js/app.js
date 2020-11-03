@@ -4410,24 +4410,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 
@@ -4442,11 +4424,8 @@ var touchMap = new WeakMap();
   data: function data() {
     return {
       user: {
-        email: '',
         name: '',
-        password: '',
-        password_confirmation: '',
-        errors: {}
+        profile_new_image: ''
       },
       errors: {}
     };
@@ -4456,20 +4435,6 @@ var touchMap = new WeakMap();
       name: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(5)
-      },
-      email: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["email"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(5)
-      },
-      password: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(8)
-      },
-      password_confirmation: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["minLength"])(8),
-        sameAsPassword: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_3__["sameAs"])('password')
       }
     }
   },
@@ -4483,14 +4448,42 @@ var touchMap = new WeakMap();
 
       touchMap.set($v, setTimeout($v.$touch, 1000));
     },
-    register: function register() {// this.$store.dispatch('registerNewUser', this.user)
-      //     .then((response) => {
-      //         this.$router.push({name: 'email-verification'})
-      //     })
-      //     .catch((error) => {
-      //         this.errors = error.response.data.errors;
-      //     });
+    handleFileUpload: function handleFileUpload() {
+      var file_type = this.$refs.file.files[0].type;
+
+      if (file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jped') > 0) {
+        this.user.profile_new_image = this.$refs.file.files[0];
+      } else {
+        alert('File type not valid" (create a modal)');
+        console.log(file_type);
+      }
+    },
+    submitEditAccount: function submitEditAccount() {
+      this.$store.dispatch('updateUserAccount', this.user);
     }
+  },
+  computed: {
+    userRole: function userRole() {
+      switch (this.user.role) {
+        case 1:
+          return 'Guest';
+
+        case 2:
+          return 'writer';
+
+        case 3:
+          return 'Administrator';
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this = this;
+
+    window.axios.get('api/user').then(function (response) {
+      _this.user = response.data;
+    })["catch"](function (error) {
+      console.log(error);
+    });
   }
 });
 
@@ -23316,7 +23309,7 @@ var render = function() {
             on: {
               submit: function($event) {
                 $event.preventDefault()
-                return _vm.register($event)
+                return _vm.submitEditAccount($event)
               }
             }
           },
@@ -23326,13 +23319,7 @@ var render = function() {
                 label: "Name",
                 field: "name",
                 type: "text",
-                "v-errors": _vm.$v.user.name,
                 errors: _vm.errors
-              },
-              on: {
-                input: function($event) {
-                  return _vm.delayTouch(_vm.$v.user.name)
-                }
               },
               model: {
                 value: _vm.$v.user.name.$model,
@@ -23347,16 +23334,10 @@ var render = function() {
               attrs: {
                 label: "Email",
                 field: "email",
+                value: this.user.email,
                 type: "email",
                 errors: _vm.errors,
                 disabled: true
-              },
-              model: {
-                value: _vm.user.email,
-                callback: function($$v) {
-                  _vm.$set(_vm.user, "email", $$v)
-                },
-                expression: "user.email"
               }
             }),
             _vm._v(" "),
@@ -23364,26 +23345,91 @@ var render = function() {
               attrs: {
                 label: "Role",
                 field: "role",
+                value: _vm.userRole,
                 type: "text",
                 errors: _vm.errors,
-                disabled: "true"
-              },
-              model: {
-                value: _vm.user.role,
-                callback: function($$v) {
-                  _vm.$set(_vm.user, "role", $$v)
-                },
-                expression: "user.role"
+                disabled: true
               }
             }),
             _vm._v(" "),
-            _c("input", { attrs: { type: "checkbox" } }),
-            _vm._v(" Subscribed to receive newsletter\n                    "),
-            _c("small", [_vm._v("on: 20/10/2020 (save ip and timestamp)")]),
+            _c("div", { staticClass: "mb-5" }, [
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.user.subscribe,
+                    expression: "user.subscribe"
+                  }
+                ],
+                attrs: { type: "checkbox" },
+                domProps: {
+                  checked: Array.isArray(_vm.user.subscribe)
+                    ? _vm._i(_vm.user.subscribe, null) > -1
+                    : _vm.user.subscribe
+                },
+                on: {
+                  change: function($event) {
+                    var $$a = _vm.user.subscribe,
+                      $$el = $event.target,
+                      $$c = $$el.checked ? true : false
+                    if (Array.isArray($$a)) {
+                      var $$v = null,
+                        $$i = _vm._i($$a, $$v)
+                      if ($$el.checked) {
+                        $$i < 0 &&
+                          _vm.$set(_vm.user, "subscribe", $$a.concat([$$v]))
+                      } else {
+                        $$i > -1 &&
+                          _vm.$set(
+                            _vm.user,
+                            "subscribe",
+                            $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                          )
+                      }
+                    } else {
+                      _vm.$set(_vm.user, "subscribe", $$c)
+                    }
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("span", { staticClass: "text-gray-800" }, [
+                _vm._v("Subscribed to receive newsletter")
+              ]),
+              _vm._v(" "),
+              _c(
+                "small",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.user.subscribe,
+                      expression: "user.subscribe"
+                    }
+                  ],
+                  staticClass: "block"
+                },
+                [_vm._v("on: " + _vm._s(_vm.user.subscribe_date))]
+              )
+            ]),
             _vm._v(" "),
-            _c("h3", [_vm._v("upload profile picture")]),
-            _vm._v(" "),
-            _c("input", { attrs: { type: "file" } }),
+            _c("div", { staticClass: "mb-5" }, [
+              _c("p", { staticClass: "text-gray-800" }, [
+                _vm._v("Upload your profile picture")
+              ]),
+              _vm._v(" "),
+              _c("input", {
+                ref: "file",
+                attrs: { type: "file" },
+                on: {
+                  change: function($event) {
+                    return _vm.handleFileUpload()
+                  }
+                }
+              })
+            ]),
             _vm._v(" "),
             _c(
               "div",
@@ -23391,11 +23437,7 @@ var render = function() {
               [
                 _c(
                   "indigo-button",
-                  {
-                    attrs: {
-                      disabled: _vm.$v.user.$anyError || !_vm.$v.user.$dirty
-                    }
-                  },
+                  { attrs: { disabled: _vm.$v.user.$anyError } },
                   [_vm._v("Save")]
                 )
               ],
@@ -43040,7 +43082,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
     authenticated: localStorage.getItem("__user") !== null,
-    user: JSON.parse(localStorage.getItem('__user')) || {}
+    user: JSON.parse(localStorage.getItem('__user')) || {},
+    account: {}
   },
   mutations: {
     LOGIN_SUCCESS: function LOGIN_SUCCESS(state, event) {
@@ -43053,6 +43096,12 @@ __webpack_require__.r(__webpack_exports__);
     },
     REGISTER_SUCCESS: function REGISTER_SUCCESS(state, event) {
       state.user = event;
+    },
+    LOAD_ACCOUNT_DETAILS: function LOAD_ACCOUNT_DETAILS(state, event) {
+      state.account = event;
+    },
+    ACCOUNT_UPDATED: function ACCOUNT_UPDATED(state, event) {
+      console.log(event);
     }
   },
   actions: {
@@ -43088,6 +43137,21 @@ __webpack_require__.r(__webpack_exports__);
           name: response.data.name,
           email: response.data.email
         }));
+      })["catch"](function (error) {
+        console.log(error);
+      });
+    },
+    updateUserAccount: function updateUserAccount(_ref4, payload) {
+      var commit = _ref4.commit;
+      return window.axios.put('api/user', payload, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }).then(function (response) {
+        commit('ACCOUNT_UPDATED', response.data); // localStorage.setItem('__new_user', JSON.stringify({
+        //     name: response.data.name,
+        //     email: response.data.email
+        // }));
       })["catch"](function (error) {
         console.log(error);
       });
