@@ -50,4 +50,11 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['profile_image_path'];
+
+    public function getProfileImagePathAttribute()
+    {
+        return 'storage/profile_images/' . $this->profile_image;
+    }
 }

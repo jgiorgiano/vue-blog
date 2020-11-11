@@ -34,7 +34,7 @@ export default {
 
                     localStorage.setItem('__user', JSON.stringify({
                         name: response.data.name,
-                        profile_image: response.data.profile_image
+                        profile_image_path: response.data.profile_image_path
                     }));
 
                     resolve(response);
@@ -87,7 +87,7 @@ export default {
 
                     localStorage.setItem('__user', JSON.stringify({
                         name: response.data.name,
-                        profile_image: response.data.profile_image
+                        profile_image_path: response.data.profile_image_path
                     }));
 
                 }).catch((error) => {

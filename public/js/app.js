@@ -22540,9 +22540,8 @@ var render = function() {
                         staticClass: "w-10 h-10 rounded-full ml-2",
                         attrs: {
                           src:
-                            "storage/profile_images/" +
-                              _vm.user.profile_image ||
-                            false,
+                            _vm.user.profile_image_path ||
+                            "img/user-placeholder.png",
                           alt: "user image"
                         }
                       })
@@ -43120,7 +43119,7 @@ __webpack_require__.r(__webpack_exports__);
           commit('LOGIN_SUCCESS', response.data);
           localStorage.setItem('__user', JSON.stringify({
             name: response.data.name,
-            profile_image: response.data.profile_image
+            profile_image_path: response.data.profile_image_path
           }));
           resolve(response);
         })["catch"](function (error) {
@@ -43163,7 +43162,7 @@ __webpack_require__.r(__webpack_exports__);
         commit('ACCOUNT_UPDATED', response.data);
         localStorage.setItem('__user', JSON.stringify({
           name: response.data.name,
-          profile_image: response.data.profile_image
+          profile_image_path: response.data.profile_image_path
         }));
       })["catch"](function (error) {
         console.log(error);

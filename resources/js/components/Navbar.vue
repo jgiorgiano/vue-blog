@@ -46,7 +46,7 @@
 
                     <div class="flex items-center ml-8 opacity-100 hover:opacity-75 transition duration-150 ease-in-out">
                         <p class="text-gray-900 hover:text-indigo-900 "> {{ user.name }}</p>
-                        <img class="w-10 h-10 rounded-full ml-2" :src="'storage/profile_images/' + user.profile_image || 'img/user-placeholder.png'" alt="user image">
+                        <img class="w-10 h-10 rounded-full ml-2" :src=" user.profile_image_path || 'img/user-placeholder.png'" alt="user image">
                     </div>
 
                 </button>
