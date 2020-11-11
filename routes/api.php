@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -49,9 +50,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return Auth::user();
     });
 
-    Route::put('user', function (Request $request) {
-        dd($request->all());
-    });
+    Route::post('user', [UserController::class, 'update']);
 
 });
 

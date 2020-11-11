@@ -4425,7 +4425,8 @@ var touchMap = new WeakMap();
     return {
       user: {
         name: '',
-        profile_new_image: ''
+        profile_new_image: null,
+        subscribe: ''
       },
       errors: {}
     };
@@ -4451,7 +4452,7 @@ var touchMap = new WeakMap();
     handleFileUpload: function handleFileUpload() {
       var file_type = this.$refs.file.files[0].type;
 
-      if (file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jped') > 0) {
+      if (file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jpeg') > 0) {
         this.user.profile_new_image = this.$refs.file.files[0];
       } else {
         alert('File type not valid" (create a modal)');
@@ -4459,7 +4460,13 @@ var touchMap = new WeakMap();
       }
     },
     submitEditAccount: function submitEditAccount() {
-      this.$store.dispatch('updateUserAccount', this.user);
+      var _this$user$profile_ne;
+
+      this.$store.dispatch('updateUserAccount', {
+        name: this.user.name,
+        profile_image: (_this$user$profile_ne = this.user.profile_new_image) !== null && _this$user$profile_ne !== void 0 ? _this$user$profile_ne : null,
+        subscribe: this.user.subscribe
+      });
     }
   },
   computed: {
@@ -22533,8 +22540,9 @@ var render = function() {
                         staticClass: "w-10 h-10 rounded-full ml-2",
                         attrs: {
                           src:
-                            _vm.user.profile_image ||
-                            "img/user-placeholder.png",
+                            "storage/profile_images/" +
+                              _vm.user.profile_image ||
+                            false,
                           alt: "user image"
                         }
                       })
@@ -43101,7 +43109,7 @@ __webpack_require__.r(__webpack_exports__);
       state.account = event;
     },
     ACCOUNT_UPDATED: function ACCOUNT_UPDATED(state, event) {
-      console.log(event);
+      state.user = event;
     }
   },
   actions: {
@@ -43143,15 +43151,20 @@ __webpack_require__.r(__webpack_exports__);
     },
     updateUserAccount: function updateUserAccount(_ref4, payload) {
       var commit = _ref4.commit;
-      return window.axios.put('api/user', payload, {
+      var formData = new FormData();
+      formData.append('profile_image', payload.profile_image);
+      formData.append('name', payload.name);
+      formData.append('subscribe', payload.subscribe);
+      return window.axios.post('api/user', formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'content-type': 'multipart/form-data'
         }
       }).then(function (response) {
-        commit('ACCOUNT_UPDATED', response.data); // localStorage.setItem('__new_user', JSON.stringify({
-        //     name: response.data.name,
-        //     email: response.data.email
-        // }));
+        commit('ACCOUNT_UPDATED', response.data);
+        localStorage.setItem('__user', JSON.stringify({
+          name: response.data.name,
+          profile_image: response.data.profile_image
+        }));
       })["catch"](function (error) {
         console.log(error);
       });

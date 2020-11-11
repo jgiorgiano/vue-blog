@@ -22,7 +22,7 @@ export default {
             state.account = event;
         },
         ACCOUNT_UPDATED(state, event) {
-           console.log(event);
+            state.user = event;
         },
     },
     actions: {
@@ -69,15 +69,26 @@ export default {
                 })
         },
         updateUserAccount({commit}, payload) {
-            return window.axios.put('api/user', payload, { headers: { 'Content-Type': 'multipart/form-data' }})
+
+            let formData = new FormData();
+
+            formData.append('profile_image', payload.profile_image);
+            formData.append('name', payload.name);
+            formData.append('subscribe', payload.subscribe);
+
+            return window.axios.post('api/user', formData, {
+                headers: {
+                    'content-type': 'multipart/form-data',
+                }
+            })
                 .then((response) => {
 
                     commit('ACCOUNT_UPDATED', response.data);
 
-                    // localStorage.setItem('__new_user', JSON.stringify({
-                    //     name: response.data.name,
-                    //     email: response.data.email
-                    // }));
+                    localStorage.setItem('__user', JSON.stringify({
+                        name: response.data.name,
+                        profile_image: response.data.profile_image
+                    }));
 
                 }).catch((error) => {
                     console.log(error);

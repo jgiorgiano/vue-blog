@@ -74,7 +74,8 @@ export default {
         return {
             user: {
                 name: '',
-                profile_new_image: ''
+                profile_new_image: null,
+                subscribe: ''
             },
             errors: {}
         }
@@ -95,7 +96,7 @@ export default {
         handleFileUpload(){
             var file_type = this.$refs.file.files[0].type;
 
-            if(file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jped') > 0) {
+            if(file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jpeg') > 0) {
                 this.user.profile_new_image = this.$refs.file.files[0];
             } else {
                 alert('File type not valid" (create a modal)')
@@ -103,7 +104,11 @@ export default {
             }
         },
         submitEditAccount() {
-            this.$store.dispatch('updateUserAccount', this.user)
+            this.$store.dispatch('updateUserAccount', {
+                name: this.user.name,
+                profile_image: this.user.profile_new_image ?? null,
+                subscribe: this.user.subscribe
+            })
         }
     },
     computed: {

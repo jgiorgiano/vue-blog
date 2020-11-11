@@ -35,4 +35,16 @@ class RegisterUserTest extends TestCase
         $response->assertStatus(201)->assertJsonFragment($user);
 
     }
+
+    public function testUpdateUserProfile()
+    {
+
+    }
+
+    public function testUploadUserProfilePicture()
+    {
+
+    }
+
+
 }
