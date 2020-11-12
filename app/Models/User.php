@@ -2,12 +2,14 @@
 
 namespace App\Models;
 
+use App\Http\Services\LoggingService;
+use App\Listeners\UserSaved;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     use HasFactory, Notifiable;
 
@@ -20,6 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'terms_agreement',
+        'terms_agreement_ip',
+        'terms_agreement_agent',
+        'terms_agreement_date',
+        'subscribe',
+        'subscribe_ip',
+        'subscribe_agent',
+        'subscribe_date',
     ];
 
     /**
@@ -30,6 +40,8 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'two_factor_secret',
+        'two_factor_recovery_codes'
     ];
 
     /**
@@ -40,4 +52,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    protected $appends = ['profile_image_path'];
+
+    public function getProfileImagePathAttribute()
+    {
+        return 'storage/profile_images/' . $this->profile_image;
+    }
+
+
+    public function logs()
+    {
+        return $this->hasMany('App\Models\Log');
+    }
+
+
+    protected static function booted()
+    {
+        static::updated(function ($user) {
+            (new LoggingService($user))->createLog();
+        });
+    }
+
 }

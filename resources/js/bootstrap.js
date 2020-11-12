@@ -11,6 +11,38 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 axios.defaults.withCredentials = true;
+axios.defaults.timeout = 120000; //2min
+
+/**
+ * Set the Default Headers for the API
+ */
+window.axios.defaults.headers.common['Content-Type'] = 'application/json';
+window.axios.defaults.headers.common['Accept'] = 'application/json';
+
+/**
+ * Interceptor for responses
+ * if unauthenticated (401), clean the credentials on storage and redirect to login page
+ */
+axios.interceptors.response.use(
+    function (response) {
+        return response;
+    },
+
+    function (error) {
+
+        if (error.response.status === 401) {
+            localStorage.clear();
+            window.location = "#/login";
+        }
+
+        if (error.response.status === 403) {
+            window.location = "#/email-verification";
+        }
+
+        return Promise.reject(error);
+    }
+);
+
 
 /**
  * Echo exposes an expressive API for subscribing to channels and listening

@@ -1,5 +1,9 @@
+require('./bootstrap');
+
 import VueRouter from 'vue-router'
 import Vuex from 'vuex'
+import Vuelidate from 'vuelidate'
+import VueCompositionAPI from '@vue/composition-api'
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -15,6 +19,10 @@ Vue.use(VueRouter)
 
 Vue.use(Vuex)
 
+Vue.use(Vuelidate)
+
+Vue.use(VueCompositionAPI)
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -26,7 +34,9 @@ Vue.use(Vuex)
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('v-navbar', require('./components/Navbar.vue').default);
+Vue.component('v-footer', require('./components/Footer.vue').default);
+Vue.component('v-main', require('./views/Main.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

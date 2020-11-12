@@ -1,0 +1,146 @@
+<template>
+    <div class="flex flex-col justify-center items-center test">
+        <div class="j-card lg:w-1/2 mt-48">
+            <div class="j-card-header">
+                <h3 class="j-card-title">Sign Up</h3>
+            </div>
+            <form @submit.prevent="register" class="px-6">
+
+                <InputField
+                    label="Name"
+                    field="name"
+                    v-model="$v.newUser.name.$model"
+                    type="text"
+                    :v-errors="$v.newUser.name"
+                    :errors="errors"
+                    @input="delayTouch($v.newUser.name)"
+                />
+
+                <InputField
+                    label="Email"
+                    field="email"
+                    v-model="$v.newUser.email.$model"
+                    type="email"
+                    :v-errors="$v.newUser.email"
+                    :errors="errors"
+                    @input="delayTouch($v.newUser.email)"
+                />
+
+                <div class="flex justify-between">
+                    <InputField
+                        label="Password"
+                        field="password"
+                        v-model="$v.newUser.password.$model"
+                        type="password"
+                        :v-errors="$v.newUser.password"
+                        :errors="errors"
+                        @input="delayTouch($v.newUser.password)"
+                    />
+
+                    <InputField
+                        label="Confirm Password"
+                        field="password_confirmation"
+                        v-model="$v.newUser.password_confirmation.$model"
+                        type="password"
+                        :v-errors="$v.newUser.password_confirmation"
+                        :errors="errors"
+                        @input="delayTouch($v.newUser.password_confirmation)"
+                    />
+                </div>
+
+                <checkbox-field
+                    field="terms_agreement"
+                    v-model="$v.newUser.terms_agreement.$model"
+                    :v-errors="$v.newUser.terms_agreement"
+                    :errors="errors"
+                    required
+                >
+                    I agree with the terms and conditions.
+                </checkbox-field>
+
+                <checkbox-field
+                    field="terms_agreement"
+                    v-model="$v.newUser.subscribe.$model"
+                    :v-errors="$v.newUser.subscribe"
+                    :errors="errors"
+                >
+                    I agree to subscribe to the newsletter and receive the latest articles
+                </checkbox-field>
+
+                <div class="py-2 flex justify-center">
+                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">Create Account</indigo-button>
+                </div>
+            </form>
+
+        </div>
+
+        <indigo-text-link route-name="login">Already have an Account. Sign up</indigo-text-link>
+
+    </div>
+</template>
+
+<script>
+
+import InputField from "../components/forms/InputField";
+import IndigoButton from "../components/buttons/IndigoButton";
+import IndigoTextLink from "../components/buttons/IndigoTextLink";
+import CheckboxField from "../components/forms/CheckboxField";
+import {required, minLength, email, alpha, sameAs} from 'vuelidate/lib/validators';
+
+const touchMap = new WeakMap()
+
+export default {
+    components: {
+        InputField,
+        IndigoButton,
+        IndigoTextLink,
+        CheckboxField
+    },
+    data() {
+        return {
+            newUser: {
+                email: '',
+                name: '',
+                terms_agreement: '',
+                subscribe: '',
+                password: '',
+                password_confirmation: '',
+                errors: {},
+            },
+            errors: {}
+        }
+    },
+    validations: {
+        newUser: {
+            name: {required, minLength: minLength(5)},
+            email: {required, email, minLength: minLength(5)},
+            terms_agreement: { required },
+            subscribe: {},
+            password: {required, minLength: minLength(8)},
+            password_confirmation: {required, minLength: minLength(8), sameAsPassword: sameAs('password')}
+        }
+    },
+    methods: {
+        delayTouch($v) {
+            $v.$reset()
+            if (touchMap.has($v)) {
+                clearTimeout(touchMap.get($v))
+            }
+            touchMap.set($v, setTimeout($v.$touch, 1000))
+        },
+        register() {
+            this.$store.dispatch('registerNewUser', this.newUser)
+                .then((response) => {
+                    this.$router.push({name: 'email-verification'})
+                })
+                .catch((error) => {
+                    this.errors = error.response.data.errors;
+                });
+        }
+    }
+}
+</script>
+
+<style>
+
+</style>
