@@ -43,8 +43,6 @@
                     <input type="file" ref="file" @change="handleFileUpload()">
                 </div>
 
-
-
                 <div class="py-2 flex justify-end">
                     <indigo-button :disabled="$v.user.$anyError">Save</indigo-button>
                 </div>

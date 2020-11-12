@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Http\Services\LoggingService;
+use App\Listeners\UserSaved;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -57,4 +59,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return 'storage/profile_images/' . $this->profile_image;
     }
+
+
+    protected static function booted()
+    {
+        static::updated(function ($user) {
+            (new LoggingService($user))->createLog();
+        });
+    }
+
 }

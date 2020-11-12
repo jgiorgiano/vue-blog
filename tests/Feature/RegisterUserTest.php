@@ -38,12 +38,23 @@ class RegisterUserTest extends TestCase
 
     public function testUpdateUserProfile()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 
     public function testUploadUserProfilePicture()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
+    }
+
+    public function testLoggingForSubscription()
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
     }
 
 

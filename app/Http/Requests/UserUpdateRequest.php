@@ -29,4 +29,12 @@ class UserUpdateRequest extends FormRequest
             'profile_image' => 'nullable'
         ];
     }
+
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'subscribe' => $this->input('subscribe') == 'false' ? 0 : 1,
+            'profile_image' => $this->input('profile_image') == 'null' ? null : $this->input('profile_image'),
+        ]);
+    }
 }
