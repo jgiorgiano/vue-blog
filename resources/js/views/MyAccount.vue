@@ -35,7 +35,7 @@
                 <div class="mb-5">
                     <input type="checkbox" v-model="user.subscribe">
                     <span class="text-gray-800">Subscribed to receive newsletter</span>
-                    <small class="block" v-show="user.subscribe">on: {{ user.subscribe_date}}</small>
+                    <small class="block" v-show="user.subscribe">on: {{ user.subscribe_date }}</small>
                 </div>
 
                 <div class="mb-5">
@@ -73,7 +73,7 @@ export default {
             user: {
                 name: '',
                 profile_new_image: null,
-                subscribe: ''
+                subscribe: 0
             },
             errors: {}
         }

@@ -13,9 +13,9 @@ export default {
         }
     },
     mounted() {
-        window.axios.get('api/test').then((response) => {
-            this.test = response.data;
-        });
+        // window.axios.get('api/test').then((response) => {
+        //     this.test = response.data;
+        // });
     }
 }
 </script>

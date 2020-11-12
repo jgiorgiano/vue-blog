@@ -2,7 +2,7 @@
 
 namespace App\Http\Services;
 
-use App\Models\log;
+use App\Models\Log;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;
@@ -31,7 +31,7 @@ class LoggingService
                 ];
             }
 
-            $new_log = new log();
+            $new_log = new Log();
 
             $new_log->user_id = Auth::user()->id;
             $new_log->model = get_class($this->model);

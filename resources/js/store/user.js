@@ -11,7 +11,7 @@ export default {
             state.authenticated = true;
             state.user = event;
         },
-        LOGOUT_SUCCESS(state, event) {
+        LOGOUT(state) {
             state.authenticated = false;
             state.user = {};
         },
@@ -46,7 +46,7 @@ export default {
         logout({commit}) {
             return window.axios.post('api/logout')
                 .then((response) => {
-                    commit('LOGOUT_SUCCESS');
+                    commit('LOGOUT');
                     localStorage.clear();
 
                 }).catch((error) => {
@@ -94,6 +94,12 @@ export default {
                     console.log(error);
                 })
         },
+        isAuth({commit}) {
+            return window.axios.get('api/test').then(() => {}).catch((error) => {
+                commit('LOGOUT');
+                localStorage.clear();
+            });
+        }
 
     },
     getters: {

@@ -88,9 +88,11 @@ export default {
         },
     },
     beforeCreate() {
-        if(this.$store.state.user.authenticated) {
-            this.$router.push({name: 'dashboard'})
-        }
+       this.$store.dispatch('isAuth').then(() => {
+           if(this.$store.state.user.authenticated) {
+               this.$router.push({name: 'dashboard'})
+           }
+        });
     }
 }
 </script>
