@@ -21667,6 +21667,22 @@ video {
   color: rgba(102, 126, 234, var(--text-opacity));
 }
 
+/** TRANSITIONS **/
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
 @media (min-width: 640px){
   .sm\:container{
     width: 100%;
