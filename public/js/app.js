@@ -4075,6 +4075,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/buttons/IndigoButton */ "./resources/js/components/buttons/IndigoButton.vue");
 //
 //
 //
@@ -4082,7 +4083,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    IndigoButton: _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   data: function data() {
     return {
       'test': ''
@@ -23057,9 +23062,19 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._v("\n    Dashboard Logged User\n    " + _vm._s(_vm.test) + "\n")
-  ])
+  return _c(
+    "div",
+    [
+      _vm._v("\n    Dashboard Logged User\n    "),
+      _c(
+        "router-link",
+        { attrs: { to: { name: "article-new" } } },
+        [_c("indigo-button", [_vm._v("Create a new Article")])],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

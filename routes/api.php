@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -47,8 +48,15 @@ Route::middleware(['auth:sanctum'])->group(function () {
     });
 
     Route::get('user', [UserController::class, 'user']);
-
     Route::post('user', [UserController::class, 'update']);
+
+    Route::post('article', [ArticleController::class, 'store']);
+    Route::get('article/{article}', [ArticleController::class, 'edit']);
+    Route::get('article', [ArticleController::class, 'loadAll']);
+    Route::put('article/{article}', [ArticleController::class, 'update']);
+    Route::put('article/{article}/manager', [ArticleController::class, 'manager']);
+    Route::delete('article/{article}', [ArticleController::class, 'destroy']);
+
 
 });
 
