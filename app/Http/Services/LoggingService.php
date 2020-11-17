@@ -33,7 +33,9 @@ class LoggingService
 
             $new_log = new Log();
 
-            $new_log->user_id = Auth::user()->id;
+//            @todo fix when verify email error (user not auth)
+
+            $new_log->user_id = Auth::user()->id ?? 0;
             $new_log->model = get_class($this->model);
             $new_log->changes = json_encode($changes);
             $new_log->ip_address = request()->ip();

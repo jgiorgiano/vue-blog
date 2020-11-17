@@ -49,7 +49,7 @@ Vue.component('v-main', require('./views/Main.vue').default);
  */
 import routes from './routes';
 
-const router = new VueRouter({
+export const router = new VueRouter({
     routes
 })
 
@@ -59,12 +59,14 @@ const router = new VueRouter({
  */
 import user from './store/user';
 import blog from './store/blog';
+import article from "./store/article";
 import { state, mutations, getters, actions } from './store/store';
 
 const store = new Vuex.Store({
         modules: {
             user,
-            blog
+            blog,
+            article
         },
         state,
         mutations,

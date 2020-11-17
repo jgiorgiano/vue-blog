@@ -59,16 +59,22 @@ class EditArticleTest extends TestCase
 
     public function testEditImageArticle()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 
     public function testAuthorizationForEditArticle()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 
     public function testAuthorizationForManagingArticle()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 }

@@ -48,8 +48,8 @@
             </div>
         </nav>
 
-        <div class="absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right md:hidden">
-
+        <div class="absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right"
+             :class="[authenticated ? 'block' : ' md:hidden' ]">
             <div  class="border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100"
                  :class="[showMenu ? 'block' : 'hidden' ]">
 
@@ -67,7 +67,6 @@
                     <router-link :to="{ name: 'about'}"><nav-link>About</nav-link></router-link>
                     <router-link :to="{ name: 'login'}" class="text-center"><nav-link>Login</nav-link></router-link>
                 </div>
-
                 <div v-else class="flex flex-col content-end">
                     <router-link :to="{ name: 'my-account'}">
                         <nav-link>My Account</nav-link>

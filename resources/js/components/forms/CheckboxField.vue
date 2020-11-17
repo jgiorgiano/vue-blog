@@ -3,7 +3,6 @@
         <input type="checkbox" @change="updateValue" v-bind="$attrs">
         <span class="pl-1 text-gray-800">
             <slot></slot>
-            I agree with the terms and conditions.
         </span>
     </div>
 </template>
@@ -11,7 +10,7 @@
 export default {
     inheritAttrs: false,
     props: {
-        value: [String, Number],
+        value: [String, Number, Boolean],
         ariaLabel: {
             type: String,
             default: ''
@@ -26,7 +25,6 @@ export default {
     },
     methods: {
         updateValue(event) {
-            console.log(event);
             this.$emit('input', event.target.checked)
         }
     }

@@ -1,7 +1,10 @@
 <template>
     <div>
-        Dashboard Logged User
-        <router-link :to="{ name: 'article-new'}"><indigo-button>Create a new Article</indigo-button></router-link>
+        <h3>Dashboard Logged User</h3>
+
+        <router-link :to="{ name: 'article-create'}">
+            <indigo-button>Create a new Article</indigo-button>
+        </router-link>
     </div>
 </template>
 

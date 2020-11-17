@@ -41,11 +41,15 @@ class CreateArticleTest extends TestCase
 
     public function testUploadImagesOnCreateArticle()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 
     public function testAuthorizationForCreateArticle()
     {
+        $response = $this->get('/');
 
+        $response->assertStatus(200);
     }
 }

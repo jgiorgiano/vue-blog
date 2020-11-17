@@ -5,6 +5,8 @@ import About from "./views/About"
 import Dashboard from "./views/Dashboard"
 import EmailVerification from "./views/EmailVerification";
 import MyAccount from "./views/MyAccount";
+import ArticleCreate from "./views/article/create";
+import ArticleEdit from "./views/article/edit";
 
 const routes = [
     //Open Routes
@@ -17,6 +19,8 @@ const routes = [
     //Auth Routes
     { path: '/dashboard', name:'dashboard', component: Dashboard },
     { path: '/my-account', name:'my-account', component: MyAccount },
+    { path: '/article-create', name:'article-create', component: ArticleCreate },
+    { path: '/article-edit', name:'article-edit', component: ArticleEdit },
 ]
 
 export default routes;
