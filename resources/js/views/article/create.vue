@@ -48,7 +48,10 @@
 <!--                </div>-->
 
                 <div class="py-2 flex justify-end">
-                    <indigo-button :disabled="$v.article.$anyError">Create</indigo-button>
+                    <div>
+                        <indigo-button :disabled="$v.article.$anyError">Create</indigo-button>
+                        <processing :processing="processing"></processing>
+                    </div>
                 </div>
             </form>
 
@@ -64,11 +67,13 @@ import IndigoButton from "../../components/buttons/IndigoButton";
 import TextAreaField from "../../components/forms/TextAreaField";
 import CheckboxField from "../../components/forms/CheckboxField";
 import {required, minLength, maxLength} from 'vuelidate/lib/validators';
+import Processing from "../../components/buttons/Processing";
 
 const touchMap = new WeakMap()
 
 export default {
     components: {
+        Processing,
         InputField,
         IndigoButton,
         TextAreaField,
@@ -76,6 +81,7 @@ export default {
     },
     data() {
         return {
+            processing: false,
             article: {
                 title: '',
                 content: '',
@@ -115,7 +121,20 @@ export default {
             // }
         },
         createArticle() {
-            this.$store.dispatch('article/create', this.article);
+            this.processing = true;
+            this.$store.dispatch('article/create', this.article).then((response) => {
+                console.log(1, response);
+
+                setTimeout(() => {
+                    this.processing = false;
+
+                    console.log(2, response);
+                    // router.push({ name: 'article-edit'});
+                    }
+                    , 500)
+                ;
+
+            }).catch( error => console.log(error));
         }
     },
     computed: {},

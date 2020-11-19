@@ -4069,16 +4069,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -4772,6 +4762,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_forms_CheckboxField__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/forms/CheckboxField */ "./resources/js/components/forms/CheckboxField.vue");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_buttons_Processing__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/buttons/Processing */ "./resources/js/components/buttons/Processing.vue");
 //
 //
 //
@@ -4831,6 +4822,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+
 
 
 
@@ -4839,6 +4834,7 @@ __webpack_require__.r(__webpack_exports__);
 var touchMap = new WeakMap();
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    Processing: _components_buttons_Processing__WEBPACK_IMPORTED_MODULE_5__["default"],
     InputField: _components_forms_InputField__WEBPACK_IMPORTED_MODULE_0__["default"],
     IndigoButton: _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_1__["default"],
     TextAreaField: _components_forms_TextAreaField__WEBPACK_IMPORTED_MODULE_2__["default"],
@@ -4846,6 +4842,7 @@ var touchMap = new WeakMap();
   },
   data: function data() {
     return {
+      processing: false,
       article: {
         title: '',
         content: '',
@@ -4891,7 +4888,18 @@ var touchMap = new WeakMap();
       // }
     },
     createArticle: function createArticle() {
-      this.$store.dispatch('article/create', this.article);
+      var _this = this;
+
+      this.processing = true;
+      this.$store.dispatch('article/create', this.article).then(function (response) {
+        console.log(1, response);
+        setTimeout(function () {
+          _this.processing = false;
+          console.log(2, response); // router.push({ name: 'article-edit'});
+        }, 500);
+      })["catch"](function (error) {
+        return console.log(error);
+      });
     }
   },
   computed: {},
@@ -23190,7 +23198,7 @@ var render = function() {
   return _c("div", [
     _c(
       "nav",
-      { staticClass: "p-5 flex items-center justify-between" },
+      { staticClass: "relative p-5 flex items-center justify-between" },
       [
         _c("nav-logo"),
         _vm._v(" "),
@@ -23200,7 +23208,7 @@ var render = function() {
               { staticClass: "hidden md:flex" },
               [
                 _vm._v(
-                  "\n                (Home|Archive|Code snippets|Contact|Search)\n                "
+                  "\n            (Home|Archive|Code snippets|Contact|Search)\n            "
                 ),
                 _c(
                   "router-link",
@@ -23342,98 +23350,98 @@ var render = function() {
                   )
                 ]
               )
-            ])
-      ],
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right",
-        class: [_vm.authenticated ? "block" : " md:hidden"]
-      },
-      [
+            ]),
+        _vm._v(" "),
         _c(
           "div",
           {
             staticClass:
-              "border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100",
-            class: [_vm.showMenu ? "block" : "hidden"]
+              "absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right",
+            class: [_vm.authenticated ? "block" : " md:hidden"]
           },
           [
-            !_vm.authenticated
-              ? _c(
-                  "div",
-                  { staticClass: "flex flex-col content-end" },
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: { name: "register" } } },
-                      [_c("nav-link", [_vm._v("Sign up")])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      { attrs: { to: { name: "about" } } },
-                      [_c("nav-link", [_vm._v("About")])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "text-center",
-                        attrs: { to: { name: "login" } }
-                      },
-                      [_c("nav-link", [_vm._v("Login")])],
-                      1
-                    )
-                  ],
-                  1
-                )
-              : _c(
-                  "div",
-                  { staticClass: "flex flex-col content-end" },
-                  [
-                    _c(
-                      "router-link",
-                      { attrs: { to: { name: "my-account" } } },
-                      [_c("nav-link", [_vm._v("My Account")])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      { attrs: { to: { name: "dashboard" } } },
-                      [_c("nav-link", [_vm._v("Dashboard")])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      { attrs: { to: { name: "about" } } },
-                      [_c("nav-link", [_vm._v("About")])],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "focus:outline-none",
-                        on: { click: _vm.logout }
-                      },
-                      [_c("nav-link", [_vm._v("Sign out")])],
+            _c(
+              "div",
+              {
+                staticClass:
+                  "border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100",
+                class: [_vm.showMenu ? "block" : "hidden"]
+              },
+              [
+                !_vm.authenticated
+                  ? _c(
+                      "div",
+                      { staticClass: "flex flex-col content-end" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "register" } } },
+                          [_c("nav-link", [_vm._v("Sign up")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "about" } } },
+                          [_c("nav-link", [_vm._v("About")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          {
+                            staticClass: "text-center",
+                            attrs: { to: { name: "login" } }
+                          },
+                          [_c("nav-link", [_vm._v("Login")])],
+                          1
+                        )
+                      ],
                       1
                     )
-                  ],
-                  1
-                )
+                  : _c(
+                      "div",
+                      { staticClass: "flex flex-col content-end" },
+                      [
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "my-account" } } },
+                          [_c("nav-link", [_vm._v("My Account")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "dashboard" } } },
+                          [_c("nav-link", [_vm._v("Dashboard")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "router-link",
+                          { attrs: { to: { name: "about" } } },
+                          [_c("nav-link", [_vm._v("About")])],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "button",
+                          {
+                            staticClass: "focus:outline-none",
+                            on: { click: _vm.logout }
+                          },
+                          [_c("nav-link", [_vm._v("Sign out")])],
+                          1
+                        )
+                      ],
+                      1
+                    )
+              ]
+            )
           ]
         )
-      ]
+      ],
+      1
     )
   ])
 }
@@ -24307,18 +24315,21 @@ var render = function() {
               ]
             ),
             _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "py-2 flex justify-end" },
-              [
-                _c(
-                  "indigo-button",
-                  { attrs: { disabled: _vm.$v.article.$anyError } },
-                  [_vm._v("Create")]
-                )
-              ],
-              1
-            )
+            _c("div", { staticClass: "py-2 flex justify-end" }, [
+              _c(
+                "div",
+                [
+                  _c(
+                    "indigo-button",
+                    { attrs: { disabled: _vm.$v.article.$anyError } },
+                    [_vm._v("Create")]
+                  ),
+                  _vm._v(" "),
+                  _c("processing", { attrs: { processing: _vm.processing } })
+                ],
+                1
+              )
+            ])
           ],
           1
         )
@@ -43966,27 +43977,36 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app.js */ "./resources/js/app.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
   state: {
-    article: ''
+    articles: {}
   },
   mutations: {
     ARTICLE_CREATED: function ARTICLE_CREATED(state, event) {
-      state.article = event;
-      _app_js__WEBPACK_IMPORTED_MODULE_0__["router"].push({
-        name: 'article-edit'
+      state.articles = _objectSpread(_objectSpread({}, state.articles), {}, {
+        event: event
       });
     }
   },
   actions: {
     create: function create(_ref, payload) {
       var commit = _ref.commit;
-      return window.axios.post('api/article', payload).then(function (response) {
-        commit('ARTICLE_CREATED', response.data);
-      })["catch"](function (error) {
-        console.log(error);
+      return new Promise(function (resolve, reject) {
+        window.axios.post('api/article', payload).then(function (response) {
+          commit('ARTICLE_CREATED', response.data);
+          resolve(response.data);
+        })["catch"](function (error) {
+          console.log(error);
+          reject(error);
+        });
       });
     }
   },

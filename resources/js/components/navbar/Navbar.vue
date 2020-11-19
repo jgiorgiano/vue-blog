@@ -1,7 +1,7 @@
 <template>
 
     <div>
-        <nav class="p-5 flex items-center justify-between">
+        <nav class="relative p-5 flex items-center justify-between">
 
             <nav-logo />
 
@@ -46,43 +46,33 @@
 
                 </button>
             </div>
-        </nav>
+            <div class="absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right"
+                 :class="[authenticated ? 'block' : ' md:hidden' ]">
+                <div  class="border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100"
+                      :class="[showMenu ? 'block' : 'hidden' ]">
 
-        <div class="absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right"
-             :class="[authenticated ? 'block' : ' md:hidden' ]">
-            <div  class="border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100"
-                 :class="[showMenu ? 'block' : 'hidden' ]">
-
-<!--                <div class="flex justify-end" v-if="showMenu">-->
-<!--                    <button type="button" @click="showMenu=!showMenu"-->
-<!--                            class="p-2 mr-6 rounded-md text-gray-600 bg-gray-100 hover:text-indigo-900 hover:bg-gray-200 focus:outline-none focus:bg-gray-200 focus:text-indigo-500 transition duration-150 ease-in-out" aria-label="Close menu">-->
-<!--                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">-->
-<!--                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />-->
-<!--                        </svg>-->
-<!--                    </button>-->
-<!--                </div>-->
-
-                <div v-if="!authenticated" class="flex flex-col content-end">
-                    <router-link :to="{ name: 'register'}"><nav-link>Sign up</nav-link></router-link>
-                    <router-link :to="{ name: 'about'}"><nav-link>About</nav-link></router-link>
-                    <router-link :to="{ name: 'login'}" class="text-center"><nav-link>Login</nav-link></router-link>
-                </div>
-                <div v-else class="flex flex-col content-end">
-                    <router-link :to="{ name: 'my-account'}">
-                        <nav-link>My Account</nav-link>
-                    </router-link>
-                    <router-link :to="{ name: 'dashboard'}">
-                        <nav-link>Dashboard</nav-link>
-                    </router-link>
-                    <router-link :to="{ name: 'about'}">
-                        <nav-link>About</nav-link>
-                    </router-link>
-                    <button @click="logout" class="focus:outline-none">
-                        <nav-link>Sign out</nav-link>
-                    </button>
+                    <div v-if="!authenticated" class="flex flex-col content-end">
+                        <router-link :to="{ name: 'register'}"><nav-link>Sign up</nav-link></router-link>
+                        <router-link :to="{ name: 'about'}"><nav-link>About</nav-link></router-link>
+                        <router-link :to="{ name: 'login'}" class="text-center"><nav-link>Login</nav-link></router-link>
+                    </div>
+                    <div v-else class="flex flex-col content-end">
+                        <router-link :to="{ name: 'my-account'}">
+                            <nav-link>My Account</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'dashboard'}">
+                            <nav-link>Dashboard</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'about'}">
+                            <nav-link>About</nav-link>
+                        </router-link>
+                        <button @click="logout" class="focus:outline-none">
+                            <nav-link>Sign out</nav-link>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
+        </nav>
     </div>
 </template>
 
