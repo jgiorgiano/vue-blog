@@ -49,8 +49,9 @@
 
                 <div class="py-2 flex justify-end">
                     <div>
-                        <indigo-button :disabled="$v.article.$anyError">Create</indigo-button>
-                        <processing :processing="processing"></processing>
+                        <indigo-button :disabled="$v.article.$anyError || !$v.article.$anyDirty || processStatus !== 0">
+                            <process-status :status="processStatus">Create</process-status>
+                        </indigo-button>
                     </div>
                 </div>
             </form>
@@ -67,13 +68,13 @@ import IndigoButton from "../../components/buttons/IndigoButton";
 import TextAreaField from "../../components/forms/TextAreaField";
 import CheckboxField from "../../components/forms/CheckboxField";
 import {required, minLength, maxLength} from 'vuelidate/lib/validators';
-import Processing from "../../components/buttons/Processing";
+import ProcessStatus from "../../components/buttons/processStatus";
 
 const touchMap = new WeakMap()
 
 export default {
     components: {
-        Processing,
+        ProcessStatus,
         InputField,
         IndigoButton,
         TextAreaField,
@@ -81,7 +82,7 @@ export default {
     },
     data() {
         return {
-            processing: false,
+            processStatus: 0,
             article: {
                 title: '',
                 content: '',
@@ -98,8 +99,8 @@ export default {
         article: {
             title: {required, minLength: minLength(5), maxLength: maxLength(150)},
             content: {required, minLength: minLength(2)},
-            tags: {},
-            featured: {}
+            tags: { required, minLength: minLength(3) },
+            featured: { }
         }
     },
     methods: {
@@ -121,18 +122,12 @@ export default {
             // }
         },
         createArticle() {
-            this.processing = true;
+            this.processStatus = 1;
+
             this.$store.dispatch('article/create', this.article).then((response) => {
-                console.log(1, response);
+                this.processStatus = 2;
 
-                setTimeout(() => {
-                    this.processing = false;
-
-                    console.log(2, response);
-                    // router.push({ name: 'article-edit'});
-                    }
-                    , 500)
-                ;
+                setTimeout(() => this.$router.push({ name: 'article-edit', params: { id: response.id }, article: response }), 500);
 
             }).catch( error => console.log(error));
         }

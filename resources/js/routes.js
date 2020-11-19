@@ -19,8 +19,8 @@ const routes = [
     //Auth Routes
     { path: '/dashboard', name:'dashboard', component: Dashboard },
     { path: '/my-account', name:'my-account', component: MyAccount },
-    { path: '/article-create', name:'article-create', component: ArticleCreate },
-    { path: '/article-edit', name:'article-edit', component: ArticleEdit },
+    { path: '/article', name:'article-create', component: ArticleCreate },
+    { path: '/article/:id', name:'article-edit', component: ArticleEdit },
 ]
 
 export default routes;

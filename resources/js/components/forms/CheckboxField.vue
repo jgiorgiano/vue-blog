@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="checkbox" @change="updateValue" v-bind="$attrs">
+        <input type="checkbox" :checked="value" @change="updateValue" v-bind="$attrs">
         <span class="pl-1 text-gray-800">
             <slot></slot>
         </span>

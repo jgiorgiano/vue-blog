@@ -64,6 +64,7 @@ class ArticleController extends Controller
         $article->tags = $request->input('tags');
         $article->title = $request->input('title');
         $article->content = $request->input('content');
+        $article->featured = $request->input('featured');
 
         //upload Images and save
         $article->images = $request->input('images');

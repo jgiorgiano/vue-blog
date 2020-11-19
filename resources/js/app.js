@@ -5,6 +5,13 @@ import Vuex from 'vuex'
 import Vuelidate from 'vuelidate'
 import VueCompositionAPI from '@vue/composition-api'
 
+// only import the icons you use to reduce bundle size
+// import 'vue-awesome/icons/flag'
+// or import all icons if you don't care about bundle size
+import 'vue-awesome/icons'
+
+import Icon from 'vue-awesome/components/Icon'
+
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -38,6 +45,7 @@ Vue.component('v-navbar', require('./components/navbar/Navbar.vue').default);
 Vue.component('v-footer', require('./components/Footer.vue').default);
 Vue.component('v-main', require('./views/Main.vue').default);
 
+Vue.component('v-icon', Icon);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
