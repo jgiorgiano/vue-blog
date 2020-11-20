@@ -13,14 +13,19 @@ class ArticleTest extends TestCase
     use RefreshDatabase;
 
 
-    public function testLoadAllArticles()
+    public function testLoadArticles()
     {
-        $articles = Article::factory()->count(30)->create();
-        $user = User::factory()->create(['role' => 1]);
+        $admin_user = User::factory()->create(['role' => 1]);
+        $not_admin_user = User::factory()->create(['role' => 2]);
 
-        $response = $this->actingAs($user)->json('GET', 'api/article');
+        Article::factory()->count(30)->create();
+        Article::factory()->count(6)->create(['user_id' => $not_admin_user->id]);
 
-        $response->assertStatus(200)->assertJsonCount(30);
+        $response = $this->actingAs($admin_user)->json('GET', 'api/article');
+        $response->assertStatus(200)->assertJsonCount(36);
+
+        $response = $this->actingAs($not_admin_user)->json('GET', 'api/article');
+        $response->assertStatus(200)->assertJsonCount(6);
     }
 
     public function testLoadArticle()

@@ -1,5 +1,5 @@
 <template>
-    <div class="h-screen px-8 bg-gray-200">
+    <div class="min-h-screen px-8 bg-gray-200">
         <div class="container mx-auto">
             <v-navbar></v-navbar>
             <transition name="fade" mode="out-in">

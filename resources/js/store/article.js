@@ -7,11 +7,27 @@ export default  {
         INCLUDE_ARTICLE(state, event) {
             state.articles = [ ...state.articles, event ];
         },
+        UPDATE_ARTICLE_LIST(state, event) {
+            state.articles = event;
+        },
         UPDATE_ARTICLE(state, event) {
             state.articles = [ ...state.articles.filter(article => article.id !== parseInt(event.id)), event ];
         }
     },
     actions: {
+        loadAllArticles({commit}) {
+            return window.axios.get(`api/article`)
+                    .then((response) => {
+
+                        commit('UPDATE_ARTICLE_LIST', response.data);
+
+                    })
+                    .catch((error) => {
+                        console.log(error);
+
+                    })
+
+        },
         create({commit}, payload) {
             return new Promise((resolve, reject) => {
                 window.axios.post('api/article', payload)

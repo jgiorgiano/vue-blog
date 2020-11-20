@@ -5,17 +5,23 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;
 use App\Models\Article;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
 
-    public function loadAll()
+    public function load()
     {
         //@todo Create policy for authorization
+        $auth_user = Auth::user();
 
-        $article = Article::all();
+        if($auth_user->role == 1) {
+            $article = Article::all();
+        } else {
+            $article = Auth::user()->articles;
+        }
 
         //@todo Include pagination
 

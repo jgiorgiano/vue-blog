@@ -52,7 +52,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::post('article', [ArticleController::class, 'store']);
     Route::get('article/{article}', [ArticleController::class, 'edit']);
-    Route::get('article', [ArticleController::class, 'loadAll']);
+    Route::get('article', [ArticleController::class, 'load']);
     Route::put('article/{article}', [ArticleController::class, 'update']);
     Route::put('article/{article}/manager', [ArticleController::class, 'manager']);
     Route::delete('article/{article}', [ArticleController::class, 'destroy']);
