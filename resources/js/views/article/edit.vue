@@ -33,7 +33,16 @@
                     :errors="errors"
                 />
 
-                <checkbox-field
+                <SelectField
+                    class="md:w-1/2"
+                    label="Status"
+                    field="status"
+                    v-model="$v.article.status.$model"
+                    :v-errors="$v.article.status"
+                    :errors="errors"
+                    :options="statusOptions"/>
+
+                <checkbox-field class="my-2"
                     field="featured"
                     v-model="$v.article.featured.$model"
                     :v-errors="$v.article.featured"
@@ -41,6 +50,9 @@
                 >
                     Feature the Article
                 </checkbox-field>
+
+
+
 
                 <!--                <div class="mb-5">-->
                 <!--                    <p class="text-gray-800">Upload your profile picture</p>-->
@@ -69,11 +81,13 @@ import TextAreaField from "../../components/forms/TextAreaField";
 import CheckboxField from "../../components/forms/CheckboxField";
 import {required, minLength, maxLength} from 'vuelidate/lib/validators';
 import ProcessStatus from "../../components/buttons/processStatus";
+import SelectField from "../../components/forms/SelectField";
 
 const touchMap = new WeakMap()
 
 export default {
     components: {
+        SelectField,
         ProcessStatus,
         InputField,
         IndigoButton,
@@ -83,6 +97,7 @@ export default {
     data() {
         return {
             processStatus: 0,
+            statusOptions: this.$store.state.article.statusOptions,
             article: {
                 title: '',
                 content: '',
@@ -100,7 +115,8 @@ export default {
             title: {required, minLength: minLength(5), maxLength: maxLength(150)},
             content: {required, minLength: minLength(2)},
             tags: { required, minLength: minLength(3) },
-            featured: {}
+            featured: {},
+            status: { required }
         }
     },
     methods: {

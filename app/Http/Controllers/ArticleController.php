@@ -17,10 +17,10 @@ class ArticleController extends Controller
         //@todo Create policy for authorization
         $auth_user = Auth::user();
 
-        if($auth_user->role == 1) {
-            $article = Article::all();
+        if(!$auth_user->role == 1) {
+            $article = Article::with('user:id,name')->get();
         } else {
-            $article = Auth::user()->articles;
+            $article = Article::with('user:id,name')->where('user_id', $auth_user->id)->get();
         }
 
         //@todo Include pagination
@@ -70,7 +70,9 @@ class ArticleController extends Controller
         $article->tags = $request->input('tags');
         $article->title = $request->input('title');
         $article->content = $request->input('content');
+
         $article->featured = $request->input('featured');
+        $article->status = $request->input('status');
 
         //upload Images and save
         $article->images = $request->input('images');

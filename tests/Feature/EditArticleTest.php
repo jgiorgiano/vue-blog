@@ -28,6 +28,7 @@ class EditArticleTest extends TestCase
             'content' => 'Article Content',
             'tags' => 'Article, tags',
             'featured' => 1,
+            'status' => 2,
             'images' => null,
         ];
 

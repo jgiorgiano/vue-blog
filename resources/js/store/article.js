@@ -2,6 +2,12 @@ export default  {
     namespaced: true,
     state:{
         articles: [],
+        statusOptions: [
+            {id: 0, description: 'Waiting Approval'},
+            {id: 1, description: 'Published'},
+            {id: 2, description: 'Not Published'},
+            {id: 3, description: 'Waiting amendment'},
+        ]
     },
     mutations: {
         INCLUDE_ARTICLE(state, event) {
@@ -72,8 +78,12 @@ export default  {
         },
     },
     getters: {
-        getArticleById: (state, getters, actions) => (id) => {
-            return state.articles.filter(article => article.id === parseInt(id))[0];
+        getArticleById: (state) => (id) => {
+            return state.articles.find(article => article.id === parseInt(id));
+            // return state.articles.filter(article => article.id === parseInt(id))[0];
+        },
+        getStatusById: (state) => (id) => {
+            return state.statusOptions.find(status => status.id === parseInt(id));
         }
     }
 }
