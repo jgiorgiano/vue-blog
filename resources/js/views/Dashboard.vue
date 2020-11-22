@@ -23,7 +23,7 @@
 
 <script>
 import IndigoButton from "../components/buttons/IndigoButton";
-import ListItem from "../components/Article/list-item";
+import ListItem from "../components/article/list-item";
 
 export default {
     components: {

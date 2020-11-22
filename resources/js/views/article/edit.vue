@@ -145,10 +145,6 @@ export default {
 
                 setTimeout(() => this.processStatus = 0, 1000);
             });
-
-
-
-
             // }).catch( error => console.log(error));
         }
     },

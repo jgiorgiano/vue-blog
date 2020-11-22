@@ -1,7 +1,7 @@
 <template>
     <div class="mb-4">
         <p class="text-sm text-gray-600 mb-1" v-if="label">{{ label }}</p>
-        <textarea :value="value" @input="updateValue" v-bind="$attrs" rows="4"
+        <textarea :value="value" @input="updateValue" v-bind="$attrs" :rows="rowsCount"
                class="appearance-none bg-transparent border-2 rounded-md border-gray-500 focus:border-indigo-500 w-full text-gray-800 p-1 px-2 leading-tight focus:outline-none"
                :class="{ 'border-red-500':vErrors.$anyError, 'border-2 rounded bg-gray-200':$attrs.disabled }"
                   :type="type" :placeholder="placeholder" :aria-label="ariaLabel"></textarea>
@@ -51,6 +51,11 @@ export default {
     methods: {
         updateValue(event) {
             this.$emit('input', event.target.value)
+        }
+    },
+    computed: {
+        rowsCount() {
+            return (this.value.match(/\n/g) || '').length + 1;
         }
     }
 }
