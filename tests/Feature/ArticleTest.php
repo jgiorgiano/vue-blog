@@ -45,6 +45,26 @@ class ArticleTest extends TestCase
         );
     }
 
+    public function testLoadPublishedArticlesWithPagination()
+    {
+        $published_articles = 15;
+
+        Article::factory()->count(20)->create();
+        Article::factory()->count($published_articles)->create(['status' => 1]); //Published Articles
+        Article::factory()->count(5)->create(['status' => 2]);
+        Article::factory()->count(15)->create(['status' => 3]);
+
+        //Options take and page
+
+        $response = $this->json('GET', 'api/article/published');
+
+        $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles]);
+
+        $response = $this->json('GET', 'api/article/published?take=3');
+
+        $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles])->assertJsonFragment(['per_page'=> "3"]);
+    }
+
     public function testDeleteArticle()
     {
         $article = Article::factory()->create();

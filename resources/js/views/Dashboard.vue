@@ -35,7 +35,6 @@ export default {
     },
     computed: {
         articles: function () {
-            console.log(this.$store.state.article.articles[0]);
             return this.$store.state.article.articles;
         }
     },

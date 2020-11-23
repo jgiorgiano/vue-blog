@@ -28,7 +28,7 @@ class ArticleFactory extends Factory
             'title' => $this->faker->title,
             'content' =>  $this->faker->text,
             'tags' => 'test1, test2, test3, test4, test5',
-            'status' => 1,
+            'status' => 0,
             'position' => $this->faker->numberBetween(0,200),
             'featured' => 1,
             'images' => null,

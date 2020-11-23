@@ -17,6 +17,11 @@ class Article extends Model
         return $this->belongsTo('App\Models\User');
     }
 
+    public function scopePublished($query)
+    {
+        return $query->where('status', 1);
+    }
+
     protected static function booted()
     {
         static::updated(function ($article) {

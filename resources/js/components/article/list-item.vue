@@ -6,7 +6,7 @@
                 <div>
                     <dt class="sr-only">Title</dt>
                     <dd class="text-lg">
-                        Title: {{ item.title }}
+                       Title: {{ item.title }}
                     </dd>
                 </div>
                 <div class="">

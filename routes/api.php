@@ -37,6 +37,7 @@ Route::get('/email/send', [EmailVerificationController::class, 'send'])
 //    return back()->with('status', 'verification-link-sent');
 //})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('article/published', [ArticleController::class, 'published']);
 
 /**
  * Routes Authenticated without Email Confirmation

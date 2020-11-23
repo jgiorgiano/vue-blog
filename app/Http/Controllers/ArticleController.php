@@ -11,7 +11,21 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
 {
+    /**
+     * OPEN ROUTE
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function published(Request $request)
+    {
+        $take = $request->has('take') ? $request->input('take') : 10;
 
+        return Article::with('user:id,name')->published()->paginate($take);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function load()
     {
         //@todo Create policy for authorization
@@ -27,6 +41,7 @@ class ArticleController extends Controller
 
         return response()->json($article);
     }
+
 
     /**
      * @param Request $request
