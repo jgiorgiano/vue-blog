@@ -67,10 +67,10 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
-          script: whoami
-#            cd /var/www/staging
-#            git checkout -f
-#            git pull
+          script: |
+            cd /var/www/staging
+            git checkout -f
+            git pull
 #            composer install --optimize-autoloader --no-dev --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 #            php artisan key:generate
 #            php artisan migrate
