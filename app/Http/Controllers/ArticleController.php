@@ -32,7 +32,7 @@ class ArticleController extends Controller
         //@todo Create policy for authorization
         $auth_user = Auth::user();
 
-        if(!$auth_user->role == 1) {
+        if($auth_user->role == 1) {
             $article = Article::with('user:id,name')->get();
         } else {
             $article = Article::with('user:id,name')->where('user_id', $auth_user->id)->get();
@@ -72,12 +72,11 @@ class ArticleController extends Controller
         return response()->json($new_article, 201);
     }
 
-    public function show( $article_id)
+    public function show($article_id)
     {
         //@todo Create policy for authorization to se not published articles only for admins
 
-//        $article = Article::find($article_id)->with('user:id,name')->published()->first();
-        $article = Article::find($article_id)->with('user:id,name')->first();
+        $article = Article::with('user:id,name')->find($article_id);
 
         return response()->json($article);
     }
