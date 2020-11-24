@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ArticleStoreRequest;
 use App\Http\Requests\ArticleUpdateRequest;
+use App\Http\Resources\articleResource;
 use App\Models\Article;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -71,9 +72,12 @@ class ArticleController extends Controller
         return response()->json($new_article, 201);
     }
 
-    public function edit(Article $article)
+    public function show( $article_id)
     {
-        //@todo Create policy for authorization
+        //@todo Create policy for authorization to se not published articles only for admins
+
+//        $article = Article::find($article_id)->with('user:id,name')->published()->first();
+        $article = Article::find($article_id)->with('user:id,name')->first();
 
         return response()->json($article);
     }

@@ -7,6 +7,7 @@ import EmailVerification from "./views/EmailVerification";
 import MyAccount from "./views/MyAccount";
 import ArticleCreate from "./views/article/create";
 import ArticleEdit from "./views/article/edit";
+import ArticleShow from "./views/article/show";
 
 const routes = [
     //Open Routes
@@ -21,6 +22,7 @@ const routes = [
     { path: '/my-account', name:'my-account', component: MyAccount },
     { path: '/article', name:'article-create', component: ArticleCreate },
     { path: '/article/:id', name:'article-edit', component: ArticleEdit },
+    { path: '/article/:id/show', name:'article-show', component: ArticleShow },
 ]
 
 export default routes;

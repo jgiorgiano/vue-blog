@@ -1,9 +1,9 @@
 <template>
     <div>
         <div class="my-4">
-            <ul class="grid grid-cols-1 gap-4">
+            <ul>
                 <li v-for="article in this.articles" :key="article.id">
-                    <list-item :item="article"></list-item>
+                    <home-list-item :item="article"></home-list-item>
                 </li>
             </ul>
         </div>
@@ -15,9 +15,11 @@
 <script>
 import ListItem from "../components/article/list-item";
 import Loading from "../components/Loading";
+import HomeListItem from "../components/article/home-list-item";
 
 export default {
     components: {
+        HomeListItem,
         Loading,
         ListItem,
     },

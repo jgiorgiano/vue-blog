@@ -6,7 +6,7 @@
             <nav-logo />
 
             <div v-if="!authenticated" class="hidden md:flex">
-                (Home|Archive|Code snippets|Contact|Search)
+               <!-- (Home|Archive|Code snippets|Contact|Search)-->
                 <router-link :to="{ name: 'login'}">
                     <nav-link>Login</nav-link>
                 </router-link>

@@ -38,6 +38,7 @@ Route::get('/email/send', [EmailVerificationController::class, 'send'])
 //})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('article/published', [ArticleController::class, 'published']);
+Route::get('article/{article}', [ArticleController::class, 'show']);
 
 /**
  * Routes Authenticated without Email Confirmation
@@ -52,7 +53,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::post('user', [UserController::class, 'update']);
 
     Route::post('article', [ArticleController::class, 'store']);
-    Route::get('article/{article}', [ArticleController::class, 'edit']);
     Route::get('article', [ArticleController::class, 'load']);
     Route::put('article/{article}', [ArticleController::class, 'update']);
     Route::put('article/{article}/manager', [ArticleController::class, 'manager']);
