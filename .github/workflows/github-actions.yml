@@ -1,6 +1,8 @@
 name: github-actions
 
-on: [push]
+on:
+  push:
+    branchs: [master, develop]
 
 jobs:
   tests:
@@ -41,7 +43,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2-beta
         with:
-          node-version: '12'
+          node-version: '14'
           check-latest: true
 
       - name: Install NPM dependencies
@@ -53,21 +55,32 @@ jobs:
   staging-deploy:
     needs: [tests, build]
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
-#      - name: Deployment
-#        uses: appleboy/ssh-action@main
-#        with:
-#          host: ${{ secrets.SSH_HOST }}
-#          key: ${{ secrets.SSH_PRIVATE_KEY }}
-#          username: ${{ secrets.SSH_USERNAME }}
-#          script: |
-#            cd /var/www/html/
-#            git checkout -f
-#            git pull
+      - name: Deployment
+        uses: appleboy/ssh-action@main
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          username: ${{ secrets.SSH_USERNAME }}
+          script: |
+            cd /var/www/staging/
+            git checkout -f
+            git pull origin develop
+
+            composer install --optimize-autoloader --no-dev --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+
+            php artisan key:generate
+            php artisan migrate
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+
+#            npm run production
 
   production-deploy:
     needs: [tests, build]
