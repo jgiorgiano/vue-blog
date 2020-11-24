@@ -63,27 +63,27 @@ jobs:
       - name: Checkout branch
         uses: actions/checkout@v2
 
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
-          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
-          coverage: none
-
-      - name: Install Dependencies
-        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v2-beta
-        with:
-          node-version: '14'
-          check-latest: true
-
-      - name: Install NPM dependencies
-        run: npm install
-
-      - name: Compile assets for production
-        run: npm run production
+#      - name: Setup PHP
+#        uses: shivammathur/setup-php@v2
+#        with:
+#          php-version: '7.4'
+#          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick
+#          coverage: none
+#
+#      - name: Install Dependencies
+#        run: composer install -q --no-ansi --no-interaction --no-scripts --no-progress --prefer-dist
+#
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v2-beta
+#        with:
+#          node-version: '14'
+#          check-latest: true
+#
+#      - name: Install NPM dependencies
+#        run: npm install
+#
+#      - name: Compile assets for production
+#        run: npm run production
 
       - name: Sync Staging server
         env:
@@ -91,13 +91,14 @@ jobs:
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           local_dir: "."
-          remote_dir: "~/var/www/test/"
+          remote_dir: "/var/www/test/"
         run: |
+          ls -l
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
-          rsync -avzr --delete -e "ssh -p -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
-          ssh ${remote_user}@${remote_host} "chmod -R 775 /var/www/test; chgrp -R www-data /var/www/test/storage /var/www/test/bootstrap/cache;"
+          rsync -avzr --delete -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "chmod -R 775 /var/www/test; chgrp -R www-data /var/www/test/storage /var/www/test/bootstrap/cache"
 
 #  staging-deploy:
 #    needs: [tests, build]
