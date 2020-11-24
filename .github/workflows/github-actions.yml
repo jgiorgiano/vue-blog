@@ -68,17 +68,17 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           username: ${{ secrets.SSH_USERNAME }}
           script: |
-            cd /var/www/staging/
+            cd /var/www/staging
             git checkout -f
-            git pull origin develop
+            git pull
 
-            composer install --optimize-autoloader --no-dev --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
+#            composer install --optimize-autoloader --no-dev --prefer-dist --no-ansi --no-interaction --no-progress --no-scripts
 
-            php artisan key:generate
-            php artisan migrate
-            php artisan config:cache
-            php artisan route:cache
-            php artisan view:cache
+#            php artisan key:generate
+#            php artisan migrate
+#            php artisan config:cache
+#            php artisan route:cache
+#            php artisan view:cache
 
 #            npm run production
 
