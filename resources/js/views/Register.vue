@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col justify-center items-center test">
-        <div class="j-card lg:w-1/2 mt-48">
+        <div class="j-card lg:w-1/2 mt-4">
             <div class="j-card-header">
                 <h3 class="j-card-title">Sign Up</h3>
             </div>
@@ -26,7 +26,7 @@
                     @input="delayTouch($v.newUser.email)"
                 />
 
-                <div class="flex justify-between">
+                <div class="justify-between items-end sm:flex">
                     <InputField
                         label="Password"
                         field="password"

@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col justify-center items-center test">
-        <div class="j-card md:w-1/2 lg:w-1/3 mt-48">
+    <div class="flex flex-col justify-center items-center">
+        <div class="j-card md:w-1/2 lg:w-1/3 mt-24">
             <div class="j-card-header">
                 <h3 class="j-card-title">Login</h3>
             </div>

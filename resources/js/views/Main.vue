@@ -1,12 +1,12 @@
 <template>
-    <div class="min-h-screen px-8 bg-gray-200">
-        <div class="container mx-auto">
+    <div>
+        <div class="min-h-screen bg-gray-100 pb-24">
             <v-navbar></v-navbar>
             <transition name="fade" mode="out-in">
-                 <router-view></router-view>
+                 <router-view class="container mx-auto p-2"></router-view>
             </transition>
-<!--            <v-footer></v-footer>-->
         </div>
+        <v-footer class="h-24 -mt-24 bg-gray-900 text-white"></v-footer>
     </div>
 </template>
 

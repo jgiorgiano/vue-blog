@@ -25,12 +25,12 @@ class ArticleFactory extends Factory
     {
         return [
             'user_id' => User::factory(),
-            'title' => $this->faker->title,
-            'content' =>  $this->faker->text,
+            'title' => $this->faker->paragraph(1),
+            'content' =>  $this->faker->text(rand(200, 2500)),
             'tags' => 'test1, test2, test3, test4, test5',
-            'status' => 0,
+            'status' => rand(0,3),
             'position' => $this->faker->numberBetween(0,200),
-            'featured' => 1,
+            'featured' => rand(0,1),
             'images' => null,
         ];
     }

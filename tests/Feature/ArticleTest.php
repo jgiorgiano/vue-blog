@@ -49,7 +49,7 @@ class ArticleTest extends TestCase
     {
         $published_articles = 15;
 
-        Article::factory()->count(20)->create();
+        Article::factory()->count(20)->create(['status' => 0]);
         Article::factory()->count($published_articles)->create(['status' => 1]); //Published Articles
         Article::factory()->count(5)->create(['status' => 2]);
         Article::factory()->count(15)->create(['status' => 3]);
