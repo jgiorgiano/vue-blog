@@ -94,8 +94,7 @@ jobs:
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
-#          rsync  -qav --delete --exclude '/vendor/*' --exclude '/storage/framework/sessions/*' --exclude '/storage/logs/*' --exclude '/.env' "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
-           rsync  -avzr --delete -e --exclude '/storage/framework/sessions/*' --exclude '/storage/logs/*' --exclude '/.env' "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
+          rsync  -avzr --delete -e --exclude '/storage/framework/sessions/*' --exclude '/storage/logs/*' --exclude '/.env' "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
 #          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "sudo chmod -R 775 /var/www/test; sudo chgrp -R www-data /var/www/test/storage /var/www/test/bootstrap/cache"
 
 #  staging-deploy:
