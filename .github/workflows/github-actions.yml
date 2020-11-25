@@ -36,10 +36,31 @@ jobs:
           DB_DATABASE: database/database.sqlite
         run: vendor/bin/phpunit
 
-  build:
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v2
+#
+#      - name: Setup Node.js
+#        uses: actions/setup-node@v2-beta
+#        with:
+#          node-version: '14'
+#          check-latest: true
+#
+#      - name: Install NPM dependencies
+#        run: npm install
+#
+#      - name: Compile assets for production
+#        run: npm run production
+
+  staging-deploy:
+    needs: tests
     runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
+
     steps:
-      - name: Checkout
+      - name: Checkout branch
         uses: actions/checkout@v2
 
       - name: Setup Node.js
@@ -53,15 +74,6 @@ jobs:
 
       - name: Compile assets for production
         run: npm run production
-
-  staging-deploy:
-    needs: [tests, build]
-    runs-on: ubuntu-latest
-    if: github.ref != 'refs/heads/master'
-
-    steps:
-      - name: Checkout branch
-        uses: actions/checkout@v2
 
       - name: Sync Staging server
         env:
@@ -107,7 +119,7 @@ jobs:
 #            npm run production
 
   production-deploy:
-    needs: [tests, build]
+    needs: tests
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/master'
     steps:
