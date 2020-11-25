@@ -16,7 +16,7 @@
                 <router-link :to="{ name: 'about'}">
                     <nav-link>About</nav-link>
                 </router-link>
-                <small class="text-gray-400">v1</small>
+                <small class="text-gray-400">v1.1</small>
             </div>
 
             <div v-if="!authenticated" class="md:hidden">
