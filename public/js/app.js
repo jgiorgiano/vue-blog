@@ -71580,7 +71580,7 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("small", { staticClass: "text-gray-400" }, [_vm._v("v1.1")])
+                _c("small", { staticClass: "text-gray-400" }, [_vm._v("v1.2")])
               ],
               1
             )
