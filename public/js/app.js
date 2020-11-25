@@ -4351,6 +4351,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -71577,7 +71578,9 @@ var render = function() {
                   { attrs: { to: { name: "about" } } },
                   [_c("nav-link", [_vm._v("About")])],
                   1
-                )
+                ),
+                _vm._v(" "),
+                _c("small", { staticClass: "text-gray-400" }, [_vm._v("v1")])
               ],
               1
             )
@@ -93124,8 +93127,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     isAuth: function isAuth(_ref5) {
       var commit = _ref5.commit;
-      return window.axios.get('api/test').then(function () {})["catch"](function (error) {// commit('LOGOUT');
-        // localStorage.clear();
+      return window.axios.get('api/test').then(function () {})["catch"](function (error) {
+        commit('LOGOUT');
+        localStorage.clear();
       });
     }
   },

@@ -32,7 +32,7 @@ class ArticleController extends Controller
         //@todo Create policy for authorization
         $auth_user = Auth::user();
 
-        if($auth_user->role == 1) {
+        if($auth_user->role == 3) { //Administrator
             $article = Article::with('user:id,name')->get();
         } else {
             $article = Article::with('user:id,name')->where('user_id', $auth_user->id)->get();
