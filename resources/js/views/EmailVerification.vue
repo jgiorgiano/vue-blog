@@ -12,14 +12,16 @@
                     Please confirm your email to continue.
                 </p>
 
-                <p class="text-lg">Haven't received our email?</p>
+                <div v-if="isAuth">
+                    <p class="text-lg">Haven't received our email?</p>
 
-                <div class="pt-6 flex justify-center">
-                    <IndigoButton type="button"
-                                  :disabled="processing"
-                                  @clicked="resendEmail">
-                        click here to re-send Confirmation Email
-                    </IndigoButton>
+                    <div class="pt-6 flex justify-center">
+                        <IndigoButton type="button"
+                                      :disabled="processing"
+                                      @clicked="resendEmail">
+                            click here to re-send Confirmation Email
+                        </IndigoButton>
+                    </div>
                 </div>
             </div>
             <processing :processing="processing"></processing>
@@ -49,6 +51,11 @@ export default {
             error: '',
             success: '',
             processing: false,
+        }
+    },
+    computed: {
+        isAuth() {
+            return this.$store.state.user.authenticated;
         }
     },
     mounted() {

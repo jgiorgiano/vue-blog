@@ -59,7 +59,7 @@
                 </checkbox-field>
 
                 <checkbox-field
-                    field="terms_agreement"
+                    field="subscribe"
                     v-model="$v.newUser.subscribe.$model"
                     :v-errors="$v.newUser.subscribe"
                     :errors="errors"
@@ -68,7 +68,9 @@
                 </checkbox-field>
 
                 <div class="py-2 flex justify-center">
-                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">Create Account</indigo-button>
+                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">
+                        <process-status :status="processStatus">Create Account</process-status>
+                        </indigo-button>
                 </div>
             </form>
 
@@ -85,6 +87,7 @@ import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
 import CheckboxField from "../components/forms/CheckboxField";
+import processStatus from "../components/buttons/processStatus";
 import {required, minLength, email, alpha, sameAs} from 'vuelidate/lib/validators';
 
 const touchMap = new WeakMap()
@@ -94,10 +97,12 @@ export default {
         InputField,
         IndigoButton,
         IndigoTextLink,
-        CheckboxField
+        CheckboxField,
+        processStatus
     },
     data() {
         return {
+            processStatus: 0,
             newUser: {
                 email: '',
                 name: '',
@@ -126,15 +131,15 @@ export default {
             if (touchMap.has($v)) {
                 clearTimeout(touchMap.get($v))
             }
-            touchMap.set($v, setTimeout($v.$touch, 1000))
+            touchMap.set($v, setTimeout($v.$touch, 300))
         },
         register() {
+            this.processStatus = 1;
             this.$store.dispatch('registerNewUser', this.newUser)
-                .then((response) => {
-                    this.$router.push({name: 'email-verification'})
-                })
-                .catch((error) => {
-                    this.errors = error.response.data.errors;
+                .then(response => this.$router.push({name: 'email-verification'}))
+                .catch(error => {
+                    this.errors = error.response.data.errors
+                    this.processStatus = 0;
                 });
         }
     }

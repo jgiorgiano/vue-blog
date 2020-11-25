@@ -26,7 +26,7 @@
                 <div class="">
                     <dt class="sr-only">Created By</dt>
                     <dd class="text-sm text-gray-600">
-                        Created by: {{ item.user.name }} @ {{ item.created_at }}
+                        Created by: {{ item.user ? item.user.name : '' }} @ {{ item.created_at }}
                     </dd>
                 </div>
             </div>

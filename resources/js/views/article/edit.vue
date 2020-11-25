@@ -143,7 +143,7 @@ export default {
             this.$store.dispatch('article/update', this.article).then((response) => {
                 this.processStatus = 2;
 
-                setTimeout(() => this.processStatus = 0, 1000);
+                setTimeout(() => this.processStatus = 0, 300);
             });
             // }).catch( error => console.log(error));
         }

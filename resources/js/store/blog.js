@@ -24,7 +24,7 @@ export default  {
     actions: {
 
         loadHomeArticles({commit, state}, payload) {
-            if(state.pagination.current_page >= state.pagination.last_page) {
+            if(state.loading || state.pagination.current_page >= state.pagination.last_page) {
                 return false;
             }
 
@@ -36,7 +36,7 @@ export default  {
                     setTimeout(() => {
                         commit('LOAD_ARTICLES', response.data);
                         state.loading = false
-                   } , 400);
+                   } , 500);
 
                 })
                 .catch((error) => {

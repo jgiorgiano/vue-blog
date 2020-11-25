@@ -27,7 +27,9 @@
                 />
 
                 <div class="py-2 flex justify-center">
-                    <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">Login</indigo-button>
+                    <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">
+                        <process-status :status="processStatus">Login</process-status>
+                    </indigo-button>
                 </div>
 
             </form>
@@ -44,6 +46,7 @@
 import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
+import processStatus from "../components/buttons/processStatus";
 import {required, minLength, email} from 'vuelidate/lib/validators';
 
 const touchMap = new WeakMap();
@@ -52,10 +55,12 @@ export default {
     components: {
         InputField,
         IndigoButton,
-        IndigoTextLink
+        IndigoTextLink,
+        processStatus
     },
     data() {
         return {
+            processStatus: 0,
             user: {
                 email: '',
                 password: '',
@@ -75,24 +80,27 @@ export default {
             if (touchMap.has($v)) {
                 clearTimeout(touchMap.get($v))
             }
-            touchMap.set($v, setTimeout($v.$touch, 1000))
+            touchMap.set($v, setTimeout($v.$touch, 300))
         },
         login() {
-            this.$store.dispatch('postLogin', this.user)
+                this.processStatus = 1
+
+                this.$store.dispatch('postLogin', this.user)
                 .then((response) => {
-                    this.$router.push({name: 'dashboard'})
+                    this.$router.push({name: 'home'})
                 })
                 .catch((error) => {
                     this.errors = error.response.data.errors;
+                    this.processStatus = 0;
                 });
         },
     },
     beforeCreate() {
-       this.$store.dispatch('isAuth').then(() => {
-           if(this.$store.state.user.authenticated) {
-               this.$router.push({name: 'dashboard'})
-           }
-        });
+        if(this.$store.state.user.authenticated) {
+            this.$store.dispatch('isAuth').then(() => {
+                this.$router.push({name: 'dashboard'})
+            });
+        }
     }
 }
 </script>

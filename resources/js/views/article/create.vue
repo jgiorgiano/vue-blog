@@ -127,7 +127,7 @@ export default {
             this.$store.dispatch('article/create', this.article).then((response) => {
                 this.processStatus = 2;
 
-                setTimeout(() => this.$router.push({ name: 'article-edit', params: { id: response.id } }), 500);
+                setTimeout(() => this.$router.push({ name: 'article-edit', params: { id: response.id } }), 300);
 
             }).catch( error => console.log(error));
         }

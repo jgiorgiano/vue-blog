@@ -4,7 +4,7 @@
             <div class="mb-8 px-6">
                 <h3 class="text-5xl text-gray-800 py-2">{{ article.title }}</h3>
                 <div class="text-md text-gray-600 border-t border-b p-2">
-                    <span>By: {{ article.user.name }} IN {{ article.tags }} @ {{ article.created_at }}</span>
+                    <span>By: {{ article.user ? article.user.name : '' }} IN {{ article.tags }} @ {{ article.created_at }}</span>
                 </div>
 
             </div>

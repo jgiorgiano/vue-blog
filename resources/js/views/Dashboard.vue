@@ -38,7 +38,7 @@ export default {
             return this.$store.state.article.articles;
         }
     },
-    mounted() {
+    beforeCreate() {
         this.$store.dispatch('article/loadAllArticles');
     }
 }

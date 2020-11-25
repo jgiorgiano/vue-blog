@@ -44,7 +44,9 @@
                 </div>
 
                 <div class="py-2 flex justify-end">
-                    <indigo-button :disabled="$v.user.$anyError">Save</indigo-button>
+                    <indigo-button :disabled="$v.user.$anyError">
+                        <process-status :status="processStatus">Save</process-status>
+                        </indigo-button>
                 </div>
             </form>
 
@@ -58,6 +60,7 @@
 import InputField from "../components/forms/InputField";
 import IndigoButton from "../components/buttons/IndigoButton";
 import IndigoTextLink from "../components/buttons/IndigoTextLink";
+import processStatus from "../components/buttons/processStatus";
 import {required, minLength, helpers }from 'vuelidate/lib/validators';
 
 const touchMap = new WeakMap()
@@ -66,10 +69,12 @@ export default {
     components: {
         InputField,
         IndigoButton,
-        IndigoTextLink
+        IndigoTextLink,
+        processStatus
     },
     data() {
         return {
+            processStatus: 0,
             user: {
                 name: '',
                 profile_new_image: null,
@@ -89,7 +94,7 @@ export default {
             if (touchMap.has($v)) {
                 clearTimeout(touchMap.get($v))
             }
-            touchMap.set($v, setTimeout($v.$touch, 1000))
+            touchMap.set($v, setTimeout($v.$touch, 300))
         },
         handleFileUpload(){
             var file_type = this.$refs.file.files[0].type;
@@ -102,10 +107,13 @@ export default {
             }
         },
         submitEditAccount() {
+            this.processStatus = 1;
             this.$store.dispatch('updateUserAccount', {
                 name: this.user.name,
                 profile_image: this.user.profile_new_image ?? null,
                 subscribe: this.user.subscribe
+            }).then((response) => {
+                setTimeout(() => this.processStatus = 0, 300);
             })
         }
     },

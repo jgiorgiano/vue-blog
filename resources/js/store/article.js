@@ -63,7 +63,7 @@ export default  {
         },
         update({commit}, payload) {
             return new Promise((resolve, reject) => {
-                console.log(payload);
+
                 window.axios.put(`api/article/${payload.id}`, payload)
                     .then((response) => {
 
