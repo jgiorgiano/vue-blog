@@ -93305,12 +93305,8 @@ __webpack_require__.r(__webpack_exports__);
     isAuth: function isAuth(_ref5) {
       var commit = _ref5.commit;
       return window.axios.get('api/test').then(function () {})["catch"](function (error) {
-        window.axios.post('api/logout').then(function (response) {
-          commit('LOGOUT');
-          localStorage.clear();
-        })["catch"](function (error) {
-          console.log(error);
-        });
+        commit('LOGOUT');
+        localStorage.clear();
       });
     }
   },

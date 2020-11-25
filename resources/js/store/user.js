@@ -99,14 +99,8 @@ export default {
         isAuth({commit}) {
             return window.axios.get('api/test').then(() => {
             }).catch((error) => {
-                window.axios.post('api/logout')
-                    .then((response) => {
-                        commit('LOGOUT');
-                        localStorage.clear();
-
-                    }).catch((error) => {
-                    console.log(error);
-                })
+                commit('LOGOUT');
+                localStorage.clear();
             });
         }
 
