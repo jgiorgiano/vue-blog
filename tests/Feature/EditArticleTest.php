@@ -46,7 +46,7 @@ class EditArticleTest extends TestCase
     {
         $article = Article::factory()->create();
 
-        $user = User::factory()->create(['role' => 1]);
+        $user = User::factory()->create(['role' => 3]);
 
         $edit = [
             'status' => 1,

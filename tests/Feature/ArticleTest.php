@@ -15,7 +15,7 @@ class ArticleTest extends TestCase
 
     public function testLoadArticles()
     {
-        $admin_user = User::factory()->create(['role' => 1]);
+        $admin_user = User::factory()->create(['role' => 3]);
         $not_admin_user = User::factory()->create(['role' => 2]);
 
         Article::factory()->count(30)->create();
