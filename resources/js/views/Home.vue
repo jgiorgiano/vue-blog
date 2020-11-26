@@ -31,15 +31,14 @@ export default {
             return this.$store.state.blog.articles;
         }
     },
-    beforeCreate() {
-        this.$store.dispatch('blog/loadHomeArticles');
-    },
     mounted() {
+        this.loadArticles();
+
         window.onscroll = () => {
             let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
 
             if (bottomOfWindow) {
-                this.$store.dispatch('blog/loadHomeArticles');
+                this.loadArticles();
             }
         }
     },
