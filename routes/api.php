@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -24,32 +25,24 @@ Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 've
 Route::get('/email/send', [EmailVerificationController::class, 'send'])
     ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-
-//Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
-//    $request->fulfill();
-//    return redirect('/');
-//})->middleware(['auth', 'signed'])->name('verification.verify');
-//
-//Route::post('/email/verification-notification', function (Request $request) {
-//    $request->user()->sendEmailVerificationNotification();
-//
-//    return back()->with('status', 'verification-link-sent');
-//})->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
+Route::get('article/published', [ArticleController::class, 'published']);
+Route::get('article/{article}', [ArticleController::class, 'show']);
 
 /**
  * Routes Authenticated without Email Confirmation
  */
 Route::middleware(['auth:sanctum'])->group(function () {
 
+    Route::get('test', function () {
+        return response('Testing auth route');
+    });
+
     Route::post('logout', function () {
         Auth::guard('web')->logout();
     });
 
     Route::get('user', [UserController::class, 'user']);
-
     Route::post('user', [UserController::class, 'update']);
-
 });
 
 /**
@@ -57,9 +50,11 @@ Route::middleware(['auth:sanctum'])->group(function () {
  */
 Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::get('test', function () {
-        return response('Testing auth route');
-    });
+    Route::post('article', [ArticleController::class, 'store']);
+    Route::get('article', [ArticleController::class, 'load']);
+    Route::put('article/{article}', [ArticleController::class, 'update']);
+    Route::put('article/{article}/manager', [ArticleController::class, 'manager']);
+    Route::delete('article/{article}', [ArticleController::class, 'destroy']);
 
 });
 

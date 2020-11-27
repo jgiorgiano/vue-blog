@@ -1,8 +1,12 @@
 export const state = {
-    global: 'test blog OK',
+    menuOpen: false
 };
 
-export const mutations = {};
+export const mutations = {
+    MENU_CHANGE(state, event) {
+       state.menuOpen = event;
+    },
+};
 
 export const actions = {};
 

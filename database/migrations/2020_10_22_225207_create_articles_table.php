@@ -16,18 +16,17 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('category_id');
+            $table->text('tags');
             $table->string('title');
             $table->text('content');
-            $table->tinyInteger('active')->default(0);
+            $table->tinyInteger('status')->default(0);
             $table->tinyInteger('featured')->default(0);
-            $table->integer('status')->default(0);
             $table->integer('position')->nullable();
+            $table->json('images')->nullable();
             $table->timestamp('created_at')->useCurrent();
-            $table->timestamp('updated_at')->useCurrent();
+            $table->timestamp('updated_at')->nullable()->useCurrentOnUpdate();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('category_id')->references('id')->on('categories');
         });
     }
 

@@ -51,22 +51,24 @@ export default {
 
                 }).catch((error) => {
                     console.log(error);
-            })
+                })
         },
         registerNewUser({commit}, payload) {
-            return window.axios.post('api/register', payload)
-                .then((response) => {
+            return new Promise((resolve, reject) => {
+                window.axios.post('api/register', payload)
+                    .then((response) => {
 
-                    commit('REGISTER_SUCCESS', response.data);
+                        commit('REGISTER_SUCCESS', response.data);
 
-                    localStorage.setItem('__new_user', JSON.stringify({
-                        name: response.data.name,
-                        email: response.data.email
-                    }));
+                        localStorage.setItem('__new_user', JSON.stringify({
+                            name: response.data.name,
+                            email: response.data.email
+                        }));
 
-                }).catch((error) => {
-                    console.log(error);
-                })
+                        resolve(response);
+
+                    }).catch((error) => reject(error))
+            })
         },
         updateUserAccount({commit}, payload) {
 
@@ -95,13 +97,13 @@ export default {
                 })
         },
         isAuth({commit}) {
-            return window.axios.get('api/test').then(() => {}).catch((error) => {
+            return window.axios.get('api/test').then(() => {
+            }).catch((error) => {
                 commit('LOGOUT');
                 localStorage.clear();
             });
         }
 
     },
-    getters: {
-    }
+    getters: {}
 }

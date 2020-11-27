@@ -57,15 +57,18 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getProfileImagePathAttribute()
     {
-        return 'storage/profile_images/' . $this->profile_image;
+        return $this->profile_image ? 'storage/profile_images/' . $this->profile_image : null;
     }
-
 
     public function logs()
     {
         return $this->hasMany('App\Models\Log');
     }
 
+    public function articles()
+    {
+        return $this->hasMany('App\Models\Article');
+    }
 
     protected static function booted()
     {
