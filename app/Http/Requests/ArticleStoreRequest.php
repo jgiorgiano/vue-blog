@@ -24,7 +24,9 @@ class ArticleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            "tags" => 'required|min: 3|max: 100',
+            "title" => 'required|min: 5|max:150',
+            "content" => 'required|min: 5',
         ];
     }
 }

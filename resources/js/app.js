@@ -5,10 +5,19 @@ import Vuex from 'vuex'
 import Vuelidate from 'vuelidate'
 import VueCompositionAPI from '@vue/composition-api'
 
+
+/**
+ * V-Icon
+ * https://github.com/Justineo/vue-awesome
+ */
 // only import the icons you use to reduce bundle size
-// import 'vue-awesome/icons/flag'
+import 'vue-awesome/icons/spinner'
+import 'vue-awesome/icons/caret-down'
+import 'vue-awesome/icons/envelope'
+import 'vue-awesome/icons/check-circle'
+
 // or import all icons if you don't care about bundle size
-import 'vue-awesome/icons'
+// import 'vue-awesome/icons'
 
 import Icon from 'vue-awesome/components/Icon'
 
@@ -58,7 +67,10 @@ Vue.component('v-icon', Icon);
 import routes from './routes';
 
 export const router = new VueRouter({
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        return { x: 0, y: 0 }
+    }
 })
 
 

@@ -100,7 +100,7 @@ class ArticleController extends Controller
         return response()->json($article);
     }
 
-    public function manager(Article $article, ArticleUpdateRequest $request)
+    public function manager(Article $article, Request $request)
     {
         //@todo Create policy for authorization
 

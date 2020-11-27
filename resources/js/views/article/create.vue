@@ -98,7 +98,7 @@ export default {
     validations: {
         article: {
             title: {required, minLength: minLength(5), maxLength: maxLength(150)},
-            content: {required, minLength: minLength(2)},
+            content: {required, minLength: minLength(5)},
             tags: { required, minLength: minLength(3) },
             featured: { }
         }
@@ -129,7 +129,10 @@ export default {
 
                 setTimeout(() => this.$router.push({ name: 'article-edit', params: { id: response.id } }), 300);
 
-            }).catch( error => console.log(error));
+            }).catch( error => {
+                this.errors = error.response.data.errors;
+                this.processStatus = 0;
+            });
         }
     },
     computed: {},
