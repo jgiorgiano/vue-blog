@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col justify-center items-center">
+    <div class="flex flex-col justify-center items-center container mx-auto">
         <div class="j-card lg:w-1/2 mt-4">
             <div class="j-card-header">
                 <h3 class="j-card-title">Account Details</h3>

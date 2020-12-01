@@ -26,6 +26,7 @@
         "vue-awesome": "^4.1.0",
         "vue-router": "^3.4.7",
         "vuelidate": "^0.7.6",
+        "vueperslides": "^2.12.1",
         "vuex": "^3.5.1"
     }
 }

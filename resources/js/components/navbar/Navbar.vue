@@ -1,7 +1,7 @@
 <template>
-
-    <div class="bg-gray-400">
-        <nav class="container mx-auto relative p-5 flex items-center justify-between">
+<!--    <div class="gradient fixed w-full z-50">-->
+    <div class="gradient z-50">
+        <nav class="container mx-auto relative p-5 flex items-center justify-between ">
 
             <nav-logo />
 
@@ -110,7 +110,16 @@ export default {
                 .then(() => this.$router.push('/'))
                 .catch(err => console.log(err))
         }
-    }
+    },
+    mounted() {
+        console.log('test', window.pageYOffset);
+
+        window.onscroll = () => {
+            console.log(window.pageYOffset);
+            // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+
+        }
+    },
 }
 </script>
 

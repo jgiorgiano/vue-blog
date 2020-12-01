@@ -1,6 +1,9 @@
 <template>
     <div>
-        <div class="my-4">
+
+        <Carrousel></Carrousel>
+
+        <div class="my-4 container mx-auto">
             <ul>
                 <li v-for="article in this.articles" :key="article.id">
                     <home-list-item :item="article"></home-list-item>
@@ -16,12 +19,14 @@
 import ListItem from "../components/article/list-item";
 import Loading from "../components/Loading";
 import HomeListItem from "../components/article/home-list-item";
+import Carrousel from "../components/carrousel";
 
 export default {
     components: {
         HomeListItem,
         Loading,
         ListItem,
+        Carrousel
     },
     data() {
         return {}
@@ -52,5 +57,11 @@ export default {
 </script>
 
 <style>
-
+.gradient {
+    /*background: linear-gradient(90deg, #5a67d8 0%, #E9D8FD 100%);*/
+    /*background: linear-gradient(90deg, #5a67d8 0%, #FED7E2 100%);*/
+    background: linear-gradient(90deg, #5a67d8 0%, #fbb6ce 100%);
+    /*background: linear-gradient(90deg, #5a67d8 0%, #E2E8F0 100%);*/
+    /*background: linear-gradient(90deg, #5a67d8 0%, #EBF8FF 100%);*/
+}
 </style>
