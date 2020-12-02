@@ -22,6 +22,7 @@
     },
     "dependencies": {
         "@vue/composition-api": "^1.0.0-beta.18",
+        "gsap": "^3.5.1",
         "tailwindcss": "^1.9.6",
         "vue-awesome": "^4.1.0",
         "vue-router": "^3.4.7",

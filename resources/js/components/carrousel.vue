@@ -1,22 +1,22 @@
 <template>
-    <div class="gradient">
+    <div class="gradient pt-8 -mt-10">
         <vueper-slides fixed-height="300px" class="no-shadow">
             <vueper-slide
                 v-for="i in 3" :key="i" :title="i.toString()">
                 <template v-slot:content>
-                    <div class="px-16 pb-8 flex h-full w-full xl:w-5/6 mx-auto justify-around items-center">
+                    <div class="px-2 sm:px-16 pb-16 sm:pb-8 block flex flex-col sm:flex-row h-full w-full xl:w-5/6 mx-auto justify-around items-center">
                         <div class="sm:px-8">
-                            <p class="text-4xl text-white leading-tight text-center md:text-left">
+                            <p class="text-xl sm:text-3xl text-white leading-tight text-center md:text-left">
                                 Nesciunt dolorum esse ratione non distinctio.
                             </p>
-                            <p class="hidden md:block text-lg text-white py-4">
+                            <p class="hidden md:block text-white py-4">
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi assumenda at autem
                                 cupiditate debitis deserunt dignissimos dolor deserunt dignissimos dolor
                             <p class="hidden md:block text-sm text-gray-900">
                                 By: Jaeden Zemlak @ 2020-11-25 15:25:34<br>
                             </p>
                         </div>
-                        <img class="hidden sm:block w-32 h-32 lg:w-48 lg:h-48 mx-8 self-center" src="img/img-placeholder.png"
+                        <img class="w-40 h-40 lg:w-48 lg:h-48 mx-8 self-center" src="img/img-placeholder.png"
                              alt="user image">
                     </div>
                 </template>

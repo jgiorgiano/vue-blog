@@ -1,26 +1,19 @@
 <template>
-<!--    <div class="gradient fixed w-full z-50">-->
-    <div class="gradient z-50">
-        <nav class="container mx-auto relative p-5 flex items-center justify-between ">
-
+    <div class="gradient z-50 fixed w-full">
+        <nav id="top-nav" class="container mx-auto relative p-5 flex items-center justify-between ">
             <nav-logo />
-
             <div v-if="!authenticated" class="hidden md:flex">
-               <!-- (Home|Archive|Code snippets|Contact|Search)-->
                 <router-link :to="{ name: 'login'}">
                     <nav-link>Login</nav-link>
                 </router-link>
                 <router-link :to="{ name: 'register'}">
                     <nav-link class="border border-indigo-600 hover:border-indigo-900">Subscribe</nav-link>
                 </router-link>
-<!--                <router-link :to="{ name: 'about'}">-->
-<!--                    <nav-link>About</nav-link>-->
-<!--                </router-link>-->
             </div>
 
             <div v-if="!authenticated" class="md:hidden">
                 <button type="button" @click="menuOpen=!menuOpen"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:text-indigo-500 transition duration-150 ease-in-out"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:bg-opacity-25 focus:text-indigo-500 transition duration-150 ease-in-out"
                         id="main-menu" aria-label="Main menu" aria-haspopup="true">
 
                     <svg v-if="!menuOpen" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -53,7 +46,6 @@
 
                     <div v-if="!authenticated" class="flex flex-col content-end">
                         <router-link :to="{ name: 'register'}" class="text-center"><nav-link class="border border-indigo-600 hover:border-indigo-900">Subscribe</nav-link></router-link>
-<!--                        <router-link :to="{ name: 'about'}"><nav-link>About</nav-link></router-link>-->
                         <router-link :to="{ name: 'login'}" class="text-center"><nav-link class="border border-indigo-600 hover:border-indigo-900">Login</nav-link></router-link>
                     </div>
                     <div v-else class="flex flex-col content-end">
@@ -63,9 +55,6 @@
                         <router-link :to="{ name: 'dashboard'}">
                             <nav-link>Dashboard</nav-link>
                         </router-link>
-<!--                        <router-link :to="{ name: 'about'}">-->
-<!--                            <nav-link>About</nav-link>-->
-<!--                        </router-link>-->
                         <button @click="logout" class="focus:outline-none">
                             <nav-link class="border border-indigo-600 hover:border-indigo-900">Sign out</nav-link>
                         </button>
@@ -79,6 +68,8 @@
 <script>
 import navLink from './NavLink';
 import navLogo from './NavLogo';
+
+import { gsap } from 'gsap';
 
 export default {
     components: {
@@ -112,12 +103,12 @@ export default {
         }
     },
     mounted() {
-        console.log('test', window.pageYOffset);
-
         window.onscroll = () => {
-            console.log(window.pageYOffset);
-            // let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-
+            if(window.pageYOffset > 30) {
+                gsap.to("#top-nav", {scale: 0.90, paddingTop:"5px", paddingBottom:"5px", duration: 0.5});
+            } else {
+                gsap.to("#top-nav", {scale: 1, paddingTop:"20px", paddingBottom:"20px", duration: 0.5});
+            }
         }
     },
 }

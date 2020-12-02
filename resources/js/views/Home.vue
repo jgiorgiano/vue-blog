@@ -1,8 +1,6 @@
 <template>
     <div>
-
         <Carrousel></Carrousel>
-
         <div class="my-4 container mx-auto">
             <ul>
                 <li v-for="article in this.articles" :key="article.id">
@@ -39,13 +37,13 @@ export default {
     mounted() {
         this.loadArticles();
 
-        window.onscroll = () => {
-            let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-
-            if (bottomOfWindow) {
-                this.loadArticles();
-            }
-        }
+        // window.onscroll = () => {
+        //     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
+        //
+        //     if (bottomOfWindow) {
+        //         this.loadArticles();
+        //     }
+        // }
     },
     methods: {
         loadArticles: function () {
