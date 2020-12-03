@@ -9,7 +9,11 @@
             </ul>
         </div>
 
-        <loading :loading="this.$store.state.blog.loading"></loading>
+        <loading :loading="blogLoading"></loading>
+
+        <div v-show="!blogLoading" class="flex justify-center mt-4">
+            <OutlineIndigoButton type="button" @clicked="loadMore()" :disabled="!hasMoreToLoad" class="px-8 mx-auto">Load More</OutlineIndigoButton>
+        </div>
     </div>
 </template>
 
@@ -18,20 +22,29 @@ import ListItem from "../components/article/list-item";
 import Loading from "../components/Loading";
 import HomeListItem from "../components/article/home-list-item";
 import Carrousel from "../components/carrousel";
+import OutlineIndigoButton from "../components/buttons/OutlineIndigoButton";
 
 export default {
     components: {
         HomeListItem,
         Loading,
         ListItem,
-        Carrousel
+        Carrousel,
+        OutlineIndigoButton
     },
     data() {
         return {}
     },
     computed: {
-        articles: function () {
+        articles() {
             return this.$store.state.blog.articles;
+        },
+        blogLoading() {
+            console.log(this.$store.state.blog.pagination);
+            return this.$store.state.blog.loading;
+        },
+        hasMoreToLoad() {
+            return this.$store.state.blog.pagination.current_page < this.$store.state.blog.pagination.last_page;
         }
     },
     mounted() {
@@ -46,8 +59,11 @@ export default {
         // }
     },
     methods: {
-        loadArticles: function () {
+        loadArticles() {
             this.$store.dispatch('blog/loadHomeArticles');
+        },
+        loadMore() {
+            this.loadArticles();
         }
     }
 }
@@ -58,8 +74,16 @@ export default {
 .gradient {
     /*background: linear-gradient(90deg, #5a67d8 0%, #E9D8FD 100%);*/
     /*background: linear-gradient(90deg, #5a67d8 0%, #FED7E2 100%);*/
-    background: linear-gradient(90deg, #5a67d8 0%, #fbb6ce 100%);
+    background: linear-gradient(90deg, #5a67d8 15%, #fbb6ce 110%);
     /*background: linear-gradient(90deg, #5a67d8 0%, #E2E8F0 100%);*/
     /*background: linear-gradient(90deg, #5a67d8 0%, #EBF8FF 100%);*/
 }
+
+@media (max-width: 768px) {
+    .gradient {
+        background: linear-gradient(90deg, #5a67d8 50%, #f691b4 130%);
+    }
+}
+
+
 </style>

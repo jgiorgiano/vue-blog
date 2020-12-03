@@ -1,29 +1,34 @@
 <template>
     <div class="gradient pt-8 -mt-10">
-        <vueper-slides fixed-height="300px" class="no-shadow">
+        <vueper-slides fixed-height="280px" class="no-shadow">
             <vueper-slide
-                v-for="i in 3" :key="i" :title="i.toString()">
+                v-for="article in featuredArticles" :key="article.id" :title="article.title">
                 <template v-slot:content>
-                    <div class="px-2 sm:px-16 pb-16 sm:pb-8 block flex flex-col sm:flex-row h-full w-full xl:w-5/6 mx-auto justify-around items-center">
-                        <div class="sm:px-8">
-                            <p class="text-xl sm:text-3xl text-white leading-tight text-center md:text-left">
-                                Nesciunt dolorum esse ratione non distinctio.
-                            </p>
-                            <p class="hidden md:block text-white py-4">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi assumenda at autem
-                                cupiditate debitis deserunt dignissimos dolor deserunt dignissimos dolor
-                            <p class="hidden md:block text-sm text-gray-900">
-                                By: Jaeden Zemlak @ 2020-11-25 15:25:34<br>
-                            </p>
-                        </div>
-                        <img class="w-40 h-40 lg:w-48 lg:h-48 mx-8 self-center" src="img/img-placeholder.png"
-                             alt="user image">
+                    <div
+                        class="px-2 pt-4 sm:px-16 pb-16 sm:pb-8 h-full w-full xl:w-5/6 mx-auto">
+                        <router-link :to="{ name: 'article-show', params: { id: article.id }}"
+                                     class="flex flex-col sm:flex-row justify-around items-center md:items-start lg:items-center">
+                            <div>
+                                <p class="text-xl sm:text-2xl md:text-3xl text-white leading-tight text-center md:text-left">
+                                    {{ article.title }}
+                                </p>
+                                <p class="hidden md:block text-white py-4">
+                                    {{ article.content.slice(0, 200) }}{{ parseInt(article.content.length) > 200 ? '...'
+                                    : '' }}
+                                <p class="hidden md:block text-sm text-gray-900">
+                                    By: {{ article.user.name }} @ {{ article.created_at }}<br>
+                                </p>
+                            </div>
+                            <img class="w-40 h-40 lg:w-48 lg:h-48 mx-4 self-center"
+                                 src="img/undraw_Modern_life_re_8pdp.svg"
+                                 alt="user image">
+                        </router-link>
                     </div>
                 </template>
             </vueper-slide>
         </vueper-slides>
 
-        <div class="relative -mt-16 xl:-mt-32">
+        <div class="relative -mt-8 md:-mt-16 xl:-mt-32">
             <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -67,5 +72,10 @@ export default {
             ]
         }
     },
+    computed: {
+        featuredArticles() {
+            return this.$store.getters["blog/getFeaturedArticles"];
+        }
+    }
 }
 </script>

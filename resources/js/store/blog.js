@@ -30,7 +30,7 @@ export default  {
 
             state.loading = true;
 
-            return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}`)
+            return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
                 .then((response) => {
 
                     setTimeout(() => {
@@ -45,5 +45,9 @@ export default  {
                 })
         },
     },
-    getters: {}
+    getters: {
+        getFeaturedArticles: (state) => {
+            return state.articles.filter(article => article.featured === 1);
+        }
+    }
 }

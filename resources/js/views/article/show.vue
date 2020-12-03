@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col justify-center items-center">
-        <div class="j-card mt-4">
+    <div class="container mx-auto flex flex-col justify-center items-center">
+        <div class="mt-4">
             <div class="px-6">
                 <h3 class="text-3xl md:text-4xl text-gray-800 py-2">{{ article.title }}</h3>
                 <div class="text-md text-gray-600 border-t border-b p-2">
