@@ -3828,6 +3828,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -4168,6 +4174,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vueperslides__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vueperslides__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vueperslides_dist_vueperslides_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vueperslides/dist/vueperslides.css */ "./node_modules/vueperslides/dist/vueperslides.css");
 /* harmony import */ var vueperslides_dist_vueperslides_css__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vueperslides_dist_vueperslides_css__WEBPACK_IMPORTED_MODULE_1__);
+//
 //
 //
 //
@@ -4875,6 +4882,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_article_home_list_item__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../components/article/home-list-item */ "./resources/js/components/article/home-list-item.vue");
 /* harmony import */ var _components_carrousel__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/carrousel */ "./resources/js/components/carrousel.vue");
 /* harmony import */ var _components_buttons_OutlineIndigoButton__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/buttons/OutlineIndigoButton */ "./resources/js/components/buttons/OutlineIndigoButton.vue");
+//
+//
+//
+//
 //
 //
 //
@@ -5820,10 +5831,6 @@ var touchMap = new WeakMap();
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
 //
 //
 //
@@ -30718,45 +30725,71 @@ var render = function() {
     "router-link",
     {
       staticClass:
-        "flex h-full bg-gray-100 border hover:bg-indigo-100 hover:shadow-md group block rounded-lg p-4 my-4",
+        "flex h-full bg-white rounded-2xl p-4 my-4 mx-4 hover:shadow-md",
       attrs: { to: { name: "article-show", params: { id: _vm.item.id } } }
     },
     [
-      _c("dl", { staticClass: "flex items-center" }, [
-        _c("div", [
+      _c("dl", { staticClass: "block md:flex" }, [
+        _c("div", { staticClass: "flex justify-center md:items-center" }, [
           _c("img", {
-            staticClass: "w-32 h-32 -m-3 mr-2",
-            attrs: { src: "img/img-placeholder.png", alt: "user image" }
+            staticClass: "w-56 h-56 md:mx-4 rounded",
+            attrs: {
+              src: "img/undraw_Modern_life_re_8pdp.svg",
+              alt: "user image"
+            }
           })
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "flex-1" }, [
-          _c("div", [
-            _c("dt", { staticClass: "sr-only" }, [_vm._v("Title")]),
+        _c(
+          "div",
+          { staticClass: "flex-1 flex flex-col justify-between px-4" },
+          [
+            _c("div", [
+              _c("dt", { staticClass: "sr-only" }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c(
+                "dd",
+                {
+                  staticClass: "text-3xl text-gray-800 md:text-4xl pt-4 md:pt-0"
+                },
+                [
+                  _vm._v(
+                    "\n                   " +
+                      _vm._s(_vm.item.title) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("dt", { staticClass: "sr-only" }, [_vm._v("Title")]),
+              _vm._v(" "),
+              _c("dd", { staticClass: "text-md py-1 text-gray-700" }, [
+                _vm._v(
+                  "\n                    " +
+                    _vm._s(_vm.item.content.slice(0, 200)) +
+                    _vm._s(
+                      parseInt(_vm.item.content.length) > 200 ? "..." : ""
+                    ) +
+                    "\n                "
+                )
+              ])
+            ]),
             _vm._v(" "),
-            _c("dd", { staticClass: "text-lg" }, [
-              _vm._v(
-                "\n                   " +
-                  _vm._s(_vm.item.title) +
-                  "\n                "
-              )
+            _c("div", { staticClass: "justify-self-end" }, [
+              _c("dt", { staticClass: "sr-only" }, [_vm._v("Created By")]),
+              _vm._v(" "),
+              _c("dd", { staticClass: "text-sm text-gray-600" }, [
+                _vm._v(
+                  "\n                    By: " +
+                    _vm._s(_vm.item.user.name) +
+                    " @ " +
+                    _vm._s(_vm.item.created_at) +
+                    "\n                "
+                )
+              ])
             ])
-          ]),
-          _vm._v(" "),
-          _c("div", {}, [
-            _c("dt", { staticClass: "sr-only" }, [_vm._v("Created By")]),
-            _vm._v(" "),
-            _c("dd", { staticClass: "text-sm text-gray-600" }, [
-              _vm._v(
-                "\n                    By: " +
-                  _vm._s(_vm.item.user.name) +
-                  " @ " +
-                  _vm._s(_vm.item.created_at) +
-                  "\n                "
-              )
-            ])
-          ])
-        ])
+          ]
+        )
       ])
     ]
   )
@@ -32298,7 +32331,7 @@ var render = function() {
     [
       _c("Carrousel"),
       _vm._v(" "),
-      _c("div", { staticClass: "my-4 container mx-auto" }, [
+      _c("div", { staticClass: "my-8 container mx-auto" }, [
         _c(
           "ul",
           _vm._l(this.articles, function(article) {
@@ -32326,7 +32359,7 @@ var render = function() {
               expression: "!blogLoading"
             }
           ],
-          staticClass: "flex justify-center mt-4"
+          staticClass: "flex justify-center"
         },
         [
           _c(
@@ -32340,7 +32373,7 @@ var render = function() {
                 }
               }
             },
-            [_vm._v("Load More")]
+            [_vm._v("\n            Load More\n        ")]
           )
         ],
         1
@@ -33318,44 +33351,39 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "container mx-auto flex flex-col justify-center items-center"
+      staticClass:
+        "container mt-4  mx-auto flex flex-col justify-center items-center"
     },
     [
-      _c("div", { staticClass: "mt-4" }, [
-        _c("div", { staticClass: "px-6" }, [
-          _c("h3", { staticClass: "text-3xl md:text-4xl text-gray-800 py-2" }, [
-            _vm._v(_vm._s(_vm.article.title))
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "text-md text-gray-600 border-t border-b p-2" },
-            [
-              _c("span", [
-                _vm._v(
-                  "By: " +
-                    _vm._s(_vm.article.user ? _vm.article.user.name : "") +
-                    " IN " +
-                    _vm._s(_vm.article.tags) +
-                    " @ " +
-                    _vm._s(_vm.article.created_at)
-                )
-              ])
-            ]
-          )
+      _c("div", { staticClass: "w-full px-6" }, [
+        _c("h3", { staticClass: "text-3xl md:text-4xl text-gray-800 py-2" }, [
+          _vm._v(_vm._s(_vm.article.title))
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "px-6 text-gray-800" }, [
-          _c("p", { staticClass: "first-char" }, [
-            _vm._v(
-              "\n                    " +
-                _vm._s(_vm.article.content) +
-                "\n                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "py-2 flex justify-end" })
-        ])
+        _c(
+          "div",
+          { staticClass: "text-md text-gray-600 border-t border-b p-2" },
+          [
+            _c("span", [
+              _vm._v(
+                "By: " +
+                  _vm._s(_vm.article.user ? _vm.article.user.name : "") +
+                  " IN " +
+                  _vm._s(_vm.article.tags) +
+                  " @ " +
+                  _vm._s(_vm.article.created_at)
+              )
+            ])
+          ]
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "w-full px-6 text-gray-800" }, [
+        _c("p", { staticClass: "first-char" }, [
+          _vm._v("\n            " + _vm._s(_vm.article.content) + "\n        ")
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "py-2 flex justify-end" })
       ])
     ]
   )

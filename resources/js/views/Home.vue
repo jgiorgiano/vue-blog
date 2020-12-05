@@ -1,7 +1,7 @@
 <template>
     <div>
         <Carrousel></Carrousel>
-        <div class="my-4 container mx-auto">
+        <div class="my-8 container mx-auto">
             <ul>
                 <li v-for="article in this.articles" :key="article.id">
                     <home-list-item :item="article"></home-list-item>
@@ -11,8 +11,12 @@
 
         <loading :loading="blogLoading"></loading>
 
-        <div v-show="!blogLoading" class="flex justify-center mt-4">
-            <OutlineIndigoButton type="button" @clicked="loadMore()" :disabled="!hasMoreToLoad" class="px-8 mx-auto">Load More</OutlineIndigoButton>
+        <div v-show="!blogLoading" class="flex justify-center">
+            <OutlineIndigoButton type="button" @clicked="loadMore()"
+                                 :disabled="!hasMoreToLoad"
+                                 class="px-8 mx-auto">
+                Load More
+            </OutlineIndigoButton>
         </div>
     </div>
 </template>

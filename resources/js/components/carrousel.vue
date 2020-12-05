@@ -13,6 +13,7 @@
                                     {{ article.title }}
                                 </p>
                                 <p class="hidden md:block text-white py-4">
+                                    <!-- @todo Change for the Short Description when implemented -->
                                     {{ article.content.slice(0, 200) }}{{ parseInt(article.content.length) > 200 ? '...'
                                     : '' }}
                                 <p class="hidden md:block text-sm text-gray-900">
