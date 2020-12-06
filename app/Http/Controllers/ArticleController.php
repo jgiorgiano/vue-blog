@@ -19,15 +19,34 @@ class ArticleController extends Controller
      */
     public function published(Request $request)
     {
-//        dd($request->all());
-
         $take = $request->input('take') ?? 10;
         $order_by = $request->input('order_by') ?? 'id';
         $order = $request->input('order') ?? 'Desc';
 
-        return Article::with('user:id,name')
-            ->published()
-            ->orderBy($order_by, $order)
+        $tags = (array) $request->input('tag');
+
+        $searchWords = $request->has('search') ? explode(' ', $request->input('search')) : [];
+
+        $articleQuery = Article::with('user:id,name')
+            ->published();
+
+        if(count($tags)) {
+            $articleQuery->where(function($where) use($tags) {
+                foreach ($tags as $tag) {
+                    $where->orWhere('tags', 'like', '%' . $tag . '%');
+                }
+            });
+        }
+
+        if(count($searchWords)) {
+            $articleQuery->where(function($where) use($searchWords) {
+                foreach ($searchWords as $word) {
+                    $where->orWhere('content', 'like', '%' . $word . '%');
+                }
+            });
+        }
+
+        return $articleQuery->orderBy($order_by, $order)
             ->paginate($take);
     }
 

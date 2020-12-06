@@ -36,9 +36,15 @@ export default  {
 
             state.loading = true;
 
-            console.log('@todo, include query on load to filter',router.currentRoute.query)
-
-            return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
+            // return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
+            // Query options -> page, take, tag, search
+            return window.axios.get(`api/article/published`, {
+                params: {
+                    page: state.pagination.current_page + 1,
+                    take: 5,
+                    ...router.currentRoute.query
+                }
+            })
                 .then((response) => {
 
                     setTimeout(() => {

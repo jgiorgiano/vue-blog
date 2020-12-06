@@ -60044,6 +60044,12 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -60091,9 +60097,15 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return false;
       }
 
-      state.loading = true;
-      console.log('@todo, include query on load to filter', _app__WEBPACK_IMPORTED_MODULE_0__["router"].currentRoute.query);
-      return window.axios.get("api/article/published?page=".concat(state.pagination.current_page + 1, "&take=5")).then(function (response) {
+      state.loading = true; // return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
+      // Query options -> page, take, tag, search
+
+      return window.axios.get("api/article/published", {
+        params: _objectSpread({
+          page: state.pagination.current_page + 1,
+          take: 5
+        }, _app__WEBPACK_IMPORTED_MODULE_0__["router"].currentRoute.query)
+      }).then(function (response) {
         setTimeout(function () {
           commit('LOAD_ARTICLES', response.data);
           state.loading = false;
