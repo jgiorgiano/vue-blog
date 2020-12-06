@@ -21,7 +21,7 @@ class CreateArticleTest extends TestCase
         $user = User::factory()->create();
 
         $new_article = [
-            'title' => 'Article Title',
+            'title' => 'Article Title Article Title Article Title Article Title',
             'description' => 'Article Description',
             'content' => 'Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content',
             'tags' => 'Article, tags',

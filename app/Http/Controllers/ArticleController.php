@@ -43,7 +43,6 @@ class ArticleController extends Controller
             ->featured()
             ->orderBy('position', 'Asc')
             ->orderBy('title', 'Asc')
-            ->limit(10)
             ->get();
     }
 
