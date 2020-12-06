@@ -22,6 +22,11 @@ class Article extends Model
         return $query->where('status', 1);
     }
 
+    public function scopeFeatured($query)
+    {
+        return $query->where('featured', 1);
+    }
+
     protected static function booted()
     {
         static::updated(function ($article) {

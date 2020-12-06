@@ -1,7 +1,10 @@
+import { router } from '../app'
+
 export default  {
     namespaced: true,
     state:{
         articles: [],
+        featuredArticles: [],
         loading: false,
         pagination: {
             current_page: 0,
@@ -20,6 +23,9 @@ export default  {
             state.pagination.per_page = event.per_page;
             state.pagination.total = event.total;
         },
+        LOAD_FEATURED_ARTICLES(state, event) {
+            state.featuredArticles = event;
+        },
     },
     actions: {
 
@@ -29,6 +35,8 @@ export default  {
             }
 
             state.loading = true;
+
+            console.log('@todo, include query on load to filter',router.currentRoute.query)
 
             return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
                 .then((response) => {
@@ -44,10 +52,23 @@ export default  {
 
                 })
         },
+        loadFeaturedArticles({commit, state}, payload) {
+            return window.axios.get(`api/article/featured`)
+                .then((response) => {
+
+                    setTimeout(() => {
+                        commit('LOAD_FEATURED_ARTICLES', response.data);
+                    } , 500);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        }
     },
     getters: {
-        getFeaturedArticles: (state) => {
-            return state.articles.filter(article => article.featured === 1);
-        }
+        // getFeaturedArticles: (state) => {
+        //     return state.articles.filter(article => article.featured === 1);
+        // }
     }
 }

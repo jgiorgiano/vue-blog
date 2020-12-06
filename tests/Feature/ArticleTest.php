@@ -65,6 +65,20 @@ class ArticleTest extends TestCase
         $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles])->assertJsonFragment(['per_page'=> "3"]);
     }
 
+    public function testLoadFeaturedArticles()
+    {
+        Article::factory()->count(20)->create(['status' => 0, 'featured' => 1]);
+        Article::factory()->count(15)->create(['status' => 1, 'featured' => 0]); //Published Articles
+        Article::factory()->count(5)->create(['status' => 2, 'featured' => 1]);
+        Article::factory()->count(15)->create(['status' => 3]);
+
+        $featured_articles = Article::factory()->count(15)->create(['status' => 1, 'featured' => 1]); //Published And Featured Articles
+
+        $response = $this->json('GET', 'api/article/featured');
+
+        $response->assertStatus(200)->assertJsonCount($featured_articles->count());
+    }
+
     public function testDeleteArticle()
     {
         $article = Article::factory()->create();

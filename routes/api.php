@@ -26,6 +26,8 @@ Route::get('/email/send', [EmailVerificationController::class, 'send'])
     ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('article/published', [ArticleController::class, 'published']);
+Route::get('article/featured', [ArticleController::class, 'featured']);
+
 Route::get('article/{article}', [ArticleController::class, 'show']);
 
 /**

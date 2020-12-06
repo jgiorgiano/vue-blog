@@ -22,11 +22,20 @@ class CreateArticleTest extends TestCase
 
         $new_article = [
             'title' => 'Article Title',
-            'content' => 'Article Content',
+            'description' => 'Article Description',
+            'content' => 'Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content',
             'tags' => 'Article, tags',
             'status' => 0,
+         /* {status: 0, description: 'Waiting Approval'},
+            {status: 1, description: 'Published'},
+            {status: 2, description: 'Not Published'},
+            {status: 3, description: 'Waiting amendment'}*/
             'position' => 0,
             'featured' => 0,
+            /*Featured -> 0 | 1 */
+            'type' => 1,
+            /* type 1 - article | 2 - external link */
+            'external_link' => 'https://testing.com.br/article',
             'images' => null,
 
 //            'user_id' => '',

@@ -7,6 +7,10 @@ export default  {
             {id: 1, description: 'Published'},
             {id: 2, description: 'Not Published'},
             {id: 3, description: 'Waiting amendment'},
+        ],
+        typeOptions: [
+            {id: 1, description: 'Article'},
+            {id: 2, description: 'External Link'},
         ]
     },
     mutations: {

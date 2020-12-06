@@ -57,7 +57,7 @@ export default {
         rowsCount() {
             let count = (this.value.match(/\n/g) || '').length;
 
-            return count > 10 ? count + 1 : 10;
+            return count > 10 ? count + 1 : 3;
         }
     }
 }

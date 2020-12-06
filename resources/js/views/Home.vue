@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Carrousel></Carrousel>
+        <FeaturedArticlesCarrousel></FeaturedArticlesCarrousel>
         <div class="my-8 container mx-auto">
             <ul>
                 <li v-for="article in this.articles" :key="article.id">
@@ -25,15 +25,15 @@
 import ListItem from "../components/article/list-item";
 import Loading from "../components/Loading";
 import HomeListItem from "../components/article/home-list-item";
-import Carrousel from "../components/carrousel";
 import OutlineIndigoButton from "../components/buttons/OutlineIndigoButton";
+import FeaturedArticlesCarrousel from "../components/featuredArticlesCarrousel";
 
 export default {
     components: {
         HomeListItem,
         Loading,
         ListItem,
-        Carrousel,
+        FeaturedArticlesCarrousel,
         OutlineIndigoButton
     },
     data() {
@@ -44,7 +44,6 @@ export default {
             return this.$store.state.blog.articles;
         },
         blogLoading() {
-            console.log(this.$store.state.blog.pagination);
             return this.$store.state.blog.loading;
         },
         hasMoreToLoad() {

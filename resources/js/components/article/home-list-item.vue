@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{ name: 'article-show', params: { id: item.id }}"
-                 class="flex h-full bg-white rounded-2xl p-4 my-4 mx-4 hover:shadow-md">
+                 class="flex h-full bg-white rounded-2xl p-4 my-4 mx-4 hover:shadow-md transition ease-in duration-75">
         <dl class="block md:flex">
             <div class="flex justify-center md:items-center">
                 <img class="w-56 h-56 md:mx-4 rounded" src="img/undraw_Modern_life_re_8pdp.svg" alt="user image">

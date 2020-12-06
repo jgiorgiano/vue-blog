@@ -75,8 +75,11 @@ export default {
     },
     computed: {
         featuredArticles() {
-            return this.$store.getters["blog/getFeaturedArticles"];
+            return this.$store.state.blog.featuredArticles;
         }
+    },
+    mounted() {
+        this.$store.dispatch('blog/loadFeaturedArticles');
     }
 }
 </script>
