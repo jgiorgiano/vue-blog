@@ -9,7 +9,7 @@
                         <router-link :to="{ name: 'article-show', params: { id: article.id }}"
                                      class="flex flex-col sm:flex-row justify-around items-center md:items-start lg:items-center">
                             <div>
-                                <p class="text-xl sm:text-2xl md:text-3xl text-white leading-tight text-center md:text-left">
+                                <p class="text-xl sm:text-2xl text-white leading-tight text-center md:text-left">
                                     {{ article.title }}
                                 </p>
                                 <p class="hidden md:block text-white py-4">

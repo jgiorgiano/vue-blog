@@ -22,13 +22,10 @@ class ArticleController extends Controller
         $take = $request->input('take') ?? 10;
         $order_by = $request->input('order_by') ?? 'id';
         $order = $request->input('order') ?? 'Desc';
-
         $tags = (array) $request->input('tag');
-
         $searchWords = $request->has('search') ? explode(' ', $request->input('search')) : [];
 
-        $articleQuery = Article::with('user:id,name')
-            ->published();
+        $articleQuery = Article::with('user:id,name')->published();
 
         if(count($tags)) {
             $articleQuery->where(function($where) use($tags) {
@@ -46,7 +43,8 @@ class ArticleController extends Controller
             });
         }
 
-        return $articleQuery->orderBy($order_by, $order)
+        return $articleQuery
+            ->orderBy($order_by, $order)
             ->paginate($take);
     }
 

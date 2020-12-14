@@ -1,7 +1,7 @@
 <template>
     <div class="container mt-4  mx-auto flex flex-col justify-center items-center">
         <div class="w-full px-6">
-            <h3 class="text-3xl md:text-4xl text-gray-800 py-2">{{ article.title }}</h3>
+            <h3 class="text-xl md:text-2xl text-gray-800 py-2">{{ article.title }}</h3>
             <div class="text-md text-gray-600 border-t border-b p-2">
                 <span>By: {{ article.user ? article.user.name : '' }} IN {{ article.tags }} @ {{
                         article.created_at

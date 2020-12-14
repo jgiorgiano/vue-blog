@@ -52,7 +52,6 @@ export default {
     },
     mounted() {
         this.loadArticles();
-
         // window.onscroll = () => {
         //     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
         //

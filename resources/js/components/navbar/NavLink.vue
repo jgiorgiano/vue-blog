@@ -1,5 +1,5 @@
 <template>
-    <div @click="btnClick" class="py-1 mx-2 my-1 hover:bg-gray-300 hover:bg-opacity-25 border-rounded rounded focus:text-indigo-500 text-lg font-medium text-indigo-600 hover:text-indigo-900 transition duration-150 ease-in-out px-2">
+    <div @click="btnClick" class="py-1 mx-2 my-1 hover:bg-gray-300 hover:bg-opacity-25 border-rounded rounded focus:text-indigo-500 text-indigo-800 hover:text-indigo-900 transition duration-150 ease-in-out px-2">
         <slot></slot>
     </div>
 </template>

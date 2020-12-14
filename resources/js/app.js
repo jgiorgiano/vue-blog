@@ -15,6 +15,7 @@ import 'vue-awesome/icons/spinner'
 import 'vue-awesome/icons/caret-down'
 import 'vue-awesome/icons/envelope'
 import 'vue-awesome/icons/check-circle'
+import 'vue-awesome/icons/search'
 
 // or import all icons if you don't care about bundle size
 // import 'vue-awesome/icons'
