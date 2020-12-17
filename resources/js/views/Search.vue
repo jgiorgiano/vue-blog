@@ -2,7 +2,10 @@
     <div>
         <div class="container mx-auto">
 
-            <h3 class="text-2xl text-gray-800 pb-4">Best results for: <b class="text-3xl">{{ searchText }}</b></h3>
+            <div class="mx-2 mb-4">
+                <span class="text-2xl text-gray-800 block md:inline">Best results for:</span>
+                <span class="text-2xl text-gray-800 font-bold">{{ searchText }}</span>
+            </div>
             <div class="text-gray-600 border-t border-b p-2 flex justify-between">
                 <span>Results found: {{ this.$store.state.blog.search.pagination.total }}</span>
                 <span>Page:  {{ this.$store.state.blog.search.pagination.current_page }} / {{ this.$store.state.blog.search.pagination.last_page }}</span>

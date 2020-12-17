@@ -4594,6 +4594,7 @@ __webpack_require__.r(__webpack_exports__);
           }
         });
         this.searchText = '';
+        this.$store.commit('MENU_CHANGE', false);
       }
     }
   }
@@ -4614,6 +4615,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _NavLogo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./NavLogo */ "./resources/js/components/navbar/NavLogo.vue");
 /* harmony import */ var _NavSearch__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./NavSearch */ "./resources/js/components/navbar/NavSearch.vue");
 /* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5701,6 +5708,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_buttons_OutlineIndigoButton__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/buttons/OutlineIndigoButton */ "./resources/js/components/buttons/OutlineIndigoButton.vue");
 /* harmony import */ var _components_featuredArticlesCarrousel__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/featuredArticlesCarrousel */ "./resources/js/components/featuredArticlesCarrousel.vue");
 /* harmony import */ var _components_pagination_BasePagination__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/pagination/BasePagination */ "./resources/js/components/pagination/BasePagination.vue");
+//
+//
+//
 //
 //
 //
@@ -32636,6 +32646,8 @@ var render = function() {
                       "div",
                       { staticClass: "flex flex-col content-end" },
                       [
+                        _c("nav-search", { staticClass: "w-full" }),
+                        _vm._v(" "),
                         _c(
                           "router-link",
                           { attrs: { to: { name: "home" } } },
@@ -32682,6 +32694,8 @@ var render = function() {
                       "div",
                       { staticClass: "flex flex-col content-end" },
                       [
+                        _c("nav-search", { staticClass: "w-full" }),
+                        _vm._v(" "),
                         _c(
                           "router-link",
                           { attrs: { to: { name: "home" } } },
@@ -33743,9 +33757,16 @@ var render = function() {
       "div",
       { staticClass: "container mx-auto" },
       [
-        _c("h3", { staticClass: "text-2xl text-gray-800 pb-4" }, [
-          _vm._v("Best results for: "),
-          _c("b", { staticClass: "text-3xl" }, [_vm._v(_vm._s(_vm.searchText))])
+        _c("div", { staticClass: "mx-2 mb-4" }, [
+          _c(
+            "span",
+            { staticClass: "text-2xl text-gray-800 block md:inline" },
+            [_vm._v("Best results for:")]
+          ),
+          _vm._v(" "),
+          _c("span", { staticClass: "text-2xl text-gray-800 font-bold" }, [
+            _vm._v(_vm._s(_vm.searchText))
+          ])
         ]),
         _vm._v(" "),
         _c(

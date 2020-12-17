@@ -23,6 +23,7 @@ export default {
             if(this.searchText.length > 0) {
                 this.$router.push({name: 'search', query: {q: this.searchText}})
                 this.searchText = '';
+                this.$store.commit('MENU_CHANGE', false);
             }
         }
     }

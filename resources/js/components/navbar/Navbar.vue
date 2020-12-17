@@ -54,6 +54,9 @@
                       :class="[menuOpen ? 'block' : 'hidden' ]">
 
                     <div v-if="!authenticated" class="flex flex-col content-end">
+
+                        <nav-search class="w-full"></nav-search>
+
                         <router-link :to="{ name: 'home'}">
                             <nav-link>Home</nav-link>
                         </router-link>
@@ -68,6 +71,9 @@
                         </router-link>
                     </div>
                     <div v-else class="flex flex-col content-end">
+
+                        <nav-search class="w-full"></nav-search>
+
                         <router-link :to="{ name: 'home'}">
                             <nav-link>Home</nav-link>
                         </router-link>
