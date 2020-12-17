@@ -74,22 +74,22 @@
                 <div class="flex justify-center my-2">
                     <div>
                         Tags
-                        <router-link :to="{ name: 'home', query: { tag: ['laravel', 'php'] }}">
+                        <router-link :to="{ name: 'search', query: { q: 'tags: laravel, php' }}">
                             <IndigoTextLink>Laravel/PHP</IndigoTextLink>
                         </router-link>
-                        <router-link :to="{ name: 'home', query: { tag: 'database'}}">
+                        <router-link :to="{ name: 'search', query: { q: 'tag: database' }}">
                             <IndigoTextLink>Database</IndigoTextLink>
                         </router-link>
-                        <router-link :to="{ name: 'home', query: { tag: ['js', 'javascript']}}">
+                        <router-link :to="{ name: 'search', query: { q: 'tags: js, javascript' }}">
                             <IndigoTextLink>JS</IndigoTextLink>
                         </router-link>
-                        <router-link :to="{ name: 'home', query: { tag: ['vue', 'vuejs']}}">
+                        <router-link :to="{ name: 'search', query: { q: 'tags: vue, vuejs' }}">
                             <IndigoTextLink>Vue</IndigoTextLink>
                         </router-link>
-                        <router-link :to="{ name: 'home', query: { tag: 'aws'}}">
+                        <router-link :to="{ name: 'search', query: { q: 'tag: aws'}}">
                             <IndigoTextLink>AWS</IndigoTextLink>
                         </router-link>
-                        <router-link :to="{ name: 'home', query: { tag: 'docker'}}">
+                        <router-link :to="{ name: 'search', query: { q: 'tag: docker'}}">
                             <IndigoTextLink>Docker</IndigoTextLink>
                         </router-link>
                     </div>
@@ -99,9 +99,6 @@
                         2020
                         <router-link :to="{ name: 'home', query: { month: '2020-12'}}">
                             <IndigoTextLink>December</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'home', query: { month: '2020-11'}}">
-                            <IndigoTextLink>November</IndigoTextLink>
                         </router-link>
                     </div>
                 </div>

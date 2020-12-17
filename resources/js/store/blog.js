@@ -61,20 +61,15 @@ export default {
     },
     actions: {
         searchArticles({commit, state}, payload) {
-            // if (state.loading || state.pagination.current_page >= state.pagination.last_page) {
-            //     return false;
-            // }
 
             commit('SEARCH_WORD', payload.q);
 
             state.search.searching = true;
 
-            // console.log('search action',payload);
-
             return window.axios.get(`api/article/published`, {
                 params: {
-                    // page: state.pagination.current_page + 1,
-                    take: 2,
+                    page: payload.page,
+                    take: payload.take,
                     search: payload.q
                 }
             })

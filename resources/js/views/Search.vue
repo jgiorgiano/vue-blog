@@ -1,11 +1,9 @@
 <template>
     <div>
-        <FeaturedArticlesCarrousel></FeaturedArticlesCarrousel>
-
-        <div class="my-8 container mx-auto">
+        <div class="container mx-auto">
 
             <h3 class="text-2xl text-gray-800 pb-4">Best results for: <b class="text-3xl">{{ searchText }}</b></h3>
-            <div class="text-md text-gray-600 border-t border-b p-2 flex justify-between">
+            <div class="text-gray-600 border-t border-b p-2 flex justify-between">
                 <span>Results found: {{ this.$store.state.blog.search.pagination.total }}</span>
                 <span>Page:  {{ this.$store.state.blog.search.pagination.current_page }} / {{ this.$store.state.blog.search.pagination.last_page }}</span>
             </div>
@@ -19,7 +17,19 @@
                 </li>
             </ul>
 
-            <h3>paginator</h3>
+            <BasePagination v-if="articles.length"
+                :current-page="pagination.current_page"
+                :page-count="pagination.last_page"
+                class="articles-list__pagination"
+                @nextPage="pageChangeHandle('next');"
+                @previousPage="pageChangeHandle('previous');"
+                @loadPage="pageChangeHandle"
+            />
+
+            <div v-if="!searching && !articles.length"
+                class="flex justify-center pt-12">
+                <h3 class="text-gray-600">Sorry, We couldn't find anything. Try again</h3>
+            </div>
 
         </div>
 
@@ -33,7 +43,7 @@ import Loading from "../components/Loading";
 import HomeListItem from "../components/article/home-list-item";
 import OutlineIndigoButton from "../components/buttons/OutlineIndigoButton";
 import FeaturedArticlesCarrousel from "../components/featuredArticlesCarrousel";
-import {router} from "../app";
+import BasePagination from "../components/pagination/BasePagination";
 
 export default {
     components: {
@@ -41,7 +51,8 @@ export default {
         Loading,
         ListItem,
         FeaturedArticlesCarrousel,
-        OutlineIndigoButton
+        OutlineIndigoButton,
+        BasePagination
     },
     data() {
         return {}
@@ -56,38 +67,36 @@ export default {
         searching() {
             return this.$store.state.blog.search.searching;
         },
-        // hasMoreToLoad() {
-        //     return this.$store.state.blog.pagination.current_page < this.$store.state.blog.pagination.last_page;
-        // }
+        pagination() {
+            return this.$store.state.blog.search.pagination;
+        }
     },
     mounted() {
         this.searchArticles();
-        // window.onscroll = () => {
-        //     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-        //
-        //     if (bottomOfWindow) {
-        //         this.loadArticles();
-        //     }
-        // }
     },
     beforeRouteUpdate(to, from, next) {
-
         if(to.query.q) {
-            this.$store.dispatch('blog/searchArticles', to.query).then(next);
+            next();
+            this.searchArticles();
         }
-
-    },
-    updated() {
-      // console.log('updated', this.$router.currentRoute.query);
-        // this.$store.dispatch('blog/loadHomeArticles')
     },
     methods: {
-        searchArticles() {
-            this.$store.dispatch('blog/searchArticles', this.$router.currentRoute.query);
+        searchArticles(page = 1) {
+           return this.$store.dispatch('blog/searchArticles', {q: this.$router.currentRoute.query.q, page: page, take: 2});
         },
-        // loadMore() {
-        //     this.searchArticles();
-        // }
+        pageChangeHandle(value) {
+            switch (value) {
+                case "next":
+                    this.searchArticles(this.$store.state.blog.search.pagination.current_page + 1);
+                    break;
+                case "previous":
+                    this.searchArticles(this.$store.state.blog.search.pagination.current_page - 1);
+                    break;
+                default:
+                    this.searchArticles(value);
+                    break;
+            }
+        }
     }
 }
 
