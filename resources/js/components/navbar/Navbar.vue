@@ -1,19 +1,27 @@
 <template>
     <div class="gradient z-50 fixed w-full">
-        <nav id="top-nav" class="container mx-auto relative p-5 flex items-center justify-between ">
+        <nav id="top-nav" class="container mx-auto relative p-5 flex items-center justify-between">
             <nav-logo />
             <div v-if="!authenticated" class="hidden md:flex">
+                <router-link :to="{ name: 'home'}">
+                    <nav-link>Home</nav-link>
+                </router-link>
+                <router-link :to="{ name: 'about'}">
+                    <nav-link>About</nav-link>
+                </router-link>
                 <router-link :to="{ name: 'login'}">
                     <nav-link>Login</nav-link>
                 </router-link>
                 <router-link :to="{ name: 'register'}">
-                    <nav-link class="border border-indigo-600 hover:border-indigo-900">Subscribe</nav-link>
+                    <nav-link class="border border-indigo-800 hover:border-indigo-900">Subscribe</nav-link>
                 </router-link>
+
+                <nav-search class="w-48"></nav-search>
             </div>
 
             <div v-if="!authenticated" class="md:hidden">
                 <button type="button" @click="menuOpen=!menuOpen"
-                        class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-900 hover:bg-gray-100 focus:outline-none focus:bg-gray-200 focus:bg-opacity-25 focus:text-indigo-500 transition duration-150 ease-in-out"
+                        class="inline-flex items-center justify-center p-2 rounded-md text-indigo-800 hover:text-indigo-900 hover:bg-gray-300 hover:bg-opacity-25 focus:outline-none focus:bg-gray-300 focus:bg-opacity-25 focus:text-indigo-900 transition duration-150 ease-in-out"
                         id="main-menu" aria-label="Main menu" aria-haspopup="true">
 
                     <svg v-if="!menuOpen" class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -39,16 +47,33 @@
 
                 </button>
             </div>
+
             <div class="absolute top-0 inset-x-0 p-3 mt-16 transition-opacity transform origin-top-right"
                  :class="[authenticated ? 'block' : ' md:hidden' ]">
-                <div  class="border rounded w-full max-w-md p-2 shadow-inner float-right bg-gray-100"
+                <div  class="border rounded w-full max-w-sm p-2 shadow-inner float-right bg-gray-100"
                       :class="[menuOpen ? 'block' : 'hidden' ]">
 
                     <div v-if="!authenticated" class="flex flex-col content-end">
-                        <router-link :to="{ name: 'register'}" class="text-center"><nav-link class="border border-indigo-600 hover:border-indigo-900">Subscribe</nav-link></router-link>
-                        <router-link :to="{ name: 'login'}" class="text-center"><nav-link class="border border-indigo-600 hover:border-indigo-900">Login</nav-link></router-link>
+                        <router-link :to="{ name: 'home'}">
+                            <nav-link>Home</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'about'}">
+                            <nav-link>About</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'register'}">
+                            <nav-link>Subscribe</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'login'}" class="text-center">
+                            <nav-link class="border border-indigo-600 hover:border-indigo-900">Login</nav-link>
+                        </router-link>
                     </div>
                     <div v-else class="flex flex-col content-end">
+                        <router-link :to="{ name: 'home'}">
+                            <nav-link>Home</nav-link>
+                        </router-link>
+                        <router-link :to="{ name: 'about'}">
+                            <nav-link>About</nav-link>
+                        </router-link>
                         <router-link :to="{ name: 'my-account'}">
                             <nav-link>My Account</nav-link>
                         </router-link>
@@ -68,16 +93,20 @@
 <script>
 import navLink from './NavLink';
 import navLogo from './NavLogo';
+import navSearch from './NavSearch'
 
 import { gsap } from 'gsap';
 
 export default {
     components: {
         navLink,
-        navLogo
+        navLogo,
+        navSearch
     },
     data() {
-        return {}
+        return {
+            searchText: ''
+        }
     },
     computed: {
         menuOpen: {
@@ -96,18 +125,21 @@ export default {
         }
     },
     methods: {
-        logout: function () {
+        logout: function() {
             this.$store.dispatch('logout')
                 .then(() => this.$router.push('/'))
                 .catch(err => console.log(err))
+        },
+        search: function() {
+            console.log(this.searchText);
         }
     },
     mounted() {
         window.onscroll = () => {
             if(window.pageYOffset > 30) {
-                gsap.to("#top-nav", {scale: 0.90, paddingTop:"5px", paddingBottom:"5px", duration: 0.5});
+                gsap.to("#top-nav", {scale: 0.90, paddingTop:"4px", paddingBottom:"4px", duration: 0.5});
             } else {
-                gsap.to("#top-nav", {scale: 1, paddingTop:"20px", paddingBottom:"20px", duration: 0.5});
+                gsap.to("#top-nav", {scale: 1, paddingTop:"16px", paddingBottom:"16px", duration: 0.5});
             }
         }
     },
