@@ -4,7 +4,7 @@ import VueRouter from 'vue-router'
 import Vuex from 'vuex'
 import Vuelidate from 'vuelidate'
 import VueCompositionAPI from '@vue/composition-api'
-
+import VueDayjs from 'vue-dayjs-plugin'
 
 /**
  * V-Icon
@@ -18,6 +18,7 @@ import 'vue-awesome/icons/check-circle'
 import 'vue-awesome/icons/search'
 import 'vue-awesome/icons/arrow-left'
 import 'vue-awesome/icons/arrow-right'
+import 'vue-awesome/icons/arrow-circle-up'
 
 // or import all icons if you don't care about bundle size
 // import 'vue-awesome/icons'
@@ -42,6 +43,7 @@ Vue.use(Vuelidate)
 
 Vue.use(VueCompositionAPI)
 
+Vue.use(VueDayjs)
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -56,6 +58,7 @@ Vue.use(VueCompositionAPI)
 Vue.component('v-navbar', require('./components/navbar/Navbar.vue').default);
 Vue.component('v-footer', require('./components/Footer.vue').default);
 Vue.component('v-main', require('./views/Main.vue').default);
+Vue.component('breadcrumb', require('./components/Breadcrumb').default);
 
 Vue.component('v-icon', Icon);
 /**

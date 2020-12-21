@@ -21,7 +21,7 @@
                 <div class="justify-self-end">
                     <dt class="sr-only">Created By</dt>
                     <dd class="text-sm text-gray-600">
-                        By: {{ item.user.name }} @ {{ item.created_at }}
+                        By: {{ item.user.name }} @ {{ $date(item.created_at).toString() }}
                     </dd>
                 </div>
             </div>

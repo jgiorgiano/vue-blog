@@ -22,9 +22,11 @@
     },
     "dependencies": {
         "@vue/composition-api": "^1.0.0-beta.18",
+        "dayjs": "^1.9.7",
         "gsap": "^3.5.1",
         "tailwindcss": "^1.9.6",
         "vue-awesome": "^4.1.0",
+        "vue-dayjs-plugin": "^1.0.0",
         "vue-router": "^3.4.7",
         "vuelidate": "^0.7.6",
         "vueperslides": "^2.12.1",

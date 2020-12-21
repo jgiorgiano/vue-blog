@@ -24,7 +24,7 @@
                 </g>
             </svg>
         </div>
-        <div class="z-50 container xl:-mt-16 lg:-mt-12 md:-mt-8 mx-auto pt-0 p-5 sm:flex justify-around">
+        <div class="z-20 container xl:-mt-16 lg:-mt-12 md:-mt-8 mx-auto pt-0 p-5 sm:flex justify-around">
             <div class="flex flex-1 justify-around my-2">
                 <div class="flex justify-center my-2">
                     <div>

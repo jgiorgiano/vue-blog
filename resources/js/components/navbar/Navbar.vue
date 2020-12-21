@@ -55,7 +55,7 @@
 
                     <div v-if="!authenticated" class="flex flex-col content-end">
 
-                        <nav-search class="w-full"></nav-search>
+                        <nav-search class="w-full py-4"></nav-search>
 
                         <router-link :to="{ name: 'home'}">
                             <nav-link>Home</nav-link>
@@ -72,7 +72,7 @@
                     </div>
                     <div v-else class="flex flex-col content-end">
 
-                        <nav-search class="w-full"></nav-search>
+                        <nav-search class="w-full py-4"></nav-search>
 
                         <router-link :to="{ name: 'home'}">
                             <nav-link>Home</nav-link>
@@ -93,6 +93,7 @@
                 </div>
             </div>
         </nav>
+        <ScrollToTop v-if="showGoToTop"></ScrollToTop>
     </div>
 </template>
 
@@ -100,6 +101,7 @@
 import navLink from './NavLink';
 import navLogo from './NavLogo';
 import navSearch from './NavSearch'
+import ScrollToTop from "./ScrollToTop";
 
 import { gsap } from 'gsap';
 
@@ -107,11 +109,13 @@ export default {
     components: {
         navLink,
         navLogo,
-        navSearch
+        navSearch,
+        ScrollToTop
     },
     data() {
         return {
-            searchText: ''
+            searchText: '',
+            showGoToTop: false
         }
     },
     computed: {
@@ -136,8 +140,8 @@ export default {
                 .then(() => this.$router.push('/'))
                 .catch(err => console.log(err))
         },
-        search: function() {
-            console.log(this.searchText);
+        scrollToTop() {
+            gsap.to(window, { duration: 0.5, scrollTo: 0, ease: "circ" })
         }
     },
     mounted() {
@@ -146,6 +150,12 @@ export default {
                 gsap.to("#top-nav", {scale: 0.90, paddingTop:"4px", paddingBottom:"4px", duration: 0.5});
             } else {
                 gsap.to("#top-nav", {scale: 1, paddingTop:"16px", paddingBottom:"16px", duration: 0.5});
+            }
+
+            if(window.pageYOffset > 400) {
+                this.showGoToTop = true;
+            } else {
+                this.showGoToTop = false;
             }
         }
     },

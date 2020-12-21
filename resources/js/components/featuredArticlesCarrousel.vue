@@ -17,7 +17,7 @@
                                     {{ article.content.slice(0, 200) }}{{ parseInt(article.content.length) > 200 ? '...'
                                     : '' }}
                                 <p class="hidden md:block text-sm text-gray-900">
-                                    By: {{ article.user.name }} @ {{ article.created_at }}<br>
+                                    By: {{ article.user.name }} @ {{ $date(article.created_at).toString() }}<br>
                                 </p>
                             </div>
                             <img class="w-40 h-40 lg:w-48 lg:h-48 mx-4 self-center"
@@ -58,7 +58,7 @@
 
 <script>
 
-import {VueperSlides, VueperSlide} from 'vueperslides'
+import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
 
 export default {

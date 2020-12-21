@@ -21638,6 +21638,31 @@ video {
           animation: bounce 1s infinite;
 }
 
+.hover\:animate-none:hover{
+  -webkit-animation: none;
+          animation: none;
+}
+
+.hover\:animate-spin:hover{
+  -webkit-animation: spin 1s linear infinite;
+          animation: spin 1s linear infinite;
+}
+
+.hover\:animate-ping:hover{
+  -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+          animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.hover\:animate-pulse:hover{
+  -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+          animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.hover\:animate-bounce:hover{
+  -webkit-animation: bounce 1s infinite;
+          animation: bounce 1s infinite;
+}
+
 .j-card {
   width: 100%;
   --bg-opacity: 1;
@@ -42644,31 +42669,6 @@ video {
   .sm\:delay-1000{
     transition-delay: 1000ms;
   }
-
-  .sm\:animate-none{
-    -webkit-animation: none;
-            animation: none;
-  }
-
-  .sm\:animate-spin{
-    -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-  }
-
-  .sm\:animate-ping{
-    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  .sm\:animate-pulse{
-    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .sm\:animate-bounce{
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
-  }
 }
 
 @media (min-width: 768px){
@@ -63631,31 +63631,6 @@ video {
 
   .md\:delay-1000{
     transition-delay: 1000ms;
-  }
-
-  .md\:animate-none{
-    -webkit-animation: none;
-            animation: none;
-  }
-
-  .md\:animate-spin{
-    -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-  }
-
-  .md\:animate-ping{
-    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  .md\:animate-pulse{
-    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .md\:animate-bounce{
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
   }
 }
 
@@ -84620,31 +84595,6 @@ video {
   .lg\:delay-1000{
     transition-delay: 1000ms;
   }
-
-  .lg\:animate-none{
-    -webkit-animation: none;
-            animation: none;
-  }
-
-  .lg\:animate-spin{
-    -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-  }
-
-  .lg\:animate-ping{
-    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  .lg\:animate-pulse{
-    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .lg\:animate-bounce{
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
-  }
 }
 
 @media (min-width: 1280px){
@@ -105607,30 +105557,5 @@ video {
 
   .xl\:delay-1000{
     transition-delay: 1000ms;
-  }
-
-  .xl\:animate-none{
-    -webkit-animation: none;
-            animation: none;
-  }
-
-  .xl\:animate-spin{
-    -webkit-animation: spin 1s linear infinite;
-            animation: spin 1s linear infinite;
-  }
-
-  .xl\:animate-ping{
-    -webkit-animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-            animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-  }
-
-  .xl\:animate-pulse{
-    -webkit-animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-  }
-
-  .xl\:animate-bounce{
-    -webkit-animation: bounce 1s infinite;
-            animation: bounce 1s infinite;
   }
 }
