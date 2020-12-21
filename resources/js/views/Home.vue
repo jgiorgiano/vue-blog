@@ -1,12 +1,9 @@
 <template>
     <div>
         <FeaturedArticlesCarrousel></FeaturedArticlesCarrousel>
+
         <div class="my-8 container mx-auto">
-            <ul>
-                <li v-for="article in this.articles" :key="article.id">
-                    <home-list-item :item="article"></home-list-item>
-                </li>
-            </ul>
+            <HomeListItem></HomeListItem>
         </div>
 
         <loading :loading="blogLoading"></loading>
@@ -28,6 +25,7 @@ import HomeListItem from "../components/article/home-list-item";
 import OutlineIndigoButton from "../components/buttons/OutlineIndigoButton";
 import FeaturedArticlesCarrousel from "../components/featuredArticlesCarrousel";
 
+
 export default {
     components: {
         HomeListItem,
@@ -40,9 +38,6 @@ export default {
         return {}
     },
     computed: {
-        articles() {
-            return this.$store.state.blog.articles;
-        },
         blogLoading() {
             return this.$store.state.blog.loading;
         },
@@ -52,13 +47,6 @@ export default {
     },
     mounted() {
         this.loadArticles();
-        // window.onscroll = () => {
-        //     let bottomOfWindow = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop) + window.innerHeight === document.documentElement.offsetHeight
-        //
-        //     if (bottomOfWindow) {
-        //         this.loadArticles();
-        //     }
-        // }
     },
     methods: {
         loadArticles() {

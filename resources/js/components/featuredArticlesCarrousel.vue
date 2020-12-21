@@ -4,26 +4,24 @@
             <vueper-slide
                 v-for="article in featuredArticles" :key="article.id" :title="article.title">
                 <template v-slot:content>
-                    <div
-                        class="px-2 pt-4 sm:px-16 pb-16 sm:pb-8 h-full w-full xl:w-5/6 mx-auto">
-                        <router-link :to="{ name: 'article-show', params: { id: article.id }}"
-                                     class="flex flex-col sm:flex-row justify-around items-center md:items-start lg:items-center">
+                    <div class="px-2 pt-4 sm:px-16 pb-16 sm:pb-8 h-full w-full xl:w-5/6 mx-auto">
+                        <div @click="open(article)"
+                             class="flex flex-col sm:flex-row justify-around items-center md:items-start lg:items-center cursor-pointer">
                             <div>
                                 <p class="text-xl sm:text-2xl text-white leading-tight text-center md:text-left">
                                     {{ article.title }}
                                 </p>
                                 <p class="hidden md:block text-white py-4">
-                                    <!-- @todo Change for the Short Description when implemented -->
-                                    {{ article.content.slice(0, 200) }}{{ parseInt(article.content.length) > 200 ? '...'
-                                    : '' }}
+                                    {{ getDescription(article) }}
                                 <p class="hidden md:block text-sm text-gray-900">
-                                    By: {{ article.user.name }} @ {{ $date(article.created_at).toString() }}<br>
+                                    <span v-if="article.type === 1">By: {{ article.user.name }} @ {{ $date(article.created_at).toString() }}</span>
+                                    <span v-else>Link to: {{ article.external_link }} @ {{ $date(article.created_at).toString() }}</span>
                                 </p>
                             </div>
                             <img class="w-40 h-40 lg:w-48 lg:h-48 mx-4 self-center"
-                                 src="img/undraw_Modern_life_re_8pdp.svg"
+                                 :src="article.images || 'img/article-placeholder.svg'"
                                  alt="user image">
-                        </router-link>
+                        </div>
                     </div>
                 </template>
             </vueper-slide>
@@ -80,6 +78,25 @@ export default {
     },
     mounted() {
         this.$store.dispatch('blog/loadFeaturedArticles');
+    },
+
+    //Copied from home-item
+    methods: {
+        getDescription(article) {
+
+            if(article.description) {
+                return article.description;
+            }
+
+            return article.content.slice(0, 200) + ((parseInt(article.content.length) > 200) ? '...' : '');
+        },
+        open(article) {
+            if(article.type === 1) {
+                this.$router.push({name: 'article-show', params: { id: article.id }})
+            } else {
+                window.open(article.external_link);
+            }
+        }
     }
 }
 </script>

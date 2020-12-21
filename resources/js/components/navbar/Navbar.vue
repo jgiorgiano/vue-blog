@@ -37,7 +37,7 @@
             </div>
             <div v-else>
                 <button type="button" @click="menuOpen=!menuOpen"
-                        class="inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition duration-150 ease-in-out"
+                        class="inline-flex items-center justify-center p-1 rounded-md focus:outline-none transition duration-150 ease-in-out"
                         id="auth-main-menu" aria-label="Main menu" aria-haspopup="true">
 
                     <div class="flex items-center ml-8">
@@ -93,7 +93,9 @@
                 </div>
             </div>
         </nav>
+
         <ScrollToTop v-if="showGoToTop"></ScrollToTop>
+
     </div>
 </template>
 

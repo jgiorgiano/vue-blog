@@ -9,6 +9,7 @@ import ArticleCreate from "./views/article/create";
 import ArticleEdit from "./views/article/edit";
 import ArticleShow from "./views/article/show";
 import Search from "./views/Search";
+import Curriculum from "./views/Curriculum";
 
 const routes = [
     //Open Routes
@@ -18,6 +19,7 @@ const routes = [
     { path: '/register', name:'register', component: Register },
     { path: '/about', name:'about', component: About },
     { path: '/email-verification', name:'email-verification', component: EmailVerification },
+    { path: '/curriculum', name:'curriculum', component: Curriculum },
 
     //Auth Routes
     { path: '/dashboard', name:'dashboard', component: Dashboard },

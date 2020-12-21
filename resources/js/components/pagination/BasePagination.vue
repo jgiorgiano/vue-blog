@@ -67,8 +67,6 @@ export default {
                 0
             );
 
-            console.log(visiblePagesCount, visiblePagesThreshold, pagintationTriggersArray);
-
             if (currentPage <= visiblePagesThreshold + 1) {
                 pagintationTriggersArray[0] = 1;
                 const pagintationTriggers = pagintationTriggersArray.map(

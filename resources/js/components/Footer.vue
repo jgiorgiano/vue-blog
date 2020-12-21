@@ -58,15 +58,13 @@
                 <div class="flex justify-center my-2">
                     <div>
                         Pages
-                        <router-link :to="{ name: 'about'}">
-                            <IndigoTextLink>About</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'login'}">
-                            <IndigoTextLink>Login</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'register'}">
-                            <IndigoTextLink>Subscribe</IndigoTextLink>
-                        </router-link>
+                        <ul>
+                            <li v-for="page in this.pages" :key="page.routeName">
+                                <router-link :to="{ name: page.routeName}">
+                                    <IndigoTextLink>{{ page.description }}</IndigoTextLink>
+                                </router-link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -74,32 +72,25 @@
                 <div class="flex justify-center my-2">
                     <div>
                         Tags
-                        <router-link :to="{ name: 'search', query: { q: 'tags: laravel, php' }}">
-                            <IndigoTextLink>Laravel/PHP</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'search', query: { q: 'tag: database' }}">
-                            <IndigoTextLink>Database</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'search', query: { q: 'tags: js, javascript' }}">
-                            <IndigoTextLink>JS</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'search', query: { q: 'tags: vue, vuejs' }}">
-                            <IndigoTextLink>Vue</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'search', query: { q: 'tag: aws'}}">
-                            <IndigoTextLink>AWS</IndigoTextLink>
-                        </router-link>
-                        <router-link :to="{ name: 'search', query: { q: 'tag: docker'}}">
-                            <IndigoTextLink>Docker</IndigoTextLink>
-                        </router-link>
+                        <ul>
+                            <li v-for="tag in this.tags" :key="tag.routeName">
+                                <router-link :to="{ name: 'search', query: { q: tag.query }}">
+                                    <IndigoTextLink>{{ tag.description }}</IndigoTextLink>
+                                </router-link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <div class="flex justify-center my-2">
                     <div>
                         2020
-                        <router-link :to="{ name: 'home', query: { month: '2020-12'}}">
-                            <IndigoTextLink>December</IndigoTextLink>
-                        </router-link>
+                        <ul>
+                            <li v-for="month in this.months" :key="month.routeName">
+                                <router-link :to="{ name: 'search', query: { q: month.query }}">
+                                    <IndigoTextLink>{{ month.description }}</IndigoTextLink>
+                                </router-link>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -115,7 +106,28 @@
 import IndigoTextLink from "./buttons/IndigoTextLink";
 
 export default {
-    components: {IndigoTextLink}
+    components: {IndigoTextLink},
+    data(){
+        return {
+            pages: [
+                {'routeName': 'about', 'description': 'About'},
+                {'routeName': 'login', 'description': 'Login'},
+                {'routeName': 'register', 'description': 'Subscribe'},
+                {'routeName': 'curriculum', 'description': 'Curriculum'}
+            ],
+            tags: [
+                {'query': 'tags: laravel, php', 'description': 'Laravel/PHP'},
+                {'query': 'tag: database', 'description': 'Database'},
+                {'query': 'tags: js, javascript', 'description': 'JS'},
+                {'query': 'tags: vue, vuejs', 'description': 'Vue'},
+                {'query': 'tag: aws', 'description': 'AWS'},
+                {'query': 'tag: docker', 'description': 'Docker'}
+            ],
+            months: [
+                {'query': 'month: 2020-12', 'description': 'December'},
+            ]
+        }
+    }
 }
 </script>
 
