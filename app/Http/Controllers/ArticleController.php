@@ -19,24 +19,83 @@ class ArticleController extends Controller
      */
     public function published(Request $request)
     {
-        $take = $request->has('take') ? $request->input('take') : 10;
+        $take = $request->input('take') ?? 10;
+        $order_by = $request->input('order_by') ?? 'id';
+        $order = $request->input('order') ?? 'Desc';
 
-        return Article::with('user:id,name')->published()->paginate($take);
+        $searchWords = $request->has('search') ? explode(' ', $request->input('search')) : [];
+
+        $articleQuery = Article::with('user:id,name')->published();
+
+        if(count($searchWords)) {
+
+            $columnSearch = 'content';
+
+            if(preg_match('/^(tag|tag:|tags|tags:|title|title:)$/', $searchWords[0], $matches)) {
+
+                switch ($matches[0]) {
+                    case 'tags':
+                    case 'tags:':
+                    case 'tag':
+                    case 'tag:':
+                        $columnSearch = 'tags';
+                        unset($searchWords[0]);
+                        break;
+                    case 'title':
+                    case 'title:':
+                        $columnSearch = 'title';
+                        unset($searchWords[0]);
+                    break;
+                }
+            }
+
+            $articleQuery->where(function($where) use($searchWords, $columnSearch) {
+                foreach ($searchWords as $word) {
+                    $where->orWhere($columnSearch, 'like', '%' . str_replace(',', '', $word) . '%');
+                }
+            });
+        }
+
+        return $articleQuery
+            ->orderBy($order_by, $order)
+            ->paginate($take);
+    }
+
+    /**
+     * OPEN ROUTE
+     *
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function featured(Request $request)
+    {
+        return Article::with('user:id,name')
+            ->published()
+            ->featured()
+            ->orderBy('position', 'Asc')
+            ->orderBy('title', 'Asc')
+            ->get();
     }
 
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function load()
+    public function load(Request $request)
     {
         //@todo Create policy for authorization
         $auth_user = Auth::user();
 
+        $order_by = $request->input('order_by') ?? 'id';
+        $order = $request->input('order') ?? 'Desc';
+
         if($auth_user->role == 3) { //Administrator
-            $article = Article::with('user:id,name')->get();
+            $articleQuery = Article::with('user:id,name');
         } else {
-            $article = Article::with('user:id,name')->where('user_id', $auth_user->id)->get();
+            $articleQuery = Article::with('user:id,name')->where('user_id', $auth_user->id);
         }
+
+        $article = $articleQuery
+            ->orderBy($order_by, $order)
+            ->get();
 
         //@todo Include pagination
 
@@ -57,9 +116,13 @@ class ArticleController extends Controller
         $new_article->user_id = Auth::user()->id;
         $new_article->tags = $request->input('tags');
         $new_article->title = $request->input('title');
+        $new_article->description = $request->input('description');
         $new_article->content = $request->input('content');
-        $new_article->status = $request->input('status');
+//        $new_article->status = $request->input('status');
+        $new_article->status = 0; //Waiting Approval
         $new_article->featured = $request->input('featured');
+        $new_article->type = $request->input('type');
+        $new_article->external_link = $request->input('external_link');
         $new_article->position = $request->input('position');
 
         //upload Images and save
@@ -87,10 +150,16 @@ class ArticleController extends Controller
 
         $article->tags = $request->input('tags');
         $article->title = $request->input('title');
+        $article->description = $request->input('description');
+
         $article->content = $request->input('content');
+
+        $article->type = $request->input('type');
+        $article->external_link = $request->input('external_link');
 
         $article->featured = $request->input('featured');
         $article->status = $request->input('status');
+        $article->position = $request->input('position');
 
         //upload Images and save
         $article->images = $request->input('images');

@@ -25,10 +25,14 @@ class EditArticleTest extends TestCase
 
         $edit = [
             'title' => 'Article Title',
-            'content' => 'Article Content',
+            'description' => 'Article Description',
+            'content' => 'Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content Article Content',
             'tags' => 'Article, tags',
             'featured' => 1,
+            'position' => 2,
             'status' => 2,
+            'type' => 1,
+            'external_link' => 'https://testing.com.br/article',
             'images' => null,
         ];
 

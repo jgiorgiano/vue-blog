@@ -13,15 +13,44 @@
                     type="text"
                     :v-errors="$v.article.title"
                     :errors="errors"
+                    maxlength="150"
                 />
 
                 <TextAreaField
-                    label="Content"
-                    field="content"
-                    v-model="$v.article.content.$model"
+                    label="Description"
+                    field="description"
+                    v-model="$v.article.description.$model"
                     type="text"
-                    :v-errors="$v.article.content"
+                    :v-errors="$v.article.description"
                     :errors="errors"
+                    maxlength="200"
+                />
+
+                <SelectField
+                    label="Type"
+                    field="type"
+                    v-model="$v.article.type.$model"
+                    :v-errors="$v.article.type"
+                    :errors="errors"
+                    :options="typeOptions"/>
+
+                <InputField v-if="article.type === 2"
+                            label="External Link"
+                            field="external_link"
+                            v-model="$v.article.external_link.$model"
+                            type="text"
+                            :v-errors="$v.article.external_link"
+                            :errors="errors"
+                            maxlength="255"
+                />
+
+                <TextAreaField v-if="article.type === 1"
+                               label="Content"
+                               field="content"
+                               v-model="$v.article.content.$model"
+                               type="text"
+                               :v-errors="$v.article.content"
+                               :errors="errors"
                 />
 
                 <InputField
@@ -31,21 +60,22 @@
                     type="text"
                     :v-errors="$v.article.tags"
                     :errors="errors"
+                    maxlength="100"
                 />
 
-                <checkbox-field
-                    field="featured"
-                    v-model="$v.article.featured.$model"
-                    :v-errors="$v.article.featured"
-                    :errors="errors"
+                <checkbox-field class="my-2"
+                                field="featured"
+                                v-model="$v.article.featured.$model"
+                                :v-errors="$v.article.featured"
+                                :errors="errors"
                 >
                     Feature the Article
                 </checkbox-field>
 
-<!--                <div class="mb-5">-->
-<!--                    <p class="text-gray-800">Upload your profile picture</p>-->
-<!--                    <input type="file" ref="file" @change="handleFileUpload()">-->
-<!--                </div>-->
+                <!--                <div class="mb-5">-->
+                <!--                    <p class="text-gray-800">Upload your profile picture</p>-->
+                <!--                    <input type="file" ref="file" @change="handleFileUpload()">-->
+                <!--                </div>-->
 
                 <div class="py-2 flex justify-end">
                     <div>
@@ -69,11 +99,13 @@ import TextAreaField from "../../components/forms/TextAreaField";
 import CheckboxField from "../../components/forms/CheckboxField";
 import {required, minLength, maxLength} from 'vuelidate/lib/validators';
 import ProcessStatus from "../../components/buttons/processStatus";
+import SelectField from "../../components/forms/SelectField";
 
 const touchMap = new WeakMap()
 
 export default {
     components: {
+        SelectField,
         ProcessStatus,
         InputField,
         IndigoButton,
@@ -83,12 +115,15 @@ export default {
     data() {
         return {
             processStatus: 0,
+            typeOptions: this.$store.state.article.typeOptions,
             article: {
                 title: '',
+                description: '',
+                type: 1,
+                external_link: '',
                 content: '',
                 tags: '',
                 featured: 0,
-                status: 0,
                 position: 0,
                 images: null,
             },
@@ -97,10 +132,13 @@ export default {
     },
     validations: {
         article: {
-            title: {required, minLength: minLength(5), maxLength: maxLength(150)},
-            content: {required, minLength: minLength(5)},
-            tags: { required, minLength: minLength(3) },
-            featured: { }
+            title: {required, minLength: minLength(50), maxLength: maxLength(150)},
+            description: {required, maxLength: maxLength(200)},
+            content: {required, minLength: minLength(100)},
+            tags: { required, minLength: minLength(3), maxLength: maxLength(100) },
+            type: {},
+            external_link: {},
+            featured: {},
         }
     },
     methods: {

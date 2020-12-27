@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container mx-auto pt-10">
         <div class="flex justify-between m-4">
             <h3 class="inline-block">Dashboard Logged User</h3>
 

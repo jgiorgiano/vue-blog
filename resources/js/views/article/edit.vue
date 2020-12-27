@@ -13,9 +13,38 @@
                     type="text"
                     :v-errors="$v.article.title"
                     :errors="errors"
+                    maxlength="150"
                 />
 
                 <TextAreaField
+                    label="Description"
+                    field="description"
+                    v-model="$v.article.description.$model"
+                    type="text"
+                    :v-errors="$v.article.description"
+                    :errors="errors"
+                    maxlength="200"
+                />
+
+                <SelectField
+                    label="Type"
+                    field="type"
+                    v-model="$v.article.type.$model"
+                    :v-errors="$v.article.type"
+                    :errors="errors"
+                    :options="typeOptions"/>
+
+                <InputField v-if="article.type === 2"
+                    label="External Link"
+                    field="external_link"
+                    v-model="$v.article.external_link.$model"
+                    type="text"
+                    :v-errors="$v.article.external_link"
+                    :errors="errors"
+                    maxlength="255"
+                />
+
+                <TextAreaField v-if="article.type === 1"
                     label="Content"
                     field="content"
                     v-model="$v.article.content.$model"
@@ -31,16 +60,30 @@
                     type="text"
                     :v-errors="$v.article.tags"
                     :errors="errors"
+                    maxlength="100"
                 />
 
-                <SelectField
-                    class="md:w-1/2"
-                    label="Status"
-                    field="status"
-                    v-model="$v.article.status.$model"
-                    :v-errors="$v.article.status"
-                    :errors="errors"
-                    :options="statusOptions"/>
+                <div class="justify-between items-end sm:flex">
+                    <SelectField
+                        class="md:w-1/2"
+                        label="Status"
+                        field="status"
+                        v-model="$v.article.status.$model"
+                        :v-errors="$v.article.status"
+                        :errors="errors"
+                        :options="statusOptions"/>
+
+                    <InputField
+                        class="md:w-1/2"
+                        label="Position"
+                        field="position"
+                        v-model="$v.article.position.$model"
+                        type="number"
+                        :v-errors="$v.article.position"
+                        :errors="errors"
+                    />
+                </div>
+
 
                 <checkbox-field class="my-2"
                     field="featured"
@@ -50,9 +93,6 @@
                 >
                     Feature the Article
                 </checkbox-field>
-
-
-
 
                 <!--                <div class="mb-5">-->
                 <!--                    <p class="text-gray-800">Upload your profile picture</p>-->
@@ -98,13 +138,17 @@ export default {
         return {
             processStatus: 0,
             statusOptions: this.$store.state.article.statusOptions,
+            typeOptions: this.$store.state.article.typeOptions,
             article: {
                 title: '',
+                description: '',
+                type: '',
+                external_link: '',
                 content: '',
                 tags: '',
                 featured: 0,
                 status: 0,
-                position: 0,
+                position: '',
                 images: null,
             },
             errors: {}
@@ -112,11 +156,15 @@ export default {
     },
     validations: {
         article: {
-            title: {required, minLength: minLength(5), maxLength: maxLength(150)},
-            content: {required, minLength: minLength(2)},
-            tags: { required, minLength: minLength(3) },
+            title: {required, minLength: minLength(50), maxLength: maxLength(150)},
+            description: {required, maxLength: maxLength(200)},
+            content: {required, minLength: minLength(100)},
+            tags: { required, minLength: minLength(3), maxLength: maxLength(100) },
+            type: {},
+            external_link: {},
             featured: {},
-            status: { required }
+            status: { required },
+            position: {}
         }
     },
     methods: {

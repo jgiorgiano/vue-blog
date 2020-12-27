@@ -25,8 +25,10 @@ class ArticleStoreRequest extends FormRequest
     {
         return [
             "tags" => 'required|min: 3|max: 100',
-            "title" => 'required|min: 5|max:150',
-            "content" => 'required|min: 5',
+            "title" => 'required|min: 50|max:150',
+            "description" => 'max:200',
+            "external_link" => 'max:255',
+            "content" => 'required|min: 100'
         ];
     }
 }
