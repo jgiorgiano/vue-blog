@@ -5134,6 +5134,57 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/buttons/IndigoButton */ "./resources/js/components/buttons/IndigoButton.vue");
+/* harmony import */ var _components_buttons_IndigoTextLink__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/buttons/IndigoTextLink */ "./resources/js/components/buttons/IndigoTextLink.vue");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -5151,9 +5202,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
+    IndigoTextLink: _components_buttons_IndigoTextLink__WEBPACK_IMPORTED_MODULE_1__["default"],
     IndigoButton: _components_buttons_IndigoButton__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  data: function data() {
+    return {
+      'techs': [{
+        'title': 'Back-end',
+        'content': ['PHP 7.4', 'Laravel 8.0', 'MySQL']
+      }, {
+        'title': 'Front-end',
+        'content': ['Javascript', 'VueJs 2', 'Vuex', 'Vue Router', 'GSAP', 'tailwind Css 1.9']
+      }, {
+        'title': 'Server',
+        'content': ['Aws EC2', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
+      }, {
+        'title': 'Other',
+        'content': ['Github', 'Github actions (CI/CD)']
+      }]
+    };
   }
 });
 
@@ -5353,30 +5423,47 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      skills: [{
-        title: 'PHP - Laravel',
-        sub_title: 'Middle Level',
-        description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
-        tags: ['OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder', 'TDD']
-      }, {
-        title: 'JavaScript, HTML, and CSS',
-        sub_title: 'Middle Level',
-        description: 'I\'ve been in love with JS since day one, even using just Vanilla JS and jQuery in my current job I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
-        tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
-      }, {
-        title: 'MySQL',
-        sub_title: 'Middle Level',
-        description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
-        tags: ['MySQL', 'MySQLWorkbench']
-      }, {
-        title: 'Others',
-        sub_title: 'Middle Level',
-        description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
-        tags: ['GIT', 'Unix Shell', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
-      }]
+      skills: [// {
+        //     title: 'PHP - Laravel',
+        //     sub_title: 'Middle Level',
+        //     description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
+        //     tags: [
+        //         'OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder', 'TDD'
+        //     ]
+        // },
+        // {
+        //     title: 'JavaScript, HTML, and CSS',
+        //     sub_title: 'Middle Level',
+        //     description: 'I\'ve been in love with JS since day one, even using just Vanilla JS and jQuery in my current job I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
+        //     tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
+        // },
+        // {
+        //     title: 'MySQL',
+        //     sub_title: 'Middle Level',
+        //     description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
+        //     tags: ['MySQL', 'MySQLWorkbench']
+        // },
+        // {
+        //     title: 'Others',
+        //     sub_title: 'Middle Level',
+        //     description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
+        //     tags: ['GIT', 'Unix Shell', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
+        // },
+      ]
     };
   }
 });
@@ -30977,6 +31064,33 @@ _components_Icon_vue__WEBPACK_IMPORTED_MODULE_0__["default"].register({
 
 /***/ }),
 
+/***/ "./node_modules/vue-awesome/icons/caret-right.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vue-awesome/icons/caret-right.js ***!
+  \*******************************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _components_Icon_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Icon.vue */ "./node_modules/vue-awesome/components/Icon.vue");
+
+
+_components_Icon_vue__WEBPACK_IMPORTED_MODULE_0__["default"].register({
+  'caret-right': {
+    width: 192,
+    height: 512,
+    paths: [
+      {
+        d: 'M0 384.7v-257.3c0-17.8 21.5-26.7 34.1-14.1l128.7 128.7c7.8 7.8 7.8 20.5 0 28.3l-128.7 128.7c-12.6 12.6-34.1 3.7-34.1-14.1z'
+      }
+    ]
+  }
+})
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-awesome/icons/check-circle.js":
 /*!********************************************************!*\
   !*** ./node_modules/vue-awesome/icons/check-circle.js ***!
@@ -33700,21 +33814,88 @@ var render = function() {
     [
       _c("breadcrumb", { attrs: { link: { description: "About" } } }),
       _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "j-card p-6" },
-        [
-          _vm._m(0),
-          _vm._v(" "),
+      _c("div", { staticClass: "j-card" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", [
           _c(
-            "router-link",
-            { attrs: { to: { name: "curriculum" } } },
-            [_c("IndigoButton", [_vm._v("My Curriculum")])],
-            1
-          )
-        ],
-        1
-      )
+            "section",
+            { staticClass: "my-4 block md:flex items-start lg:items-center" },
+            [
+              _c("img", {
+                staticClass:
+                  "my-4 md:my-0 w-40 rounded-full mx-auto md:mx-16 md:order-2",
+                attrs: { src: "img/jmg.jpeg", alt: "user image" }
+              }),
+              _vm._v(" "),
+              _c("div", [
+                _vm._m(1),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "flex justify-center md:justify-start" },
+                  [
+                    _c(
+                      "router-link",
+                      { attrs: { to: { name: "curriculum" } } },
+                      [
+                        _c("IndigoButton", { staticClass: "mt-4" }, [
+                          _vm._v("Curriculum")
+                        ])
+                      ],
+                      1
+                    )
+                  ],
+                  1
+                )
+              ])
+            ]
+          ),
+          _vm._v(" "),
+          _c("section", { staticClass: "text-gray-800 leading-7" }, [
+            _c("p", [
+              _vm._v(
+                "\n                        This is my personal blog where I want to share some of the articles and knowledge used on my\n                        daily\n                        work, learning path, and used as a laboratory for applying new techs and knowledge.\n                    "
+              )
+            ]),
+            _vm._v(" "),
+            _c("h3", { staticClass: "mt-4 mb-2 font-medium" }, [
+              _vm._v("Technologies Used on this project:")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "block md:flex flex-1 justify-between mx-4" },
+              _vm._l(_vm.techs, function(tech) {
+                return _c("div", { key: tech.title, staticClass: "my-2" }, [
+                  _c("h3", { staticClass: "font-medium" }, [
+                    _vm._v(_vm._s(tech.title))
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "ul",
+                    { staticClass: "pl-2" },
+                    _vm._l(tech.content, function(name) {
+                      return _c(
+                        "li",
+                        { key: name, staticClass: "text-gray-800 leading-7" },
+                        [
+                          _c("v-icon", { attrs: { name: "caret-right" } }),
+                          _vm._v(" "),
+                          _c("span", [_vm._v(_vm._s(name))])
+                        ],
+                        1
+                      )
+                    }),
+                    0
+                  )
+                ])
+              }),
+              0
+            )
+          ])
+        ])
+      ])
     ],
     1
   )
@@ -33726,6 +33907,20 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "j-card-header" }, [
       _c("h3", { staticClass: "j-card-title" }, [_vm._v("About")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "text-gray-800 leading-7" }, [
+      _vm._v(
+        "\n                            Hi, my name is Jhonathan and I am a full-stack self-taught web developer. "
+      ),
+      _c("br"),
+      _vm._v(
+        "\n                            I've started my professional career in web development in March 2019 in a company working on an\n                            application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.\n                            My role in the company involves maintaining the code base, bugfixes, and building new\n                            features for the application.\n\n                            "
+      )
     ])
   }
 ]
@@ -33754,16 +33949,14 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass:
-          "font-sans leading-relaxed text-gray-900 antialiased hyphens-manual optimize-legibility",
+        staticClass: "font-sans leading-relaxed text-gray-900 antialiased",
         attrs: { id: "cv" }
       },
       [
         _c(
           "div",
           {
-            staticClass:
-              "page mx-auto max-w-a4 md:h-a4 p-6 sm:p-8 md:p-16 bg-white"
+            staticClass: "mx-auto max-w-a4 md:h-a4 p-6 sm:p-8 md:p-16 bg-white"
           },
           [
             _c(
@@ -34008,7 +34201,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "leading-none mb-8" }, [
         _c(
           "h1",
-          { staticClass: "text-2xl font-bold uppercase text-gray-900" },
+          { staticClass: "text-2xl font-bold uppercase text-gray-800" },
           [_vm._v("Jhonathan Marchi Giorgiano")]
         ),
         _vm._v(" "),
@@ -34033,14 +34226,14 @@ var staticRenderFns = [
           [_vm._v("ABOUT ME")]
         ),
         _vm._v(" "),
-        _c("div", { staticClass: "h-full border-b-8 mb-4" }),
+        _c("div", { staticClass: "h-full border-b-4 mb-4" }),
         _vm._v(" "),
         _c("section", { staticClass: "mb-2 col-break-avoid" }, [
           _c("header", [
             _c(
               "h3",
               {
-                staticClass: "text-lg text-gray-700 font-semibold leading-snug"
+                staticClass: "text-lg text-gray-800 font-semibold leading-snug"
               },
               [
                 _vm._v(
@@ -34050,9 +34243,9 @@ var staticRenderFns = [
             )
           ]),
           _vm._v(" "),
-          _c("p", { staticClass: "mt-2 text-gray-700 leading-normal" }, [
+          _c("p", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
             _vm._v(
-              "\n                                    A passionate full-stack self-taught developer that is aways aiming to learn. I’ve\n                                    commercial experience working in an application built in Laravel, jQuery, Bootstrap\n                                    and MySQL where I was responsible for making new features from scratch, going\n                                    through all the areas of the development.\n                                "
+              "\n                                        A self-motivated full-stack self-taught developer who is always looking for\n                                        continuous improvement and loves learning.\n                                        I've Professional experience working in an application built in PHP, Laravel,\n                                        MySQL, Jquery, and Bootstrap.\n"
             )
           ])
         ])
@@ -34073,7 +34266,7 @@ var staticRenderFns = [
         [_vm._v("EXPERIENCE")]
       ),
       _vm._v(" "),
-      _c("div", { staticClass: "h-full border-b-8 mb-4" })
+      _c("div", { staticClass: "h-full border-b-4 mb-4" })
     ])
   },
   function() {
@@ -34086,7 +34279,7 @@ var staticRenderFns = [
           "h3",
           {
             staticClass:
-              "text-lg text-gray-700 font-semibold leading-snug inline"
+              "text-lg text-gray-800 font-semibold leading-snug inline"
           },
           [_vm._v("eGov Solutions")]
         ),
@@ -34106,25 +34299,7 @@ var staticRenderFns = [
         ])
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "text-gray-700 leading-normal" }, [
-        _c("p", [
-          _vm._v(
-            "Under the guidance of senior developer, I am responsible for analysis issues, design and\n                                code new features and improvements for an existing web application. Qualified to the\n                                development from the frontend end to the backend end throughout the Database. Worked in\n                                a Multitenancy platform for 35 councils."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "Refactored the core of the application reducing class with thousands of lines and\n                                hundreds of requests to just a few, applying methods as DRY and OOP and clean code,\n                                making it much easier to maintain and productive to escalate. Restructured the database,\n                                creating referential integrity between registers running multiples SYNC to fix old\n                                hardcoding."
-          )
-        ]),
-        _vm._v(" "),
-        _c("p", [
-          _vm._v(
-            "I have worked directly in a creation of a Microservice for reports, wherein a night\n                                routine all the data are migrated from MYSQL to a MongoDB making the reports much faster\n                                and the MYSQL free for others requests during the day. I helped to Migrate the server\n                                from Windows Server to Linux in AWS. Most relevant tools used in this role: Docker,\n                                Continues Integration, GitLab, SSH."
-          )
-        ])
-      ])
+      _c("div", { staticClass: "text-gray-800 leading-normal" })
     ])
   },
   function() {
@@ -60391,12 +60566,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_awesome_icons_arrow_left__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! vue-awesome/icons/arrow-left */ "./node_modules/vue-awesome/icons/arrow-left.js");
 /* harmony import */ var vue_awesome_icons_arrow_right__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! vue-awesome/icons/arrow-right */ "./node_modules/vue-awesome/icons/arrow-right.js");
 /* harmony import */ var vue_awesome_icons_arrow_circle_up__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! vue-awesome/icons/arrow-circle-up */ "./node_modules/vue-awesome/icons/arrow-circle-up.js");
-/* harmony import */ var vue_awesome_components_Icon__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-awesome/components/Icon */ "./node_modules/vue-awesome/components/Icon.vue");
-/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
-/* harmony import */ var _store_user__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./store/user */ "./resources/js/store/user.js");
-/* harmony import */ var _store_blog__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./store/blog */ "./resources/js/store/blog.js");
-/* harmony import */ var _store_article__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./store/article */ "./resources/js/store/article.js");
-/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./store/store */ "./resources/js/store/store.js");
+/* harmony import */ var vue_awesome_icons_caret_right__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! vue-awesome/icons/caret-right */ "./node_modules/vue-awesome/icons/caret-right.js");
+/* harmony import */ var vue_awesome_components_Icon__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! vue-awesome/components/Icon */ "./node_modules/vue-awesome/components/Icon.vue");
+/* harmony import */ var _routes__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./routes */ "./resources/js/routes.js");
+/* harmony import */ var _store_user__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./store/user */ "./resources/js/store/user.js");
+/* harmony import */ var _store_blog__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./store/blog */ "./resources/js/store/blog.js");
+/* harmony import */ var _store_article__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./store/article */ "./resources/js/store/article.js");
+/* harmony import */ var _store_store__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./store/store */ "./resources/js/store/store.js");
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 
@@ -60409,6 +60585,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
  * https://github.com/Justineo/vue-awesome
  */
 // only import the icons you use to reduce bundle size
+
 
 
 
@@ -60448,7 +60625,7 @@ Vue.component('v-navbar', __webpack_require__(/*! ./components/navbar/Navbar.vue
 Vue.component('v-footer', __webpack_require__(/*! ./components/Footer.vue */ "./resources/js/components/Footer.vue")["default"]);
 Vue.component('v-main', __webpack_require__(/*! ./views/Main.vue */ "./resources/js/views/Main.vue")["default"]);
 Vue.component('breadcrumb', __webpack_require__(/*! ./components/Breadcrumb */ "./resources/js/components/Breadcrumb.vue")["default"]);
-Vue.component('v-icon', vue_awesome_components_Icon__WEBPACK_IMPORTED_MODULE_13__["default"]);
+Vue.component('v-icon', vue_awesome_components_Icon__WEBPACK_IMPORTED_MODULE_14__["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60461,7 +60638,7 @@ Vue.component('v-icon', vue_awesome_components_Icon__WEBPACK_IMPORTED_MODULE_13_
 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
-  routes: _routes__WEBPACK_IMPORTED_MODULE_14__["default"],
+  routes: _routes__WEBPACK_IMPORTED_MODULE_15__["default"],
   scrollBehavior: function scrollBehavior(to, from, savedPosition) {
     return {
       x: 0,
@@ -60479,14 +60656,14 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
 
 var store = new vuex__WEBPACK_IMPORTED_MODULE_1__["default"].Store({
   modules: {
-    user: _store_user__WEBPACK_IMPORTED_MODULE_15__["default"],
-    blog: _store_blog__WEBPACK_IMPORTED_MODULE_16__["default"],
-    article: _store_article__WEBPACK_IMPORTED_MODULE_17__["default"]
+    user: _store_user__WEBPACK_IMPORTED_MODULE_16__["default"],
+    blog: _store_blog__WEBPACK_IMPORTED_MODULE_17__["default"],
+    article: _store_article__WEBPACK_IMPORTED_MODULE_18__["default"]
   },
-  state: _store_store__WEBPACK_IMPORTED_MODULE_18__["state"],
-  mutations: _store_store__WEBPACK_IMPORTED_MODULE_18__["mutations"],
-  getters: _store_store__WEBPACK_IMPORTED_MODULE_18__["getters"],
-  actions: _store_store__WEBPACK_IMPORTED_MODULE_18__["actions"]
+  state: _store_store__WEBPACK_IMPORTED_MODULE_19__["state"],
+  mutations: _store_store__WEBPACK_IMPORTED_MODULE_19__["mutations"],
+  getters: _store_store__WEBPACK_IMPORTED_MODULE_19__["getters"],
+  actions: _store_store__WEBPACK_IMPORTED_MODULE_19__["actions"]
 });
 /**
  * @type {Vue}

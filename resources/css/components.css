@@ -1,6 +1,6 @@
 
 .j-card {
-    @apply w-full bg-white border border-indigo-100 rounded rounded-lg shadow-md p-6;
+    @apply w-full bg-white border border-indigo-100 rounded rounded-lg shadow-md p-8;
 }
 
 .j-card-header {

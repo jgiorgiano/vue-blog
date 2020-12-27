@@ -1,8 +1,7 @@
 <template>
     <div class="container mx-auto">
-        <div id="cv" class="font-sans leading-relaxed text-gray-900 antialiased hyphens-manual optimize-legibility">
-
-            <div class="page mx-auto max-w-a4 md:h-a4 p-6 sm:p-8 md:p-16 bg-white">
+        <div id="cv" class="font-sans leading-relaxed text-gray-900 antialiased">
+            <div class="mx-auto max-w-a4 md:h-a4 p-6 sm:p-8 md:p-16 bg-white">
 
                 <div class="md:col-2 print:col-2 col-gap-md md:h-a4-col print:h-a4-col col-fill">
                     <header class="flex items-center">
@@ -11,7 +10,7 @@
 <!--                            <img class="h-24 w-24 rounded-full shadow-md" src="images/avatar.jpg" alt="">-->
 <!--                        </div>-->
                         <div class="leading-none mb-8">
-                            <h1 class="text-2xl font-bold uppercase text-gray-900">Jhonathan Marchi Giorgiano</h1>
+                            <h1 class="text-2xl font-bold uppercase text-gray-800">Jhonathan Marchi Giorgiano</h1>
                             <small class="uppercase">Full-Stack Developer</small>
                         </div>
                     </header>
@@ -19,18 +18,22 @@
                     <section class="mb-8">
                         <div class="col-break-avoid">
                             <h2 class="text-sm text-gray-600 font-bold print:font-normal tracking-widest">ABOUT ME</h2>
-                            <div class="h-full border-b-8 mb-4"></div>
+                            <div class="h-full border-b-4 mb-4"></div>
 
                             <section class="mb-2 col-break-avoid">
                                 <header>
-                                    <h3 class="text-lg text-gray-700 font-semibold leading-snug">Full-Stack PHP
+                                    <h3 class="text-lg text-gray-800 font-semibold leading-snug">Full-Stack PHP
                                         Developer</h3>
                                 </header>
-                                <p class="mt-2 text-gray-700 leading-normal">
-                                    A passionate full-stack self-taught developer that is aways aiming to learn. I’ve
-                                    commercial experience working in an application built in Laravel, jQuery, Bootstrap
-                                    and MySQL where I was responsible for making new features from scratch, going
-                                    through all the areas of the development.
+                                <p class="mt-2 text-gray-800 leading-normal">
+                                        A self-motivated full-stack self-taught developer who is always looking for
+                                        continuous improvement and loves learning.
+                                        I've Professional experience working in an application built in PHP, Laravel,
+                                        MySQL, Jquery, and Bootstrap.
+<!--                                    A passionate full-stack self-taught developer that is aways aiming to learn. I’ve-->
+<!--                                    commercial experience working in an application built in Laravel, jQuery, Bootstrap-->
+<!--                                    and MySQL where I was responsible for making new features from scratch, going-->
+<!--                                    through all the areas of the development.-->
                                 </p>
                             </section>
 
@@ -39,31 +42,39 @@
 
                     <div class="col-break-avoid">
                         <h2 class="text-sm text-gray-600 font-bold print:font-normal tracking-widest">EXPERIENCE</h2>
-                        <div class="h-full border-b-8 mb-4"></div>
+                        <div class="h-full border-b-4 mb-4"></div>
                     </div>
 
                     <section class="mb-4 col-break-avoid">
                         <header>
-                            <h3 class="text-lg text-gray-700 font-semibold leading-snug inline">eGov Solutions</h3><a
+                            <h3 class="text-lg text-gray-800 font-semibold leading-snug inline">eGov Solutions</h3><a
                             href="https://epep.tv/" target="_blank" class="text-xs text-gray-600 ml-1">(epep.tv)</a>
                             <p class="text-gray-700 leading-normal mb-2">Mar 2019 | Full-Stack PHP
                                 Developer</p>
                         </header>
-                        <div class="text-gray-700 leading-normal">
-                            <p>Under the guidance of senior developer, I am responsible for analysis issues, design and
-                                code new features and improvements for an existing web application. Qualified to the
-                                development from the frontend end to the backend end throughout the Database. Worked in
-                                a Multitenancy platform for 35 councils.</p>
-                            <p>Refactored the core of the application reducing class with thousands of lines and
-                                hundreds of requests to just a few, applying methods as DRY and OOP and clean code,
-                                making it much easier to maintain and productive to escalate. Restructured the database,
-                                creating referential integrity between registers running multiples SYNC to fix old
-                                hardcoding.</p>
-                            <p>I have worked directly in a creation of a Microservice for reports, wherein a night
-                                routine all the data are migrated from MYSQL to a MongoDB making the reports much faster
-                                and the MYSQL free for others requests during the day. I helped to Migrate the server
-                                from Windows Server to Linux in AWS. Most relevant tools used in this role: Docker,
-                                Continues Integration, GitLab, SSH.</p>
+                        <div class="text-gray-800 leading-normal">
+<!--                            Saas for 35 clients-->
+<!--                                refactoring code usign good practices-->
+<!--                                migration to AWS linux serve-->
+<!--                                    attendance collection-->
+<!--                                    vs dashboard-->
+<!--                                    sections-->
+<!--                                    upgrade to laravel 7.4-->
+
+<!--                            <p>Under the guidance of senior developer, I am responsible for analysis issues, design and-->
+<!--                                code new features and improvements for an existing web application. Qualified to the-->
+<!--                                development from the frontend end to the backend end throughout the Database. Worked in-->
+<!--                                a Multitenancy platform for 35 councils.</p>-->
+<!--                            <p>Refactored the core of the application reducing class with thousands of lines and-->
+<!--                                hundreds of requests to just a few, applying methods as DRY and OOP and clean code,-->
+<!--                                making it much easier to maintain and productive to escalate. Restructured the database,-->
+<!--                                creating referential integrity between registers running multiples SYNC to fix old-->
+<!--                                hardcoding.</p>-->
+<!--                            <p>I have worked directly in a creation of a Microservice for reports, wherein a night-->
+<!--                                routine all the data are migrated from MYSQL to a MongoDB making the reports much faster-->
+<!--                                and the MYSQL free for others requests during the day. I helped to Migrate the server-->
+<!--                                from Windows Server to Linux in AWS. Most relevant tools used in this role: Docker,-->
+<!--                                Continues Integration, GitLab, SSH.</p>-->
 
                         </div>
                     </section>
@@ -188,32 +199,32 @@ export default {
     data() {
         return {
             skills: [
-                {
-                    title: 'PHP - Laravel',
-                    sub_title: 'Middle Level',
-                    description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
-                    tags: [
-                        'OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder', 'TDD'
-                    ]
-                },
-                {
-                    title: 'JavaScript, HTML, and CSS',
-                    sub_title: 'Middle Level',
-                    description: 'I\'ve been in love with JS since day one, even using just Vanilla JS and jQuery in my current job I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
-                    tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
-                },
-                {
-                    title: 'MySQL',
-                    sub_title: 'Middle Level',
-                    description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
-                    tags: ['MySQL', 'MySQLWorkbench']
-                },
-                {
-                    title: 'Others',
-                    sub_title: 'Middle Level',
-                    description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
-                    tags: ['GIT', 'Unix Shell', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
-                },
+                // {
+                //     title: 'PHP - Laravel',
+                //     sub_title: 'Middle Level',
+                //     description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
+                //     tags: [
+                //         'OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder', 'TDD'
+                //     ]
+                // },
+                // {
+                //     title: 'JavaScript, HTML, and CSS',
+                //     sub_title: 'Middle Level',
+                //     description: 'I\'ve been in love with JS since day one, even using just Vanilla JS and jQuery in my current job I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
+                //     tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
+                // },
+                // {
+                //     title: 'MySQL',
+                //     sub_title: 'Middle Level',
+                //     description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
+                //     tags: ['MySQL', 'MySQLWorkbench']
+                // },
+                // {
+                //     title: 'Others',
+                //     sub_title: 'Middle Level',
+                //     description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
+                //     tags: ['GIT', 'Unix Shell', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
+                // },
             ]
         }
     }
