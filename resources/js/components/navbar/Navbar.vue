@@ -4,7 +4,7 @@
             <nav-logo />
             <div v-if="!authenticated" class="hidden md:flex">
                 <router-link :to="{ name: 'home'}">
-                    <nav-link>.Home.</nav-link>
+                    <nav-link>Home</nav-link>
                 </router-link>
                 <router-link :to="{ name: 'about'}">
                     <nav-link>About</nav-link>
