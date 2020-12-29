@@ -89,7 +89,6 @@ jobs:
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
           rsync  -qavzr -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
-#          rsync  -qavzr --delete --exclude '/vendor/*' --exclude '/node_modules/*' --exclude '/storage/*' --exclude '/.env' -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
           ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "cd ${remote_dir} && php artisan migrate && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link"
 #          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "sudo chmod -R 775 /var/www/test; sudo chgrp -R www-data /var/www/test/storage /var/www/test/bootstrap/cache"
 
