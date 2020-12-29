@@ -86,7 +86,7 @@ export default {
                 },
                 {
                     'title' : 'Server',
-                    'content' : ['Aws EC2', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
+                    'content' : ['AWS Lightsail', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
                 },
                 {
                     'title' : 'Other',
