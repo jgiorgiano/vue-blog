@@ -2,9 +2,11 @@ name: github-actions
 
 on:
   push:
-    branchs: develop
+    branchs:
+      - develop
   pull_request:
-    branchs: master
+    branchs:
+      - master
 
 jobs:
   tests:
@@ -75,19 +77,19 @@ jobs:
       - name: Compile assets for production
         run: npm run production
 
-      - name: Sync Staging server
+      - name: Deploy to server
         env:
           remote_host: ${{ secrets.SSH_HOST }}
           remote_user: ${{ secrets.SSH_USERNAME }}
           remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
           local_dir: "./"
-          remote_dir: "/var/www/staging/"
+          remote_dir: "/var/www/blog/"
         run: |
           mkdir ~/.ssh
           echo "$remote_key" > ~/.ssh/gh_actions_key
           chmod 600 ~/.ssh/gh_actions_key
           rsync  -qavzr --delete --exclude '/vendor/*' --exclude '/node_modules/*' --exclude '/storage/*' --exclude '/.env' -e "ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no" ${local_dir} ${remote_user}@${remote_host}:${remote_dir}
-          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "cd /var/www/staging && php artisan migrate && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link"
+          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "cd ${remote_dir} && php artisan migrate && php artisan config:cache && php artisan route:cache && php artisan view:cache && php artisan storage:link"
 #          ssh -i ~/.ssh/gh_actions_key -o StrictHostKeyChecking=no ${remote_user}@${remote_host} "sudo chmod -R 775 /var/www/test; sudo chgrp -R www-data /var/www/test/storage /var/www/test/bootstrap/cache"
 
 #  staging-deploy:
