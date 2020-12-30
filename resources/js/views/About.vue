@@ -16,11 +16,8 @@
                             Hi, my name is Jhonathan and I am a full-stack self-taught web developer. <br>
                             I've started my professional career in web development in March 2019 in a company working on an
                             application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.
-                            My role in the company involves maintaining the code base, bugfixes, and building new
+                            My role in the company involves maintaining the code base and building new
                             features for the application.
-
-                            <!--                    <br>-->
-                            <!--                    I am a self-motivated person who is always looking for continuous improvement and loves learning.-->
                         </p>
                         <div class="flex justify-center md:justify-start">
                             <router-link :to="{ name: 'curriculum'}">
