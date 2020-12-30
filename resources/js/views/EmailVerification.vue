@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col justify-center items-center test container mx-auto">
-        <div class="j-card md:w-1/2 mt-48">
+    <div class="flex flex-col justify-center items-center container mx-auto">
+        <div class="j-card md:w-1/2">
             <div class="j-card-header">
                 <h3 class="j-card-title">Email Verification</h3>
             </div>

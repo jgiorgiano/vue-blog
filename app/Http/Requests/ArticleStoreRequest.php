@@ -24,11 +24,25 @@ class ArticleStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            "tags" => 'required|min: 3|max: 100',
-            "title" => 'required|min: 50|max:150',
-            "description" => 'max:200',
-            "external_link" => 'max:255',
-            "content" => 'required|min: 100'
+            "title" => 'required|min: 10|max:150',
+            "description" => 'required|max:200',
+            "type" => 'required|integer',
+            "external_link" => 'required_if:type,2|max:255',
+            "content" => 'required_if:type,1',
+            "tags" => 'required|min: 3|max: 100'
+        ];
+    }
+
+    /**
+     * Get the error messages for the defined validation rules.
+     *
+     * @return array
+     */
+    public function messages(): array
+    {
+        return [
+            'content.required_if' => 'The Content field is required.',
+            'external_link.required_if' => 'The External Link field is required.',
         ];
     }
 }

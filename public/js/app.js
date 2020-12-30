@@ -5198,9 +5198,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5218,7 +5215,7 @@ __webpack_require__.r(__webpack_exports__);
         'content': ['Javascript', 'VueJs 2', 'Vuex', 'Vue Router', 'GSAP', 'tailwind Css 1.9']
       }, {
         'title': 'Server',
-        'content': ['Aws EC2', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
+        'content': ['AWS Lightsail', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
       }, {
         'title': 'Other',
         'content': ['Github', 'Github actions (CI/CD)']
@@ -5757,6 +5754,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -5801,20 +5799,24 @@ var touchMap = new WeakMap();
         clearTimeout(touchMap.get($v));
       }
 
-      touchMap.set($v, setTimeout($v.$touch, 300));
+      touchMap.set($v, setTimeout($v.$touch, 1000));
     },
     login: function login() {
       var _this = this;
 
-      this.processStatus = 1;
-      this.$store.dispatch('postLogin', this.user).then(function (response) {
-        _this.$router.push({
-          name: 'home'
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.processStatus = 1;
+        this.$store.dispatch('postLogin', this.user).then(function (response) {
+          _this.$router.push({
+            name: 'home'
+          });
+        })["catch"](function (error) {
+          _this.errors = error.response.data.errors;
+          _this.processStatus = 0;
         });
-      })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-        _this.processStatus = 0;
-      });
+      }
     }
   },
   beforeCreate: function beforeCreate() {
@@ -6139,8 +6141,8 @@ var touchMap = new WeakMap();
       newUser: {
         email: '',
         name: '',
-        terms_agreement: '',
-        subscribe: '',
+        terms_agreement: 1,
+        subscribe: false,
         password: '',
         password_confirmation: '',
         errors: {}
@@ -6158,9 +6160,6 @@ var touchMap = new WeakMap();
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__["required"],
         email: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__["email"],
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__["minLength"])(5)
-      },
-      terms_agreement: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_5__["required"]
       },
       subscribe: {},
       password: {
@@ -6182,20 +6181,24 @@ var touchMap = new WeakMap();
         clearTimeout(touchMap.get($v));
       }
 
-      touchMap.set($v, setTimeout($v.$touch, 300));
+      touchMap.set($v, setTimeout($v.$touch, 1000));
     },
     register: function register() {
       var _this = this;
 
-      this.processStatus = 1;
-      this.$store.dispatch('registerNewUser', this.newUser).then(function (response) {
-        return _this.$router.push({
-          name: 'email-verification'
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.processStatus = 1;
+        this.$store.dispatch('registerNewUser', this.newUser).then(function (response) {
+          return _this.$router.push({
+            name: 'email-verification'
+          });
+        })["catch"](function (error) {
+          _this.errors = error.response.data.errors;
+          _this.processStatus = 0;
         });
-      })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-        _this.processStatus = 0;
-      });
+      }
     }
   }
 });
@@ -6439,6 +6442,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 
@@ -6478,15 +6482,26 @@ var touchMap = new WeakMap();
     article: {
       title: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(50),
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(10),
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(150)
       },
       description: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(200)
       },
+      type: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"]
+      },
+      external_link: {
+        required: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["requiredIf"])(function (model) {
+          return model.type === 2;
+        }),
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(200)
+      },
       content: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        required: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["requiredIf"])(function (model) {
+          return model.type === 1;
+        }),
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(100)
       },
       tags: {
@@ -6494,8 +6509,6 @@ var touchMap = new WeakMap();
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(3),
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(100)
       },
-      type: {},
-      external_link: {},
       featured: {}
     }
   },
@@ -6519,21 +6532,25 @@ var touchMap = new WeakMap();
     createArticle: function createArticle() {
       var _this = this;
 
-      this.processStatus = 1;
-      this.$store.dispatch('article/create', this.article).then(function (response) {
-        _this.processStatus = 2;
-        setTimeout(function () {
-          return _this.$router.push({
-            name: 'article-edit',
-            params: {
-              id: response.id
-            }
-          });
-        }, 300);
-      })["catch"](function (error) {
-        _this.errors = error.response.data.errors;
-        _this.processStatus = 0;
-      });
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.processStatus = 1;
+        this.$store.dispatch('article/create', this.article).then(function (response) {
+          _this.processStatus = 2;
+          setTimeout(function () {
+            return _this.$router.push({
+              name: 'article-edit',
+              params: {
+                id: response.id
+              }
+            });
+          }, 300);
+        })["catch"](function (error) {
+          _this.errors = error.response.data.errors;
+          _this.processStatus = 0;
+        });
+      }
     }
   },
   computed: {},
@@ -6559,6 +6576,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _components_buttons_processStatus__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/buttons/processStatus */ "./resources/js/components/buttons/processStatus.vue");
 /* harmony import */ var _components_forms_SelectField__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/forms/SelectField */ "./resources/js/components/forms/SelectField.vue");
+//
 //
 //
 //
@@ -6715,15 +6733,26 @@ var touchMap = new WeakMap();
     article: {
       title: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
-        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(50),
+        minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(10),
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(150)
       },
       description: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(200)
       },
+      type: {
+        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"]
+      },
+      external_link: {
+        required: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["requiredIf"])(function (model) {
+          return model.type === 2;
+        }),
+        maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(200)
+      },
       content: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"],
+        required: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["requiredIf"])(function (model) {
+          return model.type === 1;
+        }),
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(100)
       },
       tags: {
@@ -6731,23 +6760,14 @@ var touchMap = new WeakMap();
         minLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["minLength"])(3),
         maxLength: Object(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["maxLength"])(100)
       },
-      type: {},
-      external_link: {},
-      featured: {},
       status: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__["required"]
       },
+      featured: {},
       position: {}
     }
   },
   methods: {
-    // delayTouch($v) {
-    //     $v.$reset()
-    //     if (touchMap.has($v)) {
-    //         clearTimeout(touchMap.get($v))
-    //     }
-    //     touchMap.set($v, setTimeout($v.$touch, 1000))
-    // },
     handleFileUpload: function handleFileUpload() {// var file_type = this.$refs.file.files[0].type;
       //
       // if(file_type.indexOf('png') > 0 || file_type.indexOf('jpg') > 0 || file_type.indexOf('jpeg') > 0) {
@@ -6760,13 +6780,20 @@ var touchMap = new WeakMap();
     updateArticle: function updateArticle() {
       var _this = this;
 
-      this.processStatus = 1;
-      this.$store.dispatch('article/update', this.article).then(function (response) {
-        _this.processStatus = 2;
-        setTimeout(function () {
-          return _this.processStatus = 0;
-        }, 300);
-      }); // }).catch( error => console.log(error));
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        this.processStatus = 1;
+        this.$store.dispatch('article/update', this.article).then(function (response) {
+          _this.processStatus = 2;
+          setTimeout(function () {
+            return _this.processStatus = 0;
+          }, 300);
+        })["catch"](function (error) {
+          _this.errors = error.response.data.errors;
+          _this.processStatus = 0;
+        });
+      }
     }
   },
   computed: {},
@@ -33915,11 +33942,11 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("p", { staticClass: "text-gray-800 leading-7" }, [
       _vm._v(
-        "\n                            Hi, my name is Jhonathan and I am a full-stack self-taught web developer. "
+        "\n                            Hello, my name is Jhonathan and I am a full-stack self-taught web developer. "
       ),
       _c("br"),
       _vm._v(
-        "\n                            I've started my professional career in web development in March 2019 in a company working on an\n                            application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.\n                            My role in the company involves maintaining the code base, bugfixes, and building new\n                            features for the application.\n\n                            "
+        "\n                            I've started my professional career in web development on March 2019 in a company working on an\n                            application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.\n                            My role in the company involves maintaining the code base and building new\n                            features for the application.\n                        "
       )
     ])
   }
@@ -34430,13 +34457,12 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass:
-        "flex flex-col justify-center items-center test container mx-auto"
+      staticClass: "flex flex-col justify-center items-center container mx-auto"
     },
     [
       _c(
         "div",
-        { staticClass: "j-card md:w-1/2 mt-48" },
+        { staticClass: "j-card md:w-1/2" },
         [
           _vm._m(0),
           _vm._v(" "),
@@ -34670,11 +34696,6 @@ var render = function() {
               [
                 _c(
                   "indigo-button",
-                  {
-                    attrs: {
-                      disabled: _vm.$v.user.$anyError || !_vm.$v.user.$dirty
-                    }
-                  },
                   [
                     _c(
                       "process-status",
@@ -35097,46 +35118,18 @@ var render = function() {
             _c(
               "checkbox-field",
               {
-                attrs: {
-                  field: "terms_agreement",
-                  "v-errors": _vm.$v.newUser.terms_agreement,
-                  errors: _vm.errors,
-                  required: ""
-                },
+                attrs: { field: "subscribe", errors: _vm.errors },
                 model: {
-                  value: _vm.$v.newUser.terms_agreement.$model,
+                  value: _vm.newUser.subscribe,
                   callback: function($$v) {
-                    _vm.$set(_vm.$v.newUser.terms_agreement, "$model", $$v)
+                    _vm.$set(_vm.newUser, "subscribe", $$v)
                   },
-                  expression: "$v.newUser.terms_agreement.$model"
+                  expression: "newUser.subscribe"
                 }
               },
               [
                 _vm._v(
-                  "\n                I agree with the terms and conditions.\n            "
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "checkbox-field",
-              {
-                attrs: {
-                  field: "subscribe",
-                  "v-errors": _vm.$v.newUser.subscribe,
-                  errors: _vm.errors
-                },
-                model: {
-                  value: _vm.$v.newUser.subscribe.$model,
-                  callback: function($$v) {
-                    _vm.$set(_vm.$v.newUser.subscribe, "$model", $$v)
-                  },
-                  expression: "$v.newUser.subscribe.$model"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                I agree to subscribe to the newsletter and receive the latest articles\n            "
+                  "\n                    I agree to subscribe to the newsletter and receive the latest articles\n                "
                 )
               ]
             ),
@@ -35147,12 +35140,6 @@ var render = function() {
               [
                 _c(
                   "indigo-button",
-                  {
-                    attrs: {
-                      disabled:
-                        _vm.$v.newUser.$anyError || !_vm.$v.newUser.$dirty
-                    }
-                  },
                   [
                     _c(
                       "process-status",
@@ -35473,7 +35460,11 @@ var render = function() {
                   expression: "$v.article.featured.$model"
                 }
               },
-              [_vm._v("\n                Feature the Article\n            ")]
+              [
+                _vm._v(
+                  "\n                    Feature the Article\n                "
+                )
+              ]
             ),
             _vm._v(" "),
             _c("div", { staticClass: "py-2 flex justify-end" }, [
@@ -35482,14 +35473,6 @@ var render = function() {
                 [
                   _c(
                     "indigo-button",
-                    {
-                      attrs: {
-                        disabled:
-                          _vm.$v.article.$anyError ||
-                          !_vm.$v.article.$anyDirty ||
-                          _vm.processStatus !== 0
-                      }
-                    },
                     [
                       _c(
                         "process-status",
@@ -35730,7 +35713,11 @@ var render = function() {
                   expression: "$v.article.featured.$model"
                 }
               },
-              [_vm._v("\n                Feature the Article\n            ")]
+              [
+                _vm._v(
+                  "\n                    Feature the Article\n                "
+                )
+              ]
             ),
             _vm._v(" "),
             _c("div", { staticClass: "py-2 flex justify-end" }, [
@@ -35739,12 +35726,6 @@ var render = function() {
                 [
                   _c(
                     "indigo-button",
-                    {
-                      attrs: {
-                        disabled:
-                          _vm.$v.article.$anyError || _vm.processStatus !== 0
-                      }
-                    },
                     [
                       _c(
                         "process-status",
