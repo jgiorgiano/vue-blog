@@ -13,8 +13,8 @@
 
                     <div>
                         <p class="text-gray-800 leading-7">
-                            Hi, my name is Jhonathan and I am a full-stack self-taught web developer. <br>
-                            I've started my professional career in web development in March 2019 in a company working on an
+                            Hello, my name is Jhonathan and I am a full-stack self-taught web developer. <br>
+                            I've started my professional career in web development on March 2019 in a company working on an
                             application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.
                             My role in the company involves maintaining the code base and building new
                             features for the application.
