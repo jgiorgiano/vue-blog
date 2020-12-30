@@ -27,7 +27,8 @@
                         />
 
                         <div class="py-2 flex justify-center">
-                            <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">
+<!--                            <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">-->
+                            <indigo-button>
                                 <process-status :status="processStatus">Login</process-status>
                             </indigo-button>
                         </div>
@@ -80,19 +81,23 @@ export default {
             if (touchMap.has($v)) {
                 clearTimeout(touchMap.get($v))
             }
-            touchMap.set($v, setTimeout($v.$touch, 300))
+            touchMap.set($v, setTimeout($v.$touch, 1000))
         },
         login() {
+            this.$v.$touch()
+
+            if(!this.$v.$invalid) {
                 this.processStatus = 1
 
                 this.$store.dispatch('postLogin', this.user)
-                .then((response) => {
-                    this.$router.push({name: 'home'})
-                })
-                .catch((error) => {
-                    this.errors = error.response.data.errors;
-                    this.processStatus = 0;
-                });
+                    .then((response) => {
+                        this.$router.push({name: 'home'})
+                    })
+                    .catch((error) => {
+                        this.errors = error.response.data.errors;
+                        this.processStatus = 0;
+                    });
+            }
         },
     },
     beforeCreate() {

@@ -48,29 +48,29 @@
                     />
                 </div>
 
-                <checkbox-field
-                    field="terms_agreement"
-                    v-model="$v.newUser.terms_agreement.$model"
-                    :v-errors="$v.newUser.terms_agreement"
-                    :errors="errors"
-                    required
-                >
-                    I agree with the terms and conditions.
-                </checkbox-field>
+<!--                <checkbox-field-->
+<!--                    field="terms_agreement"-->
+<!--                    v-model="$v.newUser.terms_agreement.$model"-->
+<!--                    :v-errors="$v.newUser.terms_agreement"-->
+<!--                    :errors="errors"-->
+<!--                    required-->
+<!--                >-->
+<!--                    I agree with the terms and conditions.-->
+<!--                </checkbox-field>-->
 
                 <checkbox-field
                     field="subscribe"
-                    v-model="$v.newUser.subscribe.$model"
-                    :v-errors="$v.newUser.subscribe"
+                    v-model="newUser.subscribe"
                     :errors="errors"
                 >
                     I agree to subscribe to the newsletter and receive the latest articles
                 </checkbox-field>
 
                 <div class="py-2 flex justify-center">
-                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">
+<!--                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">-->
+                    <indigo-button>
                         <process-status :status="processStatus">Create Account</process-status>
-                        </indigo-button>
+                    </indigo-button>
                 </div>
             </form>
 
@@ -106,8 +106,8 @@ export default {
             newUser: {
                 email: '',
                 name: '',
-                terms_agreement: '',
-                subscribe: '',
+                terms_agreement: 1,
+                subscribe: false,
                 password: '',
                 password_confirmation: '',
                 errors: {},
@@ -119,7 +119,6 @@ export default {
         newUser: {
             name: {required, minLength: minLength(5)},
             email: {required, email, minLength: minLength(5)},
-            terms_agreement: { required },
             subscribe: {},
             password: {required, minLength: minLength(8)},
             password_confirmation: {required, minLength: minLength(8), sameAsPassword: sameAs('password')}
@@ -131,16 +130,20 @@ export default {
             if (touchMap.has($v)) {
                 clearTimeout(touchMap.get($v))
             }
-            touchMap.set($v, setTimeout($v.$touch, 300))
+            touchMap.set($v, setTimeout($v.$touch, 1000))
         },
         register() {
-            this.processStatus = 1;
-            this.$store.dispatch('registerNewUser', this.newUser)
-                .then(response => this.$router.push({name: 'email-verification'}))
-                .catch(error => {
-                    this.errors = error.response.data.errors
-                    this.processStatus = 0;
-                });
+            this.$v.$touch()
+
+            if(!this.$v.$invalid) {
+                this.processStatus = 1;
+                this.$store.dispatch('registerNewUser', this.newUser)
+                    .then(response => this.$router.push({name: 'email-verification'}))
+                    .catch(error => {
+                        this.errors = error.response.data.errors
+                        this.processStatus = 0;
+                    });
+            }
         }
     }
 }

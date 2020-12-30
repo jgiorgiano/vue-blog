@@ -101,7 +101,8 @@
 
                 <div class="py-2 flex justify-end">
                     <div>
-                        <indigo-button :disabled="$v.article.$anyError || processStatus !== 0">
+<!--                        <indigo-button :disabled="$v.article.$anyError || processStatus !== 0">-->
+                        <indigo-button>
                             <process-status :status="processStatus">Save</process-status>
                         </indigo-button>
                     </div>
@@ -119,7 +120,7 @@ import InputField from "../../components/forms/InputField";
 import IndigoButton from "../../components/buttons/IndigoButton";
 import TextAreaField from "../../components/forms/TextAreaField";
 import CheckboxField from "../../components/forms/CheckboxField";
-import {required, minLength, maxLength} from 'vuelidate/lib/validators';
+import {required, minLength, maxLength, requiredIf} from 'vuelidate/lib/validators';
 import ProcessStatus from "../../components/buttons/processStatus";
 import SelectField from "../../components/forms/SelectField";
 
@@ -156,25 +157,22 @@ export default {
     },
     validations: {
         article: {
-            title: {required, minLength: minLength(50), maxLength: maxLength(150)},
+            title: {required, minLength: minLength(10), maxLength: maxLength(150)},
             description: {required, maxLength: maxLength(200)},
-            content: {required, minLength: minLength(100)},
+            type: {required},
+            external_link: { required: requiredIf(function (model) {
+                    return model.type === 2;
+                }), maxLength: maxLength(200)},
+            content: {required: requiredIf(function (model) {
+                    return model.type === 1;
+                }), minLength: minLength(100)},
             tags: { required, minLength: minLength(3), maxLength: maxLength(100) },
-            type: {},
-            external_link: {},
-            featured: {},
             status: { required },
+            featured: {},
             position: {}
         }
     },
     methods: {
-        // delayTouch($v) {
-        //     $v.$reset()
-        //     if (touchMap.has($v)) {
-        //         clearTimeout(touchMap.get($v))
-        //     }
-        //     touchMap.set($v, setTimeout($v.$touch, 1000))
-        // },
         handleFileUpload() {
             // var file_type = this.$refs.file.files[0].type;
             //
@@ -186,14 +184,20 @@ export default {
             // }
         },
         updateArticle() {
-            this.processStatus = 1;
+            this.$v.$touch()
 
-            this.$store.dispatch('article/update', this.article).then((response) => {
-                this.processStatus = 2;
+            if(!this.$v.$invalid) {
+                this.processStatus = 1;
 
-                setTimeout(() => this.processStatus = 0, 300);
-            });
-            // }).catch( error => console.log(error));
+                this.$store.dispatch('article/update', this.article).then((response) => {
+                    this.processStatus = 2;
+
+                    setTimeout(() => this.processStatus = 0, 300);
+                }).catch(error => {
+                    this.errors = error.response.data.errors;
+                    this.processStatus = 0;
+                });
+            }
         }
     },
     computed: {},
