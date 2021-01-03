@@ -1,15 +1,15 @@
-import Home from "./views/Home"
-import Login from "./views/Login"
-import Register from "./views/Register"
-import About from "./views/About"
-import Dashboard from "./views/Dashboard"
-import EmailVerification from "./views/EmailVerification";
-import MyAccount from "./views/MyAccount";
-import ArticleCreate from "./views/article/create";
-import ArticleEdit from "./views/article/edit";
-import ArticleShow from "./views/article/show";
-import Search from "./views/Search";
-import Curriculum from "./views/Curriculum";
+import Home from "../views/Home"
+import Login from "../views/Login"
+import Register from "../views/Register"
+import About from "../views/About"
+import Dashboard from "../views/Dashboard"
+import EmailVerification from "../views/EmailVerification";
+import MyAccount from "../views/MyAccount";
+import ArticleCreate from "../views/article/create";
+import ArticleEdit from "../views/article/edit";
+import ArticleShow from "../views/article/show";
+import Search from "../views/Search";
+import Curriculum from "../views/Curriculum";
 
 const routes = [
     //Open Routes

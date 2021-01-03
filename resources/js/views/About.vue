@@ -79,11 +79,11 @@ export default {
                 },
                 {
                     'title' : 'Front-end',
-                    'content' : ['Javascript', 'VueJs 2', 'Vuex', 'Vue Router', 'GSAP', 'tailwind Css 1.9']
+                    'content' : ['Javascript', 'VueJs 2', 'Vuex', 'Vue Router', 'GSAP', 'Tailwind CSS']
                 },
                 {
                     'title' : 'Server',
-                    'content' : ['AWS Lightsail', 'linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
+                    'content' : ['AWS Lightsail', 'Linux - Ubuntu 20.04', 'Nginx', 'HTTPS']
                 },
                 {
                     'title' : 'Other',
