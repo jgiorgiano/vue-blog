@@ -130,7 +130,7 @@ export default {
         }
     },
     mounted() {
-        this.$axios.get('user')
+        this.$axios.get('v1/user')
             .then((response) => {
 
                 this.user = response.data;

@@ -28,7 +28,7 @@ export default {
     actions: {
         postLogin({commit}, credentials) {
             return new Promise((resolve, reject) => {
-                this._vm.$axios.post('login', credentials).then((response) => {
+                this._vm.$axios.post('v1/login', credentials).then((response) => {
 
                     commit('LOGIN_SUCCESS', response.data);
 
@@ -44,7 +44,7 @@ export default {
             });
         },
         logout({commit}) {
-            return this._vm.$axios.post('logout')
+            return this._vm.$axios.post('v1/logout')
                 .then((response) => {
                     commit('LOGOUT');
                     localStorage.clear();
@@ -55,7 +55,7 @@ export default {
         },
         registerNewUser({commit}, payload) {
             return new Promise((resolve, reject) => {
-                this._vm.$axios.post('register', payload)
+                this._vm.$axios.post('v1/register', payload)
                     .then((response) => {
 
                         commit('REGISTER_SUCCESS', response.data);
@@ -78,7 +78,7 @@ export default {
             formData.append('name', payload.name);
             formData.append('subscribe', payload.subscribe);
 
-            return this._vm.$axios.post('user', formData, {
+            return this._vm.$axios.post('v1/user', formData, {
                 headers: {
                     'content-type': 'multipart/form-data',
                 }
@@ -97,7 +97,7 @@ export default {
                 })
         },
         isAuth({commit}) {
-            return this._vm.$axios.get('test').then(() => {
+            return this._vm.$axios.get('v1/test').then(() => {
             }).catch((error) => {
                 commit('LOGOUT');
                 localStorage.clear();

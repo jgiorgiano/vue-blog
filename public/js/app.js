@@ -6013,7 +6013,7 @@ var touchMap = new WeakMap();
   mounted: function mounted() {
     var _this2 = this;
 
-    this.$axios.get('user').then(function (response) {
+    this.$axios.get('v1/user').then(function (response) {
       _this2.user = response.data;
     })["catch"](function (error) {
       console.log(error);
@@ -62720,7 +62720,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   actions: {
     loadAllArticles: function loadAllArticles(_ref) {
       var commit = _ref.commit;
-      return this._vm.$axios.get("article").then(function (response) {
+      return this._vm.$axios.get("v1/article").then(function (response) {
         commit('UPDATE_ARTICLE_LIST', response.data);
       })["catch"](function (error) {
         console.log(error);
@@ -62731,7 +62731,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       var commit = _ref2.commit;
       return new Promise(function (resolve, reject) {
-        _this._vm.$axios.post('article', payload).then(function (response) {
+        _this._vm.$axios.post('v1/article', payload).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62745,7 +62745,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        _this2._vm.$axios.get("article/".concat(id)).then(function (response) {
+        _this2._vm.$axios.get("v1/article/".concat(id)).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62759,7 +62759,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 
       var commit = _ref4.commit;
       return new Promise(function (resolve, reject) {
-        _this3._vm.$axios.put("article/".concat(payload.id), payload).then(function (response) {
+        _this3._vm.$axios.put("v1/article/".concat(payload.id), payload).then(function (response) {
           commit('UPDATE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62873,7 +62873,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           state = _ref.state;
       commit('SEARCH_WORD', payload.q);
       state.search.searching = true;
-      return this._vm.$axios.get("article/published", {
+      return this._vm.$axios.get("v1/article/published", {
         params: {
           page: payload.page,
           take: payload.take,
@@ -62899,7 +62899,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       state.loading = true; // return window.axios.get(`article/published?page=${state.pagination.current_page + 1}&take=5`)
       // Query options -> page, take, tag, search
 
-      return this._vm.$axios.get("article/published", {
+      return this._vm.$axios.get("v1/article/published", {
         params: {
           page: state.pagination.current_page + 1,
           take: 5 // ...router.currentRoute.query
@@ -62917,7 +62917,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     loadFeaturedArticles: function loadFeaturedArticles(_ref3, payload) {
       var commit = _ref3.commit,
           state = _ref3.state;
-      return this._vm.$axios.get("article/featured").then(function (response) {
+      return this._vm.$axios.get("v1/article/featured").then(function (response) {
         setTimeout(function () {
           commit('LOAD_FEATURED_ARTICLES', response.data);
         }, 500);
@@ -63044,7 +63044,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
-        _this._vm.$axios.post('login', credentials).then(function (response) {
+        _this._vm.$axios.post('v1/login', credentials).then(function (response) {
           commit('LOGIN_SUCCESS', response.data);
           localStorage.setItem('__user', JSON.stringify({
             name: response.data.name,
@@ -63058,7 +63058,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     logout: function logout(_ref2) {
       var commit = _ref2.commit;
-      return this._vm.$axios.post('logout').then(function (response) {
+      return this._vm.$axios.post('v1/logout').then(function (response) {
         commit('LOGOUT');
         localStorage.clear();
       })["catch"](function (error) {
@@ -63070,7 +63070,7 @@ __webpack_require__.r(__webpack_exports__);
 
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        _this2._vm.$axios.post('register', payload).then(function (response) {
+        _this2._vm.$axios.post('v1/register', payload).then(function (response) {
           commit('REGISTER_SUCCESS', response.data);
           localStorage.setItem('__new_user', JSON.stringify({
             name: response.data.name,
@@ -63088,7 +63088,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('profile_image', payload.profile_image);
       formData.append('name', payload.name);
       formData.append('subscribe', payload.subscribe);
-      return this._vm.$axios.post('user', formData, {
+      return this._vm.$axios.post('v1/user', formData, {
         headers: {
           'content-type': 'multipart/form-data'
         }
@@ -63104,7 +63104,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     isAuth: function isAuth(_ref5) {
       var commit = _ref5.commit;
-      return this._vm.$axios.get('test').then(function () {})["catch"](function (error) {
+      return this._vm.$axios.get('v1/test').then(function () {})["catch"](function (error) {
         commit('LOGOUT');
         localStorage.clear();
       });

@@ -10,53 +10,60 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Route::prefix('v1')->group(function() {
+    /**
+     * OPEN Routes
+     */
+    Route::post('login', [LoginController::class, 'authenticate'])->name('login');
+    Route::post('register', [RegisterController::class, 'register'])->name('register');
 
-Route::post('login', [LoginController::class, 'authenticate'])->name('login');
+    //Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+    Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
+    Route::get('email/send', [EmailVerificationController::class, 'send'])
+        ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-Route::post('register', [RegisterController::class, 'register'])->name('register');
-
-//Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-
-/**
- * Email Confirmation Route
- */
-Route::get('/email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
-
-Route::get('/email/send', [EmailVerificationController::class, 'send'])
-    ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
-
-Route::get('article/published', [ArticleController::class, 'published']);
-Route::get('article/featured', [ArticleController::class, 'featured']);
-
-Route::get('article/{article}', [ArticleController::class, 'show']);
-
-/**
- * Routes Authenticated without Email Confirmation
- */
-Route::middleware(['auth:sanctum'])->group(function () {
-
-    Route::get('test', function () {
-        return response('Testing auth route');
+    Route::prefix('article')->group(function() {
+        Route::get('published', [ArticleController::class, 'published']);
+        Route::get('featured', [ArticleController::class, 'featured']);
+        Route::get('{article}', [ArticleController::class, 'show']);
     });
 
-    Route::post('logout', function () {
-        Auth::guard('web')->logout();
+
+    /**
+     * Routes Authenticated without Email Confirmation
+     */
+    Route::middleware(['auth:sanctum'])->group(function () {
+
+        Route::get('test', function () {
+            return response('Testing auth route');
+        });
+
+        Route::post('logout', function () {
+            Auth::guard('web')->logout();
+        });
+
+        Route::prefix('user')->group(function() {
+            Route::get('', [UserController::class, 'user']);
+            Route::post('', [UserController::class, 'update']);
+        });
+
     });
 
-    Route::get('user', [UserController::class, 'user']);
-    Route::post('user', [UserController::class, 'update']);
-});
 
-/**
- * Routes Authenticated AND Email Confirmed
- */
-Route::middleware(['auth:sanctum', 'verified'])->group(function () {
+    /**
+     * Routes Authenticated AND Email Confirmed
+     */
+    Route::middleware(['auth:sanctum', 'verified'])->group(function () {
 
-    Route::post('article', [ArticleController::class, 'store']);
-    Route::get('article', [ArticleController::class, 'load']);
-    Route::put('article/{article}', [ArticleController::class, 'update']);
-    Route::put('article/{article}/manager', [ArticleController::class, 'manager']);
-    Route::delete('article/{article}', [ArticleController::class, 'destroy']);
+        Route::prefix('article')->group(function() {
+            Route::post('', [ArticleController::class, 'store']);
+            Route::get('', [ArticleController::class, 'load']);
+            Route::put('{article}', [ArticleController::class, 'update']);
+            Route::put('{article}/manager', [ArticleController::class, 'manager']);
+            Route::delete('{article}', [ArticleController::class, 'destroy']);
+        });
+
+    });
 
 });
 
