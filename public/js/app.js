@@ -5827,7 +5827,7 @@ var touchMap = new WeakMap();
     if (this.$store.state.user.authenticated) {
       this.$store.dispatch('isAuth').then(function () {
         _this2.$router.push({
-          name: 'dashboard'
+          name: 'home'
         });
       });
     }
@@ -62575,6 +62575,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_article_show__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/article/show */ "./resources/js/views/article/show.vue");
 /* harmony import */ var _views_Search__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../views/Search */ "./resources/js/views/Search.vue");
 /* harmony import */ var _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../views/Curriculum */ "./resources/js/views/Curriculum.vue");
+/* harmony import */ var _services_middleware__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../services/middleware */ "./resources/js/services/middleware.js");
+
 
 
 
@@ -62589,6 +62591,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [//Open Routes
 {
+  path: '/login',
+  name: 'login',
+  component: _views_Login__WEBPACK_IMPORTED_MODULE_1__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfAuthenticated
+}, {
+  path: '/register',
+  name: 'register',
+  component: _views_Register__WEBPACK_IMPORTED_MODULE_2__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfAuthenticated
+}, {
   path: '/',
   name: 'home',
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -62596,14 +62608,6 @@ var routes = [//Open Routes
   path: '/search',
   name: 'search',
   component: _views_Search__WEBPACK_IMPORTED_MODULE_10__["default"]
-}, {
-  path: '/login',
-  name: 'login',
-  component: _views_Login__WEBPACK_IMPORTED_MODULE_1__["default"]
-}, {
-  path: '/register',
-  name: 'register',
-  component: _views_Register__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/about',
   name: 'about',
@@ -62616,27 +62620,31 @@ var routes = [//Open Routes
   path: '/curriculum',
   name: 'curriculum',
   component: _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__["default"]
+}, {
+  path: '/article/:id',
+  name: 'article-show',
+  component: _views_article_show__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, //Auth Routes
 {
   path: '/dashboard',
   name: 'dashboard',
-  component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
   path: '/my-account',
   name: 'my-account',
-  component: _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
   path: '/article',
   name: 'article-create',
-  component: _views_article_create__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _views_article_create__WEBPACK_IMPORTED_MODULE_7__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
-  path: '/article/:id',
+  path: '/article/:id/edit',
   name: 'article-edit',
-  component: _views_article_edit__WEBPACK_IMPORTED_MODULE_8__["default"]
-}, {
-  path: '/article/:id/show',
-  name: 'article-show',
-  component: _views_article_show__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _views_article_edit__WEBPACK_IMPORTED_MODULE_8__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -62655,6 +62663,44 @@ var routes = [//Open Routes
 //         return window.axios.post('api/login', credentials);
 //     }
 // }
+
+/***/ }),
+
+/***/ "./resources/js/services/middleware.js":
+/*!*********************************************!*\
+  !*** ./resources/js/services/middleware.js ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  redirectIfNotAuthenticated: function redirectIfNotAuthenticated(to, from, next) {
+    var authenticated = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.authenticated;
+
+    if (!authenticated) {
+      next({
+        name: 'login'
+      });
+    }
+
+    next();
+  },
+  redirectIfAuthenticated: function redirectIfAuthenticated(to, from, next) {
+    var authenticated = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.authenticated;
+
+    if (authenticated) {
+      next({
+        name: 'home'
+      });
+    }
+
+    next();
+  }
+});
 
 /***/ }),
 

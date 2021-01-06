@@ -10,23 +10,24 @@ import ArticleEdit from "../views/article/edit";
 import ArticleShow from "../views/article/show";
 import Search from "../views/Search";
 import Curriculum from "../views/Curriculum";
+import middleware from "../services/middleware";
 
 const routes = [
     //Open Routes
+    { path: '/login', name:'login', component: Login, beforeEnter: middleware.redirectIfAuthenticated },
+    { path: '/register', name:'register', component: Register, beforeEnter: middleware.redirectIfAuthenticated },
     { path: '/', name:'home', component: Home },
     { path: '/search', name:'search', component: Search },
-    { path: '/login', name:'login', component: Login },
-    { path: '/register', name:'register', component: Register },
     { path: '/about', name:'about', component: About },
     { path: '/email-verification', name:'email-verification', component: EmailVerification },
     { path: '/curriculum', name:'curriculum', component: Curriculum },
+    { path: '/article/:id', name:'article-show', component: ArticleShow },
 
     //Auth Routes
-    { path: '/dashboard', name:'dashboard', component: Dashboard },
-    { path: '/my-account', name:'my-account', component: MyAccount },
-    { path: '/article', name:'article-create', component: ArticleCreate },
-    { path: '/article/:id', name:'article-edit', component: ArticleEdit },
-    { path: '/article/:id/show', name:'article-show', component: ArticleShow },
+    { path: '/dashboard', name:'dashboard', component: Dashboard , beforeEnter: middleware.redirectIfNotAuthenticated },
+    { path: '/my-account', name:'my-account', component: MyAccount , beforeEnter: middleware.redirectIfNotAuthenticated },
+    { path: '/article', name:'article-create', component: ArticleCreate , beforeEnter: middleware.redirectIfNotAuthenticated },
+    { path: '/article/:id/edit', name:'article-edit', component: ArticleEdit , beforeEnter: middleware.redirectIfNotAuthenticated },
 ]
 
 export default routes;

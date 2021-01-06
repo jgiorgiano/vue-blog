@@ -103,7 +103,7 @@ export default {
     beforeCreate() {
         if(this.$store.state.user.authenticated) {
             this.$store.dispatch('isAuth').then(() => {
-                this.$router.push({name: 'dashboard'})
+                this.$router.push({name: 'home'})
             });
         }
     }
