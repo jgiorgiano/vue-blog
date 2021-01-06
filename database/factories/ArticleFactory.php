@@ -28,12 +28,12 @@ class ArticleFactory extends Factory
             'title' => $this->faker->paragraph(1),
             'description' =>  $this->faker->text(rand(100, 200)),
             'content' =>  $this->faker->text(rand(1000, 10000)),
-            'tags' => 'test1, test2, test3, test4, test5',
+            'tags' => 'js, mysql, php, laravel, aws',
             'status' => rand(0,3),
             'position' => $this->faker->numberBetween(0,200),
             'featured' => rand(0,1),
             'type' => rand(1,2),
-            'external_link' => $this->faker->text(rand(100, 200)),
+            'external_link' => 'https://dev.jhonathan.co.uk',
             'images' => null,
         ];
     }
