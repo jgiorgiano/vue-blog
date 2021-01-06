@@ -26,7 +26,7 @@ export default  {
     },
     actions: {
         loadAllArticles({commit}) {
-            return window.axios.get(`api/article`)
+            return this._vm.$axios.get(`article`)
                     .then((response) => {
 
                         commit('UPDATE_ARTICLE_LIST', response.data);
@@ -40,7 +40,7 @@ export default  {
         },
         create({commit}, payload) {
             return new Promise((resolve, reject) => {
-                window.axios.post('api/article', payload)
+                this._vm.$axios.post('article', payload)
                     .then((response) => {
 
                         commit('INCLUDE_ARTICLE', response.data);
@@ -54,7 +54,7 @@ export default  {
         },
         loadArticle({commit}, id) {
             return new Promise((resolve, reject) => {
-                window.axios.get(`api/article/${id}`)
+                this._vm.$axios.get(`article/${id}`)
                     .then((response) => {
                         commit('INCLUDE_ARTICLE', response.data);
                         resolve(response.data);
@@ -68,7 +68,7 @@ export default  {
         update({commit}, payload) {
             return new Promise((resolve, reject) => {
 
-                window.axios.put(`api/article/${payload.id}`, payload)
+                this._vm.$axios.put(`article/${payload.id}`, payload)
                     .then((response) => {
 
                         commit('UPDATE_ARTICLE', response.data);

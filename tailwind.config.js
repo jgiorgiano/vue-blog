@@ -31,7 +31,7 @@ module.exports = {
     },
   },
   variants: {
-      animation: ['hover']
+      animation: ['hover', 'group-hover']
   },
   plugins: [],
 }
