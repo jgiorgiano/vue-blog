@@ -27,7 +27,7 @@ class RegisterUserTest extends TestCase
             'password_confirmation' => 'password'
         ];
 
-        $response = $this->json('POST', 'api/register', $user);
+        $response = $this->json('POST', 'api/v1/register', $user);
 
         unset($user['password']);
         unset($user['password_confirmation']);

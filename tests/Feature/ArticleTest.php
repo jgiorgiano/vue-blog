@@ -21,10 +21,10 @@ class ArticleTest extends TestCase
         Article::factory()->count(30)->create();
         Article::factory()->count(6)->create(['user_id' => $not_admin_user->id]);
 
-        $response = $this->actingAs($admin_user)->json('GET', 'api/article');
+        $response = $this->actingAs($admin_user)->json('GET', 'api/v1/article');
         $response->assertStatus(200)->assertJsonCount(36);
 
-        $response = $this->actingAs($not_admin_user)->json('GET', 'api/article');
+        $response = $this->actingAs($not_admin_user)->json('GET', 'api/v1/article');
         $response->assertStatus(200)->assertJsonCount(6);
     }
 
@@ -34,7 +34,7 @@ class ArticleTest extends TestCase
 
         $user = $article[10]->user;
 
-        $response = $this->actingAs($user)->json('GET', 'api/article/' . $article[10]->id);
+        $response = $this->actingAs($user)->json('GET', 'api/v1/article/' . $article[10]->id);
 
         $response->assertStatus(200)->assertJsonFragment(
             [
@@ -56,11 +56,11 @@ class ArticleTest extends TestCase
 
         //Options take and page
 
-        $response = $this->json('GET', 'api/article/published');
+        $response = $this->json('GET', 'api/v1/article/published');
 
         $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles]);
 
-        $response = $this->json('GET', 'api/article/published?take=3');
+        $response = $this->json('GET', 'api/v1/article/published?take=3');
 
         $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles])->assertJsonFragment(['per_page'=> "3"]);
     }
@@ -74,7 +74,7 @@ class ArticleTest extends TestCase
 
         $featured_articles = Article::factory()->count(15)->create(['status' => 1, 'featured' => 1]); //Published And Featured Articles
 
-        $response = $this->json('GET', 'api/article/featured');
+        $response = $this->json('GET', 'api/v1/article/featured');
 
         $response->assertStatus(200)->assertJsonCount($featured_articles->count());
     }
@@ -85,7 +85,7 @@ class ArticleTest extends TestCase
 
         $user = $article->user;
 
-        $response = $this->actingAs($user)->json('DELETE', 'api/article/' . $article->id);
+        $response = $this->actingAs($user)->json('DELETE', 'api/v1/article/' . $article->id);
 
         $response->assertStatus(204);
     }

@@ -4956,6 +4956,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 gsap__WEBPACK_IMPORTED_MODULE_0__["gsap"].registerPlugin(gsap_ScrollToPlugin__WEBPACK_IMPORTED_MODULE_1__["ScrollToPlugin"]);
@@ -5825,7 +5827,7 @@ var touchMap = new WeakMap();
     if (this.$store.state.user.authenticated) {
       this.$store.dispatch('isAuth').then(function () {
         _this2.$router.push({
-          name: 'dashboard'
+          name: 'home'
         });
       });
     }
@@ -6011,7 +6013,7 @@ var touchMap = new WeakMap();
   mounted: function mounted() {
     var _this2 = this;
 
-    window.axios.get('api/user').then(function (response) {
+    this.$axios.get('v1/user').then(function (response) {
       _this2.user = response.data;
     })["catch"](function (error) {
       console.log(error);
@@ -33710,11 +33712,17 @@ var render = function() {
     "button",
     {
       staticClass:
-        "z-50 fixed right-0 bottom-0 mb-12 mr-8 text-indigo-500 focus:outline-none hover:animate-bounce",
+        "group z-50 fixed right-0 bottom-0 mb-12 mr-8 text-indigo-500 focus:outline-none",
       on: { click: _vm.scrollToTop }
     },
-    [_c("v-icon", { attrs: { name: "arrow-circle-up", scale: "2" } })],
-    1
+    [
+      _c(
+        "div",
+        { staticClass: "group-hover:animate-bounce" },
+        [_c("v-icon", { attrs: { name: "arrow-circle-up", scale: "2" } })],
+        1
+      )
+    ]
   )
 }
 var staticRenderFns = []
@@ -60532,13 +60540,19 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
-/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store */ "./resources/js/store/index.js");
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./router */ "./resources/js/router/index.js");
+
+
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /**
  * Include used Plugins
  */
 
+
+__webpack_require__(/*! ./plugins/Axios */ "./resources/js/plugins/Axios.js");
 
 __webpack_require__(/*! ./plugins/Vuelidate */ "./resources/js/plugins/Vuelidate.js");
 
@@ -60550,7 +60564,6 @@ __webpack_require__(/*! ./plugins/VueAwesome */ "./resources/js/plugins/VueAweso
 
 
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /**
  * Include Global Components
  */
@@ -60561,9 +60574,9 @@ __webpack_require__(/*! ./components/global */ "./resources/js/components/global
  */
 
 
-var app = new Vue({
-  router: _router__WEBPACK_IMPORTED_MODULE_1__["default"],
-  store: _store__WEBPACK_IMPORTED_MODULE_0__["default"],
+var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+  router: _router__WEBPACK_IMPORTED_MODULE_2__["default"],
+  store: _store__WEBPACK_IMPORTED_MODULE_1__["default"],
   el: '#app'
 });
 
@@ -60581,38 +60594,11 @@ window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
  * We'll load the axios HTTP library which allows us to easily issue requests
  * to our Laravel back-end. This library automatically handles sending the
  * CSRF token as a header based on the value of the "XSRF" token cookie.
+ *
+ * Moved to plugins and load on app.js
+ *
  */
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-axios.defaults.withCredentials = true;
-axios.defaults.timeout = 120000; //2min
-
-/**
- * Set the Default Headers for the API
- */
-
-window.axios.defaults.headers.common['Content-Type'] = 'application/json';
-window.axios.defaults.headers.common['Accept'] = 'application/json';
-/**
- * Interceptor for responses
- * if unauthenticated (401), clean the credentials on storage and redirect to login page
- */
-
-axios.interceptors.response.use(function (response) {
-  return response;
-}, function (error) {
-  if (error.response.status === 401) {
-    localStorage.clear();
-    window.location = "#/login";
-  }
-
-  if (error.response.status === 403) {
-    window.location = "#/email-verification";
-  }
-
-  return Promise.reject(error);
-});
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -62385,6 +62371,55 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/plugins/Axios.js":
+/*!***************************************!*\
+  !*** ./resources/js/plugins/Axios.js ***!
+  \***************************************/
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+
+
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.withCredentials = true;
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.timeout = 60000; //1min
+
+/**
+ * Set the Default Headers for the API
+ */
+
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Content-Type'] = 'application/json';
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Accept'] = 'application/json';
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.baseURL = '/api';
+/**
+ * Interceptor for responses
+ * if unauthenticated (401), clean the credentials on storage and redirect to login page
+ */
+
+axios__WEBPACK_IMPORTED_MODULE_0___default.a.interceptors.response.use(function (response) {
+  return response;
+}, function (error) {
+  if (error.response.status === 401) {
+    localStorage.clear();
+    window.location = "/login";
+  }
+
+  if (error.response.status === 403) {
+    window.location = "/email-verification";
+  }
+
+  return Promise.reject(error);
+});
+vue__WEBPACK_IMPORTED_MODULE_1___default.a.prototype.$axios = axios__WEBPACK_IMPORTED_MODULE_0___default.a;
+
+/***/ }),
+
 /***/ "./resources/js/plugins/VueAwesome.js":
 /*!********************************************!*\
   !*** ./resources/js/plugins/VueAwesome.js ***!
@@ -62506,6 +62541,7 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODU
 
 
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+  mode: 'history',
   routes: _routes__WEBPACK_IMPORTED_MODULE_2__["default"],
   scrollBehavior: function scrollBehavior(to, from, savedPosition) {
     return {
@@ -62539,6 +62575,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_article_show__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../views/article/show */ "./resources/js/views/article/show.vue");
 /* harmony import */ var _views_Search__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../views/Search */ "./resources/js/views/Search.vue");
 /* harmony import */ var _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ../views/Curriculum */ "./resources/js/views/Curriculum.vue");
+/* harmony import */ var _services_middleware__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../services/middleware */ "./resources/js/services/middleware.js");
+
 
 
 
@@ -62553,6 +62591,16 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [//Open Routes
 {
+  path: '/login',
+  name: 'login',
+  component: _views_Login__WEBPACK_IMPORTED_MODULE_1__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfAuthenticated
+}, {
+  path: '/register',
+  name: 'register',
+  component: _views_Register__WEBPACK_IMPORTED_MODULE_2__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfAuthenticated
+}, {
   path: '/',
   name: 'home',
   component: _views_Home__WEBPACK_IMPORTED_MODULE_0__["default"]
@@ -62560,14 +62608,6 @@ var routes = [//Open Routes
   path: '/search',
   name: 'search',
   component: _views_Search__WEBPACK_IMPORTED_MODULE_10__["default"]
-}, {
-  path: '/login',
-  name: 'login',
-  component: _views_Login__WEBPACK_IMPORTED_MODULE_1__["default"]
-}, {
-  path: '/register',
-  name: 'register',
-  component: _views_Register__WEBPACK_IMPORTED_MODULE_2__["default"]
 }, {
   path: '/about',
   name: 'about',
@@ -62580,27 +62620,31 @@ var routes = [//Open Routes
   path: '/curriculum',
   name: 'curriculum',
   component: _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__["default"]
+}, {
+  path: '/article/:id',
+  name: 'article-show',
+  component: _views_article_show__WEBPACK_IMPORTED_MODULE_9__["default"]
 }, //Auth Routes
 {
   path: '/dashboard',
   name: 'dashboard',
-  component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"]
+  component: _views_Dashboard__WEBPACK_IMPORTED_MODULE_4__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
   path: '/my-account',
   name: 'my-account',
-  component: _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__["default"]
+  component: _views_MyAccount__WEBPACK_IMPORTED_MODULE_6__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
   path: '/article',
   name: 'article-create',
-  component: _views_article_create__WEBPACK_IMPORTED_MODULE_7__["default"]
+  component: _views_article_create__WEBPACK_IMPORTED_MODULE_7__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }, {
-  path: '/article/:id',
+  path: '/article/:id/edit',
   name: 'article-edit',
-  component: _views_article_edit__WEBPACK_IMPORTED_MODULE_8__["default"]
-}, {
-  path: '/article/:id/show',
-  name: 'article-show',
-  component: _views_article_show__WEBPACK_IMPORTED_MODULE_9__["default"]
+  component: _views_article_edit__WEBPACK_IMPORTED_MODULE_8__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotAuthenticated
 }];
 /* harmony default export */ __webpack_exports__["default"] = (routes);
 
@@ -62610,14 +62654,51 @@ var routes = [//Open Routes
 /*!***********************************************!*\
   !*** ./resources/js/services/loginService.js ***!
   \***********************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+//
+// export default {
+//     postLogin(credentials) {
+//         return window.axios.post('api/login', credentials);
+//     }
+// }
+
+/***/ }),
+
+/***/ "./resources/js/services/middleware.js":
+/*!*********************************************!*\
+  !*** ./resources/js/services/middleware.js ***!
+  \*********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../store */ "./resources/js/store/index.js");
+
 /* harmony default export */ __webpack_exports__["default"] = ({
-  postLogin: function postLogin(credentials) {
-    return window.axios.post('api/login', credentials);
+  redirectIfNotAuthenticated: function redirectIfNotAuthenticated(to, from, next) {
+    var authenticated = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.authenticated;
+
+    if (!authenticated) {
+      next({
+        name: 'login'
+      });
+    }
+
+    next();
+  },
+  redirectIfAuthenticated: function redirectIfAuthenticated(to, from, next) {
+    var authenticated = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.authenticated;
+
+    if (authenticated) {
+      next({
+        name: 'home'
+      });
+    }
+
+    next();
   }
 });
 
@@ -62685,16 +62766,18 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   actions: {
     loadAllArticles: function loadAllArticles(_ref) {
       var commit = _ref.commit;
-      return window.axios.get("api/article").then(function (response) {
+      return this._vm.$axios.get("v1/article").then(function (response) {
         commit('UPDATE_ARTICLE_LIST', response.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     create: function create(_ref2, payload) {
+      var _this = this;
+
       var commit = _ref2.commit;
       return new Promise(function (resolve, reject) {
-        window.axios.post('api/article', payload).then(function (response) {
+        _this._vm.$axios.post('v1/article', payload).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62704,9 +62787,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     loadArticle: function loadArticle(_ref3, id) {
+      var _this2 = this;
+
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        window.axios.get("api/article/".concat(id)).then(function (response) {
+        _this2._vm.$axios.get("v1/article/".concat(id)).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62716,9 +62801,11 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     update: function update(_ref4, payload) {
+      var _this3 = this;
+
       var commit = _ref4.commit;
       return new Promise(function (resolve, reject) {
-        window.axios.put("api/article/".concat(payload.id), payload).then(function (response) {
+        _this3._vm.$axios.put("v1/article/".concat(payload.id), payload).then(function (response) {
           commit('UPDATE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62832,7 +62919,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           state = _ref.state;
       commit('SEARCH_WORD', payload.q);
       state.search.searching = true;
-      return window.axios.get("api/article/published", {
+      return this._vm.$axios.get("v1/article/published", {
         params: {
           page: payload.page,
           take: payload.take,
@@ -62855,10 +62942,10 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
         return false;
       }
 
-      state.loading = true; // return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
+      state.loading = true; // return window.axios.get(`article/published?page=${state.pagination.current_page + 1}&take=5`)
       // Query options -> page, take, tag, search
 
-      return window.axios.get("api/article/published", {
+      return this._vm.$axios.get("v1/article/published", {
         params: {
           page: state.pagination.current_page + 1,
           take: 5 // ...router.currentRoute.query
@@ -62876,7 +62963,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     loadFeaturedArticles: function loadFeaturedArticles(_ref3, payload) {
       var commit = _ref3.commit,
           state = _ref3.state;
-      return window.axios.get("api/article/featured").then(function (response) {
+      return this._vm.$axios.get("v1/article/featured").then(function (response) {
         setTimeout(function () {
           commit('LOAD_FEATURED_ARTICLES', response.data);
         }, 500);
@@ -62970,6 +63057,7 @@ var getters = {};
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_loginService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/loginService */ "./resources/js/services/loginService.js");
+/* harmony import */ var _services_loginService__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_services_loginService__WEBPACK_IMPORTED_MODULE_0__);
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
@@ -62998,9 +63086,11 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     postLogin: function postLogin(_ref, credentials) {
+      var _this = this;
+
       var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
-        _services_loginService__WEBPACK_IMPORTED_MODULE_0__["default"].postLogin(credentials).then(function (response) {
+        _this._vm.$axios.post('v1/login', credentials).then(function (response) {
           commit('LOGIN_SUCCESS', response.data);
           localStorage.setItem('__user', JSON.stringify({
             name: response.data.name,
@@ -63014,7 +63104,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     logout: function logout(_ref2) {
       var commit = _ref2.commit;
-      return window.axios.post('api/logout').then(function (response) {
+      return this._vm.$axios.post('v1/logout').then(function (response) {
         commit('LOGOUT');
         localStorage.clear();
       })["catch"](function (error) {
@@ -63022,9 +63112,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     registerNewUser: function registerNewUser(_ref3, payload) {
+      var _this2 = this;
+
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        window.axios.post('api/register', payload).then(function (response) {
+        _this2._vm.$axios.post('v1/register', payload).then(function (response) {
           commit('REGISTER_SUCCESS', response.data);
           localStorage.setItem('__new_user', JSON.stringify({
             name: response.data.name,
@@ -63042,7 +63134,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('profile_image', payload.profile_image);
       formData.append('name', payload.name);
       formData.append('subscribe', payload.subscribe);
-      return window.axios.post('api/user', formData, {
+      return this._vm.$axios.post('v1/user', formData, {
         headers: {
           'content-type': 'multipart/form-data'
         }
@@ -63058,7 +63150,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     isAuth: function isAuth(_ref5) {
       var commit = _ref5.commit;
-      return window.axios.get('api/test').then(function () {})["catch"](function (error) {
+      return this._vm.$axios.get('v1/test').then(function () {})["catch"](function (error) {
         commit('LOGOUT');
         localStorage.clear();
       });

@@ -43,7 +43,7 @@ class CreateArticleTest extends TestCase
 //            'updated_at' => 'password',
         ];
 
-        $response = $this->actingAs($user)->json('POST', 'api/article', $new_article);
+        $response = $this->actingAs($user)->json('POST', 'api/v1/article', $new_article);
 
         $response->assertStatus(201)->assertJsonFragment($new_article);
     }

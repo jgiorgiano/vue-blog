@@ -66,7 +66,7 @@ export default {
 
             state.search.searching = true;
 
-            return window.axios.get(`api/article/published`, {
+            return this._vm.$axios.get(`v1/article/published`, {
                 params: {
                     page: payload.page,
                     take: payload.take,
@@ -95,9 +95,9 @@ export default {
 
             state.loading = true;
 
-            // return window.axios.get(`api/article/published?page=${state.pagination.current_page + 1}&take=5`)
+            // return window.axios.get(`article/published?page=${state.pagination.current_page + 1}&take=5`)
             // Query options -> page, take, tag, search
-            return window.axios.get(`api/article/published`, {
+            return this._vm.$axios.get(`v1/article/published`, {
                 params: {
                     page: state.pagination.current_page + 1,
                     take: 5,
@@ -118,7 +118,7 @@ export default {
                 })
         },
         loadFeaturedArticles({commit, state}, payload) {
-            return window.axios.get(`api/article/featured`)
+            return this._vm.$axios.get(`v1/article/featured`)
                 .then((response) => {
 
                     setTimeout(() => {

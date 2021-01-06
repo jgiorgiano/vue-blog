@@ -130,7 +130,7 @@ export default {
         }
     },
     mounted() {
-        window.axios.get('api/user')
+        this.$axios.get('v1/user')
             .then((response) => {
 
                 this.user = response.data;
