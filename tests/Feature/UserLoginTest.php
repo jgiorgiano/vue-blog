@@ -20,7 +20,7 @@ class UserLoginTest extends TestCase
             'password' => 'password'
         ];
 
-        $response = $this->json('POST', 'api/login', $credentials);
+        $response = $this->json('POST', 'api/v1/login', $credentials);
 
         $response->assertStatus(200)->assertJsonFragment(['name' => $user->name, 'email' => $user->email]);
     }

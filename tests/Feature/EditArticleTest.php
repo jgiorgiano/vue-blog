@@ -36,7 +36,7 @@ class EditArticleTest extends TestCase
             'images' => null,
         ];
 
-        $response = $this->actingAs($user)->json('PUT', 'api/article/' . $article->id, $edit);
+        $response = $this->actingAs($user)->json('PUT', 'api/v1/article/' . $article->id, $edit);
 
         $response->assertStatus(200)->assertJsonFragment($edit);
     }
@@ -58,7 +58,7 @@ class EditArticleTest extends TestCase
             'featured' => 1,
         ];
 
-        $response = $this->actingAs($user)->json('PUT', 'api/article/' . $article->id . '/manager', $edit);
+        $response = $this->actingAs($user)->json('PUT', 'api/v1/article/' . $article->id . '/manager', $edit);
 
         $response->assertStatus(200)->assertJsonFragment($edit);
     }
