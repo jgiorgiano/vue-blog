@@ -19,7 +19,7 @@ const routes = [
     { path: '/', name:'home', component: Home },
     { path: '/search', name:'search', component: Search },
     { path: '/about', name:'about', component: About },
-    { path: '/email-verification', name:'email-verification', component: EmailVerification },
+    { path: '/email-verification', name:'email-verification', component: EmailVerification, beforeEnter: middleware.redirectIfNotUserSet },
     { path: '/curriculum', name:'curriculum', component: Curriculum },
     { path: '/article/:id', name:'article-show', component: ArticleShow },
 

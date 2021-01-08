@@ -1,5 +1,6 @@
 import Axios from "axios";
 import Vue from "vue";
+import router from '../router';
 
 Axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -30,7 +31,11 @@ Axios.interceptors.response.use(
         }
 
         if (error.response.status === 403) {
-            window.location = "/email-verification";
+            if(error.response.data.message === 'Your email address is not verified.') {
+                router.push({ name: 'email-verification'});
+            } else {
+                router.push({ name: 'home'});
+            }
         }
 
         return Promise.reject(error);

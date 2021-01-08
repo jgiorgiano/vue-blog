@@ -48,15 +48,15 @@
                     />
                 </div>
 
-<!--                <checkbox-field-->
-<!--                    field="terms_agreement"-->
-<!--                    v-model="$v.newUser.terms_agreement.$model"-->
-<!--                    :v-errors="$v.newUser.terms_agreement"-->
-<!--                    :errors="errors"-->
-<!--                    required-->
-<!--                >-->
-<!--                    I agree with the terms and conditions.-->
-<!--                </checkbox-field>-->
+                <!--                <checkbox-field-->
+                <!--                    field="terms_agreement"-->
+                <!--                    v-model="$v.newUser.terms_agreement.$model"-->
+                <!--                    :v-errors="$v.newUser.terms_agreement"-->
+                <!--                    :errors="errors"-->
+                <!--                    required-->
+                <!--                >-->
+                <!--                    I agree with the terms and conditions.-->
+                <!--                </checkbox-field>-->
 
                 <checkbox-field
                     field="subscribe"
@@ -67,7 +67,7 @@
                 </checkbox-field>
 
                 <div class="py-2 flex justify-center">
-<!--                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">-->
+                    <!--                    <indigo-button :disabled="$v.newUser.$anyError || !$v.newUser.$dirty">-->
                     <indigo-button>
                         <process-status :status="processStatus">Create Account</process-status>
                     </indigo-button>
@@ -135,15 +135,13 @@ export default {
         register() {
             this.$v.$touch()
 
-            if(!this.$v.$invalid) {
-                this.processStatus = 1;
-                this.$store.dispatch('registerNewUser', this.newUser)
-                    .then(response => this.$router.push({name: 'email-verification'}))
-                    .catch(error => {
-                        this.errors = error.response.data.errors
-                        this.processStatus = 0;
-                    });
-            }
+            if (this.$v.$invalid) { return }
+
+            this.processStatus = 1;
+            this.$store.dispatch('registerNewUser', this.newUser)
+                .then(response => this.$router.push({name: 'email-verification'}))
+                .catch(error => this.errors = error.response.data.errors)
+                .finally(() => { this.processStatus = 0; });
         }
     }
 }

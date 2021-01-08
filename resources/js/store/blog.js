@@ -1,4 +1,5 @@
-import {router} from '../app'
+import { router } from '../app'
+import Axios from "axios";
 
 export default {
     namespaced: true,
@@ -66,7 +67,7 @@ export default {
 
             state.search.searching = true;
 
-            return this._vm.$axios.get(`v1/article/published`, {
+            return Axios.get(`v1/article/published`, {
                 params: {
                     page: payload.page,
                     take: payload.take,
@@ -97,7 +98,7 @@ export default {
 
             // return window.axios.get(`article/published?page=${state.pagination.current_page + 1}&take=5`)
             // Query options -> page, take, tag, search
-            return this._vm.$axios.get(`v1/article/published`, {
+            return Axios.get(`v1/article/published`, {
                 params: {
                     page: state.pagination.current_page + 1,
                     take: 5,
@@ -118,7 +119,7 @@ export default {
                 })
         },
         loadFeaturedArticles({commit, state}, payload) {
-            return this._vm.$axios.get(`v1/article/featured`)
+            return Axios.get(`v1/article/featured`)
                 .then((response) => {
 
                     setTimeout(() => {

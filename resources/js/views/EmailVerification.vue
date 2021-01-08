@@ -58,8 +58,6 @@ export default {
             return this.$store.state.user.authenticated;
         }
     },
-    mounted() {
-    },
     methods: {
         resendEmail: function () {
             if(!this.processing) {
@@ -68,21 +66,20 @@ export default {
                 this.error = '';
                 this.success = '';
 
-                window.axios.get('api/email/send')
+                this.$axios.get('v1/email/send')
                     .then((response) => {
-                        this.processing = false;
                         this.success = response.data.msg;
                     })
                     .catch((error) => {
+                        this.error = error.response.data.message;
 
-                        if(error.response.data.msg === 'Email already verified.') {
-                            this.$router.push({name: 'dashboard'});
+                        if(error.response.data.message === 'Email Already Verified') {
+                            this.error = this.error + '. You are being redirected to home.';
+
+                            setTimeout( () => { this.$router.push({name: 'home'}) }, 2800);
                         }
 
-                        this.processing = false;
-
-                        this.error = error.response.data.message;
-                    });
+                    }).finally(() => { this.processing = false; });
             }
         }
     },

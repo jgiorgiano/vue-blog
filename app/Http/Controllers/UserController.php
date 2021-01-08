@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\UserResource;
 use App\Http\Services\LoggingService;
 use App\Http\Services\ProfileImageService;
 use App\Models\User;
@@ -15,9 +16,8 @@ class UserController extends Controller
 {
     public function user()
     {
-        $user = Auth::user();
-
-        return response()->json($user);
+//        return response()->json(Auth::user());
+        return new UserResource(Auth::user());
     }
 
     public function update(UserUpdateRequest $request, ProfileImageService $profileImageService)
@@ -32,6 +32,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return response()->json($user);
+        return new UserResource($user);
     }
 }
