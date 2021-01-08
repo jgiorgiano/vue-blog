@@ -12,6 +12,7 @@
                     v-model="$v.user.name.$model"
                     type="text"
                     :errors="errors"
+                    :v-errors="$v.user.name"
                 />
 
                 <InputField
@@ -107,6 +108,10 @@ export default {
             }
         },
         submitEditAccount() {
+            this.$v.$touch()
+
+            if(this.$v.$invalid) { return }
+
             this.processStatus = 1;
             this.$store.dispatch('updateUserAccount', {
                 name: this.user.name,

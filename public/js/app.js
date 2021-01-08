@@ -5596,7 +5596,6 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.state.user.authenticated;
     }
   },
-  mounted: function mounted() {},
   methods: {
     resendEmail: function resendEmail() {
       var _this = this;
@@ -5605,18 +5604,21 @@ __webpack_require__.r(__webpack_exports__);
         this.processing = true;
         this.error = '';
         this.success = '';
-        window.axios.get('api/email/send').then(function (response) {
-          _this.processing = false;
+        this.$axios.get('v1/email/send').then(function (response) {
           _this.success = response.data.msg;
         })["catch"](function (error) {
-          if (error.response.data.msg === 'Email already verified.') {
-            _this.$router.push({
-              name: 'dashboard'
-            });
-          }
-
-          _this.processing = false;
           _this.error = error.response.data.message;
+
+          if (error.response.data.message === 'Email Already Verified') {
+            _this.error = _this.error + '. You are being redirected to home.';
+            setTimeout(function () {
+              _this.$router.push({
+                name: 'home'
+              });
+            }, 2800);
+          }
+        })["finally"](function () {
+          _this.processing = false;
         });
       }
     }
@@ -5811,26 +5813,22 @@ var touchMap = new WeakMap();
       if (!this.$v.$invalid) {
         this.processStatus = 1;
         this.$store.dispatch('postLogin', this.user).then(function (response) {
-          _this.$router.push({
+          return _this.$router.push({
             name: 'home'
           });
         })["catch"](function (error) {
           _this.errors = error.response.data.errors;
+        })["finally"](function () {
           _this.processStatus = 0;
         });
       }
     }
   },
-  beforeCreate: function beforeCreate() {
-    var _this2 = this;
-
-    if (this.$store.state.user.authenticated) {
-      this.$store.dispatch('isAuth').then(function () {
-        _this2.$router.push({
-          name: 'home'
-        });
-      });
-    }
+  beforeCreate: function beforeCreate() {// if(this.$store.state.user.authenticated) {
+    //     this.$store.dispatch('isAuth').then(() => {
+    //         this.$router.push({name: 'home'})
+    //     });
+    // }
   }
 });
 
@@ -5871,6 +5869,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_buttons_processStatus__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../components/buttons/processStatus */ "./resources/js/components/buttons/processStatus.vue");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_4__);
+//
 //
 //
 //
@@ -5983,6 +5982,12 @@ var touchMap = new WeakMap();
     submitEditAccount: function submitEditAccount() {
       var _this$user$profile_ne,
           _this = this;
+
+      this.$v.$touch();
+
+      if (this.$v.$invalid) {
+        return;
+      }
 
       this.processStatus = 1;
       this.$store.dispatch('updateUserAccount', {
@@ -6190,17 +6195,20 @@ var touchMap = new WeakMap();
 
       this.$v.$touch();
 
-      if (!this.$v.$invalid) {
-        this.processStatus = 1;
-        this.$store.dispatch('registerNewUser', this.newUser).then(function (response) {
-          return _this.$router.push({
-            name: 'email-verification'
-          });
-        })["catch"](function (error) {
-          _this.errors = error.response.data.errors;
-          _this.processStatus = 0;
-        });
+      if (this.$v.$invalid) {
+        return;
       }
+
+      this.processStatus = 1;
+      this.$store.dispatch('registerNewUser', this.newUser).then(function (response) {
+        return _this.$router.push({
+          name: 'email-verification'
+        });
+      })["catch"](function (error) {
+        return _this.errors = error.response.data.errors;
+      })["finally"](function () {
+        _this.processStatus = 0;
+      });
     }
   }
 });
@@ -34832,7 +34840,8 @@ var render = function() {
                 label: "Name",
                 field: "name",
                 type: "text",
-                errors: _vm.errors
+                errors: _vm.errors,
+                "v-errors": _vm.$v.user.name
               },
               model: {
                 value: _vm.$v.user.name.$model,
@@ -35137,7 +35146,7 @@ var render = function() {
               },
               [
                 _vm._v(
-                  "\n                    I agree to subscribe to the newsletter and receive the latest articles\n                "
+                  "\n                I agree to subscribe to the newsletter and receive the latest articles\n            "
                 )
               ]
             ),
@@ -62384,6 +62393,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../router */ "./resources/js/router/index.js");
+
 
 
 axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
@@ -62411,7 +62422,15 @@ axios__WEBPACK_IMPORTED_MODULE_0___default.a.interceptors.response.use(function 
   }
 
   if (error.response.status === 403) {
-    window.location = "/email-verification";
+    if (error.response.data.message === 'Your email address is not verified.') {
+      _router__WEBPACK_IMPORTED_MODULE_2__["default"].push({
+        name: 'email-verification'
+      });
+    } else {
+      _router__WEBPACK_IMPORTED_MODULE_2__["default"].push({
+        name: 'home'
+      });
+    }
   }
 
   return Promise.reject(error);
@@ -62615,7 +62634,8 @@ var routes = [//Open Routes
 }, {
   path: '/email-verification',
   name: 'email-verification',
-  component: _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__["default"]
+  component: _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__["default"],
+  beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotUserSet
 }, {
   path: '/curriculum',
   name: 'curriculum',
@@ -62685,9 +62705,9 @@ __webpack_require__.r(__webpack_exports__);
       next({
         name: 'login'
       });
+    } else {
+      next();
     }
-
-    next();
   },
   redirectIfAuthenticated: function redirectIfAuthenticated(to, from, next) {
     var authenticated = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.authenticated;
@@ -62696,9 +62716,21 @@ __webpack_require__.r(__webpack_exports__);
       next({
         name: 'home'
       });
+    } else {
+      next();
     }
+  },
+  redirectIfNotUserSet: function redirectIfNotUserSet(to, from, next) {
+    var user = _store__WEBPACK_IMPORTED_MODULE_0__["default"].state.user.user;
+    console.log(user);
 
-    next();
+    if (user.name) {
+      next();
+    } else {
+      next({
+        name: 'login'
+      });
+    }
   }
 });
 
@@ -62713,6 +62745,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -62724,6 +62758,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   namespaced: true,
@@ -62766,18 +62801,16 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
   actions: {
     loadAllArticles: function loadAllArticles(_ref) {
       var commit = _ref.commit;
-      return this._vm.$axios.get("v1/article").then(function (response) {
+      return axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("v1/article").then(function (response) {
         commit('UPDATE_ARTICLE_LIST', response.data);
       })["catch"](function (error) {
         console.log(error);
       });
     },
     create: function create(_ref2, payload) {
-      var _this = this;
-
       var commit = _ref2.commit;
       return new Promise(function (resolve, reject) {
-        _this._vm.$axios.post('v1/article', payload).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('v1/article', payload).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62787,11 +62820,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     loadArticle: function loadArticle(_ref3, id) {
-      var _this2 = this;
-
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        _this2._vm.$axios.get("v1/article/".concat(id)).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.get("v1/article/".concat(id)).then(function (response) {
           commit('INCLUDE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62801,11 +62832,9 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       });
     },
     update: function update(_ref4, payload) {
-      var _this3 = this;
-
       var commit = _ref4.commit;
       return new Promise(function (resolve, reject) {
-        _this3._vm.$axios.put("v1/article/".concat(payload.id), payload).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_0___default.a.put("v1/article/".concat(payload.id), payload).then(function (response) {
           commit('UPDATE_ARTICLE', response.data);
           resolve(response.data);
         })["catch"](function (error) {
@@ -62845,6 +62874,8 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _app__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../app */ "./resources/js/app.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -62856,6 +62887,7 @@ function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.it
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -62919,7 +62951,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
           state = _ref.state;
       commit('SEARCH_WORD', payload.q);
       state.search.searching = true;
-      return this._vm.$axios.get("v1/article/published", {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("v1/article/published", {
         params: {
           page: payload.page,
           take: payload.take,
@@ -62945,7 +62977,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
       state.loading = true; // return window.axios.get(`article/published?page=${state.pagination.current_page + 1}&take=5`)
       // Query options -> page, take, tag, search
 
-      return this._vm.$axios.get("v1/article/published", {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("v1/article/published", {
         params: {
           page: state.pagination.current_page + 1,
           take: 5 // ...router.currentRoute.query
@@ -62963,7 +62995,7 @@ function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len 
     loadFeaturedArticles: function loadFeaturedArticles(_ref3, payload) {
       var commit = _ref3.commit,
           state = _ref3.state;
-      return this._vm.$axios.get("v1/article/featured").then(function (response) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get("v1/article/featured").then(function (response) {
         setTimeout(function () {
           commit('LOAD_FEATURED_ARTICLES', response.data);
         }, 500);
@@ -63058,6 +63090,9 @@ var getters = {};
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_loginService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../services/loginService */ "./resources/js/services/loginService.js");
 /* harmony import */ var _services_loginService__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_services_loginService__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
+
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   state: {
@@ -63086,11 +63121,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   actions: {
     postLogin: function postLogin(_ref, credentials) {
-      var _this = this;
-
       var commit = _ref.commit;
       return new Promise(function (resolve, reject) {
-        _this._vm.$axios.post('v1/login', credentials).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('v1/login', credentials).then(function (response) {
           commit('LOGIN_SUCCESS', response.data);
           localStorage.setItem('__user', JSON.stringify({
             name: response.data.name,
@@ -63104,7 +63137,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     logout: function logout(_ref2) {
       var commit = _ref2.commit;
-      return this._vm.$axios.post('v1/logout').then(function (response) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('v1/logout').then(function (response) {
         commit('LOGOUT');
         localStorage.clear();
       })["catch"](function (error) {
@@ -63112,16 +63145,10 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     registerNewUser: function registerNewUser(_ref3, payload) {
-      var _this2 = this;
-
       var commit = _ref3.commit;
       return new Promise(function (resolve, reject) {
-        _this2._vm.$axios.post('v1/register', payload).then(function (response) {
+        axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('v1/register', payload).then(function (response) {
           commit('REGISTER_SUCCESS', response.data);
-          localStorage.setItem('__new_user', JSON.stringify({
-            name: response.data.name,
-            email: response.data.email
-          }));
           resolve(response);
         })["catch"](function (error) {
           return reject(error);
@@ -63134,7 +63161,7 @@ __webpack_require__.r(__webpack_exports__);
       formData.append('profile_image', payload.profile_image);
       formData.append('name', payload.name);
       formData.append('subscribe', payload.subscribe);
-      return this._vm.$axios.post('v1/user', formData, {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('v1/user', formData, {
         headers: {
           'content-type': 'multipart/form-data'
         }
@@ -63150,7 +63177,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     isAuth: function isAuth(_ref5) {
       var commit = _ref5.commit;
-      return this._vm.$axios.get('v1/test').then(function () {})["catch"](function (error) {
+      return axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('v1/test').then(function () {})["catch"](function (error) {
         commit('LOGOUT');
         localStorage.clear();
       });

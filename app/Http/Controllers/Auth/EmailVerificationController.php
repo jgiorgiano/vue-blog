@@ -43,7 +43,7 @@ class EmailVerificationController extends Controller
     public function send() {
 
         if (auth()->user()->hasVerifiedEmail()) {
-            return response()->json(["msg" => "Email already verified."], 400);
+            Abort(400, 'Email Already Verified');
         }
 
         auth()->user()->sendEmailVerificationNotification();
