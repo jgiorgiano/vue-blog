@@ -1,4 +1,4 @@
 import Vue from 'vue';
-import VueDayjs from 'vue-dayjs-plugin';
+import dayjs from 'dayjs';
 
-Vue.use(VueDayjs);
+Vue.prototype.$dayjs = dayjs;

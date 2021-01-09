@@ -20,11 +20,11 @@
                             <dt class="sr-only">Created By</dt>
                             <dd class="text-sm text-gray-600">
                                 <div v-if="item.type === 1">
-                                    <span>By: {{ item.user.name }} @ {{ $date(item.created_at).toString() }}</span>
+                                    <span>By: {{ item.user.name }} @ {{ $dayjs(item.created_at).toString() }}</span>
                                 </div>
                                 <div v-else>
                                     <span class="text-indigo-600">
-                                        Link to: {{ item.external_link }} @ {{ $date(item.created_at).toString() }}
+                                        Link to: {{ item.external_link }} @ {{ $dayjs(item.created_at).toString() }}
                                     </span>
                                 </div>
                             </dd>
