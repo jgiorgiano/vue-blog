@@ -1,6 +1,6 @@
 import Axios from "axios";
 import Vue from "vue";
-import router from '../router';
+import router from '@/router';
 
 Axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 

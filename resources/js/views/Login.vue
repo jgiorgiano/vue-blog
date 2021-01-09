@@ -44,10 +44,10 @@
 
 <script>
 
-import InputField from "../components/forms/InputField";
-import IndigoButton from "../components/buttons/IndigoButton";
-import IndigoTextLink from "../components/buttons/IndigoTextLink";
-import processStatus from "../components/buttons/processStatus";
+import InputField from "@/components/forms/InputField";
+import IndigoButton from "@/components/buttons/IndigoButton";
+import IndigoTextLink from "@/components/buttons/IndigoTextLink";
+import processStatus from "@/components/buttons/processStatus";
 import {required, minLength, email} from 'vuelidate/lib/validators';
 
 const touchMap = new WeakMap();

@@ -1,4 +1,3 @@
-import { router } from '../app'
 import Axios from "axios";
 
 export default {
@@ -102,7 +101,6 @@ export default {
                 params: {
                     page: state.pagination.current_page + 1,
                     take: 5,
-                    // ...router.currentRoute.query
                 }
             })
                 .then((response) => {

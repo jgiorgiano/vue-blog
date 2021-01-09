@@ -19,11 +19,11 @@
 </template>
 
 <script>
-import ListItem from "../components/article/list-item";
-import Loading from "../components/Loading";
-import HomeListItem from "../components/article/home-list-item";
-import OutlineIndigoButton from "../components/buttons/OutlineIndigoButton";
-import FeaturedArticlesCarrousel from "../components/featuredArticlesCarrousel";
+import ListItem from "@/components/article/list-item";
+import Loading from "@/components/Loading";
+import HomeListItem from "@/components/article/home-list-item";
+import OutlineIndigoButton from "@/components/buttons/OutlineIndigoButton";
+import FeaturedArticlesCarrousel from "@/components/featuredArticlesCarrousel";
 
 
 export default {

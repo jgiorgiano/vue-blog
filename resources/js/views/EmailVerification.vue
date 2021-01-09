@@ -33,10 +33,10 @@
 </template>
 
 <script>
-import IndigoButton from "../components/buttons/IndigoButton";
-import ErrorMessage from "../components/buttons/ErrorMessage";
-import SuccessMessage from "../components/buttons/SuccessMessage";
-import Processing from "../components/buttons/Processing";
+import IndigoButton from "@/components/buttons/IndigoButton";
+import ErrorMessage from "@/components/buttons/ErrorMessage";
+import SuccessMessage from "@/components/buttons/SuccessMessage";
+import Processing from "@/components/buttons/Processing";
 
 export default {
     components: {

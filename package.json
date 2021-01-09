@@ -10,7 +10,7 @@
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
     "devDependencies": {
-        "axios": "^0.20",
+        "axios": "^0.21.1",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
         "lodash": "^4.17.19",
@@ -24,6 +24,7 @@
         "@vue/composition-api": "^1.0.0-beta.18",
         "dayjs": "^1.9.7",
         "gsap": "^3.5.1",
+        "laravel-mix-polyfill": "^3.0.0",
         "tailwindcss": "^1.9.6",
         "vue-awesome": "^4.1.0",
         "vue-dayjs-plugin": "^1.0.0",

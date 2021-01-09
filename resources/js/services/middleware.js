@@ -1,4 +1,4 @@
-import store from '../store';
+import store from '@/store';
 
 export default {
     redirectIfNotAuthenticated(to, from, next) {
@@ -24,7 +24,7 @@ export default {
     redirectIfNotUserSet(to, from, next) {
 
         const user = store.state.user.user;
-console.log(user);
+
         if (user.name) {
             next();
         } else {

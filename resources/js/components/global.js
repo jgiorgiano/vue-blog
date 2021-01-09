@@ -14,6 +14,6 @@ import Vue from 'vue';
 
 Vue.component('v-navbar', require('./navbar/Navbar.vue').default);
 Vue.component('v-footer', require('./Footer.vue').default);
-Vue.component('v-main', require('../views/Main.vue').default);
+Vue.component('v-main', require('@/views/Main.vue').default);
 Vue.component('breadcrumb', require('./Breadcrumb').default);
 

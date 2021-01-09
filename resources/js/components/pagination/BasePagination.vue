@@ -24,7 +24,7 @@
 
 <script>
 import BasePaginationTrigger from "./BasePaginationTrigger.vue";
-import IndigoButton from "../buttons/IndigoButton";
+import IndigoButton from "@/components/buttons/IndigoButton";
 
 export default {
     components: {
