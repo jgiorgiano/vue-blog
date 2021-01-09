@@ -62,8 +62,8 @@
 </template>
 
 <script>
-import IndigoButton from "../components/buttons/IndigoButton";
-import IndigoTextLink from "../components/buttons/IndigoTextLink";
+import IndigoButton from "@/components/buttons/IndigoButton";
+import IndigoTextLink from "@/components/buttons/IndigoTextLink";
 
 export default {
     components: {

@@ -116,13 +116,13 @@
 
 <script>
 
-import InputField from "../../components/forms/InputField";
-import IndigoButton from "../../components/buttons/IndigoButton";
-import TextAreaField from "../../components/forms/TextAreaField";
-import CheckboxField from "../../components/forms/CheckboxField";
+import InputField from "@/components/forms/InputField";
+import IndigoButton from "@/components/buttons/IndigoButton";
+import TextAreaField from "@/components/forms/TextAreaField";
+import CheckboxField from "@/components/forms/CheckboxField";
 import {required, minLength, maxLength, requiredIf} from 'vuelidate/lib/validators';
-import ProcessStatus from "../../components/buttons/processStatus";
-import SelectField from "../../components/forms/SelectField";
+import ProcessStatus from "@/components/buttons/processStatus";
+import SelectField from "@/components/forms/SelectField";
 
 const touchMap = new WeakMap()
 

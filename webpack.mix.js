@@ -1,18 +1,9 @@
 const mix = require('laravel-mix');
+const path = require('path');
+require('laravel-mix-polyfill');
 
-/*
- |--------------------------------------------------------------------------
- | Mix Asset Management
- |--------------------------------------------------------------------------
- |
- | Mix provides a clean, fluent API for defining some Webpack build steps
- | for your Laravel application. By default, we are compiling the Sass
- | file for the application as well as bundling up all the JS files.
- |
- */
 
 const tailwindcss = require('tailwindcss')
-
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css')
@@ -20,3 +11,18 @@ mix.js('resources/js/app.js', 'public/js')
         processCssUrls: false,
         postCss: [ tailwindcss('tailwind.config.js') ],
     })
+    .polyfill({
+        enabled: true,
+        useBuiltIns: "usage",
+        targets: ["defaults"] //Browser compatibility https://github.com/ai/browserslist
+    });
+
+mix.webpackConfig({
+    resolve: {
+        alias: {
+            '@': path.resolve(__dirname, 'resources/js')
+        },
+        extensions: ['.vue', '.js', '.js', '.json'],
+    }
+});
+

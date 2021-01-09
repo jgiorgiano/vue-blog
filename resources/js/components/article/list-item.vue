@@ -49,7 +49,7 @@
 
 <script>
 
-import IndigoButton from "../../components/buttons/IndigoButton";
+import IndigoButton from "@/components/buttons/IndigoButton";
 
 export default {
     components: {
