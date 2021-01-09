@@ -1,6 +1,5 @@
 const mix = require('laravel-mix');
 const path = require('path');
-require('laravel-mix-polyfill');
 
 
 const tailwindcss = require('tailwindcss')
@@ -10,11 +9,6 @@ mix.js('resources/js/app.js', 'public/js')
     .options({
         processCssUrls: false,
         postCss: [ tailwindcss('tailwind.config.js') ],
-    })
-    .polyfill({
-        enabled: true,
-        useBuiltIns: "usage",
-        targets: ["defaults"] //Browser compatibility https://github.com/ai/browserslist
     });
 
 mix.webpackConfig({

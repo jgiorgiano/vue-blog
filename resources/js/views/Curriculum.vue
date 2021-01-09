@@ -198,6 +198,7 @@
 export default {
     data() {
         return {
+            jhon: { name: 'jhon'},
             skills: [
                 // {
                 //     title: 'PHP - Laravel',
@@ -227,6 +228,20 @@ export default {
                 // },
             ]
         }
+    },
+    mounted() {
+        console.log('mounted');
+
+        let test = [1, 2, [3, 4]];
+        console.log(
+            test.flat().map((x) => 2*x)
+        );
+
+        const jho = { name: 'jho'};
+
+        console.log('boot', jho?.sur?.name);
+
+        console.log('test', this.jhon, this.jhon?.sur?.name);
     }
 }
 </script>
