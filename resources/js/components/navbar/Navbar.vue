@@ -1,5 +1,5 @@
 <template>
-    <div class="gradient z-50 fixed w-full">
+    <div class="gradient z-50 fixed w-full" id="navbar">
         <nav id="top-nav" class="container mx-auto relative p-5 flex items-center justify-between">
             <nav-logo />
             <div v-if="!authenticated" class="hidden md:flex">

@@ -4,13 +4,13 @@
             <div class="j-card p-6">
                 <h3 class="text-xl md:text-3xl text-gray-800 pb-4">{{ article.title }}</h3>
                 <p class="text-md text-gray-600 border-t border-b p-4">
-                    By: {{ article.user ? article.user.name : '' }} IN {{ article.tags }} @ {{ $date(article.created_at).toString() }}
+                    By: {{ article.user ? article.user.name : '' }} IN {{ article.tags }} @ {{ $dayjs(article.created_at).toString() }}
                 </p>
                 <p class="first-char text-gray-800 py-4">
                     {{ article.content }}
                 </p>
                 <p class="text-md text-gray-600 pt-4 flex justify-end">
-                    By: {{ article.user ? article.user.name : '' }} @ {{ $date(article.created_at).toString() }}
+                    By: {{ article.user ? article.user.name : '' }} @ {{ $dayjs(article.created_at).toString() }}
                 </p>
             </div>
         </div>

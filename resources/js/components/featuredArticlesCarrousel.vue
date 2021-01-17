@@ -14,8 +14,8 @@
                                 <p class="hidden md:block text-white py-4">
                                     {{ getDescription(article) }}
                                 <p class="hidden md:block text-sm text-gray-900">
-                                    <span v-if="article.type === 1">By: {{ article.user.name }} @ {{ $date(article.created_at).toString() }}</span>
-                                    <span v-else>Link to: {{ article.external_link }} @ {{ $date(article.created_at).toString() }}</span>
+                                    <span v-if="article.type === 1">By: {{ article.user.name }} @ {{ $dayjs(article.created_at).toString() }}</span>
+                                    <span v-else>Link to: {{ article.external_link }} @ {{ $dayjs(article.created_at).toString() }}</span>
                                 </p>
                             </div>
                             <img class="w-40 h-40 lg:w-48 lg:h-48 mx-4 self-center"
