@@ -17,17 +17,17 @@ module.exports = {
     extend: {
         /* For A4 size */
         screens: {
-            screen: {'raw': 'screen'},
+        //     screen: {'raw': 'screen'},
             print: {'raw': 'print'},
         },
         maxWidth: {
             'a4': '64.609375rem'
         },
-        height: {
-            'a4': '91.350883rem',
-            'a4-col': '77.36632rem',
-            'a4-col-full': '83.350883rem',
-        },
+        // height: {
+        //     'a4': '91.350883rem',
+        //     'a4-col': '77.36632rem',
+        //     'a4-col-full': '83.350883rem',
+        // },
     },
   },
   variants: {

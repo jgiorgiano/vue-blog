@@ -15,6 +15,9 @@ import 'vue-awesome/icons/arrow-left'
 import 'vue-awesome/icons/arrow-right'
 import 'vue-awesome/icons/arrow-circle-up'
 import 'vue-awesome/icons/caret-right'
+import 'vue-awesome/icons/at'
+import 'vue-awesome/icons/phone-volume'
+import 'vue-awesome/icons/map-marker-alt'
 
 // or import all icons if you don't care about bundle size
 // import 'vue-awesome/icons'

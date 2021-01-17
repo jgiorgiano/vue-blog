@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900 text-white mt-6 flex flex-col align-content-between">
+    <div class="bg-gray-900 text-white mt-6 flex flex-col align-content-between" id="footer">
         <div class="relative inverted-wave">
             <svg viewBox="0 0 1428 174" version="1.1" xmlns="http://www.w3.org/2000/svg"
                  xmlns:xlink="http://www.w3.org/1999/xlink">

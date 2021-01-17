@@ -13,11 +13,10 @@
 
                     <div>
                         <p class="text-gray-800 leading-7">
-                            Hello, my name is Jhonathan and I am a full-stack self-taught web developer. <br>
-                            I've started my professional career in web development on March 2019 in a company working on an
-                            application created using PHP, Laravel, MySQL, Jquery, and Bootstrap.
-                            My role in the company involves maintaining the code base and building new
-                            features for the application.
+                            Hi There, I'm Jhonathan, a full-stack web developer.<br>
+                            I have started my professional career in March 2019 working on an application built on MVC,
+                            Laravel, PHP, MySql, Javascript, Bootstrap. I am always involved with the team on brainstorm
+                            for solutions and features for the application.
                         </p>
                         <div class="flex justify-center md:justify-start">
                             <router-link :to="{ name: 'curriculum'}">
@@ -30,8 +29,7 @@
                 <section class="text-gray-800 leading-7">
                     <p>
                         This is my personal blog where I want to share some of the articles and knowledge used on my
-                        daily
-                        work, learning path, and used as a laboratory for applying new techs and knowledge.
+                        daily work, learning path, and used as a laboratory for applying new techs and knowledge.
                     </p>
                     <h3 class="mt-4 mb-2 font-medium">Technologies Used on this project:</h3>
                     <div class="block md:flex flex-1 justify-between mx-4">
