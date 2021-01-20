@@ -1,10 +1,10 @@
 <template>
-    <div class="container mx-auto" id="curriculum">
+    <div class="container mx-auto print:m-0 print:pt-2 print:pb-0" id="curriculum">
         <div id="cv" class="text-gray-900 antialiased leading-tight">
-            <div class="mx-auto max-w-a4 p-6 md:p-12 bg-white">
+            <div class="mx-auto max-w-a4 p-6 md:p-12 print:p-3 bg-white">
 
                 <header class="uppercase text-gray-800 mb-6">
-                    <p class="text-3xl font-bold">
+                    <p class="text-3xl print:text-xl font-bold">
                         Jhonathan Marchi Giorgiano
                     </p>
                     <p>Full-Stack Web Developer</p>
@@ -25,12 +25,12 @@
                     </a>
                 </section>
 
-                <div class="w-full flex flex-col lg:flex-row my-5 leading-snug">
+                <div class="w-full flex flex-col lg:flex-row print:flex-row my-5 print:my-2 leading-snug">
 
-                    <div class="w-full lg:w-1/3 p-3 pb-0 lg:pb-3">
+                    <div class="w-full lg:w-1/3 print:w-1/3 p-3 pb-0 lg:pb-3">
 
                         <section class="mb-8">
-                            <h5 class="text-xl text-gray-800 font-bold uppercase mb-3">About me</h5>
+                            <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">About me</h5>
                             <div class="mt-2 text-gray-800 leading-normal">
                                 <p>
                                     A Responsible, flexible, and self-motivated full-stack developer who drives for
@@ -44,7 +44,7 @@
                         </section>
 
                         <section class="mb-8">
-                            <h5 class="text-xl text-gray-800 font-bold uppercase mb-3">Education</h5>
+                            <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">Education</h5>
                             <div>
                                 <h3 class="text-gray-800 font-semibold mb-1">
                                     Bachelor in Business Administration
@@ -60,13 +60,12 @@
                         </section>
 
                         <section class="mb-8 hidden lg:block">
-                            <h5 class="text-xl text-gray-800 font-bold uppercase mb-3">Social</h5>
+                            <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">Social</h5>
                             <div class="mt-2 text-gray-800 leading-normal">
                                 <ul>
                                     <li>Linkedin</li>
                                     <li>Tweeter</li>
                                     <li>Github</li>
-                                    <li>Gitlab</li>
                                 </ul>
                             </div>
                         </section>
@@ -74,14 +73,13 @@
                     </div>
 
 
-                    <div class="w-full lg:w-2/3 p-3">
-
+                    <div class="w-full lg:w-2/3 print:w-2/3 p-3">
 
                         <section class="mb-8">
-                            <h5 class="text-xl text-gray-800 font-bold uppercase mb-3">Career</h5>
+                            <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">Career</h5>
                             <section class="mb-4 col-break-avoid">
                                 <header>
-                                    <h3 class="text-lg text-gray-800 font-semibold leading-snug inline">eGov Solutions</h3><a
+                                    <h3 class="text-lg print:text-base text-gray-800 font-semibold leading-snug inline">eGov Solutions</h3><a
                                     href="https://epep.tv/" target="_blank" class="text-xs text-gray-600 ml-1">(epep.tv)</a>
                                     <p class="text-gray-700 leading-normal mb-2">
                                         Mar 2019 - Present | Full-Stack Web Developer
@@ -97,43 +95,36 @@
                                             application.</li>
                                         <li>Working on the full-cycle of features frontend, backend and database.</li>
                                         <li>Customization of existing features.</li>
-                                        <li>Involved on server migration to AWS Linux server.</li>
-                                        <li>Involved on updating php and laravel version for the application.</li>
+<!--                                        <li>Involved on server migration to AWS Linux server.</li>-->
+<!--                                        <li>Involved on updating php and laravel version for the application.</li>-->
                                     </ul>
                                 </div>
                             </section>
                         </section>
 
-                        <section class="mb-8">
-                            <h5 class="text-xl text-gray-800 font-bold uppercase mb-3">Skills</h5>
-                            <div class="col-break-avoid mb-4 border-gray-200" v-for="(skill, i) in skills"
-                                 :class="i !== skills.length - 1 ? 'border-b-2' : ''">
-                                <section class="mb-4 col-break-avoid">
+                        <section class="mb-8 print:mb-0">
+                            <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">Skills</h5>
+                            <div class="col-break-avoid mb-4 print:mb-2 border-gray-200" v-for="(skill, i) in skills"
+                                 :class="i !== skills.length - 1 ? 'border-b-2' : 'print:mb-0'">
+                                <section>
                                     <header>
                                         <div class="flex items-center">
-                                            <h3 class="inline text-lg text-gray-800 font-semibold">{{ skill.title }}</h3>
+                                            <h3 class="inline text-lg print:text-base text-gray-800 font-semibold">{{ skill.title }}</h3>
                                         </div>
-                                        <p class="text-gray-700 leading-normal mb-2">{{ skill.sub_title }}</p>
+                                        <p class="text-gray-700 leading-normal mb-2 print:mb-0">{{ skill.sub_title }}</p>
                                     </header>
-<!--                                    <p class="mt-1 text-gray-700">{{ skill.description }}</p>-->
-                                    <ul class="mt-1 mb-6 flex flex-wrap leading-normal">
-                                        <li v-for="(tag, index) in skill.tags" key="index"
-                                            class="px-3 mr-1 mt-1 text-base text-gray-700 leading-relaxed print:bg-white print:border-inset bg-gray-200">
+                                    <ul class="mt-1 mb-6 print:mb-2 flex flex-wrap leading-normal">
+                                        <li v-for="(tag, index) in skill.tags" :key="index"
+                                            class="px-3 print:px-1 mr-1 mt-1 print:mt-0 text-base text-gray-700 leading-relaxed print:bg-white bg-gray-200">
                                             <v-icon name="caret-right"></v-icon>
-                                            <span class="ml-1">{{ tag }}</span>
+                                            <span class="ml-1 print:ml-0">{{ tag }}</span>
                                         </li>
                                     </ul>
                                 </section>
                             </div>
                         </section>
-
                     </div>
-
                 </div>
-
-
-
-
             </div>
 
         </div>
@@ -148,7 +139,6 @@ export default {
                 {
                     title: 'PHP - Laravel',
                     sub_title: 'Middle Level',
-                    description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
                     tags: [
                         'OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder'
                     ]
@@ -156,26 +146,22 @@ export default {
                 {
                     title: 'JavaScript, HTML, and CSS',
                     sub_title: 'Middle Level',
-                    description: 'I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
                     tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
                 },
                 {
                     title: 'MySQL',
                     sub_title: 'Middle Level',
-                    description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
                     tags: ['MySQL', 'MySQLWorkbench']
                 },
                 {
                     title: 'Others',
                     sub_title: 'Middle Level',
-                    description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
                     tags: ['GIT', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
                 },
                 {
-                    title: 'Server',
-                    sub_title: 'Entry Level',
-                    description: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
-                    tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'RDS', 'Github', 'Gitlab']
+                    title: 'Cloud',
+                    sub_title: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
+                    tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'Github Actions']
                 },
             ]
         }
@@ -192,8 +178,10 @@ export default {
     }
 
     #curriculum {
-        margin: -30px -20px;
+        font-size: 14px;
     }
+
+
 }
 
 
