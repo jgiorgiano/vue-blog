@@ -5445,43 +5445,29 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       skills: [{
         title: 'PHP - Laravel',
         sub_title: 'Middle Level',
-        description: 'Familiarity with OOP design principles strong understands of Laravel environment as the MVC life cycle. Able to Maintain coding standards and follow good practices. On my studies projects, I have used TDD.',
         tags: ['OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder']
       }, {
         title: 'JavaScript, HTML, and CSS',
         sub_title: 'Middle Level',
-        description: 'I keep learning new technologies like Vue.js, Vuex, NPM, Webpack and TailwindCSS.',
         tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
       }, {
         title: 'MySQL',
         sub_title: 'Middle Level',
-        description: 'Even in my no-Development jobs, I was able to discuss relational integrity with developers helping them to analyse the data.',
         tags: ['MySQL', 'MySQLWorkbench']
       }, {
         title: 'Others',
         sub_title: 'Middle Level',
-        description: 'Great knowledge using Git, git-flow a UNIX Terminal. Even using MacOS all the time I\'m familiar with LINUX commands as basic DevOps configuration.',
         tags: ['GIT', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
       }, {
-        title: 'Server',
-        sub_title: 'Entry Level',
-        description: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
-        tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'RDS', 'Github', 'Gitlab']
+        title: 'Cloud',
+        sub_title: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
+        tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'Github Actions']
       }]
     };
   }
@@ -12458,7 +12444,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "@media print {\n#footer, #navbar {\n    display: none;\n}\n#curriculum {\n    margin: -30px -20px;\n}\n}\n\n\n", ""]);
+exports.push([module.i, "@media print {\n#footer, #navbar {\n    display: none;\n}\n#curriculum {\n    font-size: 14px;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -38282,7 +38268,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "gradient pt-8 -mt-10" },
+    { staticClass: "gradient pt-10 -mt-16" },
     [
       _c(
         "vueper-slides",
@@ -39573,7 +39559,10 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container mx-auto", attrs: { id: "curriculum" } },
+    {
+      staticClass: "container mx-auto print:m-0 print:pt-2 print:pb-0",
+      attrs: { id: "curriculum" }
+    },
     [
       _c(
         "div",
@@ -39582,174 +39571,183 @@ var render = function() {
           attrs: { id: "cv" }
         },
         [
-          _c("div", { staticClass: "mx-auto max-w-a4 p-6 md:p-12 bg-white" }, [
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "section",
-              {
-                staticClass:
-                  "border-b-4 border-t-4 px-4 py-2 flex flex-col md:flex-row print:flex-row justify-between text-gray-800"
-              },
-              [
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                    attrs: { href: "tel:+4407490115036" }
-                  },
-                  [
-                    _c("v-icon", { attrs: { name: "phone-volume" } }),
-                    _vm._v(
-                      "\n                        07490 115036\n                    "
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                    attrs: { href: "mailto: jgiorgiano@gmail.com" }
-                  },
-                  [
-                    _c("v-icon", { attrs: { name: "at" } }),
-                    _vm._v(
-                      "\n                        jgiorgiano@gmail.com\n                    "
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "a",
-                  {
-                    staticClass:
-                      "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                    attrs: {
-                      href: "https://goo.gl/maps/swoysnCxaNFWX7XS7",
-                      rel: "noopener",
-                      target: "_blank"
-                    }
-                  },
-                  [
-                    _c("v-icon", { attrs: { name: "map-marker-alt" } }),
-                    _vm._v(
-                      "\n                        Liverpool - UK\n                    "
-                    )
-                  ],
-                  1
-                )
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass:
-                  "w-full flex flex-col lg:flex-row my-5 leading-snug"
-              },
-              [
-                _vm._m(1),
-                _vm._v(" "),
-                _c("div", { staticClass: "w-full lg:w-2/3 p-3" }, [
-                  _vm._m(2),
+          _c(
+            "div",
+            { staticClass: "mx-auto max-w-a4 p-6 md:p-12 print:p-3 bg-white" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "section",
+                {
+                  staticClass:
+                    "border-b-4 border-t-4 px-4 py-2 flex flex-col md:flex-row print:flex-row justify-between text-gray-800"
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: { href: "tel:+4407490115036" }
+                    },
+                    [
+                      _c("v-icon", { attrs: { name: "phone-volume" } }),
+                      _vm._v(
+                        "\n                        07490 115036\n                    "
+                      )
+                    ],
+                    1
+                  ),
                   _vm._v(" "),
                   _c(
-                    "section",
-                    { staticClass: "mb-8" },
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: { href: "mailto: jgiorgiano@gmail.com" }
+                    },
                     [
-                      _c(
-                        "h5",
-                        {
-                          staticClass:
-                            "text-xl text-gray-800 font-bold uppercase mb-3"
-                        },
-                        [_vm._v("Skills")]
-                      ),
+                      _c("v-icon", { attrs: { name: "at" } }),
+                      _vm._v(
+                        "\n                        jgiorgiano@gmail.com\n                    "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: {
+                        href: "https://goo.gl/maps/swoysnCxaNFWX7XS7",
+                        rel: "noopener",
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { name: "map-marker-alt" } }),
+                      _vm._v(
+                        "\n                        Liverpool - UK\n                    "
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full flex flex-col lg:flex-row print:flex-row my-5 print:my-2 leading-snug"
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "w-full lg:w-2/3 print:w-2/3 p-3" },
+                    [
+                      _vm._m(2),
                       _vm._v(" "),
-                      _vm._l(_vm.skills, function(skill, i) {
-                        return _c(
-                          "div",
-                          {
-                            staticClass: "col-break-avoid mb-4 border-gray-200",
-                            class:
-                              i !== _vm.skills.length - 1 ? "border-b-2" : ""
-                          },
-                          [
-                            _c(
-                              "section",
-                              { staticClass: "mb-4 col-break-avoid" },
+                      _c(
+                        "section",
+                        { staticClass: "mb-8 print:mb-0" },
+                        [
+                          _c(
+                            "h5",
+                            {
+                              staticClass:
+                                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+                            },
+                            [_vm._v("Skills")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.skills, function(skill, i) {
+                            return _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-break-avoid mb-4 print:mb-2 border-gray-200",
+                                class:
+                                  i !== _vm.skills.length - 1
+                                    ? "border-b-2"
+                                    : "print:mb-0"
+                              },
                               [
-                                _c("header", [
-                                  _c(
-                                    "div",
-                                    { staticClass: "flex items-center" },
-                                    [
-                                      _c(
-                                        "h3",
-                                        {
-                                          staticClass:
-                                            "inline text-lg text-gray-800 font-semibold"
-                                        },
-                                        [_vm._v(_vm._s(skill.title))]
-                                      )
-                                    ]
-                                  ),
+                                _c("section", [
+                                  _c("header", [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c(
+                                          "h3",
+                                          {
+                                            staticClass:
+                                              "inline text-lg print:text-base text-gray-800 font-semibold"
+                                          },
+                                          [_vm._v(_vm._s(skill.title))]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass:
+                                          "text-gray-700 leading-normal mb-2 print:mb-0"
+                                      },
+                                      [_vm._v(_vm._s(skill.sub_title))]
+                                    )
+                                  ]),
                                   _vm._v(" "),
                                   _c(
-                                    "p",
+                                    "ul",
                                     {
                                       staticClass:
-                                        "text-gray-700 leading-normal mb-2"
+                                        "mt-1 mb-6 print:mb-2 flex flex-wrap leading-normal"
                                     },
-                                    [_vm._v(_vm._s(skill.sub_title))]
+                                    _vm._l(skill.tags, function(tag, index) {
+                                      return _c(
+                                        "li",
+                                        {
+                                          key: index,
+                                          staticClass:
+                                            "px-3 print:px-1 mr-1 mt-1 print:mt-0 text-base text-gray-700 leading-relaxed print:bg-white bg-gray-200"
+                                        },
+                                        [
+                                          _c("v-icon", {
+                                            attrs: { name: "caret-right" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            { staticClass: "ml-1 print:ml-0" },
+                                            [_vm._v(_vm._s(tag))]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }),
+                                    0
                                   )
-                                ]),
-                                _vm._v(" "),
-                                _c(
-                                  "ul",
-                                  {
-                                    staticClass:
-                                      "mt-1 mb-6 flex flex-wrap leading-normal"
-                                  },
-                                  _vm._l(skill.tags, function(tag, index) {
-                                    return _c(
-                                      "li",
-                                      {
-                                        key: "index",
-                                        staticClass:
-                                          "px-3 mr-1 mt-1 text-base text-gray-700 leading-relaxed print:bg-white print:border-inset bg-gray-200"
-                                      },
-                                      [
-                                        _c("v-icon", {
-                                          attrs: { name: "caret-right" }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("span", { staticClass: "ml-1" }, [
-                                          _vm._v(_vm._s(tag))
-                                        ])
-                                      ],
-                                      1
-                                    )
-                                  }),
-                                  0
-                                )
+                                ])
                               ]
                             )
-                          ]
-                        )
-                      })
-                    ],
-                    2
+                          })
+                        ],
+                        2
+                      )
+                    ]
                   )
-                ])
-              ]
-            )
-          ])
+                ]
+              )
+            ]
+          )
         ]
       )
     ]
@@ -39761,7 +39759,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("header", { staticClass: "uppercase text-gray-800 mb-6" }, [
-      _c("p", { staticClass: "text-3xl font-bold" }, [
+      _c("p", { staticClass: "text-3xl print:text-xl font-bold" }, [
         _vm._v(
           "\n                        Jhonathan Marchi Giorgiano\n                    "
         )
@@ -39774,77 +39772,88 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "w-full lg:w-1/3 p-3 pb-0 lg:pb-3" }, [
-      _c("section", { staticClass: "mb-8" }, [
-        _c(
-          "h5",
-          { staticClass: "text-xl text-gray-800 font-bold uppercase mb-3" },
-          [_vm._v("About me")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
-          _c("p", [
-            _vm._v(
-              "\n                                    A Responsible, flexible, and self-motivated full-stack developer who drives for\n                                    best results, continuous improvement, and loves learning.\n                                "
-            )
-          ]),
+    return _c(
+      "div",
+      { staticClass: "w-full lg:w-1/3 print:w-1/3 p-3 pb-0 lg:pb-3" },
+      [
+        _c("section", { staticClass: "mb-8" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("About me")]
+          ),
           _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                                    I have started my professional career in March 2019 working on an application built\n                                    on MVC, Laravel, PHP, MySql, Javascript, Bootstrap.\n                                "
-            )
+          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
+            _c("p", [
+              _vm._v(
+                "\n                                    A Responsible, flexible, and self-motivated full-stack developer who drives for\n                                    best results, continuous improvement, and loves learning.\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                                    I have started my professional career in March 2019 working on an application built\n                                    on MVC, Laravel, PHP, MySql, Javascript, Bootstrap.\n                                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "mb-8" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("Education")]
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _c("h3", { staticClass: "text-gray-800 font-semibold mb-1" }, [
+              _vm._v(
+                "\n                                    Bachelor in Business Administration\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-gray-700 mb-1" }, [
+              _vm._v(
+                "\n                                   University Centro Herminio Ometto - FHO | 2008 – 2012\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                                    The Business Administration degree gave me knowledge of various aspects of a\n                                    company such as project management, team-working and problem-solving.\n                                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "mb-8 hidden lg:block" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("Social")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
+            _c("ul", [
+              _c("li", [_vm._v("Linkedin")]),
+              _vm._v(" "),
+              _c("li", [_vm._v("Tweeter")]),
+              _vm._v(" "),
+              _c("li", [_vm._v("Github")])
+            ])
           ])
         ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "mb-8" }, [
-        _c(
-          "h5",
-          { staticClass: "text-xl text-gray-800 font-bold uppercase mb-3" },
-          [_vm._v("Education")]
-        ),
-        _vm._v(" "),
-        _c("div", [
-          _c("h3", { staticClass: "text-gray-800 font-semibold mb-1" }, [
-            _vm._v(
-              "\n                                    Bachelor in Business Administration\n                                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-700 mb-1" }, [
-            _vm._v(
-              "\n                                   University Centro Herminio Ometto - FHO | 2008 – 2012\n                                "
-            )
-          ]),
-          _vm._v(" "),
-          _c("p", [
-            _vm._v(
-              "\n                                    The Business Administration degree gave me knowledge of various aspects of a\n                                    company such as project management, team-working and problem-solving.\n                                "
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("section", { staticClass: "mb-8 hidden lg:block" }, [
-        _c(
-          "h5",
-          { staticClass: "text-xl text-gray-800 font-bold uppercase mb-3" },
-          [_vm._v("Social")]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
-          _c("ul", [
-            _c("li", [_vm._v("Linkedin")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Tweeter")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Github")]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Gitlab")])
-          ])
-        ])
-      ])
-    ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -39853,7 +39862,10 @@ var staticRenderFns = [
     return _c("section", { staticClass: "mb-8" }, [
       _c(
         "h5",
-        { staticClass: "text-xl text-gray-800 font-bold uppercase mb-3" },
+        {
+          staticClass:
+            "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+        },
         [_vm._v("Career")]
       ),
       _vm._v(" "),
@@ -39863,7 +39875,7 @@ var staticRenderFns = [
             "h3",
             {
               staticClass:
-                "text-lg text-gray-800 font-semibold leading-snug inline"
+                "text-lg print:text-base text-gray-800 font-semibold leading-snug inline"
             },
             [_vm._v("eGov Solutions")]
           ),
@@ -39903,17 +39915,7 @@ var staticRenderFns = [
               )
             ]),
             _vm._v(" "),
-            _c("li", [_vm._v("Customization of existing features.")]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v("Involved on server migration to AWS Linux server.")
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "Involved on updating php and laravel version for the application."
-              )
-            ])
+            _c("li", [_vm._v("Customization of existing features.")])
           ])
         ])
       ])

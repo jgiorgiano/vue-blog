@@ -1,5 +1,5 @@
 <template>
-    <div class="gradient pt-8 -mt-10">
+    <div class="gradient pt-10 -mt-16">
         <vueper-slides fixed-height="280px" class="no-shadow">
             <vueper-slide
                 v-for="article in featuredArticles" :key="article.id" :title="article.title">
