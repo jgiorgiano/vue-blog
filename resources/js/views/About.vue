@@ -15,14 +15,11 @@
                         <p class="text-gray-800 leading-7">
                             Hi There, I'm Jhonathan, a full-stack web developer.<br>
                             I have started my professional career in March 2019 working on an application built on MVC,
-                            Laravel, PHP, MySql, Javascript, Bootstrap. I am always involved with the team on brainstorm
-                            for solutions and features for the application.
+                            Laravel, PHP, MySql, Javascript, Bootstrap.
                         </p>
-                        <div class="flex justify-center md:justify-start">
-                            <router-link :to="{ name: 'curriculum'}">
-                                <IndigoButton class="mt-4">Curriculum</IndigoButton>
-                            </router-link>
-                        </div>
+                        <router-link :to="{ name: 'resume'}" >
+                            <p class="text-indigo-600 hover:text-indigo-800">Check my resume</p>
+                        </router-link>
                     </div>
                 </section>
 
@@ -73,7 +70,7 @@ export default {
             'techs': [
                 {
                     'title' : 'Back-end',
-                    'content' : ['PHP 7.4', 'Laravel 8.0', 'MySQL']
+                    'content' : ['PHP 7.4', 'Laravel 8.0', 'MySQL', 'PHPUnit Test']
                 },
                 {
                     'title' : 'Front-end',

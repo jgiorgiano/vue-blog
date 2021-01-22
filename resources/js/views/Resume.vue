@@ -1,5 +1,5 @@
 <template>
-    <div class="container mx-auto print:m-0 print:pt-2 print:pb-0" id="curriculum">
+    <div class="container mx-auto print:m-0 print:pt-2 print:pb-0" id="resume">
         <div id="cv" class="text-gray-900 antialiased leading-tight">
             <div class="mx-auto max-w-a4 p-6 md:p-12 print:p-3 bg-white">
 
@@ -63,9 +63,19 @@
                             <h5 class="text-xl print:text-lg text-gray-800 font-bold uppercase mb-3">Social</h5>
                             <div class="mt-2 text-gray-800 leading-normal">
                                 <ul>
-                                    <li>Linkedin</li>
-                                    <li>Tweeter</li>
-                                    <li>Github</li>
+                                    <li>
+                                        <a class="mx-1 text-indigo-600 hover:text-indigo-800"
+                                           href="https://www.linkedin.com/in/jhonathan-marchi-giorgiano-a55562ba"
+                                           target="_blank" rel="noopener">
+                                            Linkedin
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="mx-1 text-indigo-600 hover:text-indigo-800"
+                                           href="https://github.com/jgiorgiano" target="_blank" rel="noopener">
+                                            Github
+                                        </a>
+                                    </li>
                                 </ul>
                             </div>
                         </section>
@@ -138,30 +148,30 @@ export default {
             skills: [
                 {
                     title: 'PHP - Laravel',
-                    sub_title: 'Middle Level',
+                    sub_title: '',
                     tags: [
                         'OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder'
                     ]
                 },
                 {
                     title: 'JavaScript, HTML, and CSS',
-                    sub_title: 'Middle Level',
+                    sub_title: '',
                     tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
                 },
                 {
                     title: 'MySQL',
-                    sub_title: 'Middle Level',
+                    sub_title: '',
                     tags: ['MySQL', 'MySQLWorkbench']
                 },
                 {
                     title: 'Others',
-                    sub_title: 'Middle Level',
+                    sub_title: '',
                     tags: ['GIT', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
                 },
                 {
                     title: 'Cloud',
-                    sub_title: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
-                    tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'Github Actions']
+                    sub_title: 'AWS basic configuration and CI/CD used on my study projects.',
+                    tags: ['AWS', 'lightsail', 'EC2', 'S3', 'IAM', 'Github Actions']
                 },
             ]
         }
@@ -177,7 +187,7 @@ export default {
         display: none;
     }
 
-    #curriculum {
+    #resume {
         font-size: 14px;
     }
 
