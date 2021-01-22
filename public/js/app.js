@@ -3795,6 +3795,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -3812,8 +3850,8 @@ __webpack_require__.r(__webpack_exports__);
         'routeName': 'register',
         'description': 'Subscribe'
       }, {
-        'routeName': 'curriculum',
-        'description': 'Curriculum'
+        'routeName': 'resume',
+        'description': 'Resume'
       }],
       tags: [{
         'query': 'tags: laravel, php',
@@ -5272,9 +5310,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -5286,7 +5321,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       'techs': [{
         'title': 'Back-end',
-        'content': ['PHP 7.4', 'Laravel 8.0', 'MySQL']
+        'content': ['PHP 7.4', 'Laravel 8.0', 'MySQL', 'PHPUnit Test']
       }, {
         'title': 'Front-end',
         'content': ['Javascript', 'VueJs 2', 'Vuex', 'Vue Router', 'GSAP', 'Tailwind CSS']
@@ -5296,178 +5331,6 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         'title': 'Other',
         'content': ['Github', 'Github actions (CI/CD)']
-      }]
-    };
-  }
-});
-
-/***/ }),
-
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=script&lang=js&":
-/*!****************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Curriculum.vue?vue&type=script&lang=js& ***!
-  \****************************************************************************************************************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      skills: [{
-        title: 'PHP - Laravel',
-        sub_title: 'Middle Level',
-        tags: ['OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder']
-      }, {
-        title: 'JavaScript, HTML, and CSS',
-        sub_title: 'Middle Level',
-        tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
-      }, {
-        title: 'MySQL',
-        sub_title: 'Middle Level',
-        tags: ['MySQL', 'MySQLWorkbench']
-      }, {
-        title: 'Others',
-        sub_title: 'Middle Level',
-        tags: ['GIT', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
-      }, {
-        title: 'Cloud',
-        sub_title: 'Familiar with AWS basic configuration and CI/CD used on my study projects.',
-        tags: ['AWS', 'lightsail', 'EC2', 'IAM', 'Github Actions']
       }]
     };
   }
@@ -6288,6 +6151,188 @@ var touchMap = new WeakMap();
         _this.processStatus = 0;
       });
     }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Resume.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      skills: [{
+        title: 'PHP - Laravel',
+        sub_title: '',
+        tags: ['OOP', 'MVC', 'API', 'Laravel', 'Eloquent', 'Query Builder']
+      }, {
+        title: 'JavaScript, HTML, and CSS',
+        sub_title: '',
+        tags: ['Vue.js', 'jQuery', 'Tailwind CSS', 'Bootstrap']
+      }, {
+        title: 'MySQL',
+        sub_title: '',
+        tags: ['MySQL', 'MySQLWorkbench']
+      }, {
+        title: 'Others',
+        sub_title: '',
+        tags: ['GIT', 'MacOS', 'Linux', 'PHPStorm', 'Docker']
+      }, {
+        title: 'Cloud',
+        sub_title: 'AWS basic configuration and CI/CD used on my study projects.',
+        tags: ['AWS', 'lightsail', 'EC2', 'S3', 'IAM', 'Github Actions']
+      }]
+    };
   }
 });
 
@@ -12432,25 +12477,6 @@ exports.push([module.i, ".inverted-wave {\n  transform: rotate(180deg);\n  margi
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&":
-/*!***********************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css& ***!
-  \***********************************************************************************************************************************************************************************************************************************************************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
-// imports
-
-
-// module
-exports.push([module.i, "@media print {\n#footer, #navbar {\n    display: none;\n}\n#curriculum {\n    font-size: 14px;\n}\n}\n\n\n", ""]);
-
-// exports
-
-
-/***/ }),
-
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css&":
 /*!*****************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css& ***!
@@ -12464,6 +12490,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, ".gradient {\n  /*background: linear-gradient(90deg, #5a67d8 0%, #E9D8FD 100%);*/\n  /*background: linear-gradient(90deg, #5a67d8 0%, #FED7E2 100%);*/\n  background: linear-gradient(90deg, #5a67d8 15%, #fbb6ce 110%);\n  /*background: linear-gradient(90deg, #5a67d8 0%, #E2E8F0 100%);*/\n  /*background: linear-gradient(90deg, #5a67d8 0%, #EBF8FF 100%);*/\n}\n@media (max-width: 768px) {\n.gradient {\n    background: linear-gradient(90deg, #5a67d8 50%, #f691b4 130%);\n}\n}\n\n\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&":
+/*!*******************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css& ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "@media print {\n#footer, #navbar {\n    display: none;\n}\n#resume {\n    font-size: 14px;\n}\n}\n\n\n", ""]);
 
 // exports
 
@@ -35786,15 +35831,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&":
-/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css& ***!
-  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Curriculum.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -35816,15 +35861,15 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css&":
-/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css& ***!
-  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&":
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css& ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Home.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Home.vue?vue&type=style&index=0&lang=css&");
+var content = __webpack_require__(/*! !../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Resume.vue?vue&type=style&index=0&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -37384,116 +37429,6 @@ var render = function() {
                         })
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "flex my-4" }, [
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "mx-1 text-indigo-600 hover:text-indigo-800",
-                        attrs: {
-                          href: "https://twitter.com/jhonathanmg44",
-                          target: "_blank",
-                          rel: "noopener"
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "socialIcon-32i0_n",
-                            attrs: {
-                              width: "24",
-                              height: "24",
-                              viewBox: "0 0 24 24"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                fill: "currentColor",
-                                d:
-                                  "M8.2177 20.2976C15.798 20.2976 19.9327 14.0329 19.9327 8.58261V8.05011C20.7362 7.46091 21.435 6.74089 22 5.92012C21.2567 6.26235 20.4637 6.48437 19.6507 6.57791C20.5139 6.06164 21.1597 5.24885 21.4675 4.2913C20.6598 4.76183 19.7822 5.10021 18.8677 5.29365C17.3053 3.64491 14.7069 3.56109 13.0415 5.10571C11.9701 6.10222 11.5157 7.59694 11.8512 9.02114C8.54594 8.85772 5.46574 7.29769 3.37823 4.72983C2.28095 6.60789 2.84519 9.01622 4.66249 10.2114C4.00661 10.1858 3.36464 10.0146 2.78309 9.71026V9.7729C2.78257 11.7293 4.15628 13.417 6.07204 13.8136C5.46884 13.9751 4.83671 13.9965 4.22396 13.8763C4.76475 15.5538 6.31437 16.7003 8.07674 16.7267C6.62377 17.8749 4.82287 18.4936 2.97103 18.4808C2.65779 18.4808 2.31323 18.4495 2 18.4182C3.84433 19.6513 6.0148 20.3057 8.23336 20.2976"
-                              }
-                            })
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "mx-1 text-indigo-600 hover:text-indigo-800",
-                        attrs: {
-                          href: "https://www.instagram.com/jhonathan_giorgiano",
-                          target: "_blank",
-                          rel: "noopener"
-                        }
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "socialIcon-32i0_n",
-                            attrs: {
-                              width: "24",
-                              height: "24",
-                              viewBox: "0 0 24 24"
-                            }
-                          },
-                          [
-                            _c("g", { attrs: { fill: "currentColor" } }, [
-                              _c("path", {
-                                attrs: {
-                                  "fill-rule": "evenodd",
-                                  "clip-rule": "evenodd",
-                                  d:
-                                    "M11.9969 2.00632C9.28187 2.00632 8.94143 2.01783 7.87516 2.06648C6.81111 2.11501 6.0844 2.28402 5.44853 2.53116C4.79115 2.78659 4.23365 3.12842 3.67786 3.68417C3.1221 4.23997 2.78028 4.79747 2.52484 5.45485C2.2777 6.09072 2.10869 6.81743 2.06016 7.88148C2.01151 8.94775 2 9.28818 2 12.0032C2 14.7181 2.01151 15.0586 2.06016 16.1249C2.10869 17.1889 2.2777 17.9156 2.52484 18.5515C2.78028 19.2089 3.1221 19.7664 3.67786 20.3222C4.23365 20.8779 4.79115 21.2197 5.44853 21.4752C6.0844 21.7223 6.81111 21.8913 7.87516 21.9398C8.94143 21.9885 9.28187 22 11.9969 22C14.7118 22 15.0523 21.9885 16.1185 21.9398C17.1826 21.8913 17.9093 21.7223 18.5452 21.4752C19.2025 21.2197 19.76 20.8779 20.3158 20.3222C20.8716 19.7664 21.2134 19.2089 21.4689 18.5515C21.716 17.9156 21.885 17.1889 21.9335 16.1249C21.9822 15.0586 21.9937 14.7181 21.9937 12.0032C21.9937 9.28818 21.9822 8.94775 21.9335 7.88148C21.885 6.81743 21.716 6.09072 21.4689 5.45485C21.2134 4.79747 20.8716 4.23997 20.3158 3.68417C19.76 3.12842 19.2025 2.78659 18.5452 2.53116C17.9093 2.28402 17.1826 2.11501 16.1185 2.06648C15.0523 2.01783 14.7118 2.00632 11.9969 2.00632ZM11.9969 3.80755C14.6661 3.80755 14.9823 3.81775 16.0364 3.86584C17.0111 3.91029 17.5404 4.07314 17.8927 4.21005C18.3593 4.3914 18.6923 4.60802 19.0421 4.95786C19.392 5.30767 19.6086 5.64068 19.79 6.10731C19.9269 6.45957 20.0897 6.9889 20.1342 7.96358C20.1823 9.01771 20.1925 9.3339 20.1925 12.0032C20.1925 14.6724 20.1823 14.9886 20.1342 16.0427C20.0897 17.0174 19.9269 17.5468 19.79 17.899C19.6086 18.3656 19.392 18.6987 19.0421 19.0485C18.6923 19.3983 18.3593 19.6149 17.8927 19.7963C17.5404 19.9332 17.0111 20.096 16.0364 20.1405C14.9825 20.1886 14.6663 20.1988 11.9969 20.1988C9.32738 20.1988 9.01127 20.1886 7.95726 20.1405C6.98258 20.096 6.45325 19.9332 6.10099 19.7963C5.63437 19.6149 5.30135 19.3983 4.95155 19.0485C4.60175 18.6987 4.38508 18.3656 4.20373 17.899C4.06683 17.5468 3.90397 17.0174 3.85952 16.0427C3.81143 14.9886 3.80123 14.6724 3.80123 12.0032C3.80123 9.3339 3.81143 9.01771 3.85952 7.96358C3.90397 6.9889 4.06683 6.45957 4.20373 6.10731C4.38508 5.64068 4.60171 5.30767 4.95155 4.95786C5.30135 4.60802 5.63437 4.3914 6.10099 4.21005C6.45325 4.07314 6.98258 3.91029 7.95726 3.86584C9.01139 3.81775 9.32758 3.80755 11.9969 3.80755Z"
-                                }
-                              }),
-                              _c("path", {
-                                attrs: {
-                                  "fill-rule": "evenodd",
-                                  "clip-rule": "evenodd",
-                                  d:
-                                    "M11.9968 15.3355C10.1564 15.3355 8.66451 13.8435 8.66451 12.0032C8.66451 10.1628 10.1564 8.67089 11.9968 8.67089C13.8372 8.67089 15.3291 10.1628 15.3291 12.0032C15.3291 13.8435 13.8372 15.3355 11.9968 15.3355ZM11.9968 6.86966C9.16161 6.86966 6.86328 9.16799 6.86328 12.0032C6.86328 14.8384 9.16161 17.1367 11.9968 17.1367C14.832 17.1367 17.1303 14.8384 17.1303 12.0032C17.1303 9.16799 14.832 6.86966 11.9968 6.86966Z"
-                                }
-                              }),
-                              _c("path", {
-                                attrs: {
-                                  "fill-rule": "evenodd",
-                                  "clip-rule": "evenodd",
-                                  d:
-                                    "M18.5328 6.66684C18.5328 7.32938 17.9957 7.86644 17.3331 7.86644C16.6706 7.86644 16.1335 7.32938 16.1335 6.66684C16.1335 6.0043 16.6706 5.46719 17.3331 5.46719C17.9957 5.46719 18.5328 6.0043 18.5328 6.66684Z"
-                                }
-                              })
-                            ])
-                          ]
-                        )
-                      ]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "a",
-                      {
-                        staticClass:
-                          "mx-1 text-indigo-600 hover:text-indigo-800",
-                        attrs: {
-                          href: "mailto: jgiorgiano@gmail.com",
-                          target: "_blank"
-                        }
-                      },
-                      [
-                        _c("v-icon", {
-                          staticClass: "mx-1",
-                          attrs: { name: "envelope" }
-                        })
-                      ],
-                      1
-                    )
                   ])
                 ],
                 1
@@ -37502,7 +37437,9 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "flex justify-center my-2" }, [
               _c("div", [
-                _vm._v("\n                    Pages\n                    "),
+                _vm._v(
+                  "\n                        Pages\n                        "
+                ),
                 _c(
                   "ul",
                   _vm._l(this.pages, function(page) {
@@ -37533,7 +37470,9 @@ var render = function() {
           _c("div", { staticClass: "flex flex-1 justify-around my-2" }, [
             _c("div", { staticClass: "flex justify-center my-2" }, [
               _c("div", [
-                _vm._v("\n                    Tags\n                    "),
+                _vm._v(
+                  "\n                        Tags\n                        "
+                ),
                 _c(
                   "ul",
                   _vm._l(this.tags, function(tag) {
@@ -37566,7 +37505,9 @@ var render = function() {
             _vm._v(" "),
             _c("div", { staticClass: "flex justify-center my-2" }, [
               _c("div", [
-                _vm._v("\n                    2020\n                    "),
+                _vm._v(
+                  "\n                        2020\n                        "
+                ),
                 _c(
                   "ul",
                   _vm._l(this.months, function(month) {
@@ -37600,32 +37541,157 @@ var render = function() {
         ]
       ),
       _vm._v(" "),
-      _vm._m(0)
+      _c(
+        "div",
+        { staticClass: "text-center mt-auto border-t border-indigo-800" },
+        [
+          _c("div", { staticClass: "flex my-3 justify-center" }, [
+            _c(
+              "a",
+              {
+                staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                attrs: {
+                  href: "https://www.instagram.com/jhonathan_giorgiano",
+                  target: "_blank",
+                  rel: "noopener"
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    attrs: { width: "24", height: "24", viewBox: "0 0 24 24" }
+                  },
+                  [
+                    _c("g", { attrs: { fill: "currentColor" } }, [
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          "clip-rule": "evenodd",
+                          d:
+                            "M11.9969 2.00632C9.28187 2.00632 8.94143 2.01783 7.87516 2.06648C6.81111 2.11501 6.0844 2.28402 5.44853 2.53116C4.79115 2.78659 4.23365 3.12842 3.67786 3.68417C3.1221 4.23997 2.78028 4.79747 2.52484 5.45485C2.2777 6.09072 2.10869 6.81743 2.06016 7.88148C2.01151 8.94775 2 9.28818 2 12.0032C2 14.7181 2.01151 15.0586 2.06016 16.1249C2.10869 17.1889 2.2777 17.9156 2.52484 18.5515C2.78028 19.2089 3.1221 19.7664 3.67786 20.3222C4.23365 20.8779 4.79115 21.2197 5.44853 21.4752C6.0844 21.7223 6.81111 21.8913 7.87516 21.9398C8.94143 21.9885 9.28187 22 11.9969 22C14.7118 22 15.0523 21.9885 16.1185 21.9398C17.1826 21.8913 17.9093 21.7223 18.5452 21.4752C19.2025 21.2197 19.76 20.8779 20.3158 20.3222C20.8716 19.7664 21.2134 19.2089 21.4689 18.5515C21.716 17.9156 21.885 17.1889 21.9335 16.1249C21.9822 15.0586 21.9937 14.7181 21.9937 12.0032C21.9937 9.28818 21.9822 8.94775 21.9335 7.88148C21.885 6.81743 21.716 6.09072 21.4689 5.45485C21.2134 4.79747 20.8716 4.23997 20.3158 3.68417C19.76 3.12842 19.2025 2.78659 18.5452 2.53116C17.9093 2.28402 17.1826 2.11501 16.1185 2.06648C15.0523 2.01783 14.7118 2.00632 11.9969 2.00632ZM11.9969 3.80755C14.6661 3.80755 14.9823 3.81775 16.0364 3.86584C17.0111 3.91029 17.5404 4.07314 17.8927 4.21005C18.3593 4.3914 18.6923 4.60802 19.0421 4.95786C19.392 5.30767 19.6086 5.64068 19.79 6.10731C19.9269 6.45957 20.0897 6.9889 20.1342 7.96358C20.1823 9.01771 20.1925 9.3339 20.1925 12.0032C20.1925 14.6724 20.1823 14.9886 20.1342 16.0427C20.0897 17.0174 19.9269 17.5468 19.79 17.899C19.6086 18.3656 19.392 18.6987 19.0421 19.0485C18.6923 19.3983 18.3593 19.6149 17.8927 19.7963C17.5404 19.9332 17.0111 20.096 16.0364 20.1405C14.9825 20.1886 14.6663 20.1988 11.9969 20.1988C9.32738 20.1988 9.01127 20.1886 7.95726 20.1405C6.98258 20.096 6.45325 19.9332 6.10099 19.7963C5.63437 19.6149 5.30135 19.3983 4.95155 19.0485C4.60175 18.6987 4.38508 18.3656 4.20373 17.899C4.06683 17.5468 3.90397 17.0174 3.85952 16.0427C3.81143 14.9886 3.80123 14.6724 3.80123 12.0032C3.80123 9.3339 3.81143 9.01771 3.85952 7.96358C3.90397 6.9889 4.06683 6.45957 4.20373 6.10731C4.38508 5.64068 4.60171 5.30767 4.95155 4.95786C5.30135 4.60802 5.63437 4.3914 6.10099 4.21005C6.45325 4.07314 6.98258 3.91029 7.95726 3.86584C9.01139 3.81775 9.32758 3.80755 11.9969 3.80755Z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          "clip-rule": "evenodd",
+                          d:
+                            "M11.9968 15.3355C10.1564 15.3355 8.66451 13.8435 8.66451 12.0032C8.66451 10.1628 10.1564 8.67089 11.9968 8.67089C13.8372 8.67089 15.3291 10.1628 15.3291 12.0032C15.3291 13.8435 13.8372 15.3355 11.9968 15.3355ZM11.9968 6.86966C9.16161 6.86966 6.86328 9.16799 6.86328 12.0032C6.86328 14.8384 9.16161 17.1367 11.9968 17.1367C14.832 17.1367 17.1303 14.8384 17.1303 12.0032C17.1303 9.16799 14.832 6.86966 11.9968 6.86966Z"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          "fill-rule": "evenodd",
+                          "clip-rule": "evenodd",
+                          d:
+                            "M18.5328 6.66684C18.5328 7.32938 17.9957 7.86644 17.3331 7.86644C16.6706 7.86644 16.1335 7.32938 16.1335 6.66684C16.1335 6.0043 16.6706 5.46719 17.3331 5.46719C17.9957 5.46719 18.5328 6.0043 18.5328 6.66684Z"
+                        }
+                      })
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                attrs: {
+                  href: "https://github.com/jgiorgiano",
+                  target: "_blank",
+                  rel: "noopener"
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    attrs: { width: "20", height: "20", viewBox: "0 0 256 249" }
+                  },
+                  [
+                    _c("g", { attrs: { fill: "currentColor" } }, [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M127.505 0C57.095 0 0 57.085 0 127.505c0 56.336 36.534 104.13 87.196 120.99 6.372 1.18 8.712-2.766 8.712-6.134 0-3.04-.119-13.085-.173-23.739-35.473 7.713-42.958-15.044-42.958-15.044-5.8-14.738-14.157-18.656-14.157-18.656-11.568-7.914.872-7.752.872-7.752 12.804.9 19.546 13.14 19.546 13.14 11.372 19.493 29.828 13.857 37.104 10.6 1.144-8.242 4.449-13.866 8.095-17.05-28.32-3.225-58.092-14.158-58.092-63.014 0-13.92 4.981-25.295 13.138-34.224-1.324-3.212-5.688-16.18 1.235-33.743 0 0 10.707-3.427 35.073 13.07 10.17-2.826 21.078-4.242 31.914-4.29 10.836.048 21.752 1.464 31.942 4.29 24.337-16.497 35.029-13.07 35.029-13.07 6.94 17.563 2.574 30.531 1.25 33.743 8.175 8.929 13.122 20.303 13.122 34.224 0 48.972-29.828 59.756-58.22 62.912 4.573 3.957 8.648 11.717 8.648 23.612 0 17.06-.148 30.791-.148 34.991 0 3.393 2.295 7.369 8.759 6.117 50.634-16.879 87.122-64.656 87.122-120.973C255.009 57.085 197.922 0 127.505 0"
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M47.755 181.634c-.28.633-1.278.823-2.185.389-.925-.416-1.445-1.28-1.145-1.916.275-.652 1.273-.834 2.196-.396.927.415 1.455 1.287 1.134 1.923M54.027 187.23c-.608.564-1.797.302-2.604-.589-.834-.889-.99-2.077-.373-2.65.627-.563 1.78-.3 2.616.59.834.899.996 2.08.36 2.65M58.33 194.39c-.782.543-2.06.034-2.849-1.1-.781-1.133-.781-2.493.017-3.038.792-.545 2.05-.055 2.85 1.07.78 1.153.78 2.513-.019 3.069M65.606 202.683c-.699.77-2.187.564-3.277-.488-1.114-1.028-1.425-2.487-.724-3.258.707-.772 2.204-.555 3.302.488 1.107 1.026 1.445 2.496.7 3.258M75.01 205.483c-.307.998-1.741 1.452-3.185 1.028-1.442-.437-2.386-1.607-2.095-2.616.3-1.005 1.74-1.478 3.195-1.024 1.44.435 2.386 1.596 2.086 2.612M85.714 206.67c.036 1.052-1.189 1.924-2.705 1.943-1.525.033-2.758-.818-2.774-1.852 0-1.062 1.197-1.926 2.721-1.951 1.516-.03 2.758.815 2.758 1.86M96.228 206.267c.182 1.026-.872 2.08-2.377 2.36-1.48.27-2.85-.363-3.039-1.38-.184-1.052.89-2.105 2.367-2.378 1.508-.262 2.857.355 3.049 1.398"
+                        }
+                      })
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                attrs: {
+                  href:
+                    "https://www.linkedin.com/in/jhonathan-marchi-giorgiano-a55562ba",
+                  target: "_blank",
+                  rel: "noopener"
+                }
+              },
+              [
+                _c(
+                  "svg",
+                  {
+                    attrs: {
+                      width: "20",
+                      height: "20",
+                      viewBox: "0 5 1036 990"
+                    }
+                  },
+                  [
+                    _c("g", { attrs: { fill: "currentColor" } }, [
+                      _c("path", {
+                        attrs: {
+                          d:
+                            "M0 120c0-33.334 11.667-60.834 35-82.5C58.333 15.833 88.667 5 126 5c36.667 0 66.333 10.666 89 32 23.333 22 35 50.666 35 86 0 32-11.333 58.666-34 80-23.333 22-54 33-92 33h-1c-36.667 0-66.333-11-89-33S0 153.333 0 120zm13 875V327h222v668H13zm345 0h222V622c0-23.334 2.667-41.334 8-54 9.333-22.667 23.5-41.834 42.5-57.5 19-15.667 42.833-23.5 71.5-23.5 74.667 0 112 50.333 112 151v357h222V612c0-98.667-23.333-173.5-70-224.5S857.667 311 781 311c-86 0-153 37-201 111v2h-1l1-2v-95H358c1.333 21.333 2 87.666 2 199 0 111.333-.667 267.666-2 469z"
+                        }
+                      })
+                    ])
+                  ]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c(
+              "a",
+              {
+                staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                attrs: {
+                  href: "mailto: jgiorgiano@gmail.com",
+                  target: "_blank"
+                }
+              },
+              [
+                _c("v-icon", {
+                  staticClass: "mx-1",
+                  attrs: { name: "envelope" }
+                })
+              ],
+              1
+            )
+          ])
+        ]
+      )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "text-center mt-auto border-t border-indigo-800" },
-      [
-        _c(
-          "a",
-          {
-            staticClass:
-              "text-indigo-800 hover:text-indigo-600 transition ease-in duration-75",
-            attrs: { href: "http://jhonathan.co.uk", rel: "noopener" }
-          },
-          [_vm._v("JMG")]
-        )
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39440,27 +39506,21 @@ var render = function() {
                 attrs: { src: "img/jmg.jpeg", alt: "user image" }
               }),
               _vm._v(" "),
-              _c("div", [
-                _vm._m(1),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  { staticClass: "flex justify-center md:justify-start" },
-                  [
+              _c(
+                "div",
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c("router-link", { attrs: { to: { name: "resume" } } }, [
                     _c(
-                      "router-link",
-                      { attrs: { to: { name: "curriculum" } } },
-                      [
-                        _c("IndigoButton", { staticClass: "mt-4" }, [
-                          _vm._v("Curriculum")
-                        ])
-                      ],
-                      1
+                      "p",
+                      { staticClass: "text-indigo-600 hover:text-indigo-800" },
+                      [_vm._v("Check my resume")]
                     )
-                  ],
-                  1
-                )
-              ])
+                  ])
+                ],
+                1
+              )
             ]
           ),
           _vm._v(" "),
@@ -39531,394 +39591,8 @@ var staticRenderFns = [
       ),
       _c("br"),
       _vm._v(
-        "\n                            I have started my professional career in March 2019 working on an application built on MVC,\n                            Laravel, PHP, MySql, Javascript, Bootstrap. I am always involved with the team on brainstorm\n                            for solutions and features for the application.\n                        "
+        "\n                            I have started my professional career in March 2019 working on an application built on MVC,\n                            Laravel, PHP, MySql, Javascript, Bootstrap.\n                        "
       )
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a&":
-/*!********************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a& ***!
-  \********************************************************************************************************************************************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass: "container mx-auto print:m-0 print:pt-2 print:pb-0",
-      attrs: { id: "curriculum" }
-    },
-    [
-      _c(
-        "div",
-        {
-          staticClass: "text-gray-900 antialiased leading-tight",
-          attrs: { id: "cv" }
-        },
-        [
-          _c(
-            "div",
-            { staticClass: "mx-auto max-w-a4 p-6 md:p-12 print:p-3 bg-white" },
-            [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "section",
-                {
-                  staticClass:
-                    "border-b-4 border-t-4 px-4 py-2 flex flex-col md:flex-row print:flex-row justify-between text-gray-800"
-                },
-                [
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                      attrs: { href: "tel:+4407490115036" }
-                    },
-                    [
-                      _c("v-icon", { attrs: { name: "phone-volume" } }),
-                      _vm._v(
-                        "\n                        07490 115036\n                    "
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                      attrs: { href: "mailto: jgiorgiano@gmail.com" }
-                    },
-                    [
-                      _c("v-icon", { attrs: { name: "at" } }),
-                      _vm._v(
-                        "\n                        jgiorgiano@gmail.com\n                    "
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "a",
-                    {
-                      staticClass:
-                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
-                      attrs: {
-                        href: "https://goo.gl/maps/swoysnCxaNFWX7XS7",
-                        rel: "noopener",
-                        target: "_blank"
-                      }
-                    },
-                    [
-                      _c("v-icon", { attrs: { name: "map-marker-alt" } }),
-                      _vm._v(
-                        "\n                        Liverpool - UK\n                    "
-                      )
-                    ],
-                    1
-                  )
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "w-full flex flex-col lg:flex-row print:flex-row my-5 print:my-2 leading-snug"
-                },
-                [
-                  _vm._m(1),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "w-full lg:w-2/3 print:w-2/3 p-3" },
-                    [
-                      _vm._m(2),
-                      _vm._v(" "),
-                      _c(
-                        "section",
-                        { staticClass: "mb-8 print:mb-0" },
-                        [
-                          _c(
-                            "h5",
-                            {
-                              staticClass:
-                                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
-                            },
-                            [_vm._v("Skills")]
-                          ),
-                          _vm._v(" "),
-                          _vm._l(_vm.skills, function(skill, i) {
-                            return _c(
-                              "div",
-                              {
-                                staticClass:
-                                  "col-break-avoid mb-4 print:mb-2 border-gray-200",
-                                class:
-                                  i !== _vm.skills.length - 1
-                                    ? "border-b-2"
-                                    : "print:mb-0"
-                              },
-                              [
-                                _c("section", [
-                                  _c("header", [
-                                    _c(
-                                      "div",
-                                      { staticClass: "flex items-center" },
-                                      [
-                                        _c(
-                                          "h3",
-                                          {
-                                            staticClass:
-                                              "inline text-lg print:text-base text-gray-800 font-semibold"
-                                          },
-                                          [_vm._v(_vm._s(skill.title))]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "p",
-                                      {
-                                        staticClass:
-                                          "text-gray-700 leading-normal mb-2 print:mb-0"
-                                      },
-                                      [_vm._v(_vm._s(skill.sub_title))]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "ul",
-                                    {
-                                      staticClass:
-                                        "mt-1 mb-6 print:mb-2 flex flex-wrap leading-normal"
-                                    },
-                                    _vm._l(skill.tags, function(tag, index) {
-                                      return _c(
-                                        "li",
-                                        {
-                                          key: index,
-                                          staticClass:
-                                            "px-3 print:px-1 mr-1 mt-1 print:mt-0 text-base text-gray-700 leading-relaxed print:bg-white bg-gray-200"
-                                        },
-                                        [
-                                          _c("v-icon", {
-                                            attrs: { name: "caret-right" }
-                                          }),
-                                          _vm._v(" "),
-                                          _c(
-                                            "span",
-                                            { staticClass: "ml-1 print:ml-0" },
-                                            [_vm._v(_vm._s(tag))]
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    }),
-                                    0
-                                  )
-                                ])
-                              ]
-                            )
-                          })
-                        ],
-                        2
-                      )
-                    ]
-                  )
-                ]
-              )
-            ]
-          )
-        ]
-      )
-    ]
-  )
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("header", { staticClass: "uppercase text-gray-800 mb-6" }, [
-      _c("p", { staticClass: "text-3xl print:text-xl font-bold" }, [
-        _vm._v(
-          "\n                        Jhonathan Marchi Giorgiano\n                    "
-        )
-      ]),
-      _vm._v(" "),
-      _c("p", [_vm._v("Full-Stack Web Developer")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "w-full lg:w-1/3 print:w-1/3 p-3 pb-0 lg:pb-3" },
-      [
-        _c("section", { staticClass: "mb-8" }, [
-          _c(
-            "h5",
-            {
-              staticClass:
-                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
-            },
-            [_vm._v("About me")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
-            _c("p", [
-              _vm._v(
-                "\n                                    A Responsible, flexible, and self-motivated full-stack developer who drives for\n                                    best results, continuous improvement, and loves learning.\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n                                    I have started my professional career in March 2019 working on an application built\n                                    on MVC, Laravel, PHP, MySql, Javascript, Bootstrap.\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("section", { staticClass: "mb-8" }, [
-          _c(
-            "h5",
-            {
-              staticClass:
-                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
-            },
-            [_vm._v("Education")]
-          ),
-          _vm._v(" "),
-          _c("div", [
-            _c("h3", { staticClass: "text-gray-800 font-semibold mb-1" }, [
-              _vm._v(
-                "\n                                    Bachelor in Business Administration\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", { staticClass: "text-gray-700 mb-1" }, [
-              _vm._v(
-                "\n                                   University Centro Herminio Ometto - FHO | 2008 – 2012\n                                "
-              )
-            ]),
-            _vm._v(" "),
-            _c("p", [
-              _vm._v(
-                "\n                                    The Business Administration degree gave me knowledge of various aspects of a\n                                    company such as project management, team-working and problem-solving.\n                                "
-              )
-            ])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("section", { staticClass: "mb-8 hidden lg:block" }, [
-          _c(
-            "h5",
-            {
-              staticClass:
-                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
-            },
-            [_vm._v("Social")]
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
-            _c("ul", [
-              _c("li", [_vm._v("Linkedin")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("Tweeter")]),
-              _vm._v(" "),
-              _c("li", [_vm._v("Github")])
-            ])
-          ])
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("section", { staticClass: "mb-8" }, [
-      _c(
-        "h5",
-        {
-          staticClass:
-            "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
-        },
-        [_vm._v("Career")]
-      ),
-      _vm._v(" "),
-      _c("section", { staticClass: "mb-4 col-break-avoid" }, [
-        _c("header", [
-          _c(
-            "h3",
-            {
-              staticClass:
-                "text-lg print:text-base text-gray-800 font-semibold leading-snug inline"
-            },
-            [_vm._v("eGov Solutions")]
-          ),
-          _c(
-            "a",
-            {
-              staticClass: "text-xs text-gray-600 ml-1",
-              attrs: { href: "https://epep.tv/", target: "_blank" }
-            },
-            [_vm._v("(epep.tv)")]
-          ),
-          _vm._v(" "),
-          _c("p", { staticClass: "text-gray-700 leading-normal mb-2" }, [
-            _vm._v(
-              "\n                                        Mar 2019 - Present | Full-Stack Web Developer\n                                    "
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "text-gray-800 leading-normal ml-4" }, [
-          _c("p", [
-            _vm._v(
-              "\n                                        Responsible for developing new features for the application, understand customers\n                                        requirements, maintaining and refactor code using best practices.\n                                    "
-            )
-          ]),
-          _vm._v(" "),
-          _c("ul", { staticClass: "list-inside list-disc" }, [
-            _c("li", [
-              _vm._v(
-                "Involved with the team on brainstorm for solutions and features for the\n                                            application."
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [
-              _vm._v(
-                "Working on the full-cycle of features frontend, backend and database."
-              )
-            ]),
-            _vm._v(" "),
-            _c("li", [_vm._v("Customization of existing features.")])
-          ])
-        ])
-      ])
     ])
   }
 ]
@@ -40726,6 +40400,425 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "j-card-header" }, [
       _c("h3", { staticClass: "j-card-title" }, [_vm._v("Sign Up")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8&":
+/*!****************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8& ***!
+  \****************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "container mx-auto print:m-0 print:pt-2 print:pb-0",
+      attrs: { id: "resume" }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "text-gray-900 antialiased leading-tight",
+          attrs: { id: "cv" }
+        },
+        [
+          _c(
+            "div",
+            { staticClass: "mx-auto max-w-a4 p-6 md:p-12 print:p-3 bg-white" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c(
+                "section",
+                {
+                  staticClass:
+                    "border-b-4 border-t-4 px-4 py-2 flex flex-col md:flex-row print:flex-row justify-between text-gray-800"
+                },
+                [
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: { href: "tel:+4407490115036" }
+                    },
+                    [
+                      _c("v-icon", { attrs: { name: "phone-volume" } }),
+                      _vm._v(
+                        "\n                        07490 115036\n                    "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: { href: "mailto: jgiorgiano@gmail.com" }
+                    },
+                    [
+                      _c("v-icon", { attrs: { name: "at" } }),
+                      _vm._v(
+                        "\n                        jgiorgiano@gmail.com\n                    "
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "a",
+                    {
+                      staticClass:
+                        "py-1 hover:text-indigo-600 transition-all ease-in duration-75",
+                      attrs: {
+                        href: "https://goo.gl/maps/swoysnCxaNFWX7XS7",
+                        rel: "noopener",
+                        target: "_blank"
+                      }
+                    },
+                    [
+                      _c("v-icon", { attrs: { name: "map-marker-alt" } }),
+                      _vm._v(
+                        "\n                        Liverpool - UK\n                    "
+                      )
+                    ],
+                    1
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "w-full flex flex-col lg:flex-row print:flex-row my-5 print:my-2 leading-snug"
+                },
+                [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    { staticClass: "w-full lg:w-2/3 print:w-2/3 p-3" },
+                    [
+                      _vm._m(2),
+                      _vm._v(" "),
+                      _c(
+                        "section",
+                        { staticClass: "mb-8 print:mb-0" },
+                        [
+                          _c(
+                            "h5",
+                            {
+                              staticClass:
+                                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+                            },
+                            [_vm._v("Skills")]
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.skills, function(skill, i) {
+                            return _c(
+                              "div",
+                              {
+                                staticClass:
+                                  "col-break-avoid mb-4 print:mb-2 border-gray-200",
+                                class:
+                                  i !== _vm.skills.length - 1
+                                    ? "border-b-2"
+                                    : "print:mb-0"
+                              },
+                              [
+                                _c("section", [
+                                  _c("header", [
+                                    _c(
+                                      "div",
+                                      { staticClass: "flex items-center" },
+                                      [
+                                        _c(
+                                          "h3",
+                                          {
+                                            staticClass:
+                                              "inline text-lg print:text-base text-gray-800 font-semibold"
+                                          },
+                                          [_vm._v(_vm._s(skill.title))]
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "p",
+                                      {
+                                        staticClass:
+                                          "text-gray-700 leading-normal mb-2 print:mb-0"
+                                      },
+                                      [_vm._v(_vm._s(skill.sub_title))]
+                                    )
+                                  ]),
+                                  _vm._v(" "),
+                                  _c(
+                                    "ul",
+                                    {
+                                      staticClass:
+                                        "mt-1 mb-6 print:mb-2 flex flex-wrap leading-normal"
+                                    },
+                                    _vm._l(skill.tags, function(tag, index) {
+                                      return _c(
+                                        "li",
+                                        {
+                                          key: index,
+                                          staticClass:
+                                            "px-3 print:px-1 mr-1 mt-1 print:mt-0 text-base text-gray-700 leading-relaxed print:bg-white bg-gray-200"
+                                        },
+                                        [
+                                          _c("v-icon", {
+                                            attrs: { name: "caret-right" }
+                                          }),
+                                          _vm._v(" "),
+                                          _c(
+                                            "span",
+                                            { staticClass: "ml-1 print:ml-0" },
+                                            [_vm._v(_vm._s(tag))]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    }),
+                                    0
+                                  )
+                                ])
+                              ]
+                            )
+                          })
+                        ],
+                        2
+                      )
+                    ]
+                  )
+                ]
+              )
+            ]
+          )
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("header", { staticClass: "uppercase text-gray-800 mb-6" }, [
+      _c("p", { staticClass: "text-3xl print:text-xl font-bold" }, [
+        _vm._v(
+          "\n                        Jhonathan Marchi Giorgiano\n                    "
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Full-Stack Web Developer")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "w-full lg:w-1/3 print:w-1/3 p-3 pb-0 lg:pb-3" },
+      [
+        _c("section", { staticClass: "mb-8" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("About me")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
+            _c("p", [
+              _vm._v(
+                "\n                                    A Responsible, flexible, and self-motivated full-stack developer who drives for\n                                    best results, continuous improvement, and loves learning.\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                                    I have started my professional career in March 2019 working on an application built\n                                    on MVC, Laravel, PHP, MySql, Javascript, Bootstrap.\n                                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "mb-8" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("Education")]
+          ),
+          _vm._v(" "),
+          _c("div", [
+            _c("h3", { staticClass: "text-gray-800 font-semibold mb-1" }, [
+              _vm._v(
+                "\n                                    Bachelor in Business Administration\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", { staticClass: "text-gray-700 mb-1" }, [
+              _vm._v(
+                "\n                                   University Centro Herminio Ometto - FHO | 2008 – 2012\n                                "
+              )
+            ]),
+            _vm._v(" "),
+            _c("p", [
+              _vm._v(
+                "\n                                    The Business Administration degree gave me knowledge of various aspects of a\n                                    company such as project management, team-working and problem-solving.\n                                "
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("section", { staticClass: "mb-8 hidden lg:block" }, [
+          _c(
+            "h5",
+            {
+              staticClass:
+                "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+            },
+            [_vm._v("Social")]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-2 text-gray-800 leading-normal" }, [
+            _c("ul", [
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                    attrs: {
+                      href:
+                        "https://www.linkedin.com/in/jhonathan-marchi-giorgiano-a55562ba",
+                      target: "_blank",
+                      rel: "noopener"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                            Linkedin\n                                        "
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("li", [
+                _c(
+                  "a",
+                  {
+                    staticClass: "mx-1 text-indigo-600 hover:text-indigo-800",
+                    attrs: {
+                      href: "https://github.com/jgiorgiano",
+                      target: "_blank",
+                      rel: "noopener"
+                    }
+                  },
+                  [
+                    _vm._v(
+                      "\n                                            Github\n                                        "
+                    )
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("section", { staticClass: "mb-8" }, [
+      _c(
+        "h5",
+        {
+          staticClass:
+            "text-xl print:text-lg text-gray-800 font-bold uppercase mb-3"
+        },
+        [_vm._v("Career")]
+      ),
+      _vm._v(" "),
+      _c("section", { staticClass: "mb-4 col-break-avoid" }, [
+        _c("header", [
+          _c(
+            "h3",
+            {
+              staticClass:
+                "text-lg print:text-base text-gray-800 font-semibold leading-snug inline"
+            },
+            [_vm._v("eGov Solutions")]
+          ),
+          _c(
+            "a",
+            {
+              staticClass: "text-xs text-gray-600 ml-1",
+              attrs: { href: "https://epep.tv/", target: "_blank" }
+            },
+            [_vm._v("(epep.tv)")]
+          ),
+          _vm._v(" "),
+          _c("p", { staticClass: "text-gray-700 leading-normal mb-2" }, [
+            _vm._v(
+              "\n                                        Mar 2019 - Present | Full-Stack Web Developer\n                                    "
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "text-gray-800 leading-normal ml-4" }, [
+          _c("p", [
+            _vm._v(
+              "\n                                        Responsible for developing new features for the application, understand customers\n                                        requirements, maintaining and refactor code using best practices.\n                                    "
+            )
+          ]),
+          _vm._v(" "),
+          _c("ul", { staticClass: "list-inside list-disc" }, [
+            _c("li", [
+              _vm._v(
+                "Involved with the team on brainstorm for solutions and features for the\n                                            application."
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [
+              _vm._v(
+                "Working on the full-cycle of features frontend, backend and database."
+              )
+            ]),
+            _vm._v(" "),
+            _c("li", [_vm._v("Customization of existing features.")])
+          ])
+        ])
+      ])
     ])
   }
 ]
@@ -68137,7 +68230,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _views_article_edit__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @/views/article/edit */ "./resources/js/views/article/edit.vue");
 /* harmony import */ var _views_article_show__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @/views/article/show */ "./resources/js/views/article/show.vue");
 /* harmony import */ var _views_Search__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @/views/Search */ "./resources/js/views/Search.vue");
-/* harmony import */ var _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/views/Curriculum */ "./resources/js/views/Curriculum.vue");
+/* harmony import */ var _views_Resume__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @/views/Resume */ "./resources/js/views/Resume.vue");
 /* harmony import */ var _services_middleware__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! @/services/middleware */ "./resources/js/services/middleware.js");
 
 
@@ -68181,9 +68274,9 @@ var routes = [//Open Routes
   component: _views_EmailVerification__WEBPACK_IMPORTED_MODULE_5__["default"],
   beforeEnter: _services_middleware__WEBPACK_IMPORTED_MODULE_12__["default"].redirectIfNotUserSet
 }, {
-  path: '/curriculum',
-  name: 'curriculum',
-  component: _views_Curriculum__WEBPACK_IMPORTED_MODULE_11__["default"]
+  path: '/resume',
+  name: 'resume',
+  component: _views_Resume__WEBPACK_IMPORTED_MODULE_11__["default"]
 }, {
   path: '/article/:id',
   name: 'article-show',
@@ -68898,93 +68991,6 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/views/Curriculum.vue":
-/*!*******************************************!*\
-  !*** ./resources/js/views/Curriculum.vue ***!
-  \*******************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Curriculum.vue?vue&type=template&id=5d13c51a& */ "./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a&");
-/* harmony import */ var _Curriculum_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Curriculum.vue?vue&type=script&lang=js& */ "./resources/js/views/Curriculum.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Curriculum.vue?vue&type=style&index=0&lang=css& */ "./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
-
-
-
-
-
-
-/* normalize component */
-
-var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _Curriculum_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
-  false,
-  null,
-  null,
-  null
-  
-)
-
-/* hot reload */
-if (false) { var api; }
-component.options.__file = "resources/js/views/Curriculum.vue"
-/* harmony default export */ __webpack_exports__["default"] = (component.exports);
-
-/***/ }),
-
-/***/ "./resources/js/views/Curriculum.vue?vue&type=script&lang=js&":
-/*!********************************************************************!*\
-  !*** ./resources/js/views/Curriculum.vue?vue&type=script&lang=js& ***!
-  \********************************************************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Curriculum.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
-
-/***/ }),
-
-/***/ "./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&":
-/*!****************************************************************************!*\
-  !*** ./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css& ***!
-  \****************************************************************************/
-/*! no static exports found */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Curriculum.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=style&index=0&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
-
-/***/ }),
-
-/***/ "./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a&":
-/*!**************************************************************************!*\
-  !*** ./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a& ***!
-  \**************************************************************************/
-/*! exports provided: render, staticRenderFns */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Curriculum.vue?vue&type=template&id=5d13c51a& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Curriculum.vue?vue&type=template&id=5d13c51a&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__["render"]; });
-
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Curriculum_vue_vue_type_template_id_5d13c51a___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
-
-
-
-/***/ }),
-
 /***/ "./resources/js/views/Dashboard.vue":
 /*!******************************************!*\
   !*** ./resources/js/views/Dashboard.vue ***!
@@ -69484,6 +69490,93 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_3563ad7c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Register_vue_vue_type_template_id_3563ad7c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/views/Resume.vue":
+/*!***************************************!*\
+  !*** ./resources/js/views/Resume.vue ***!
+  \***************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Resume.vue?vue&type=template&id=d56eb8e8& */ "./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8&");
+/* harmony import */ var _Resume_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Resume.vue?vue&type=script&lang=js& */ "./resources/js/views/Resume.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Resume.vue?vue&type=style&index=0&lang=css& */ "./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Resume_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/views/Resume.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/views/Resume.vue?vue&type=script&lang=js&":
+/*!****************************************************************!*\
+  !*** ./resources/js/views/Resume.vue?vue&type=script&lang=js& ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./Resume.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&":
+/*!************************************************************************!*\
+  !*** ./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css& ***!
+  \************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/style-loader!../../../node_modules/css-loader??ref--6-1!../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../node_modules/postcss-loader/src??ref--6-2!../../../node_modules/vue-loader/lib??vue-loader-options!./Resume.vue?vue&type=style&index=0&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=style&index=0&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(["default"].indexOf(__WEBPACK_IMPORT_KEY__) < 0) (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8&":
+/*!**********************************************************************!*\
+  !*** ./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8& ***!
+  \**********************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./Resume.vue?vue&type=template&id=d56eb8e8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/views/Resume.vue?vue&type=template&id=d56eb8e8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Resume_vue_vue_type_template_id_d56eb8e8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

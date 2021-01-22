@@ -9,7 +9,7 @@ import ArticleCreate from "@/views/article/create";
 import ArticleEdit from "@/views/article/edit";
 import ArticleShow from "@/views/article/show";
 import Search from "@/views/Search";
-import Curriculum from "@/views/Curriculum";
+import Resume from "@/views/Resume";
 import middleware from "@/services/middleware";
 
 const routes = [
@@ -20,7 +20,7 @@ const routes = [
     { path: '/search', name:'search', component: Search },
     { path: '/about', name:'about', component: About },
     { path: '/email-verification', name:'email-verification', component: EmailVerification, beforeEnter: middleware.redirectIfNotUserSet },
-    { path: '/curriculum', name:'curriculum', component: Curriculum },
+    { path: '/resume', name:'resume', component: Resume },
     { path: '/article/:id', name:'article-show', component: ArticleShow },
 
     //Auth Routes
