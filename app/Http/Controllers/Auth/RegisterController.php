@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
@@ -15,23 +16,22 @@ use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
-
     use RegistersUsers;
-
 
     /**
      * Handle a registration request for the application.
      *
      * @param Request $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function register(Request $request)
+    public function register(Request $request): \Illuminate\Http\JsonResponse
     {
         $this->validator($request->all())->validate();
 
         event(new Registered($user = $this->create($request->all())));
 
-        return new Response($user, 201);
+        return response()->json(new UserResource($user), 201);
     }
 
     /**
@@ -40,14 +40,14 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
-    protected function validator(array $data)
+    private function validator(array $data): \Illuminate\Contracts\Validation\Validator
     {
         return Validator::make($data, [
             'email' => ['required', 'string', 'email', 'max:255',  Rule::unique(User::class)],
             'name' => ['required', 'string', 'max:255'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'subscribe' => ['boolean'],
             'terms_agreement' => ['required', 'boolean', 'accepted'],
+            'subscribe' => ['required', 'boolean'],
         ]);
     }
 
@@ -57,7 +57,7 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return User
      */
-    protected function create(array $data)
+    private function create(array $data): User
     {
         return User::create([
             'email' => $data['email'],
@@ -74,9 +74,5 @@ class RegisterController extends Controller
             'subscribe_agent' => $data['subscribe'] ? request()->header('User-Agent') : null,
             'subscribe_date' => $data['subscribe'] ? now()->format('Y-m-d H:i:s') : null,
         ]);
-    }
-
-    protected function registered() {
-
     }
 }

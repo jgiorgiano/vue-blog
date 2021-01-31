@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\UserResource;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -19,7 +20,7 @@ class LoginController extends Controller
      *
      * @param Request $request
      *
-     * @return \Illuminate\Contracts\Auth\Authenticatable
+     * @return UserResource
      * @throws ValidationException
      */
     public function authenticate(Request $request)
@@ -29,12 +30,27 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-            return Auth::user();
+            return new UserResource(Auth::user());
         }
 
         throw ValidationException::withMessages([
             'email' => ['The provided credentials are incorrect.'],
         ]);
+    }
 
+    /**
+     * Validate the user login request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return void
+     *
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    private function validateLogin(Request $request): void
+    {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|string',
+        ]);
     }
 }

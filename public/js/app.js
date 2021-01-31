@@ -5913,7 +5913,7 @@ var touchMap = new WeakMap();
       this.$store.dispatch('updateUserAccount', {
         name: this.user.name,
         profile_image: (_this$user$profile_ne = this.user.profile_new_image) !== null && _this$user$profile_ne !== void 0 ? _this$user$profile_ne : null,
-        subscribe: this.user.subscribe
+        subscribe: this.user.subscribe ? 1 : 0
       }).then(function (response) {
         setTimeout(function () {
           return _this.processStatus = 0;
@@ -39527,7 +39527,7 @@ var render = function() {
           _c("section", { staticClass: "text-gray-800 leading-7" }, [
             _c("p", [
               _vm._v(
-                "\n                        This is my personal blog where I want to share some of the articles and knowledge used on my\n                        daily work, learning path, and used as a laboratory for applying new techs and knowledge.\n                    "
+                "\n                        This is my personal blog where I want to share some of the articles and knowledge used on my\n                        daily work, learning path and use as a laboratory for applying new techs and knowledge.\n                    "
               )
             ]),
             _vm._v(" "),

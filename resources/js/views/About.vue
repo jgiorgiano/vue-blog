@@ -26,7 +26,7 @@
                 <section class="text-gray-800 leading-7">
                     <p>
                         This is my personal blog where I want to share some of the articles and knowledge used on my
-                        daily work, learning path, and used as a laboratory for applying new techs and knowledge.
+                        daily work, learning path and use as a laboratory for applying new techs and knowledge.
                     </p>
                     <h3 class="mt-4 mb-2 font-medium">Technologies Used on this project:</h3>
                     <div class="block md:flex flex-1 justify-between mx-4">

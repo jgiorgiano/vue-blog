@@ -116,7 +116,7 @@ export default {
             this.$store.dispatch('updateUserAccount', {
                 name: this.user.name,
                 profile_image: this.user.profile_new_image ?? null,
-                subscribe: this.user.subscribe
+                subscribe: this.user.subscribe ? 1 : 0
             }).then((response) => {
                 setTimeout(() => this.processStatus = 0, 300);
             })

@@ -32,9 +32,9 @@ class UserUpdateRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $this->merge([
-            'subscribe' => $this->input('subscribe') == 'false' ? 0 : 1,
-            'profile_image' => $this->input('profile_image') == 'null' ? null : $this->input('profile_image'),
-        ]);
+//        $this->merge([
+//            'subscribe' => $this->input('subscribe') == 'false' ? 0 : 1,
+//            'profile_image' => $this->input('profile_image') == 'null' ? null : $this->input('profile_image'),
+//        ]);
     }
 }
