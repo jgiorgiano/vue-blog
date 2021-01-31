@@ -17,7 +17,6 @@ Route::prefix('v1')->group(function() {
     Route::post('login', [LoginController::class, 'authenticate'])->name('login');
     Route::post('register', [RegisterController::class, 'register'])->name('register');
 
-    //Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
     Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify');
     Route::get('email/send', [EmailVerificationController::class, 'send'])
         ->middleware(['auth', 'throttle:6,1'])->name('verification.send');
@@ -35,11 +34,11 @@ Route::prefix('v1')->group(function() {
     Route::middleware(['auth:sanctum'])->group(function () {
 
         Route::get('test', function () {
-            return response('Testing auth route');
+            return response('Testing auth route'); // Non testable
         });
 
         Route::post('logout', function () {
-            Auth::guard('web')->logout();
+            Auth::guard('web')->logout();// tested OK
         });
 
         Route::prefix('user')->group(function() {
@@ -57,7 +56,7 @@ Route::prefix('v1')->group(function() {
 
         Route::prefix('article')->group(function() {
             Route::post('', [ArticleController::class, 'store']);
-            Route::get('', [ArticleController::class, 'load']);
+            Route::get('', [ArticleController::class, 'index']);
             Route::put('{article}', [ArticleController::class, 'update']);
             Route::put('{article}/manager', [ArticleController::class, 'manager']);
             Route::delete('{article}', [ArticleController::class, 'destroy']);

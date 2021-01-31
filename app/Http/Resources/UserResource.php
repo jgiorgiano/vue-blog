@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class UserResource extends JsonResource
@@ -9,22 +10,20 @@ class UserResource extends JsonResource
     /**
      * Transform the resource into an array.
      *
-     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
-    public function toArray($request)
+    public function toArray($request): array
     {
         return [
-            'id' => $this->id,
+            'id' => (int)$this->id,
             'name' => $this->name,
             'email' => $this->email,
-            'role' => $this->role,
-            'subscribe' => $this->subscribe,
+            'role' => (int)$this->role,
+            'subscribe' => (int)$this->subscribe,
             'subscribe_date' => $this->subscribe_date,
             'profile_image_path' => $this->profile_image_path,
             'created_at' => $this->created_at,
+            'terms_agreement' => (int)$this->terms_agreement,
         ];
-
-//        return parent::toArray($request);
     }
 }

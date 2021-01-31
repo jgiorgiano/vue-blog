@@ -77,9 +77,10 @@ class ArticleController extends Controller
     }
 
     /**
+     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function load(Request $request)
+    public function index(Request $request): \Illuminate\Http\JsonResponse
     {
         //@todo Create policy for authorization
         $auth_user = Auth::user();
@@ -104,7 +105,7 @@ class ArticleController extends Controller
 
 
     /**
-     * @param Request $request
+     * @param ArticleStoreRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function store(ArticleStoreRequest $request)
@@ -118,7 +119,6 @@ class ArticleController extends Controller
         $new_article->title = $request->input('title');
         $new_article->description = $request->input('description');
         $new_article->content = $request->input('content');
-//        $new_article->status = $request->input('status');
         $new_article->status = 0; //Waiting Approval
         $new_article->featured = $request->input('featured');
         $new_article->type = $request->input('type');
@@ -146,6 +146,10 @@ class ArticleController extends Controller
 
     public function update(Article $article, ArticleUpdateRequest $request)
     {
+        if(Auth()->user()->id !== $article->user->id && auth()->user()->role !== 3) {
+            abort(403, 'Not authorized');
+        }
+
         //@todo Create policy for authorization
 
         $article->tags = $request->input('tags');
@@ -172,6 +176,9 @@ class ArticleController extends Controller
     public function manager(Article $article, Request $request)
     {
         //@todo Create policy for authorization
+        if(auth()->user()->role !== 3) {
+            abort(403, 'Not authorized');
+        }
 
         $article->status = $request->input('status');
         $article->position = $request->input('position');
@@ -185,6 +192,9 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         //@todo Create policy for authorization
+        if(Auth()->user()->id !== $article->user->id && auth()->user()->role !== 3) {
+            abort(403, 'Not authorized');
+        }
 
         $article->delete();
 

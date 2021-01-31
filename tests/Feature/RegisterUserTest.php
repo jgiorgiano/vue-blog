@@ -11,17 +11,13 @@ class RegisterUserTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * A basic feature test example.
-     *
-     * @return void
-     */
-    public function testRegisterNewUser()
+    /** @test */
+    public function register_new_user(): void
     {
         $user = [
             'name' => 'John Doe',
             'email' => 'jd@gmail.com',
-            'subscribe' => 1,
+            'subscribe' => 0,
             'terms_agreement' => 1,
             'password' => 'password',
             'password_confirmation' => 'password'
@@ -29,33 +25,18 @@ class RegisterUserTest extends TestCase
 
         $response = $this->json('POST', 'api/v1/register', $user);
 
-        unset($user['password']);
-        unset($user['password_confirmation']);
+        unset($user['password'], $user['password_confirmation']);
 
         $response->assertStatus(201)->assertJsonFragment($user);
-
     }
 
-    public function testUpdateUserProfile()
+    /** @test */
+    public function register_has_required_inputs(): void
     {
-        $response = $this->get('/');
+        $response = $this->json('POST', 'api/v1/register', []);
 
-        $response->assertStatus(200);
+        $response->assertStatus(422)
+            ->assertJsonValidationErrors(['email', 'name', 'password', 'subscribe', 'terms_agreement']);
     }
-
-    public function testUploadUserProfilePicture()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    public function testLoggingForSubscription()
-    {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
 
 }

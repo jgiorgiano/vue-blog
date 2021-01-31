@@ -18,7 +18,7 @@ class CreateArticlesTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->text('tags');
             $table->string('title');
-            $table->text('content');
+            $table->text('content')->nullable();
             $table->tinyInteger('status')->default(0);
             $table->tinyInteger('featured')->default(0);
             $table->integer('position')->nullable();

@@ -12,8 +12,8 @@ class ArticleTest extends TestCase
 {
     use RefreshDatabase;
 
-
-    public function testLoadArticles()
+    /** @test */
+    public function admin_load_all_articles(): void
     {
         $admin_user = User::factory()->create(['role' => 3]);
         $not_admin_user = User::factory()->create(['role' => 2]);
@@ -23,12 +23,23 @@ class ArticleTest extends TestCase
 
         $response = $this->actingAs($admin_user)->json('GET', 'api/v1/article');
         $response->assertStatus(200)->assertJsonCount(36);
+    }
+
+    /** @test */
+    public function user_load_only_its_articles(): void
+    {
+        $not_admin_user = User::factory()->create(['role' => 2]);
+
+        Article::factory()->count(30)->create();
+        Article::factory()->count(6)->create(['user_id' => $not_admin_user->id]);
 
         $response = $this->actingAs($not_admin_user)->json('GET', 'api/v1/article');
         $response->assertStatus(200)->assertJsonCount(6);
     }
 
-    public function testLoadArticle()
+
+    /** @test */
+    public function load_articles(): void
     {
         $article = Article::factory()->count(30)->create();
 
@@ -45,9 +56,11 @@ class ArticleTest extends TestCase
         );
     }
 
-    public function testLoadPublishedArticlesWithPagination()
+    /** @test */
+    public function load_published_articles_with_pagination(): void
     {
         $published_articles = 15;
+        $articles_to_take = "3";
 
         Article::factory()->count(20)->create(['status' => 0]);
         Article::factory()->count($published_articles)->create(['status' => 1]); //Published Articles
@@ -55,20 +68,20 @@ class ArticleTest extends TestCase
         Article::factory()->count(15)->create(['status' => 3]);
 
         //Options take and page
-
         $response = $this->json('GET', 'api/v1/article/published');
 
-        $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles]);
+        $response->assertStatus(200)->assertJsonFragment(['total' => $published_articles]);
 
-        $response = $this->json('GET', 'api/v1/article/published?take=3');
+        $response = $this->json('GET', 'api/v1/article/published?take=' . $articles_to_take);
 
-        $response->assertStatus(200)->assertJsonFragment(['total'=> $published_articles])->assertJsonFragment(['per_page'=> "3"]);
+        $response->assertStatus(200)->assertJsonFragment(['total' => $published_articles])->assertJsonFragment(['per_page' => $articles_to_take]);
     }
 
-    public function testLoadFeaturedArticles()
+    /** @test */
+    public function load_featured_articles(): void
     {
         Article::factory()->count(20)->create(['status' => 0, 'featured' => 1]);
-        Article::factory()->count(15)->create(['status' => 1, 'featured' => 0]); //Published Articles
+        Article::factory()->count(15)->create(['status' => 1, 'featured' => 0]); //Published Articles NOT Features
         Article::factory()->count(5)->create(['status' => 2, 'featured' => 1]);
         Article::factory()->count(15)->create(['status' => 3]);
 
@@ -79,16 +92,23 @@ class ArticleTest extends TestCase
         $response->assertStatus(200)->assertJsonCount($featured_articles->count());
     }
 
-    public function testDeleteArticle()
+    /** @test */
+    public function delete_article(): void
     {
         $article = Article::factory()->create();
+        $article2 = Article::factory()->create();
 
-        $user = $article->user;
+        $owner_user = $article->user;
+        $admin_user = User::factory()->create(['role' => 3]);
+        $non_admin_user = User::factory()->create(['role' => 2]);
 
-        $response = $this->actingAs($user)->json('DELETE', 'api/v1/article/' . $article->id);
+        $response = $this->actingAs($non_admin_user)->json('DELETE', 'api/v1/article/' . $article->id);
+        $response->assertStatus(403);
 
+        $response = $this->actingAs($owner_user)->json('DELETE', 'api/v1/article/' . $article->id);
+        $response->assertStatus(204);
+
+        $response = $this->actingAs($admin_user)->json('DELETE', 'api/v1/article/' . $article2->id);
         $response->assertStatus(204);
     }
-
-
 }
