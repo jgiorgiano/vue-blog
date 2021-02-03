@@ -23,7 +23,9 @@ class ResetPasswordController extends Controller
             $request->only('email')
         );
 
-        return Response::HTTP_OK;
+        return response(
+            ['msg' => 'Reset password link have been sent to your email'],
+            Response::HTTP_OK);
     }
 
     public function reset(Request $request)
@@ -48,8 +50,8 @@ class ResetPasswordController extends Controller
         );
 
         return $status == Password::PASSWORD_RESET
-            ? Response("status__({$status})", Response::HTTP_OK)
-            : Response("status__({$status})", Response::HTTP_BAD_REQUEST);
+            ? Response(["msg" => 'Password Reset Completed'], Response::HTTP_OK)
+            : Response(["msg" => $status == 'passwords.token' ? 'Token Invalid' : 'Whops! Something went wrong.'], Response::HTTP_BAD_REQUEST);
 
     }
 }

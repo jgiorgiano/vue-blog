@@ -1,6 +1,8 @@
 import Home from "@/views/Home"
 import Login from "@/views/Login"
 import Register from "@/views/Register"
+import ForgotPassword from "../views/ForgotPassword";
+import ResetPassword from "../views/ResetPassword";
 import About from "@/views/About"
 import Dashboard from "@/views/Dashboard"
 import EmailVerification from "@/views/EmailVerification";
@@ -16,6 +18,8 @@ const routes = [
     //Open Routes
     { path: '/login', name:'login', component: Login, beforeEnter: middleware.redirectIfAuthenticated },
     { path: '/register', name:'register', component: Register, beforeEnter: middleware.redirectIfAuthenticated },
+    { path: '/forgot-password', name:'forgot-password', component: ForgotPassword, beforeEnter: middleware.redirectIfAuthenticated },
+    { path: '/reset-password/:token', name:'reset-password', component: ResetPassword },
     { path: '/', name:'home', component: Home },
     { path: '/search', name:'search', component: Search },
     { path: '/about', name:'about', component: About },

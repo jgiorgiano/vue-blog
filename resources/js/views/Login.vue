@@ -26,12 +26,19 @@
                     @input="delayTouch($v.user.password)"
                 />
 
-                <div class="py-2 flex justify-center">
+                <div class="py-2 text-center">
                     <!--                            <indigo-button :disabled="$v.user.$anyError || !$v.user.$dirty">-->
                     <indigo-button>
                         <process-status :status="processStatus">Login</process-status>
                     </indigo-button>
                 </div>
+
+                <div class="flex justify-end -mb-3">
+                    <router-link :to="{ name: 'forgot-password'}">
+                        <indigo-text-link>Forgot Password</indigo-text-link>
+                    </router-link>
+                </div>
+
 
             </form>
 
@@ -91,8 +98,12 @@ export default {
 
                 this.$store.dispatch('postLogin', this.user)
                     .then(response => this.$router.push({name: 'home'}))
-                    .catch((error) => { this.errors = error.response.data.errors; })
-                    .finally(() => { this.processStatus = 0; });
+                    .catch((error) => {
+                        this.errors = error.response.data.errors;
+                    })
+                    .finally(() => {
+                        this.processStatus = 0;
+                    });
             }
         },
     },
