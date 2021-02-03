@@ -18,6 +18,10 @@ Route::get('/{any}', function () {
     return view('layouts.app');
 })->where('any', '^(?!api).*$');
 
+Route::get('/reset-password/{token}', function ($token) {
+    return view('auth.reset-password', ['token' => $token]);
+})->name('password.reset');
+
 //Route::get('/', function () {
 //    return view('layouts.app');
 //});
